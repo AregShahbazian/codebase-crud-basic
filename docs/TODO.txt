@@ -5,6 +5,10 @@ Build codebase-crud-basic
     use basic redux with undo
     simple 1 entity domain
     basic crud screens
+        name filter
+        add new/edit screen
+        undo buttons
+    UNIT tests
 
 
 
