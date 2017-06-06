@@ -8,7 +8,7 @@ const mapDispatchToProps = ({
 })
 
 let AuthorFilter = ({onSearchClick}) => {
-    let nameInput
+    let authorsFilter
 
     return (
         <div>
@@ -16,9 +16,9 @@ let AuthorFilter = ({onSearchClick}) => {
                 <input
                     placeholder="name"
                     ref={node => {
-                        nameInput = node
+                        authorsFilter = node
                     }}
-                    onChange={e => onSearchClick(nameInput.value)}
+                    onChange={e => onSearchClick(authorsFilter.value)}
                     autoFocus/>
             </form>
         </div>
