@@ -1,0 +1,20 @@
+***********
+TODO
+
+Build codebase-crud-basic
+    use basic redux with undo
+    simple 1 entity domain
+    basic crud screens
+
+
+
+
+***********
+JUST IN CASE
+
+
+
+***********
+HISTORY
+
+
