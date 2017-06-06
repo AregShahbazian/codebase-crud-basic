@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux'
 import {findAuthor} from '../actions'
 
@@ -17,10 +18,15 @@ let AuthorFilter = ({onSearchClick}) => {
                     ref={node => {
                         nameInput = node
                     }}
-                    onChange={e => onSearchClick(nameInput.value)}/>
+                    onChange={e => onSearchClick(nameInput.value)}
+                    autoFocus/>
             </form>
         </div>
     )
+}
+
+AuthorFilter.propTypes = {
+    onSearchClick: PropTypes.func.isRequired
 }
 
 AuthorFilter = connect(null, mapDispatchToProps)(AuthorFilter)
