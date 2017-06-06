@@ -8,4 +8,9 @@
 ### Development
 
 - Webpack Dev Server
+    - $ npm run webpack-dev-server
 
+### Production
+
+- Webpack
+    - $ npm build
