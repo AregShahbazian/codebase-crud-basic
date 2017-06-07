@@ -7,8 +7,9 @@ Build codebase-crud-basic
     basic crud screens
         *name filter
         (add new/edit screen)
+        (routing)
         (undo buttons)
-    UNIT tests
+    *UNIT tests
     ^^^^^^^^
 
 
