@@ -7,13 +7,16 @@
     "webpack": "webpack",
     "start": "http-server",
     "webpack-dev-server": "webpack-dev-server --progress --colors",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.24.0",
     "babel-core": "^6.24.0",
+    "babel-jest": "^20.0.3",
     "babel-loader": "^6.4.1",
     "babel-preset-es2015": "^6.24.0",
     "babel-preset-react": "^6.23.0",
@@ -21,6 +24,7 @@
     "css-loader": "^0.28.0",
     "file-loader": "^0.11.1",
     "http-server": "^0.9.0",
+    "jest": "^20.0.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "style-loader": "^0.16.1",
@@ -33,5 +37,11 @@
     "react-redux": "^5.0.5",
     "redux": "^3.6.0",
     "redux-undo": "^0.6.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
   }
 }
