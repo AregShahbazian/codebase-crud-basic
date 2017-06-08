@@ -1,10 +1,17 @@
 import * as actions from './index'
 
 describe('todo actions', () => {
-    it('addTodo should create ADD_TODO action', () => {
+    it('findAuthor should create FIND_AUTHOR action', () => {
         expect(actions.findAuthor('au')).toEqual({
             type: 'FIND_AUTHOR',
             nameFilter: 'au'
+        })
+    })
+
+    it('addAuthor should create ADD_AUTHOR action', () => {
+        expect(actions.addAuthor('Author 3')).toEqual({
+            type: 'ADD_AUTHOR',
+            name: 'Author 3'
         })
     })
 

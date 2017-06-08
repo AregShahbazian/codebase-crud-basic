@@ -6,7 +6,8 @@ Build codebase-crud-basic
     *simple 1 entity domain
     basic crud screens
         *name filter
-        (add new/edit screen)
+        *add new
+        edit
         (routing)
         (undo buttons)
     *UNIT tests
@@ -19,10 +20,3 @@ Build codebase-crud-basic
 JUST IN CASE
 
 
-
-***********
-HISTORY
-
-configuring babel presets to run jest-tests in node-environment
-    set the presets in package.json instead of webpack.config.js
-    http://2ality.com/2015/11/configuring-babel6.html

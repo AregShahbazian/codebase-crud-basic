@@ -1,13 +1,17 @@
 import undoable, { distinctState } from 'redux-undo'
 
 const initialAuthors = [{id: 1, name: 'Author 1'}, {id: 2, name: 'Author 2'}]
+let nextAuthorId = 3;
 
 const authors = (state = initialAuthors, action) => {
     switch (action.type) {
         case 'ADD_AUTHOR':
             return [
                 ...state,
-                {name: action.name}
+                {
+                    id: nextAuthorId++,
+                    name: action.name
+                }
             ]
         default:
             return state

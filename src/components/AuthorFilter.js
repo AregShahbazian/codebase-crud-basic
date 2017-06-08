@@ -19,7 +19,8 @@ let AuthorFilter = ({onSearchClick}) => {
                         authorsFilter = node
                     }}
                     onChange={e => onSearchClick(authorsFilter.value)}
-                    autoFocus/>
+                    autoFocus
+                />
             </form>
         </div>
     )

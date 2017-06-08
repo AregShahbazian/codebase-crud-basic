@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "webpack": "webpack",
-    "start": "http-server",
-    "webpack-dev-server": "webpack-dev-server --progress --colors",
+    "http-server": "http-server",
+    "start": "webpack-dev-server --progress --colors",
     "build": "webpack -p",
     "test": "jest",
     "test:watch": "npm test -- --watch"
