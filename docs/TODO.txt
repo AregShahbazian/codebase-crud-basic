@@ -4,16 +4,15 @@ TODO
 Build codebase-crud-basic
     *use basic redux with undo
     *simple 1 entity domain
-    basic crud screens
+    basic crud functionality
         *name filter
         *add new
-        edit
-        (routing)
-        (undo buttons)
     *UNIT tests
-    ^^^^^^^^
-
-
+    add 1+ field to entity
+    extract generic entity code
+    undo buttons
+    edit
+    routing
 
 
 ***********
