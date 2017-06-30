@@ -2,20 +2,14 @@
 TODO
 
 Build codebase-crud-basic
-    *use basic redux with undo
-    *simple 1 entity domain
-    basic crud functionality
-        *name filter
-        *add new
-    *UNIT tests
-    add 1+ field to entity
-    extract generic entity code
-    undo buttons
-    edit
-    routing
+    Implement InputField
+    Implement 3-4 common Input Fields
+    Implement Entity
+
 
 
 ***********
 JUST IN CASE
 
 
+    !! code examples: https://github.com/facebook/fixed-data-table
