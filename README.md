@@ -15,15 +15,6 @@
 - Webpack
     - $ npm build
 
-
-## Terminology
-Distinction between
-- Input Fields with name and type
-    - myFirstName{name: firstname, type:TEXT, value:"Authortje"}
-    - myAge{name: age, type:DATE, value:"Authortje"}
-- Entities with attributes
-    - myAuthor{firstname:myFirstName, age:myAge)
-
 ## Functional design
 
 #### The user logs in as admin. Depending or his role, the possible pages are shown in menu
@@ -52,21 +43,30 @@ Distinction between
 
 ## Technical design
 
-##### Each Entity has attributes, which can be either other Entities, or Input Fields
+#### Terminology
+Distinction between
+- Fields
+    - text input
+    - dropdown select
+    - Can be generic or domain-specific
+- Entities, that consist of fields
 
-##### Each Input Field has 2 types of rendering:
+
+##### Each entity has attributes, rendered by Fields.
+
+##### Each Field has 2 types of rendering:
 - display READ_ONLY
 - display WRITE
 
 
-##### Each entity has multiple types of rendering:
+##### Each entity has multiple rendering options:
 - view as cell: shows only pseudo-unique key (like name for author). This is clickable, and goes to "view as row"
 - view as row
     - render HORIZONTAL (table row)
     - render VERTICAL (edit modal/page)
 - show attributes a1 (Entity) a2 (Input Field), ...
 
-##### Common Input Fields are provided as React components in codebase, and extend parent component InputField (or rather use composition instead of inheritance). Uncommon Input Fields can be defined by manually inheriting the parent.
+##### Common Fields are provided as React components in codebase, and extend parent component Field (or rather use composition instead of inheritance). Specific Fields can be defined by manually extending the parent.
 
 
 #### Tests for

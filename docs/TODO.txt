@@ -1,10 +1,8 @@
 ***********
 TODO
 
-Build codebase-crud-basic
-    Implement InputField
-    Implement 3-4 common Input Fields
-    Implement Entity
+
+
 
 
 
