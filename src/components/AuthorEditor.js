@@ -9,6 +9,7 @@ const mapDispatchToProps = ({
 
 let AuthorEditor = ({onAddClick}) => {
     let newAuthorName
+    let newAuthorDateOfBirth
 
     return (
         <div>
@@ -17,13 +18,23 @@ let AuthorEditor = ({onAddClick}) => {
                 if (!newAuthorName.value.trim()) {
                     return
                 }
-                onAddClick(newAuthorName.value)
+                if (!newAuthorDateOfBirth.value.trim()) {
+                    return
+                }
+                onAddClick(newAuthorName.value, newAuthorDateOfBirth.value)
                 newAuthorName.value = ''
+                newAuthorDateOfBirth.value = ''
             }}>
                 <input
                     placeholder="name"
                     ref={node => {
                         newAuthorName = node
+                    }}
+                />
+                <input
+                    placeholder="dateOfBirth"
+                    ref={node => {
+                        newAuthorDateOfBirth = node
                     }}
                 />
                 <button type="submit">

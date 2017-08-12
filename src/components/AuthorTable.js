@@ -1,13 +1,13 @@
-import React  from 'react'
+import React from 'react'
 import PropTypes from 'prop-types';
-import AuthorTableRow from './AuthorTableRow'
+import AuthorEntity from './AuthorEntity'
 
 const AuthorTable = ({authors}) => (
 
     <table>
         <tbody>
         {authors.map(author =>
-            <AuthorTableRow
+            <AuthorEntity
                 key={author.id}
                 {...author}
             />
@@ -17,10 +17,9 @@ const AuthorTable = ({authors}) => (
 )
 
 AuthorTable.propTypes = {
-    authors:PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        name: PropTypes.string.isRequired
-    }).isRequired).isRequired
+    authors: PropTypes.arrayOf(
+        PropTypes.object.isRequired
+    ).isRequired
 }
 
 export default AuthorTable

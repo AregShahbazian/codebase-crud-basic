@@ -1,7 +1,13 @@
-const authorsFilter = (state = '', action) => {
+const initialAuthorsFilter = {nameFilter: '', numberOfBooksFilter: 0}
+
+const authorsFilter = (state = initialAuthorsFilter, action) => {
     switch (action.type) {
-        case 'FIND_AUTHOR':
-            return action.nameFilter
+        case 'SET_AUTHOR_FILTER':
+            return {
+                nameFilter: action.nameFilter,
+                numberOfBooksFilter:
+                    isNaN(parseInt(action.numberOfBooksFilter)) ? 0 : parseInt(action.numberOfBooksFilter)
+            }
         default:
             return state
     }

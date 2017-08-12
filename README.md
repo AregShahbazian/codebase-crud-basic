@@ -38,10 +38,29 @@
 #### Tables are
 - sortable
 - paginated
-
+- foreign rows are not shown. The relevant attributes are joined in the backend, and rendered as Fields.
 
 
 ## Technical design
+
+#### JSON Domain
+
+- Author
+    - id : int
+    - name : string
+    - dateOfBirth : date
+    - numberOfBooks : int
+    
+- Book
+    - id : int
+    - title : string
+    - authors : list
+    - publisher : object 
+    
+- Publisher
+    - id : int
+    - name : string 
+
 
 #### Terminology
 Distinction between
@@ -60,11 +79,10 @@ Distinction between
 
 
 ##### Each entity has multiple rendering options:
-- view as cell: shows only pseudo-unique key (like name for author). This is clickable, and goes to "view as row"
-- view as row
-    - render HORIZONTAL (table row)
-    - render VERTICAL (edit modal/page)
-- show attributes a1 (Entity) a2 (Input Field), ...
+- render HORIZONTAL (table row)
+    - by default all Fields READ_ONLY, unless WRITE specified
+- render VERTICAL (edit modal/page)
+    - by default all Fields WRITE, unless READ_ONLY specified
 
 ##### Common Fields are provided as React components in codebase, and extend parent component Field (or rather use composition instead of inheritance). Specific Fields can be defined by manually extending the parent.
 

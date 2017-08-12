@@ -1,9 +1,12 @@
-export const findAuthor = (nameFilter) => ({
-    type: 'FIND_AUTHOR',
-    nameFilter
+export const findAuthor = (nameFilter, numberOfBooksFilter) => ({
+    type: 'SET_AUTHOR_FILTER',
+    nameFilter,
+    numberOfBooksFilter
 })
 
-export const addAuthor = (name) => ({
+export const addAuthor = (name, dateOfBirth, numberOfBooks) => ({
     type: 'ADD_AUTHOR',
-    name
+    name,
+    dateOfBirth,
+    numberOfBooks
 })

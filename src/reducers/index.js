@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux'
-import authors from './authors'
+import authorsData from './authorsData'
 import authorsFilter from './authorsFilter'
 
 const crudApp = combineReducers({
-    authors,
+    authorsData,
     authorsFilter
 })
 

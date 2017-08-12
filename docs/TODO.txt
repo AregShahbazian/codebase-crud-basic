@@ -1,7 +1,7 @@
 ***********
 TODO
 
-
+Edit form validation
 
 
 
@@ -11,3 +11,17 @@ JUST IN CASE
 
 
     !! code examples: https://github.com/facebook/fixed-data-table
+
+    http://redux.js.org/
+
+    Videos basic
+    https://courses.wesbos.com/account/access/5986e63f730b2a3a098bb488/view/03a1ca9b74
+
+    change entity? the change:
+        reducer unit tests
+        action unit test
+        reducers
+        action creator
+        view objects
+
+
