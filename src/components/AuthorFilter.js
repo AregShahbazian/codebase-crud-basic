@@ -16,6 +16,7 @@ let AuthorFilter = ({onSearchClick}) => {
             <form>
                 <input
                     placeholder="name"
+                    type="text"
                     ref={node => {
                         nameFilter = node
                     }}
@@ -24,6 +25,7 @@ let AuthorFilter = ({onSearchClick}) => {
                 />
                 <input
                     placeholder="minimum books"
+                    type="number"
                     ref={node => {
                         numberOfBooksFilter = node
                     }}

@@ -24,12 +24,14 @@ let AuthorEditor = ({onAddClick}) => {
             }}>
                 <input
                     placeholder="name"
+                    type="text"
                     ref={node => {
                         newAuthorName = node
                     }}
                 />
                 <input
                     placeholder="dateOfBirth"
+                    type="text"
                     ref={node => {
                         newAuthorDateOfBirth = node
                     }}

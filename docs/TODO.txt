@@ -3,8 +3,12 @@ TODO
 
 Add author with date
 
-Edit-form validation
 
+form validation
+    https://github.com/erikras/redux-form
+    https://www.youtube.com/watch?v=eDTi7lYR1VU&feature=youtu.be
+
+Edit mode in edit-form
 
 
 
@@ -12,12 +16,20 @@ Edit-form validation
 JUST IN CASE
 
 
-    !! code examples: https://github.com/facebook/fixed-data-table
 
     http://redux.js.org/
 
     Videos basic
-    https://courses.wesbos.com/account/access/5986e63f730b2a3a098bb488/view/03a1ca9b74
+        https://courses.wesbos.com/account/access/5986e63f730b2a3a098bb488/view/03a1ca9b74
+
+    code examples:
+        https://github.com/facebook/fixed-data-table
+        https://medium.com/@tannerlinsley/why-i-wrote-react-table-and-the-problems-it-has-solved-for-nozzle-others-445c4e93d4a8
+
+    React Components
+        https://github.com/jquense/react-widgets
+        https://github.com/brillout/awesome-react-components
+
 
     change entity? the change:
         reducer unit tests
