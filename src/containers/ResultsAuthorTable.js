@@ -4,7 +4,7 @@ import AuthorTable from '../components/AuthorTable'
 const getFilteredAuthors = (authors, authorsFilter) => {
     return authors.filter(a =>
         a.name.match(new RegExp(authorsFilter.nameFilter, 'i')) &&
-        a.numberOfBooks >= authorsFilter.numberOfBooksFilter)
+        (a.numberOfBooks != undefined? a.numberOfBooks : 0) >= authorsFilter.numberOfBooksFilter)
 }
 
 

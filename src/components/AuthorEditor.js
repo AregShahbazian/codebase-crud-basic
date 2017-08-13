@@ -15,13 +15,10 @@ let AuthorEditor = ({onAddClick}) => {
         <div>
             <form onSubmit={e => {
                 e.preventDefault()
-                if (!newAuthorName.value.trim()) {
+                if (!newAuthorName.value.trim() || !newAuthorDateOfBirth.value.trim()) {
                     return
                 }
-                if (!newAuthorDateOfBirth.value.trim()) {
-                    return
-                }
-                onAddClick(newAuthorName.value, newAuthorDateOfBirth.value)
+                onAddClick(newAuthorName.value, newAuthorDateOfBirth.value, 0)
                 newAuthorName.value = ''
                 newAuthorDateOfBirth.value = ''
             }}>
