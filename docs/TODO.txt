@@ -33,3 +33,5 @@ JUST IN CASE
 	redux-form
 	react-widgets
 
+    Routing in combination with redux state. To replay and record routing actions
+	react-router-redux
