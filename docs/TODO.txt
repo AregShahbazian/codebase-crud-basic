@@ -35,3 +35,7 @@ JUST IN CASE
 
     Routing in combination with redux state. To replay and record routing actions
 	react-router-redux
+
+    Other libraries
+	(redux-actions)?
+	https://www.npmjs.com/browse/keyword/redux
