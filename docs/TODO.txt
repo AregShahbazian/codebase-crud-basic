@@ -29,4 +29,7 @@ JUST IN CASE
     Async actions (API calls)
 	redux-saga
 
+    Form fields
+	redux-form
+	react-widgets
 
