@@ -26,4 +26,7 @@ JUST IN CASE
         action creator
         view objects
 
+    Async actions (API calls)
+	redux-saga
+
 
