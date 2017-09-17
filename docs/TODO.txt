@@ -38,4 +38,16 @@ JUST IN CASE
         action creator
         view objects
 
+    Async actions (API calls)
+	redux-saga
 
+    Form fields
+	redux-form
+	react-widgets
+
+    Routing in combination with redux state. To replay and record routing actions
+	react-router-redux
+
+    Other libraries
+	(redux-actions)?
+	https://www.npmjs.com/browse/keyword/redux
