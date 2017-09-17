@@ -1,12 +1,11 @@
 ***********
 TODO
+Story
 
-Add author with date
+Implement form-fields using react-widgets
 
+Implement form-fields using redux-form
 
-form validation
-    https://github.com/erikras/redux-form
-    https://www.youtube.com/watch?v=eDTi7lYR1VU&feature=youtu.be
 
 Edit mode in edit-form
 
@@ -43,6 +42,8 @@ JUST IN CASE
 
     Form fields
 	redux-form
+	        https://github.com/erikras/redux-form
+            https://www.youtube.com/watch?v=eDTi7lYR1VU&feature=youtu.be
 	react-widgets
 
     Routing in combination with redux state. To replay and record routing actions

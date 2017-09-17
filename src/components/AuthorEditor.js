@@ -37,7 +37,7 @@ let AuthorEditor = ({onAddClick}) => {
                     }}
                 />
                 <button type="submit">
-                    Add Author
+                    Save
                 </button>
             </form>
         </div>
