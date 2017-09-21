@@ -1,10 +1,10 @@
 ***********
-TODO
-Story
+STORIES
 
-Implement form-fields using react-widgets
+Accessing PropTypes via the main React package is deprecated, and will be removed in  React v16.0. Use the latest available v15.* prop-types package from npm instead. For info on usage, compatibility, migration and more, see https://fb.me/prop-types-docs
 
 Implement form-fields using redux-form
+    https://redux-form.com/7.0.4/examples/react-widgets/
 
 
 Edit mode in edit-form
@@ -13,7 +13,6 @@ Edit mode in edit-form
 
 ***********
 JUST IN CASE
-
 
 
     http://redux.js.org/
@@ -41,10 +40,10 @@ JUST IN CASE
 	redux-saga
 
     Form fields
+	react-widgets
 	redux-form
 	        https://github.com/erikras/redux-form
             https://www.youtube.com/watch?v=eDTi7lYR1VU&feature=youtu.be
-	react-widgets
 
     Routing in combination with redux state. To replay and record routing actions
 	react-router-redux
@@ -52,3 +51,15 @@ JUST IN CASE
     Other libraries
 	(redux-actions)?
 	https://www.npmjs.com/browse/keyword/redux
+
+
+***********
+HISTORY
+
+Setup redux-form and react-widgets
+    examples
+        https://redux-form.com/7.0.4/docs/gettingstarted.md/
+        https://redux-form.com/7.0.4/examples/react-widgets/
+    localization
+        https://github.com/jquense/react-widgets/blob/v4/packages/docs/components/pages/i18n.md
+

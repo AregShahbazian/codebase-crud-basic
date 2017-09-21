@@ -21,7 +21,16 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: "style-loader!css-loader"
+                include: /node_modules/,
+                loaders: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.less$/,
+                loader: ['style-loader', 'css-loader', 'less-loader']
+            },
+            {
+                test: /\.scss/,
+                loader: ['style-loader', 'css-loader', 'scss-loader']
             },
             {
                 test: /\.png$/,     // Use url-loader for smaller images - Base64 encrypted, in Webpack Dev Server memory
@@ -32,22 +41,9 @@ module.exports = {
                 loader: "file-loader?name=/dist/img/[name].[ext]"
             },
             {
-                test: /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url-loader?limit=10000&mimetype=application/font-woff&name=/dist/fonts/[name].[ext]'
-            },
-            {
-                test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url-loader?limit=10000&mimetype=application/octet-stream&name=/dist/fonts/[name].[ext]'
-            },
-            {
-                test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'file-loader?name=/dist/fonts/[name].[ext]'
-            },
-            {
-                test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-                loader: 'url-loader?limit=10000&mimetype=image/svg+xml&name=/dist/fonts/[name].[ext]'
+                test: /\.(gif|ttf|eot|svg|woff2?)$/,
+                loader: 'url-loader?name=[name].[ext]'
             }
-
         ]
     },
     stats: {
