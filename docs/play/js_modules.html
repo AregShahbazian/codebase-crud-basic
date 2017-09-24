@@ -1,0 +1,73 @@
+<script>
+
+    //    Immediately Invoked Function Expression (IIFE)
+
+
+    var a = 1;
+
+    if (1 == 1) {
+        var b = 2;
+    }
+
+    (function foo() {
+        var a = 2;
+    })()
+
+
+    //        Revealing Module pattern
+
+
+    // Expose module as global variable
+    var singleton = function () {
+
+        // Inner logic
+        function sayHello() {
+            console.log('Hello');
+        }
+
+        // Expose API
+        return {
+            sayHello: sayHello
+        }
+    }()
+
+    singleton.sayHello();
+
+
+    // Expose module as global variable
+    var myModule = function () {
+
+        // Inner logic
+        function sayHello() {
+            console.log('Hello module');
+        }
+
+        // Expose API
+        return {
+            sayHello: sayHello
+        }
+    }
+
+    var myModule = new myModule();
+    myModule.sayHello();
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

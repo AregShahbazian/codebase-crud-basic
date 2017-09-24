@@ -1,10 +1,25 @@
 ***********
 STORIES
 
-Accessing PropTypes via the main React package is deprecated, and will be removed in  React v16.0. Use the latest available v15.* prop-types package from npm instead. For info on usage, compatibility, migration and more, see https://fb.me/prop-types-docs
 
 Implement form-fields using redux-form
     https://redux-form.com/7.0.4/examples/react-widgets/
+
+    configure Globalize to support NumberPicker
+
+    found out because:
+    https://www.npmjs.com/package/react-widgets-moment-localizer
+    ("... if you plan on using the NumberPicker ...")
+
+        Webpack Globalize plugin is necessary
+            because: https://github.com/globalizejs/globalize/issues/603
+            documentation:  https://github.com/rxaviers/globalize-webpack-plugin
+            example:        https://github.com/globalizejs/globalize/tree/master/examples/app-npm-webpack
+
+                            http://jquense.github.io/react-widgets/localization/
+
+
+
 
 
 Edit mode in edit-form
@@ -62,4 +77,38 @@ Setup redux-form and react-widgets
         https://redux-form.com/7.0.4/examples/react-widgets/
     localization
         https://github.com/jquense/react-widgets/blob/v4/packages/docs/components/pages/i18n.md
+
+Accessing PropTypes via the main React package is deprecated, and will be removed in  React v16.0. Use the latest available v15.* prop-types package from npm instead. For info on usage, compatibility, migration and more, see https://fb.me/prop-types-docs
+    We're fine
+        https://fb.me/prop-types-docs
+        "Code like this is still fine:"
+
+var vs let:
+    var is scoped to nearest function
+    let is scoped to nearest block
+
+what's UMD/AMD/cjs?
+    https://www.jvandemo.com/a-10-minute-primer-to-javascript-modules-module-formats-module-loaders-and-module-bundlers/
+    Immediately Invoked Function Expression (IIFE)
+        you can immediately call a function as you declare it by making the declaration an expression
+        line starting with 'function' is a declaration
+    Revealing Module pattern
+        assign the declaration to a variable, and it's a constructor and can be used to create modules with 'new' keyword
+        surround the declaration with parenthesis, and it's an expression
+    Pre-ES6 patterns also define modules:
+        AMD (browsers), CJS (nodeJs) and UMD (browser and nodejs), Global
+    ES6 uses export
+    Module loaders load modules on the fly (default way)
+    Module bundlers bundle modules in a single file during build
+        Browserfy
+        Webpack
+
+how do webpack plugins work?
+    Webpack plugins run custom code at compile time.
+
+how doe the Webpack Globalize Plugin plugin work?
+    It makes the program load CLDR (Common Locale Data Repository) data on DEV or compiled data on PROD
+    location/format of custom messages can be given as 'mesages' parameter to the plugin construtor
+    location/format of output of production build can be specified in 'output' parameter
+
 

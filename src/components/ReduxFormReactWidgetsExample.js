@@ -1,16 +1,17 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import DropdownList from 'react-widgets/lib/DropdownList'
-import SelectList from 'react-widgets/lib/SelectList'
 import Multiselect from 'react-widgets/lib/Multiselect'
 import DateTimePicker from 'react-widgets/lib/DateTimePicker'
-import Moment from 'moment'
-import momentLocalizer from 'react-widgets-moment'
+import Globalize from 'globalize'
+import globalizeLocalizer from 'react-widgets-globalize'
+import NumberPicker from 'react-widgets/lib/NumberPicker'
 
 import 'react-widgets/dist/css/react-widgets.css'
 
-Moment.locale('ja')
-momentLocalizer()
+
+Globalize.locale('en')
+globalizeLocalizer()
 
 const colors = [{color: 'Red', value: 'ff0000'},
     {color: 'Green', value: '00ff00'},
@@ -34,9 +35,10 @@ const renderMultiselect = ({input, data, valueField, textField}) =>
     />
 
 const renderSelectList = ({input, data}) =>
-    <SelectList {...input}
-                onBlur={() => input.onBlur()}
-                data={data}/>
+    <NumberPicker
+        min={1}
+        max={5}
+    />
 
 const renderDateTimePicker = ({input: {onChange, value}, showTime}) =>
     <DateTimePicker
@@ -67,7 +69,7 @@ let ReactWidgetsForm = props => {
                     data={['Guitar', 'Cycling', 'Hiking']}/>
             </div>
             <div>
-                <label>Sex</label>
+                <label>Number</label>
                 <Field
                     name="sex"
                     component={renderSelectList}

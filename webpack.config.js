@@ -1,4 +1,5 @@
 var path = require('path');
+var GlobalizePlugin = require("globalize-webpack-plugin");
 
 module.exports = {
     entry: {
@@ -46,6 +47,13 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new GlobalizePlugin({
+            production: false,
+            developmentLocale: "en",
+            supportedLocales: ["ar", "de", "en", "es", "pt", "ru", "zh"],
+            output: "i18n/[locale].[hash].js"
+        })],
     stats: {
         colors: true
     },
