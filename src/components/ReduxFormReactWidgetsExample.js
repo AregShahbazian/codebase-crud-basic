@@ -3,15 +3,8 @@ import {Field, reduxForm} from 'redux-form'
 import DropdownList from 'react-widgets/lib/DropdownList'
 import Multiselect from 'react-widgets/lib/Multiselect'
 import DateTimePicker from 'react-widgets/lib/DateTimePicker'
-import Globalize from 'globalize'
-import globalizeLocalizer from 'react-widgets-globalize'
 import NumberPicker from 'react-widgets/lib/NumberPicker'
 
-import 'react-widgets/dist/css/react-widgets.css'
-
-
-Globalize.locale('en')
-globalizeLocalizer()
 
 const colors = [{color: 'Red', value: 'ff0000'},
     {color: 'Green', value: '00ff00'},
@@ -67,13 +60,6 @@ let ReactWidgetsForm = props => {
                     name="hobbies"
                     component={renderMultiselect}
                     data={['Guitar', 'Cycling', 'Hiking']}/>
-            </div>
-            <div>
-                <label>Number</label>
-                <Field
-                    name="sex"
-                    component={renderSelectList}
-                    data={['male', 'female']}/>
             </div>
             <div>
                 <label>DOB</label>

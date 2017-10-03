@@ -1,28 +1,10 @@
 ***********
 STORIES
 
-
-Implement form-fields using redux-form
-    https://redux-form.com/7.0.4/examples/react-widgets/
-
-    configure Globalize to support NumberPicker
-
-    found out because:
-    https://www.npmjs.com/package/react-widgets-moment-localizer
-    ("... if you plan on using the NumberPicker ...")
-
-        Webpack Globalize plugin is necessary
-            because: https://github.com/globalizejs/globalize/issues/603
-            documentation:  https://github.com/rxaviers/globalize-webpack-plugin
-            example:        https://github.com/globalizejs/globalize/tree/master/examples/app-npm-webpack
-
-                            http://jquense.github.io/react-widgets/localization/
-
-
-
-
-
 Edit mode in edit-form
+
+Implement api calls for save
+
 
 
 
@@ -112,3 +94,20 @@ how doe the Webpack Globalize Plugin plugin work?
     location/format of output of production build can be specified in 'output' parameter
 
 
+Implement form-fields using redux-form
+    https://redux-form.com/7.0.4/examples/react-widgets/
+
+    configure Globalize to support NumberPicker
+
+    found out because:
+    https://www.npmjs.com/package/react-widgets-moment-localizer
+    ("... if you plan on using the NumberPicker ...")
+
+        Webpack Globalize plugin is necessary
+            because: https://github.com/globalizejs/globalize/issues/603
+            documentation:  https://github.com/rxaviers/globalize-webpack-plugin
+            example:        https://github.com/globalizejs/globalize/tree/master/examples/app-npm-webpack
+
+                            http://jquense.github.io/react-widgets/localization/
+
+    No react-widgets for now (style=overkill). just Field

@@ -4,6 +4,12 @@ import {createStore} from 'redux'
 import {Provider} from 'react-redux'
 import App from './components/App'
 import reducer from './reducers'
+// import Globalize from 'globalize'
+// import globalizeLocalizer from 'react-widgets-globalize'
+// import 'react-widgets/dist/css/react-widgets.css'
+
+// Globalize.locale('en')
+// globalizeLocalizer()
 
 const store = createStore(
     reducer,
