@@ -6,3 +6,6 @@ node_modules/
 
 # Build files
 dist/**/*
+
+# Gloablize Webpack Plugin files
+.tmp-globalize-webpack/**/*
