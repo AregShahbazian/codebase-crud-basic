@@ -1,0 +1,11 @@
+{
+    "request": {
+	"method": "GET",
+        "urlPath": "/author/2"
+    },
+    "response": {
+	"status": 200,
+        "bodyFileName": "author_2.json",
+        "transformers": ["response-template"]
+    }
+}

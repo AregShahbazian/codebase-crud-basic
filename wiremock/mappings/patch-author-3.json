@@ -1,0 +1,14 @@
+{
+    "request": {
+	"method": "PATCH",
+        "urlPath": "/author/3",
+	"bodyPatterns" : [ {
+	      "matchesJsonPath" : "$[?(@.name == 'Sir Author 3')]"
+	    } ]
+    },
+    "response": {
+	"status": 200,
+        "bodyFileName": "author_3_updated.json",
+        "transformers": ["response-template"]
+    }
+}

@@ -1,6 +1,7 @@
 ***********
 STORIES
 
+
 Edit mode in edit-form
 
 Implement api calls for save
@@ -65,34 +66,6 @@ Accessing PropTypes via the main React package is deprecated, and will be remove
         https://fb.me/prop-types-docs
         "Code like this is still fine:"
 
-var vs let:
-    var is scoped to nearest function
-    let is scoped to nearest block
-
-what's UMD/AMD/cjs?
-    https://www.jvandemo.com/a-10-minute-primer-to-javascript-modules-module-formats-module-loaders-and-module-bundlers/
-    Immediately Invoked Function Expression (IIFE)
-        you can immediately call a function as you declare it by making the declaration an expression
-        line starting with 'function' is a declaration
-    Revealing Module pattern
-        assign the declaration to a variable, and it's a constructor and can be used to create modules with 'new' keyword
-        surround the declaration with parenthesis, and it's an expression
-    Pre-ES6 patterns also define modules:
-        AMD (browsers), CJS (nodeJs) and UMD (browser and nodejs), Global
-    ES6 uses export
-    Module loaders load modules on the fly (default way)
-    Module bundlers bundle modules in a single file during build
-        Browserfy
-        Webpack
-
-how do webpack plugins work?
-    Webpack plugins run custom code at compile time.
-
-how doe the Webpack Globalize Plugin plugin work?
-    It makes the program load CLDR (Common Locale Data Repository) data on DEV or compiled data on PROD
-    location/format of custom messages can be given as 'mesages' parameter to the plugin construtor
-    location/format of output of production build can be specified in 'output' parameter
-
 
 Implement form-fields using redux-form
     https://redux-form.com/7.0.4/examples/react-widgets/
@@ -111,3 +84,12 @@ Implement form-fields using redux-form
                             http://jquense.github.io/react-widgets/localization/
 
     No react-widgets for now (style=overkill). just Field
+
+
+Implement stubs in wiremock
+    GET /author
+    GET /author/{id}
+    POST /author
+    PATCH /author/{id}
+    PUT /author/{id}
+    DELETE /author/{id}

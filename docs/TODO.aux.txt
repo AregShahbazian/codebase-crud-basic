@@ -1,3 +1,0 @@
-To learn webpack, read overview
-	https://webpack.js.org/concepts/
-and go deeper in "Learn more" links
