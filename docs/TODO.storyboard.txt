@@ -1,7 +1,11 @@
 ***********
 STORIES
 
+https://www.npmjs.com/package/redux-form-saga
+    implement redu-form-saga
+
 Implement api calls for save
+
 
 Edit-form hidden under row
 

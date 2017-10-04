@@ -1,11 +1,5 @@
 
 
-
-Learn redux thunk
-
-
-Learn redux-saga
-
 Learn webpack,
     read overview
 	    https://webpack.js.org/concepts/
@@ -52,3 +46,44 @@ Learn wiremock
         http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api
         RFC 7231
             https://tools.ietf.org/html/rfc7231#section-4.3
+
+
+Learn redux-saga
+    https://redux-saga.js.org/docs/introduction/BeginnerTutorial.html
+
+    What's a Promise?
+        The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.
+        https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+    What's a saga?
+        A saga is a storyline started by some action.
+
+    What does the yield keyword do
+        The yield keyword pauses generator function execution and the value of the expression following the yield keyword is
+        returned to the generator's caller. It can be thought of as a generator-based version of the return keyword.
+        https://developer.mozilla.org/nl/docs/Web/JavaScript/Reference/Operators/yield
+
+    How does redux-saga work?
+        Sagas are made of yield-functions, which will be interpreted by the saga middleware
+        If a promise is given to the middleware, it will suspend the saga until the promise is resolved (delay is over, or api call returns)
+        A "call" (effect) can be yielded to call a function
+        A "put" (effect) can be yielded to dispatch an action
+        When an effect is yielded, the middleware recieves the retrn object of the effect. The saga is paused, until the effect has been fulfilled
+        A helper function "takeEvery" can be used to listen to actions, and do something
+        The helper function "takeLatest" will listen to the latest dispached action, and will cancel preiously dispached
+            actions of the same type
+        Saga generator functions can be tested by calling the .next() function of the generator, and checking that the
+            effects are deep-equal to what is expected.
+
+
+
+
+
+
+
+
+
+
+
+
+
