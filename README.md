@@ -40,6 +40,9 @@
 - paginated
 - foreign rows are not shown. The relevant attributes are joined in the backend, and rendered as Fields.
 
+#### Edit form
+- hidden under every row. only one row at a time canbe edited
+- add form == edit form, for first "special" row. The Add-row
 
 ## Technical design
 

@@ -1,10 +1,9 @@
 ***********
 STORIES
 
-
-Edit mode in edit-form
-
 Implement api calls for save
+
+Edit-form hidden under row
 
 
 
