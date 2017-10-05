@@ -5,6 +5,14 @@ Learn webpack,
 	    https://webpack.js.org/concepts/
     and go deeper in "Learn more" links
 
+Learn HTML5
+
+Learn CSS3
+
+Learn SASS
+
+Learn Caching
+	react / redux / redux-saga level?
 
 
 ***********
