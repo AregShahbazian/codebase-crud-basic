@@ -83,6 +83,8 @@ Learn redux-saga
         Saga generator functions can be tested by calling the .next() function of the generator, and checking that the
             effects are deep-equal to what is expected.
 
+    examples
+        https://github.com/redux-saga/redux-saga/tree/master/examples/real-world
 
 
 

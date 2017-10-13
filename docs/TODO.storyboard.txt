@@ -1,8 +1,10 @@
 ***********
 STORIES
 
-https://www.npmjs.com/package/redux-form-saga
-    implement redu-form-saga
+implement redux saga to call stub and display data
+
+implement redux-form-saga
+    https://www.npmjs.com/package/redux-form-saga
 
 Implement api calls for save
 
