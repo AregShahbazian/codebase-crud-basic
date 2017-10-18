@@ -1,5 +1,4 @@
 
-
 Learn webpack,
     read overview
 	    https://webpack.js.org/concepts/
@@ -87,6 +86,10 @@ Learn redux-saga
         https://github.com/redux-saga/redux-saga/tree/master/examples/real-world
 
 
+Learn normalizr
+    https://github.com/paularmstrong/normalizr/tree/master/docs
+    normalizr converts JSON data with nested entities to flattened data
+    it uses defined Schemas
 
 
 
