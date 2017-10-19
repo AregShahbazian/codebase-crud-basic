@@ -55,6 +55,7 @@ JUST IN CASE
 	https://www.npmjs.com/browse/keyword/redux
 	    (redux-actions)?
 	    react-modal or react-redux-modal
+	    react-tabs
 
 
 ***********
