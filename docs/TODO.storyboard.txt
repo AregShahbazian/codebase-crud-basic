@@ -52,8 +52,9 @@ JUST IN CASE
 	react-router-redux
 
     Other libraries
-	(redux-actions)?
 	https://www.npmjs.com/browse/keyword/redux
+	    (redux-actions)?
+	    react-modal
 
 
 ***********
