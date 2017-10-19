@@ -54,11 +54,11 @@ JUST IN CASE
     Other libraries
 	https://www.npmjs.com/browse/keyword/redux
 	    (redux-actions)?
-	    react-modal
+	    react-modal or react-redux-modal
 
 
 ***********
-HISTORY
+HISTORY2
 
 Setup redux-form and react-widgets
     examples
