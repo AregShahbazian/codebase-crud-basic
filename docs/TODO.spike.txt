@@ -93,6 +93,10 @@ S: stage-2 preset is required. install it.
     found out: https://github.com/babel/babel-loader/issues/170
     sol: https://babeljs.io/docs/plugins/preset-stage-2/
 
+Learn normalizr
+    https://github.com/paularmstrong/normalizr/tree/master/docs
+    normalizr converts JSON data with nested entities to flattened data
+    it uses defined Schemas
 
 
 

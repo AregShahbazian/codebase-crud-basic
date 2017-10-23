@@ -52,9 +52,11 @@ JUST IN CASE
 	react-router-redux
 
     Other libraries
-	(redux-actions)?
-	redux-logger?
 	https://www.npmjs.com/browse/keyword/redux
+	redux-logger?
+    (redux-actions)?
+	    react-modal or react-redux-modal
+	    react-tabs
 
 
 ***********
