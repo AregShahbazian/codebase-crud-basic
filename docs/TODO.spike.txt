@@ -1,4 +1,5 @@
 
+Learn Normalizr and Schemas
 
 Learn webpack,
     read overview
@@ -86,6 +87,11 @@ Learn redux-saga
     examples
         https://github.com/redux-saga/redux-saga/tree/master/examples/real-world
 
+
+P: spread operator (...) is Unexpected Token
+S: stage-2 preset is required. install it.
+    found out: https://github.com/babel/babel-loader/issues/170
+    sol: https://babeljs.io/docs/plugins/preset-stage-2/
 
 
 

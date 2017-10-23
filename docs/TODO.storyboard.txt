@@ -53,6 +53,7 @@ JUST IN CASE
 
     Other libraries
 	(redux-actions)?
+	redux-logger?
 	https://www.npmjs.com/browse/keyword/redux
 
 

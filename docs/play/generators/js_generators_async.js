@@ -3,6 +3,7 @@ function delay(ms) {
         () => {
             gen.next()
             console.log("after timeout")
+            fetch();
         },
         ms
     )
@@ -11,7 +12,7 @@ function delay(ms) {
 function* generator() {
     const x = 10;
 
-    yield delay(3000);
+    yield delay(0);
 }
 
 

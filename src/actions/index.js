@@ -1,7 +1,10 @@
+export const ADD_AUTHOR = 'ADD_AUTHOR'
+export const FETCH_AUTHORS = 'FETCH_AUTHORS'
 
-export const addAuthor = (name, dateOfBirth, numberOfBooks) => ({
-    type: 'ADD_AUTHOR',
-    name,
-    dateOfBirth,
-    numberOfBooks
-})
+function action(type, payload = {}) {
+    return {type, ...payload}
+}
+
+export const addAuthor = (name, dateOfBirth, numberOfBooks) => action(ADD_AUTHOR, {name, dateOfBirth, numberOfBooks})
+export const fetchAuthors = () => action(FETCH_AUTHORS)
+
