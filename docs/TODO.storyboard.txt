@@ -2,7 +2,10 @@
 STORIES
 
 implement redux saga to call stub and display data
-
+    using generators
+    using normalizr
+    using schemas
+    
 implement redux-form-saga
     https://www.npmjs.com/package/redux-form-saga
 
