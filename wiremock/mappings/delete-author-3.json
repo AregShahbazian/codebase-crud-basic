@@ -5,6 +5,9 @@
   },
   "response": {
     "status": 204,
+    "headers": {
+      "Access-Control-Allow-Origin" : "*"
+    },
     "transformers": [
       "response-template"
     ]

@@ -5,6 +5,9 @@
   },
   "response": {
     "status": 200,
+    "headers": {
+      "Access-Control-Allow-Origin" : "*"
+    },
     "bodyFileName": "author_2.json",
     "transformers": [
       "response-template"

@@ -1,10 +1,13 @@
 {
   "request": {
     "method": "GET",
-    "urlPath": "/author"
+    "urlPath": "/author/1"
   },
   "response": {
     "status": 200,
+    "headers": {
+      "Access-Control-Allow-Origin" : "*"
+    },
     "bodyFileName": "author_all.json",
     "transformers": [
       "response-template"

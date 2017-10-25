@@ -11,6 +11,7 @@
   "response": {
     "status": 201,
     "headers": {
+      "Access-Control-Allow-Origin" : "*",
       "Location": "/author/3"
     },
     "bodyFileName": "author_3.json",
