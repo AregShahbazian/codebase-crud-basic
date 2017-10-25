@@ -11,9 +11,9 @@ describe('authors actions', () => {
         })
     })
 
-    it('fetchAuthors should create FETCH_AUTHOR action', () => {
+    it('fetchAuthors should create LOAD_AUTHOR action', () => {
         expect(actions.fetchAuthors()).toEqual({
-            type: actions.FETCH_AUTHORS,
+            type: actions.LOAD_AUTHORS,
         })
     })
 

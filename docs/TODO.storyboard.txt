@@ -2,12 +2,15 @@
 STORIES
 
 implement redux saga to call stub and display data
-    using generators
-    using normalizr
     using schemas
-    
+    using normalizr
+    using generators
+        with unit tests
+
 implement redux-form-saga
     https://www.npmjs.com/package/redux-form-saga
+
+imlement caching for fetch-requests (see real-world examples)
 
 Implement api calls for save
 

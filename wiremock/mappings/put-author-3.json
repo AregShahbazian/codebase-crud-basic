@@ -1,17 +1,21 @@
 {
-    "request": {
-	"method": "PUT",
-        "urlPath": "/author/3",
-	"bodyPatterns" : [ {
-	      "matchesJsonPath" : "$[?(@.name == 'Sir Author 3' && @.dateOfBirth == '03-03-1993')]"
-	    } ]
+  "request": {
+    "method": "PUT",
+    "urlPath": "/author/3",
+    "bodyPatterns": [
+      {
+        "matchesJsonPath": "$[?(@.name == 'Sir Author 3' && @.dateOfBirth == '03-03-1993')]"
+      }
+    ]
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Location": "/author/3"
     },
-    "response": {
-	"status": 200,
-        "headers": {
-            "Location": "/author/3"
-        },
-        "bodyFileName": "author_3_put.json",
-        "transformers": ["response-template"]
-    }
+    "bodyFileName": "author_3_put.json",
+    "transformers": [
+      "response-template"
+    ]
+  }
 }

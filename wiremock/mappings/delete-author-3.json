@@ -1,10 +1,12 @@
 {
-    "request": {
-	"method": "DELETE",
-        "urlPath": "/author/3"
-    },
-    "response": {
-	"status": 204,
-        "transformers": ["response-template"]
-    }
+  "request": {
+    "method": "DELETE",
+    "urlPath": "/author/3"
+  },
+  "response": {
+    "status": 204,
+    "transformers": [
+      "response-template"
+    ]
+  }
 }

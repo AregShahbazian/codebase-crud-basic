@@ -1,4 +1,6 @@
 
+Learn isomorphic-fetch
+
 Learn webpack,
     read overview
 	    https://webpack.js.org/concepts/
