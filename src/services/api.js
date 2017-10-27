@@ -1,4 +1,4 @@
-import {schema, normalize} from 'normalizr'
+import {normalize, schema} from 'normalizr'
 import 'isomorphic-fetch'
 
 const API_ROOT = 'http://localhost:9999/'
@@ -9,12 +9,9 @@ function callApi(endpoint, schema) {
     console.log(`Calling api at ${fullUrl}`)
 
     return fetch(fullUrl)
-        .then(response => {
-                response.json().then(json => ({json, response}))
-                console.log("json response")
-            }
+        .then(response =>
+            response.json().then(json => ({json, response}))
         ).then(({json, response}) => {
-
             if (!response.ok) {
                 return Promise.reject(json)
             }
@@ -29,6 +26,7 @@ function callApi(endpoint, schema) {
         )
 }
 
-const authorSchema = new schema.Array('authors')
+const authorSchema = new schema.Entity('authors')
+const authorSchemaArray = new schema.Array(authorSchema)
 
-export const fetchAuthors = () => callApi('author', authorSchema)
+export const fetchAuthors = () => callApi('author', authorSchemaArray)

@@ -97,6 +97,8 @@ Learn Normalizr and Schemas
     https://github.com/paularmstrong/normalizr/tree/master/docs
     normalizr converts JSON data with nested entities to flattened data
     it uses defined Schemas
+    Usage:
+        https://github.com/paularmstrong/normalizr/blob/master/docs/api.md#usage-2
 
 
 

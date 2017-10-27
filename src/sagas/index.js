@@ -11,11 +11,15 @@ function* fetchEntity(entity, apiFn) {
     console.log("Fetching ...")
     yield put(entity.request())
     const {response, error} = yield call(apiFn)
-    if (response)
+
+    if (response) {
+        console.log(response)
         yield put(entity.success(response))
-    else
+    }
+    else {
         console.log(error)
         yield put(entity.failure(error))
+    }
 }
 
 export const fetchAuthors = fetchEntity.bind(null, actions.author, api.fetchAuthors)

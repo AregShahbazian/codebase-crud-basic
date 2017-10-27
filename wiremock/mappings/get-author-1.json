@@ -8,7 +8,7 @@
     "headers": {
       "Access-Control-Allow-Origin" : "*"
     },
-    "bodyFileName": "author_all.json",
+    "bodyFileName": "author_1.json",
     "transformers": [
       "response-template"
     ]
