@@ -1,7 +1,7 @@
 import undoable, {distinctState} from 'redux-undo'
 import * as actions from '../actions'
 
-const initialAuthors = []
+const initialAuthors = {}
 let nextAuthorId = 3;
 
 const authorsData = (state = initialAuthors, action) => {

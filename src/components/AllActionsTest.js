@@ -14,6 +14,7 @@ class AllActionsTest extends Component {
 
     componentDidMount() {
         const {addAuthor, fetchAuthors} = this.props
+
         fetchAuthors();
         // addAuthor("Name", "dob", 0)
     }

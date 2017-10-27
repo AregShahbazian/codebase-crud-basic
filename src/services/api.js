@@ -16,10 +16,7 @@ function callApi(endpoint, schema) {
                 return Promise.reject(json)
             }
 
-            /*return Object.assign({},
-                normalize(json, schema)
-            )*/
-            return json;
+            return  normalize(json, schema);
         })
         .then(
             response => ({response}),
@@ -28,6 +25,6 @@ function callApi(endpoint, schema) {
 }
 
 const authorSchema = new schema.Entity('authors')
-const authorSchemaArray = new schema.Array(authorSchema)
+const authorSchemaArray = [authorSchema]
 
 export const fetchAuthors = () => callApi('author', authorSchemaArray)
