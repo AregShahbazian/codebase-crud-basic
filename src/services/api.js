@@ -16,9 +16,10 @@ function callApi(endpoint, schema) {
                 return Promise.reject(json)
             }
 
-            return Object.assign({},
+            /*return Object.assign({},
                 normalize(json, schema)
-            )
+            )*/
+            return json;
         })
         .then(
             response => ({response}),

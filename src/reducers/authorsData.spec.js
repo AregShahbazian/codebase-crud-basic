@@ -5,10 +5,7 @@ const initialState = authorsData(undefined, {}).present;
 
 describe('authorsData reducer', () => {
     it('should handle initial state', () => {
-        const expectedInitialState = [
-            {id: 1, name: 'Author 1', dateOfBirth: '01-01-1991', numberOfBooks: 11},
-            {id: 2, name: 'Author 2', dateOfBirth: '02-02-1992', numberOfBooks: 22}
-        ]
+        const expectedInitialState = []
 
         expect(
             initialState

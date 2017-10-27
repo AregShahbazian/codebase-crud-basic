@@ -75,6 +75,7 @@ Setup redux-form and react-widgets
     localization
         https://github.com/jquense/react-widgets/blob/v4/packages/docs/components/pages/i18n.md
 
+
 Accessing PropTypes via the main React package is deprecated, and will be removed in  React v16.0. Use the latest available v15.* prop-types package from npm instead. For info on usage, compatibility, migration and more, see https://fb.me/prop-types-docs
     We're fine
         https://fb.me/prop-types-docs
@@ -96,6 +97,11 @@ Implement form-fields using redux-form
             example:        https://github.com/globalizejs/globalize/tree/master/examples/app-npm-webpack
 
                             http://jquense.github.io/react-widgets/localization/
+
+    Initializing redux-form values from state:
+        https://redux-form.com/7.1.1/examples/initializefromstate/
+            set initialValues in props
+
 
     No react-widgets for now (style=overkill). just Field
 

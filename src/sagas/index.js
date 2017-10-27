@@ -13,11 +13,10 @@ function* fetchEntity(entity, apiFn) {
     const {response, error} = yield call(apiFn)
 
     if (response) {
-        console.log(response)
         yield put(entity.success(response))
     }
     else {
-        console.log(error)
+        console.error(error)
         yield put(entity.failure(error))
     }
 }

@@ -5,20 +5,26 @@ import {addAuthor} from '../actions/index'
 import {Field, reduxForm} from 'redux-form'
 
 const mapStateToProps = (state) => ({
-    editorForm: state.form.editorForm === undefined ? {} : state.form.editorForm.values
+    editorForm: state.form.editorForm,
+    initialValues: {
+        name: "",
+        dateOfBirth: ""
+    }
 })
 
 const mapDispatchToProps = ({
     onAddClick: addAuthor
 })
 
-let AuthorEditor = ({onAddClick, editorForm}) => {
+let AuthorEditor = (props) => {
+
+    const {onAddClick, editorForm} = props
 
     return (
         <div>
             <form onSubmit={e => {
                 e.preventDefault()
-                onAddClick(editorForm.name, editorForm.dateOfBirth, 0)
+                onAddClick(editorForm.values.name, editorForm.values.dateOfBirth, 0)
             }}>
 
                 <Field name="name" component="input" type="text" placeholder="name"/>

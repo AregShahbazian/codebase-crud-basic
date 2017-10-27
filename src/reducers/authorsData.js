@@ -1,14 +1,15 @@
 import undoable, {distinctState} from 'redux-undo'
+import * as actions from '../actions'
 
-const initialAuthors = [
-    {id: 1, name: 'Author 1', dateOfBirth: '01-01-1991', numberOfBooks: 11},
-    {id: 2, name: 'Author 2', dateOfBirth: '02-02-1992', numberOfBooks: 22}
-]
+const initialAuthors = []
 let nextAuthorId = 3;
 
 const authorsData = (state = initialAuthors, action) => {
     switch (action.type) {
-        case 'ADD_AUTHOR':
+        case actions.ADD_AUTHOR:
+            console.log("inside ADD_AUTHOR")
+            console.log(state)
+            console.log(action)
             return [
                 ...state,
                 {
@@ -18,6 +19,8 @@ const authorsData = (state = initialAuthors, action) => {
                     numberOfBooks: action.numberOfBooks
                 }
             ]
+        case actions.AUTHOR[actions.SUCCESS]:
+            return action.response
         default:
             return state
     }
