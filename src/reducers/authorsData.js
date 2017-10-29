@@ -1,5 +1,6 @@
 import undoable, {distinctState} from 'redux-undo'
 import * as actions from '../actions'
+import api from '../services'
 
 const authorsData = (state, action) => {
     switch (action.type) {
@@ -8,7 +9,7 @@ const authorsData = (state, action) => {
             console.log(state)
             console.log(action)
             return state
-        case actions.AUTHOR[actions.SUCCESS]:
+        case actions.AUTHOR_OPERATIONS[api.GET_SUCCESS]:
             return action.response
         default:
             return state
