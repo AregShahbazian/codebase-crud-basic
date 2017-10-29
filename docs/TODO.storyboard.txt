@@ -2,6 +2,7 @@
 STORIES
 
 implement redux saga to call stub and display data
+    using axios instead of fetch
     using schemas
     using normalizr
     using generators

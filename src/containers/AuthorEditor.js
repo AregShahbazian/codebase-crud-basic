@@ -24,7 +24,7 @@ let AuthorEditor = (props) => {
         <div>
             <form onSubmit={e => {
                 e.preventDefault()
-                onAddClick(editorForm.values.name, editorForm.values.dateOfBirth, 0)
+                onAddClick(editorForm.values)
             }}>
 
                 <Field name="name" component="input" type="text" placeholder="name"/>

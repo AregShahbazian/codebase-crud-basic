@@ -1,7 +1,20 @@
+import api from '../services'
+
+const {GET, POST, PUT, PATCH, DELETE} = api
 
 export const REQUEST = 'REQUEST'
 export const SUCCESS = 'SUCCESS'
 export const FAILURE = 'FAILURE'
+
+export const ADD_AUTHOR = 'ADD_AUTHOR'
+export const FETCH_AUTHORS = 'FETCH_AUTHORS'
+
+export const AUTHOR = createRequestTypes('AUTHOR')
+
+
+function action(type, payload = {}) {
+    return {type, ...payload}
+}
 
 function createRequestTypes(base) {
     return [REQUEST, SUCCESS, FAILURE].reduce((acc, type) => {
@@ -10,15 +23,26 @@ function createRequestTypes(base) {
     }, {})
 }
 
-export const AUTHOR = createRequestTypes('AUTHOR')
 
-export const ADD_AUTHOR = 'ADD_AUTHOR'
-export const LOAD_AUTHORS = 'LOAD_AUTHORS'
+function createRequestTypes2(entity) {
+    return [REQUEST, SUCCESS, FAILURE].reduce((acc_type, type) => {
+
+        return [GET, POST, PUT, PATCH, DELETE].reduce((acc_method, method) => {
+            acc_type[type] = `${entity}_${method}_${type}`
+            return acc_type
+        })
+    }, {})
 
 
-function action(type, payload = {}) {
-    return {type, ...payload}
+    /* return [REQUEST, SUCCESS, FAILURE].reduce((acc_method, type) => {
+         acc_method[type] = `${method}_${type}`
+         return acc_method
+     }, {})*/
 }
+
+console.log(createRequestTypes2('AUTHOR'))
+
+/* Interface to the actions of each entity */
 
 export const author = {
     request: () => action(AUTHOR[REQUEST], {}),
@@ -26,6 +50,7 @@ export const author = {
     failure: (error) => action(AUTHOR[FAILURE], {error}),
 }
 
-export const addAuthor = (name, dateOfBirth, numberOfBooks) => action(ADD_AUTHOR, {name, dateOfBirth, numberOfBooks})
-export const fetchAuthors = () => action(LOAD_AUTHORS)
+
+export const addAuthor = (payload) => action(ADD_AUTHOR, payload)
+export const fetchAuthors = () => action(FETCH_AUTHORS)
 
