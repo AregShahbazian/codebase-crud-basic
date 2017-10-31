@@ -3,9 +3,9 @@ import {connect} from 'react-redux'
 import * as actions from '../actions'
 
 const mapDispatchToProps = ({
-    fetchAuthors: actions.fetchAuthors,
-    fetchAuthor: actions.fetchAuthor,
-    addAuthor: actions.addAuthor
+    fetchAllAuthors: actions.author.fetchAll.do,
+    fetchAuthorById: actions.author.fetchById.do,
+    createAuthor: actions.author.create.do
 })
 
 class AllActionsTest extends Component {
@@ -14,13 +14,13 @@ class AllActionsTest extends Component {
     }
 
     componentDidMount() {
-        const {fetchAuthors,fetchAuthor,addAuthor} = this.props
+        const {fetchAllAuthors,fetchAuthorById,createAuthor} = this.props
 
-        // fetchAuthors();
+        // fetchAllAuthors();
 
-        fetchAuthor(3);
+        fetchAuthorById(3);
 
-        // addAuthor("Name", "dob", 0)
+        // createAuthor("Name", "dob", 0)
     }
 }
 

@@ -8,31 +8,35 @@ export const PATCH = 'PATCH'
 export const DELETE = 'DELETE'
 
 
-export const GET_REQUEST = 'GET_REQUEST'
-export const GET_SUCCESS = 'GET_SUCCESS'
-export const GET_FAILURE = 'GET_FAILURE'
-export const POST_REQUEST = 'POST_REQUEST'
-export const POST_SUCCESS = 'POST_SUCCESS'
-export const POST_FAILURE = 'POST_FAILURE'
+export const FETCH_ALL = 'FETCH_ALL'
+export const FETCH_BY_ID = 'FETCH_BY_ID'
+export const CREATE = 'CREATE'
 
+export const REQUEST = 'REQUEST'
+export const SUCCESS = 'SUCCESS'
+export const FAILURE = 'FAILURE'
 
 const API_ROOT = 'http://localhost:9999/'
 
-
 export function createOperationTypes(entity) {
     return [
-        GET_REQUEST,
-        GET_SUCCESS,
-        GET_FAILURE,
-        POST_REQUEST,
-        POST_SUCCESS,
-        POST_FAILURE
+        FETCH_ALL,
+        FETCH_BY_ID,
+        CREATE
     ].reduce((acc_type, type) => {
-        acc_type[`${type}`] = `${entity}_${type}`
+        acc_type[`${type}`] = [
+            REQUEST,
+            SUCCESS,
+            FAILURE
+        ].reduce((acc, state) => {
+            acc[`${state}`] = `${entity}_${type}_${state}`
+            return acc;
+        }, {})
         return acc_type
-    }, {})
 
+    }, {})
 }
+
 
 function callApi(endpoint, schema, method = GET, id = undefined, data = undefined,) {
     const fullUrl = API_ROOT + endpoint + (id !== undefined ? `/${id}` : "")
@@ -62,6 +66,6 @@ const authorSchema = new schema.Entity('authors')
 const authorSchemaArray = [authorSchema]
 
 export const fetchAuthors = () => callApi('author', authorSchemaArray)
-export const fetchAuthor = (id) => callApi('author', authorSchema, GET, id)
-export const addAuthor = (newAuthor) => callApi('author', authorSchema, POST, newAuthor)
+export const fetchAuthorById = (id) => callApi('author', authorSchema, GET, id)
+export const createAuthor = (newAuthor) => callApi('author', authorSchema, POST, newAuthor)
 

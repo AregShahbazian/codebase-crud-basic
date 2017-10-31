@@ -25,24 +25,24 @@ function* fetchEntity(entityOp, apiFn, id, data) {
     }
 }
 
-export const fetchAuthors = fetchEntity.bind(null, actions.author.getAll, api.fetchAuthors)
-export const fetchAuthor = fetchEntity.bind(null, actions.author.getAll, api.fetchAuthor)
-export const addAuthor = fetchEntity.bind(null, actions.author.create, api.addAuthor)
+export const fetchAuthors = fetchEntity.bind(null, actions.author.fetchAll, api.fetchAuthors)
+export const fetchAuthorById = fetchEntity.bind(null, actions.author.fetchById, api.fetchAuthorById)
+export const createAuthor = fetchEntity.bind(null, actions.author.create, api.createAuthor)
 
 export function* doFetchAuthors() {
     console.info("call : fetch authors")
     yield call(fetchAuthors)
 }
 
-export function* doFetchAuthor({id}) {
+export function* doFetchAuthorById({id}) {
     console.info("call : fetch author", id)
-    yield call(fetchAuthor, id)
+    yield call(fetchAuthorById, id)
 }
 
-export function* doAddAuthor({name, dateOfBirth}) {
+export function* doCreateAuthor({name, dateOfBirth}) {
     console.info("call : add authors")
     console.log(name)
-    /* yield call(addAuthor, {
+    /* yield call(createAuthor, {
          "name": "Author 3",
          "dateOfBirth": "03-03-1993",
      })*/
@@ -56,12 +56,12 @@ export function* watchFetchAuthors() {
     yield takeLatest(actions.FETCH_AUTHORS, doFetchAuthors);
 }
 
-export function* watchFetchAuthor() {
-    yield takeLatest(actions.FETCH_AUTHOR, doFetchAuthor);
+export function* watchFetchAuthorById() {
+    yield takeLatest(actions.FETCH_AUTHOR_BY_ID, doFetchAuthorById);
 }
 
-export function* watchAddAuthor() {
-    yield takeLatest(actions.ADD_AUTHOR, doAddAuthor);
+export function* watchCreateAuthor() {
+    yield takeLatest(actions.CREATE_AUTHOR, doCreateAuthor);
 }
 
 
@@ -70,7 +70,7 @@ export function* watchAddAuthor() {
 export default function* root() {
     yield all([
         fork(watchFetchAuthors),
-        fork(watchFetchAuthor),
-        fork(watchAddAuthor)
+        fork(watchFetchAuthorById),
+        fork(watchCreateAuthor)
     ])
 }
