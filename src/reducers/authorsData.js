@@ -1,12 +1,13 @@
 import undoable, {distinctState} from 'redux-undo'
 import * as actions from '../actions'
+import * as author from '../actions/author'
 import api from '../services'
 
-const {FETCH_ALL, FETCH_BY_ID, UPDATE, REQUEST, SUCCESS, FAILURE} = api
+const {FETCH_ALL, FETCH_BY_ID, UPDATE, REQUEST, SUCCESS, FAILURE} = actions
 
 const authorsData = (state, action) => {
     switch (action.type) {
-        case actions.AUTHOR_OPERATIONS[FETCH_ALL][SUCCESS]:
+        case author.OPERATIONS[FETCH_ALL][SUCCESS]:
             return action.response
         default:
             return state

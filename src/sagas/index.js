@@ -1,6 +1,11 @@
+import {call, put, takeEvery, takeLatest, all, fork} from 'redux-saga/effects'
+
 import api from '../services'
 import * as actions from '../actions'
-import {call, put, takeEvery, takeLatest, all, fork} from 'redux-saga/effects'
+import * as author from '../actions/author'
+
+
+const {FETCH_ALL, FETCH_BY_ID, CREATE, DO, REQUEST, SUCCESS, FAILURE} = actions
 
 /******************************* SUBROUTINES *************************************/
 
@@ -25,9 +30,9 @@ function* fetchEntity(entityOp, apiFn, id, data) {
     }
 }
 
-export const fetchAuthors = fetchEntity.bind(null, actions.author.fetchAll, api.fetchAuthors)
-export const fetchAuthorById = fetchEntity.bind(null, actions.author.fetchById, api.fetchAuthorById)
-export const createAuthor = fetchEntity.bind(null, actions.author.create, api.createAuthor)
+export const fetchAuthors = fetchEntity.bind(null, author.actions.fetchAll, api.fetchAuthors)
+export const fetchAuthorById = fetchEntity.bind(null, author.actions.fetchById, api.fetchAuthorById)
+export const createAuthor = fetchEntity.bind(null, author.actions.create, api.createAuthor)
 
 export function* doFetchAuthors() {
     console.info("call : fetch authors")
@@ -35,7 +40,7 @@ export function* doFetchAuthors() {
 }
 
 export function* doFetchAuthorById({id}) {
-    console.info("call : fetch author", id)
+    console.info("call : fetch author id: %d", id)
     yield call(fetchAuthorById, id)
 }
 
@@ -53,15 +58,15 @@ export function* doCreateAuthor({name, dateOfBirth}) {
 /******************************* WATCHERS *************************************/
 
 export function* watchFetchAuthors() {
-    yield takeLatest(actions.FETCH_AUTHORS, doFetchAuthors);
+    yield takeLatest(author.OPERATIONS[FETCH_ALL][DO], doFetchAuthors);
 }
 
 export function* watchFetchAuthorById() {
-    yield takeLatest(actions.FETCH_AUTHOR_BY_ID, doFetchAuthorById);
+    yield takeLatest(author.OPERATIONS[FETCH_BY_ID][DO], doFetchAuthorById);
 }
 
 export function* watchCreateAuthor() {
-    yield takeLatest(actions.CREATE_AUTHOR, doCreateAuthor);
+    yield takeLatest(author.OPERATIONS[CREATE][DO], doCreateAuthor);
 }
 
 

@@ -7,36 +7,7 @@ export const PUT = 'PUT'
 export const PATCH = 'PATCH'
 export const DELETE = 'DELETE'
 
-
-export const FETCH_ALL = 'FETCH_ALL'
-export const FETCH_BY_ID = 'FETCH_BY_ID'
-export const CREATE = 'CREATE'
-
-export const REQUEST = 'REQUEST'
-export const SUCCESS = 'SUCCESS'
-export const FAILURE = 'FAILURE'
-
 const API_ROOT = 'http://localhost:9999/'
-
-export function createOperationTypes(entity) {
-    return [
-        FETCH_ALL,
-        FETCH_BY_ID,
-        CREATE
-    ].reduce((acc_type, type) => {
-        acc_type[`${type}`] = [
-            REQUEST,
-            SUCCESS,
-            FAILURE
-        ].reduce((acc, state) => {
-            acc[`${state}`] = `${entity}_${type}_${state}`
-            return acc;
-        }, {})
-        return acc_type
-
-    }, {})
-}
-
 
 function callApi(endpoint, schema, method = GET, id = undefined, data = undefined,) {
     const fullUrl = API_ROOT + endpoint + (id !== undefined ? `/${id}` : "")

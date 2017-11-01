@@ -1,44 +1,66 @@
-import api from '../services'
+export const FETCH_ALL = 'FETCH_ALL'
+export const FETCH_BY_ID = 'FETCH_BY_ID'
+export const CREATE = 'CREATE'
 
-const {FETCH_ALL, FETCH_BY_ID, CREATE, REQUEST, SUCCESS, FAILURE} = api
+export const DO = 'DO'
+export const REQUEST = 'REQUEST'
+export const SUCCESS = 'SUCCESS'
+export const FAILURE = 'FAILURE'
 
-export const FETCH_AUTHORS = 'FETCH_AUTHORS'
-export const FETCH_AUTHOR_BY_ID = 'FETCH_AUTHOR_BY_ID'
-export const CREATE_AUTHOR = 'CREATE_AUTHOR'
+
+export function createOperationTypes(entity) {
+    return [
+        FETCH_ALL,
+        FETCH_BY_ID,
+        CREATE
+    ].reduce((acc_type, type) => {
+        acc_type[`${type}`] = [
+            DO,
+            REQUEST,
+            SUCCESS,
+            FAILURE
+        ].reduce((acc, state) => {
+            acc[`${state}`] = `${entity}_${type}_${state}`
+            return acc;
+        }, {})
+        return acc_type
+
+    }, {})
+}
 
 
-export const AUTHOR_OPERATIONS = api.createOperationTypes('AUTHOR')
+/*
+ * These are the CRUD actions for each entity
+ *
+ * */
+export const entityActions = (ENTITY_OPERATIONS) => {
+    return {
+        fetchAll: {
+            do: () => action(ENTITY_OPERATIONS[FETCH_ALL][DO]),
+            request: () => action(ENTITY_OPERATIONS[FETCH_ALL][REQUEST]),
+            success: (response) => action(ENTITY_OPERATIONS[FETCH_ALL][SUCCESS], {response}),
+            failure: (error) => action(ENTITY_OPERATIONS[FETCH_ALL][FAILURE], {error}),
+        },
+
+        fetchById: {
+            do: (id) => action(ENTITY_OPERATIONS[FETCH_BY_ID][DO], {id}),
+            request: (id) => action(ENTITY_OPERATIONS[FETCH_BY_ID][REQUEST], {id}),
+            success: (response, id) => action(ENTITY_OPERATIONS[FETCH_BY_ID][SUCCESS], {response, id}),
+            failure: (error, id) => action(ENTITY_OPERATIONS[FETCH_BY_ID][FAILURE], {error, id}),
+
+        },
+        create: {
+            do: (data) => action(ENTITY_OPERATIONS[CREATE][DO], {data}),
+            request: (id) => action(ENTITY_OPERATIONS[CREATE][REQUEST], {id}),
+            success: (response, id) => action(ENTITY_OPERATIONS[CREATE][SUCCESS], {response, id}),
+            failure: (error, id) => action(ENTITY_OPERATIONS[CREATE][FAILURE], {error, id}),
+
+        }
+    }
+}
+
 
 function action(type, payload = {}) {
     return {type, ...payload}
 }
-
-/*
- * These are the actions used in the middleware as effects of async operations
- *
- * */
-export const author = {
-    fetchAll: {
-        do: () => action(FETCH_AUTHORS),
-        request: () => action(AUTHOR_OPERATIONS[FETCH_ALL][REQUEST], {}),
-        success: (response) => action(AUTHOR_OPERATIONS[FETCH_ALL][SUCCESS], {response}),
-        failure: (error) => action(AUTHOR_OPERATIONS[FETCH_ALL][FAILURE], {error}),
-    },
-
-    fetchById: {
-        do: (id) => action(FETCH_AUTHOR_BY_ID, {id}),
-        request: (id) => action(AUTHOR_OPERATIONS[FETCH_BY_ID][REQUEST], {id}),
-        success: (response, id) => action(AUTHOR_OPERATIONS[FETCH_BY_ID][SUCCESS], {response, id}),
-        failure: (error, id) => action(AUTHOR_OPERATIONS[FETCH_BY_ID][FAILURE], {error, id}),
-
-    },
-    create: {
-        do: (data) => action(CREATE_AUTHOR, {data}),
-        request: (id) => action(AUTHOR_OPERATIONS[CREATE][REQUEST], {id}),
-        success: (response, id) => action(AUTHOR_OPERATIONS[CREATE][SUCCESS], {response, id}),
-        failure: (error, id) => action(AUTHOR_OPERATIONS[CREATE][FAILURE], {error, id}),
-
-    }
-}
-
 
