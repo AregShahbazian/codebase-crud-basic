@@ -4,11 +4,12 @@ STORIES
 implement redux saga to call stub and display data
     for multiple operations
         refactoring actions
-*       unit tests actions
-
-    using axios instead of fetch
+       unit tests actions
     using schemas
     using normalizr
+
+*    using axios instead of fetch
+
     using generators
         with unit tests
 
@@ -17,7 +18,7 @@ implement redux-form-saga
 
 imlement caching for fetch-requests (see real-world examples)
 
-Implement api calls for save
+Implement api calls for create
 
 
 Edit-form hidden under row

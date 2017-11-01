@@ -8,25 +8,15 @@ export const SUCCESS = 'SUCCESS'
 export const FAILURE = 'FAILURE'
 
 
-export function createOperationTypes(entity) {
-    return [
-        FETCH_ALL,
-        FETCH_BY_ID,
-        CREATE
-    ].reduce((acc_type, type) => {
+export const createOperationTypes = (entity) =>
+    [FETCH_ALL, FETCH_BY_ID, CREATE].reduce((acc_type, type) => {
         acc_type[`${type}`] = [
-            DO,
-            REQUEST,
-            SUCCESS,
-            FAILURE
-        ].reduce((acc, state) => {
+            DO, REQUEST, SUCCESS, FAILURE].reduce((acc, state) => {
             acc[`${state}`] = `${entity}_${type}_${state}`
             return acc;
         }, {})
         return acc_type
-
     }, {})
-}
 
 
 /*

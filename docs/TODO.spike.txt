@@ -1,5 +1,13 @@
 
-Learn isomorphic-fetch
+Learn axios
+    GitHub: https://github.com/axios/axios
+
+    Review: https://medium.com/@shahata/why-i-wont-be-using-fetch-api-in-my-apps-6900e6c6fe78
+        "fetch is very explicit: you don't get anything unless you ask for it"
+
+        you can set default:
+            axios.defaults.*
+
 
 Learn webpack,
     read overview

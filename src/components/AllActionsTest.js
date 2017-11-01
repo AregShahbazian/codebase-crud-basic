@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import * as author from '../actions/author'
+import api from '../services'
+
 
 const mapDispatchToProps = ({
     fetchAllAuthors: author.actions.fetchAll.do,
@@ -20,6 +22,8 @@ class AllActionsTest extends Component {
         // fetchAuthorById(3);
 
         // createAuthor("Name", "dob", 0)
+
+        api.foo()
     }
 }
 
