@@ -1,7 +1,5 @@
 import {schema} from "normalizr";
-import api from "../index";
-
-const {GET, POST, PUT, PATCH, DELETE, callApi} = api
+import {callApi, GET, POST} from "../api";
 
 
 const authorSchema = new schema.Entity('data')
