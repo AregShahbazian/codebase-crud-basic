@@ -1,12 +1,12 @@
-import 'regenerator-runtime/runtime'
-import React from 'react'
-import {render} from 'react-dom'
-import {createStore, applyMiddleware} from 'redux'
-import {Provider} from 'react-redux'
-import App from './components/App'
-import reducer from './reducers'
-import createSagaMiddleware from 'redux-saga'
-import rootSaga from './sagas'
+import "regenerator-runtime/runtime";
+import React from "react";
+import {render} from "react-dom";
+import {applyMiddleware, createStore} from "redux";
+import {Provider} from "react-redux";
+import App from "./components/App";
+import reducer from "./reducers";
+import createSagaMiddleware from "redux-saga";
+import rootSaga from "./sagas";
 
 // import Globalize from 'globalize'
 // import globalizeLocalizer from 'react-widgets-globalize'

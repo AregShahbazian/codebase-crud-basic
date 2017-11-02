@@ -1,11 +1,8 @@
-import {call, put, takeEvery, takeLatest, all, fork} from 'redux-saga/effects'
+import {all, call, fork, put, takeLatest} from "redux-saga/effects";
+import * as authorApi from "../services/domain/author";
+import {CREATE, DO, FETCH_ALL, FETCH_BY_ID} from "../actions";
+import * as authorActions from "../actions/domain/author";
 
-import * as authorApi from '../services/domain/author'
-import * as actions from '../actions'
-import * as authorActions from '../actions/domain/author'
-
-
-const {FETCH_ALL, FETCH_BY_ID, CREATE, DO, REQUEST, SUCCESS, FAILURE} = actions
 
 /******************************* SUBROUTINES *************************************/
 

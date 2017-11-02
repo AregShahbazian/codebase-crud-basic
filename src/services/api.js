@@ -1,5 +1,5 @@
-import {normalize} from 'normalizr'
-import axios from 'axios'
+import {normalize} from "normalizr";
+import axios from "axios";
 
 export const GET = 'get'
 export const POST = 'post'

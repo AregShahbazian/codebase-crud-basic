@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types';
-import AuthorEntity from './AuthorEntity'
+import React from "react";
+import PropTypes from "prop-types";
+import AuthorEntity from "./AuthorEntity";
 
 const AuthorTable = ({authors}) => (
 

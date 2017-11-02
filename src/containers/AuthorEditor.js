@@ -1,8 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux'
-import * as authorActions from '../actions/domain/author'
-import {Field, reduxForm} from 'redux-form'
+import React from "react";
+import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import * as authorActions from "../actions/domain/author";
+import {Field, reduxForm} from "redux-form";
 
 const mapStateToProps = (state) => ({
     editorForm: state.form.editorForm,

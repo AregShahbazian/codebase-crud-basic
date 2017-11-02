@@ -1,7 +1,6 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import * as authorActions from '../actions/domain/author'
-import api from '../services'
+import React, {Component} from "react";
+import {connect} from "react-redux";
+import * as authorActions from "../actions/domain/author";
 
 
 const mapDispatchToProps = ({

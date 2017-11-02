@@ -1,5 +1,4 @@
-import authorsData from './authorsData'
-import * as actions from '../actions/index'
+import authorsData from "./authorsData";
 
 const initialState = authorsData(undefined, {}).present;
 

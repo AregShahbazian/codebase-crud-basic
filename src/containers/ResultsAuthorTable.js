@@ -1,5 +1,5 @@
-import {connect} from 'react-redux'
-import AuthorTable from '../components/AuthorTable'
+import {connect} from "react-redux";
+import AuthorTable from "../components/AuthorTable";
 
 const getFilteredAuthors = (authors, filterFormValues) => {
     const {nameFilter = "", numberOfBooksFilter = 0} = filterFormValues

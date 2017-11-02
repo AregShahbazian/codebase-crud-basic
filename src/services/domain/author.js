@@ -1,5 +1,5 @@
-import { schema} from 'normalizr'
-import api from '../index'
+import {schema} from "normalizr";
+import api from "../index";
 
 const {GET, POST, PUT, PATCH, DELETE, callApi} = api
 

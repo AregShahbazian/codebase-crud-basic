@@ -1,9 +1,7 @@
-import undoable, {distinctState} from 'redux-undo'
-import * as actions from '../actions'
-import * as author from '../actions/domain/author'
-import api from '../services'
+import undoable, {distinctState} from "redux-undo";
+import {FETCH_ALL, SUCCESS} from "../actions";
+import * as author from "../actions/domain/author";
 
-const {FETCH_ALL, FETCH_BY_ID, UPDATE, REQUEST, SUCCESS, FAILURE} = actions
 
 const authorsData = (state, action) => {
     switch (action.type) {

@@ -1,9 +1,9 @@
-import React from 'react'
-import {Field, reduxForm} from 'redux-form'
-import DropdownList from 'react-widgets/lib/DropdownList'
-import Multiselect from 'react-widgets/lib/Multiselect'
-import DateTimePicker from 'react-widgets/lib/DateTimePicker'
-import NumberPicker from 'react-widgets/lib/NumberPicker'
+import React from "react";
+import {Field, reduxForm} from "redux-form";
+import DropdownList from "react-widgets/lib/DropdownList";
+import Multiselect from "react-widgets/lib/Multiselect";
+import DateTimePicker from "react-widgets/lib/DateTimePicker";
+import NumberPicker from "react-widgets/lib/NumberPicker";
 
 
 const colors = [{color: 'Red', value: 'ff0000'},
