@@ -1,8 +1,8 @@
 import {call, put, takeEvery, takeLatest, all, fork} from 'redux-saga/effects'
 
-import api from '../services'
+import * as authorApi from '../services/domain/author'
 import * as actions from '../actions'
-import * as author from '../actions/author'
+import * as authorActions from '../actions/domain/author'
 
 
 const {FETCH_ALL, FETCH_BY_ID, CREATE, DO, REQUEST, SUCCESS, FAILURE} = actions
@@ -30,9 +30,9 @@ function* fetchEntity(entityOp, apiFn, id, data) {
     }
 }
 
-export const fetchAuthors = fetchEntity.bind(null, author.actions.fetchAll, api.fetchAuthors)
-export const fetchAuthorById = fetchEntity.bind(null, author.actions.fetchById, api.fetchAuthorById)
-export const createAuthor = fetchEntity.bind(null, author.actions.create, api.createAuthor)
+export const fetchAuthors = fetchEntity.bind(null, authorActions.entityActions.fetchAll, authorApi.fetchAuthors)
+export const fetchAuthorById = fetchEntity.bind(null, authorActions.entityActions.fetchById, authorApi.fetchAuthorById)
+export const createAuthor = fetchEntity.bind(null, authorActions.entityActions.create, authorApi.createAuthor)
 
 export function* doFetchAuthors() {
     console.info("call : fetch authors")
@@ -58,15 +58,15 @@ export function* doCreateAuthor({name, dateOfBirth}) {
 /******************************* WATCHERS *************************************/
 
 export function* watchFetchAuthors() {
-    yield takeLatest(author.OPERATIONS[FETCH_ALL][DO], doFetchAuthors);
+    yield takeLatest(authorActions.OPERATIONS[FETCH_ALL][DO], doFetchAuthors);
 }
 
 export function* watchFetchAuthorById() {
-    yield takeLatest(author.OPERATIONS[FETCH_BY_ID][DO], doFetchAuthorById);
+    yield takeLatest(authorActions.OPERATIONS[FETCH_BY_ID][DO], doFetchAuthorById);
 }
 
 export function* watchCreateAuthor() {
-    yield takeLatest(author.OPERATIONS[CREATE][DO], doCreateAuthor);
+    yield takeLatest(authorActions.OPERATIONS[CREATE][DO], doCreateAuthor);
 }
 
 

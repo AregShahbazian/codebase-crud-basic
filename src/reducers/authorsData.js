@@ -1,6 +1,6 @@
 import undoable, {distinctState} from 'redux-undo'
 import * as actions from '../actions'
-import * as author from '../actions/author'
+import * as author from '../actions/domain/author'
 import api from '../services'
 
 const {FETCH_ALL, FETCH_BY_ID, UPDATE, REQUEST, SUCCESS, FAILURE} = actions

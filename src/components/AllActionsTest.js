@@ -1,13 +1,13 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import * as author from '../actions/author'
+import * as authorActions from '../actions/domain/author'
 import api from '../services'
 
 
 const mapDispatchToProps = ({
-    fetchAllAuthors: author.actions.fetchAll.do,
-    fetchAuthorById: author.actions.fetchById.do,
-    createAuthor: author.actions.create.do
+    fetchAllAuthors: authorActions.entityActions.fetchAll.do,
+    fetchAuthorById: authorActions.entityActions.fetchById.do,
+    createAuthor: authorActions.entityActions.create.do
 })
 
 class AllActionsTest extends Component {

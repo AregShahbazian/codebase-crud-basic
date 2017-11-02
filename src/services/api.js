@@ -1,5 +1,4 @@
-import {normalize, schema} from 'normalizr'
-import 'isomorphic-fetch'
+import {normalize} from 'normalizr'
 import axios from 'axios'
 
 export const GET = 'get'
@@ -28,13 +27,3 @@ export const callApi = (endpoint, schema, method = GET, id = undefined, data = u
         {error: error}
     ))
 }
-
-
-const authorSchema = new schema.Entity('data')
-const authorSchemaArray = {data: new schema.Array(authorSchema)};
-
-export const fetchAuthors = () => callApi('author', authorSchemaArray)
-export const fetchAuthorById = (id) => callApi('author', authorSchema, GET, id)
-export const createAuthor = (newAuthor) => callApi('author', authorSchema, POST, newAuthor)
-
-
