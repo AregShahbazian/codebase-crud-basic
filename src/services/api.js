@@ -43,21 +43,14 @@ export const bar = (endpoint, schema, method = GET, id = undefined, data = undef
         method: method,
         url: fullEndpoint,
         data: data
-    }).then((response) => {
-        console.log(" yaaay axios")
-        console.log(normalize(response.data, schema));
-
-    }).catch((error) => {
-        console.log(" booo axios")
-        console.error(error);
-    })
+    }).then((response) => response.data).catch((error) => error)
 }
 
 
-const authorSchema = new schema.Entity('authors')
-const authorSchemaArray = [authorSchema]
+const authorSchema = new schema.Entity('data')
+const authorSchemaArray = {data: new schema.Array(authorSchema)};
 
-export const fetchAuthors = () => callApi('author', authorSchemaArray)
+export const fetchAuthors = () => bar('author', authorSchemaArray)
 export const fetchAuthorById = (id) => callApi('author', authorSchema, GET, id)
 export const createAuthor = (newAuthor) => callApi('author', authorSchema, POST, newAuthor)
 

@@ -23,7 +23,12 @@ class AllActionsTest extends Component {
 
         // createAuthor("Name", "dob", 0)
 
-        api.foo()
+        // const {response, error} = api.foo()
+
+        // console.log("response");
+        // console.log(response);
+        // console.error("error");
+        // console.error(error)
     }
 }
 
