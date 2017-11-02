@@ -8,17 +8,19 @@ implement redux saga to call stub and display data
     using schemas
     using normalizr
 
-*    using axios instead of fetch
+    using axios instead of fetch
 
     using generators
-        with unit tests
+*        with unit tests
+            https://www.npmjs.com/package/redux-saga-test-plan
+
 
 implement redux-form-saga
     https://www.npmjs.com/package/redux-form-saga
 
-imlement caching for fetch-requests (see real-world examples)
+imlement caching for api-requests (see real-world examples)
 
-Implement api calls for create
+Implement reducers for crud actions (request,success,failure)
 
 
 Edit-form hidden under row

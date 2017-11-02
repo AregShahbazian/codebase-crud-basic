@@ -7,8 +7,6 @@ import * as authorActions from "../actions/domain/author";
 /******************************* SUBROUTINES *************************************/
 
 // resuable fetch Subroutine
-// entity :  user | repo | starred | stargazers
-// apiFn  : api.fetchUser | api.fetchRepo | ...
 function* fetchEntity(entityOp, apiFn, id, data) {
     console.info("put : entity operation request")
     yield put(entityOp.request())
@@ -45,8 +43,8 @@ export function* doCreateAuthor({name, dateOfBirth}) {
     console.info("call : add authors")
     console.log(name)
     /* yield call(createAuthor, {
-         "name": "Author 3",
-         "dateOfBirth": "03-03-1993",
+     "name": "Author 3",
+     "dateOfBirth": "03-03-1993",
      })*/
 
 
