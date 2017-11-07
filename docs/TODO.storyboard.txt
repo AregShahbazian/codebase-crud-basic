@@ -22,6 +22,17 @@ imlement caching for api-requests (see real-world examples)
 
 Implement reducers for crud actions (request,success,failure)
 
+Separate generic and domain specific code
+    src/
+        codebase/
+            actions/
+            components/
+            ...
+        author/
+            actions/
+            components/
+            ...
+
 
 Edit-form hidden under row
 
