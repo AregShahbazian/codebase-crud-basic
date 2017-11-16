@@ -6,7 +6,7 @@ import * as author from "../actions/domain/author";
 const authorsData = (state, action) => {
     switch (action.type) {
         case author.OPERATIONS[FETCH_ALL][SUCCESS]:
-            return action.response
+            return action.payload
         default:
             return state
     }

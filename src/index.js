@@ -6,7 +6,7 @@ import {Provider} from "react-redux";
 import App from "./components/App";
 import reducer from "./reducers";
 import createSagaMiddleware from "redux-saga";
-import rootSaga from "./sagas";
+import rootSaga from "./sagas/domain";
 
 // import Globalize from 'globalize'
 // import globalizeLocalizer from 'react-widgets-globalize'

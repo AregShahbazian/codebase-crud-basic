@@ -92,6 +92,10 @@ Learn redux-saga
         Saga generator functions can be tested by calling the .next() function of the generator, and checking that the
             effects are deep-equal to what is expected.
 
+        unit testing sagas
+            with redux-saga-test-plan
+            to test helper-effects with testSaga, use i.e. takeLatestEffect instead of takeLatest
+
     examples
         https://github.com/redux-saga/redux-saga/tree/master/examples/real-world
 

@@ -33,6 +33,7 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "redux-saga": "^0.15.6",
+    "redux-saga-test-plan": "^3.3.0",
     "scss-loader": "0.0.1",
     "style-loader": "^0.16.1",
     "url-loader": "^0.5.8",
