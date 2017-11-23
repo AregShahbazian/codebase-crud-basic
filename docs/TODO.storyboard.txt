@@ -13,14 +13,21 @@ implement redux saga to call stub and display data
         with unit tests
             https://www.npmjs.com/package/redux-saga-test-plan
 
+
+
+
     using axios instead of fetch
 *        unit test api module (and axios)
 
+inside each domain/ folder should be an index that's an interface to domain-specific code
+    see: saga
+    apply for actions
+    apply for api
 
 implement redux-form-saga
     https://www.npmjs.com/package/redux-form-saga
 
-imlement caching for api-requests (see real-world examples)
+implement caching for api-requests (see real-world examples)
 
 Implement reducers for crud actions (request,success,failure)
 
