@@ -10,6 +10,8 @@ import {call, put, takeLatest} from "redux-saga/effects";
  * @param action action that triggered the asynchronous entity operation
  */
 export function* makeApiCall(entityOp, apiFn, action) {
+    console.info("Making api call for action: %s",action.type);
+
     console.info("put : entity operation request")
     yield put(entityOp.request())
 
