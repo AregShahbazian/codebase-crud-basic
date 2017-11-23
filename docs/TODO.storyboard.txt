@@ -8,14 +8,13 @@ implement redux saga to call stub and display data
     using schemas
     using normalizr
 
-
     using generators
         separate codebase and domain
-*        with unit tests
+        with unit tests
             https://www.npmjs.com/package/redux-saga-test-plan
 
     using axios instead of fetch
-        unit test api module (and axios)
+*        unit test api module (and axios)
 
 
 implement redux-form-saga

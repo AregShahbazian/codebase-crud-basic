@@ -96,6 +96,11 @@ Learn redux-saga
             with redux-saga-test-plan
             to test helper-effects with testSaga, use i.e. takeLatestEffect instead of takeLatest
 
+            to test sagas which use the result of a call for another yield, pass the result to .next()
+                example: https://github.com/jfairbank/redux-saga-test-plan/issues/38
+
+            to test branching in sagas, use .back(N) : http://redux-saga-test-plan.jeremyfairbank.com/unit-testing/time-travel.html
+
     examples
         https://github.com/redux-saga/redux-saga/tree/master/examples/real-world
 
@@ -112,6 +117,9 @@ Learn Normalizr and Schemas
     Usage:
         https://github.com/paularmstrong/normalizr/blob/master/docs/api.md#usage-2
 
+Mock functions in Jest:
+    https://facebook.github.io/jest/docs/en/mock-functions.html
+        Use mockReturnValue to mock return value
 
 
 
