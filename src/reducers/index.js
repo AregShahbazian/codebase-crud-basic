@@ -1,10 +1,10 @@
-import {combineReducers} from "redux";
-import authorsData from "./authorsData";
-import {reducer as formReducer} from "redux-form";
+import {FETCH_ALL, SUCCESS} from "../actions";
 
-const crudApp = combineReducers({
-    authorsData,
-    form: formReducer
-})
-
-export default crudApp
+export const entityReducer = (actions) => (state, action) => {
+    switch (action.type) {
+        case actions.OPERATIONS[FETCH_ALL][SUCCESS]:
+            return action.payload
+        default:
+            return state
+    }
+}

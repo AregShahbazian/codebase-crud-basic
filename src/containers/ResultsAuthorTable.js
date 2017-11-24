@@ -13,7 +13,7 @@ const getFilteredAuthors = (authors, filterFormValues) => {
 
 
 const mapStateToProps = (state) => ({
-    authors: getFilteredAuthors(state.authorsData.present, state.form.filterForm.values === undefined ? {} : state.form.filterForm.values)
+    authors: getFilteredAuthors(state.author.present, state.form.filterForm.values === undefined ? {} : state.form.filterForm.values)
 })
 
 
