@@ -1,17 +1,13 @@
 ***********
 STORIES
 
-inside each domain/ folder should be an index that's an interface to domain-specific code
-    see: saga
-    apply for actions
-    apply for api
+implement redux-saga-routines
+    refactor actions
 
-implement redux-form-saga
-    https://www.npmjs.com/package/redux-form-saga
-
-implement caching for api-requests (see real-world examples)
 
 Implement reducers for crud actions (request,success,failure)
+
+implement caching for api-requests (see real-world examples)
 
 Separate generic and domain specific code
     src/
@@ -140,3 +136,10 @@ implement redux saga to call stub and display data
 
     using axios instead of fetch
 
+inside each domain/ folder should be an index that's an interface to domain-specific code
+    see: saga
+    apply for actions
+    apply for api
+    apply for reducers
+
+reducer unit tests
