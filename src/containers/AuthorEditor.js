@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import * as authorActions from "../actions/domain/author";
+import {actions} from "../actions/domain";
 import {Field, reduxForm} from "redux-form";
 
 const mapStateToProps = (state) => ({
@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = ({
-    onAddClick: authorActions.entityActions.create.do
+    onAddClick: actions.author.entityActions.create.do
 })
 
 let AuthorEditor = (props) => {

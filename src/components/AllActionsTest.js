@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import * as authorActions from "../actions/domain/author";
+import {actions} from "../actions/domain";
 
 
 const mapDispatchToProps = ({
-    fetchAllAuthors: authorActions.entityActions.fetchAll.do,
-    fetchAuthorById: authorActions.entityActions.fetchById.do,
-    createAuthor: authorActions.entityActions.create.do
+    fetchAllAuthors: actions.author.entityActions.fetchAll.do,
+    fetchAuthorById: actions.author.entityActions.fetchById.do,
+    createAuthor: actions.author.entityActions.create.do
 })
 
 class AllActionsTest extends Component {
@@ -15,7 +15,7 @@ class AllActionsTest extends Component {
     }
 
     componentDidMount() {
-        const {fetchAllAuthors,fetchAuthorById,createAuthor} = this.props
+        const {fetchAllAuthors, fetchAuthorById, createAuthor} = this.props
 
         fetchAllAuthors();
         // fetchAuthorById(3);

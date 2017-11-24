@@ -24,7 +24,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
  */
 export const callApi = (endpoint = '', schema, method = GET, payload = {}) => {
     let fullEndpoint = endpoint + (payload.id !== undefined ? `/${payload.id}` : "")
-    console.debug(`Calling api at ${API_ROOT + fullEndpoint} with method %s and payload %s`, method, JSON.stringify(payload))
+    console.info(`Calling api at ${API_ROOT + fullEndpoint} with method %s and payload %s`, method, JSON.stringify(payload))
 
     return axios({
         method: method,
