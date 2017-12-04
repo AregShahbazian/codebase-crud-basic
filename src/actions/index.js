@@ -1,3 +1,5 @@
+import {createAction} from "redux-actions"
+
 export const FETCH_ALL = 'FETCH_ALL'
 export const FETCH_BY_ID = 'FETCH_BY_ID'
 export const CREATE = 'CREATE'
@@ -30,36 +32,26 @@ export const createOperationTypes = (entityName) => {
 export const entityActions = (ENTITY_OPERATIONS) => {
     return {
         fetchAll: {
-            do: () => action(ENTITY_OPERATIONS[FETCH_ALL][DO]),
-            request: () => action(ENTITY_OPERATIONS[FETCH_ALL][REQUEST]),
-            success: (response) => action(ENTITY_OPERATIONS[FETCH_ALL][SUCCESS], response),
-            failure: (error) => action(ENTITY_OPERATIONS[FETCH_ALL][FAILURE], error),
+            do: createAction(ENTITY_OPERATIONS[FETCH_ALL][DO]),
+            request: createAction(ENTITY_OPERATIONS[FETCH_ALL][REQUEST]),
+            success: createAction(ENTITY_OPERATIONS[FETCH_ALL][SUCCESS]),
+            failure: createAction(ENTITY_OPERATIONS[FETCH_ALL][FAILURE]),
         },
 
         fetchById: {
-            do: (id) => action(ENTITY_OPERATIONS[FETCH_BY_ID][DO], {id}),
-            request: (id) => action(ENTITY_OPERATIONS[FETCH_BY_ID][REQUEST], {id}),
-            success: (response, id) => action(ENTITY_OPERATIONS[FETCH_BY_ID][SUCCESS], {response, id}),
-            failure: (error, id) => action(ENTITY_OPERATIONS[FETCH_BY_ID][FAILURE], {error, id}),
+            do: createAction(ENTITY_OPERATIONS[FETCH_BY_ID][DO]),
+            request: createAction(ENTITY_OPERATIONS[FETCH_BY_ID][REQUEST]),
+            success: createAction(ENTITY_OPERATIONS[FETCH_BY_ID][SUCCESS]),
+            failure: createAction(ENTITY_OPERATIONS[FETCH_BY_ID][FAILURE]),
 
         },
         create: {
-            do: (data) => action(ENTITY_OPERATIONS[CREATE][DO], data),
-            request: (id) => action(ENTITY_OPERATIONS[CREATE][REQUEST], {id}),
-            success: (response, id) => action(ENTITY_OPERATIONS[CREATE][SUCCESS], {response, id}),
-            failure: (error, id) => action(ENTITY_OPERATIONS[CREATE][FAILURE], {error, id}),
+            do: createAction(ENTITY_OPERATIONS[CREATE][DO]),
+            request: createAction(ENTITY_OPERATIONS[CREATE][REQUEST]),
+            success: createAction(ENTITY_OPERATIONS[CREATE][SUCCESS]),
+            failure: createAction(ENTITY_OPERATIONS[CREATE][FAILURE]),
 
         }
     }
-}
-
-/**
- * Generic action creator
- * @param type
- * @param payload
- * @returns {{type: *, payload: {}}}
- */
-function action(type, payload = {}) {
-    return {type, payload: payload}
 }
 

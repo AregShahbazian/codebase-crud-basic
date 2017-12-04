@@ -7,9 +7,8 @@ const author = undoable(authorReducer, {
     filter: distinctState()
 })
 
-const rootReducer = combineReducers({
+export default combineReducers({
     author,
     form: formReducer
 })
 
-export default rootReducer
