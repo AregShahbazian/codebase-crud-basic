@@ -1,8 +1,8 @@
 ***********
 STORIES
 
-implement redux-saga-routines
-    refactor actions
+implement redux-actions
+    refactor actions + reducers
 
 
 Implement reducers for crud actions (request,success,failure)
