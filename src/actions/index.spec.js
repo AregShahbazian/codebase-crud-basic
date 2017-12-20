@@ -1,151 +1,51 @@
-import {createActions} from "redux-actions";
-import {
-    CREATE,
-    createOperationTypes,
-    DO,
-    entityActions,
-    entityActionCreators,
-    FAILURE,
-    FETCH_ALL,
-    FETCH_BY_ID,
-    REQUEST,
-    SUCCESS
-} from "./index";
-
-
-describe('entity operation types', () => {
-
-    it('createOperationTypes should create operation types', () => {
-        expect(createOperationTypes('ENTITY')).toEqual({
-            "FETCH_ALL": {
-                "DO": "ENTITY_FETCH_ALL_DO",
-                "REQUEST": "ENTITY_FETCH_ALL_REQUEST",
-                "SUCCESS": "ENTITY_FETCH_ALL_SUCCESS",
-                "FAILURE": "ENTITY_FETCH_ALL_FAILURE",
-            },
-            "FETCH_BY_ID": {
-                "DO": "ENTITY_FETCH_BY_ID_DO",
-                "REQUEST": "ENTITY_FETCH_BY_ID_REQUEST",
-                "SUCCESS": "ENTITY_FETCH_BY_ID_SUCCESS",
-                "FAILURE": "ENTITY_FETCH_BY_ID_FAILURE",
-            },
-            "CREATE": {
-                "DO": "ENTITY_CREATE_DO",
-                "REQUEST": "ENTITY_CREATE_REQUEST",
-                "SUCCESS": "ENTITY_CREATE_SUCCESS",
-                "FAILURE": "ENTITY_CREATE_FAILURE",
-            },
-        })
-    })
-
-})
-
-
-describe('entity actions', () => {
-
-    const OPERATIONS = createOperationTypes('ENTITY')
-    const actions = entityActions(OPERATIONS)
-
-
-    it('entityActions.fetchAll.do() should create ENTITY_FETCH_ALL_DO action', () => {
-        expect(actions.fetchAll.do()).toEqual({
-            type: OPERATIONS[FETCH_ALL][DO]
-        })
-    })
-
-    it('entityActions.fetchAll.request() should create ENTITY_FETCH_ALL_REQUEST action', () => {
-        expect(actions.fetchAll.request()).toEqual({
-            type: OPERATIONS[FETCH_ALL][REQUEST]
-        })
-    })
-
-    it('entityActions.fetchAll.success() should create ENTITY_FETCH_ALL_SUCCESS action', () => {
-        expect(actions.fetchAll.success()).toEqual({
-            type: OPERATIONS[FETCH_ALL][SUCCESS]
-        })
-    })
-
-    it('entityActions.fetchAll.failure() should create ENTITY_FETCH_ALL_FAILURE action', () => {
-        expect(actions.fetchAll.failure()).toEqual({
-            type: OPERATIONS[FETCH_ALL][FAILURE]
-        })
-    })
-
-
-    it('entityActions.fetchById.do() should create ENTITY_FETCH_ALL_DO action', () => {
-        expect(actions.fetchById.do()).toEqual({
-            type: OPERATIONS[FETCH_BY_ID][DO]
-        })
-    })
-
-    it('entityActions.fetchById.request() should create ENTITY_FETCH_BY_ID_REQUEST action', () => {
-        expect(actions.fetchById.request()).toEqual({
-            type: OPERATIONS[FETCH_BY_ID][REQUEST]
-        })
-    })
-
-    it('entityActions.fetchById.success() should create ENTITY_FETCH_BY_ID_SUCCESS action', () => {
-        expect(actions.fetchById.success()).toEqual({
-            type: OPERATIONS[FETCH_BY_ID][SUCCESS]
-        })
-    })
-
-    it('entityActions.fetchById.failure() should create ENTITY_FETCH_BY_ID_FAILURE action', () => {
-        expect(actions.fetchById.failure()).toEqual({
-            type: OPERATIONS[FETCH_BY_ID][FAILURE]
-        })
-    })
-
-
-    it('entityActions.create.do() should create ENTITY_CREATE_DO action', () => {
-        expect(actions.create.do({name: 'Author 3', dateOfBirth: '18-01-1990', numberOfBooks: 33})).toEqual({
-            type: OPERATIONS[CREATE][DO],
-            payload: {
-                name: 'Author 3',
-                dateOfBirth: '18-01-1990',
-                numberOfBooks: 33
-            }
-        })
-    })
-
-    it('entityActions.create.request() should create ENTITY_CREATE_REQUEST action', () => {
-        expect(actions.create.request()).toEqual({
-            type: OPERATIONS[CREATE][REQUEST]
-        })
-    })
-
-    it('entityActions.create.success() should create ENTITY_CREATE_SUCCESS action', () => {
-        expect(actions.create.success()).toEqual({
-            type: OPERATIONS[CREATE][SUCCESS]
-        })
-    })
-
-    it('entityActions.create.failure() should create ENTITY_CREATE_FAILURE action', () => {
-        expect(actions.create.failure()).toEqual({
-            type: OPERATIONS[CREATE][FAILURE]
-        })
-    })
-
-
-})
-
+import {entityActionCreators} from "./index";
 
 
 describe('entity action creators', () => {
-    const actionCreators = entityActionCreators(["ENTITY_1", "ENTITY_2"])
+    const actionCreators = entityActionCreators(["ENTITY"])
 
-    it('For each entity, fetchAll, fetchById and create should each have a do, request, success and failure action creator', () => {
-        expect(actionCreators.entity1.fetchAll.do()).toEqual({
-            type: 'ENTITY_1/FETCH_ALL/DO'
+    it('For entity, fetchAll should have a do, request, success and failure action creator', () => {
+        expect(actionCreators.entity.fetchAll.do()).toEqual({
+            type: 'ENTITY/FETCH_ALL/DO'
         })
-        expect(actionCreators.entity1.fetchAll.request()).toEqual({
-            type: 'ENTITY_1/FETCH_ALL/REQUEST'
+        expect(actionCreators.entity.fetchAll.request()).toEqual({
+            type: 'ENTITY/FETCH_ALL/REQUEST'
         })
-        expect(actionCreators.entity1.fetchAll.success()).toEqual({
-            type: 'ENTITY_1/FETCH_ALL/SUCCESS'
+        expect(actionCreators.entity.fetchAll.success()).toEqual({
+            type: 'ENTITY/FETCH_ALL/SUCCESS'
         })
-        expect(actionCreators.entity1.fetchAll.failure()).toEqual({
-            type: 'ENTITY_1/FETCH_ALL/FAILURE'
+        expect(actionCreators.entity.fetchAll.failure()).toEqual({
+            type: 'ENTITY/FETCH_ALL/FAILURE'
+        })
+    })
+
+    it('For entity, fetchById should have a do, request, success and failure action creator', () => {
+        expect(actionCreators.entity.fetchById.do()).toEqual({
+            type: 'ENTITY/FETCH_BY_ID/DO'
+        })
+        expect(actionCreators.entity.fetchById.request()).toEqual({
+            type: 'ENTITY/FETCH_BY_ID/REQUEST'
+        })
+        expect(actionCreators.entity.fetchById.success()).toEqual({
+            type: 'ENTITY/FETCH_BY_ID/SUCCESS'
+        })
+        expect(actionCreators.entity.fetchById.failure()).toEqual({
+            type: 'ENTITY/FETCH_BY_ID/FAILURE'
+        })
+    })
+
+    it('For entity, fetchById should have a do, request, success and failure action creator', () => {
+        expect(actionCreators.entity.create.do()).toEqual({
+            type: 'ENTITY/CREATE/DO'
+        })
+        expect(actionCreators.entity.create.request()).toEqual({
+            type: 'ENTITY/CREATE/REQUEST'
+        })
+        expect(actionCreators.entity.create.success()).toEqual({
+            type: 'ENTITY/CREATE/SUCCESS'
+        })
+        expect(actionCreators.entity.create.failure()).toEqual({
+            type: 'ENTITY/CREATE/FAILURE'
         })
     })
 })

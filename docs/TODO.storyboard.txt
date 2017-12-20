@@ -2,7 +2,11 @@
 STORIES
 
 implement redux-actions
-    refactor actions + reducers
+    refactor actions
+    actions unit tests
+    refactor reducers
+*    reducers unit tests
+    entity name configuration
 
 
 Implement reducers for crud actions (request,success,failure)

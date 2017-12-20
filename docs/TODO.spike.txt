@@ -1,7 +1,5 @@
 
-* Learn redux-actions
-    https://redux-actions.js.org/docs/introduction/Tutorial.html
- Learn redux-saga-routines
+Learn redux-saga-routines
 
 
 Learn webpack,
@@ -124,6 +122,9 @@ Learn axios
 
         you can set default:
             axios.defaults.*
+
+Learn redux-actions
+    https://redux-actions.js.org/docs/introduction/Tutorial.html
 
 
 

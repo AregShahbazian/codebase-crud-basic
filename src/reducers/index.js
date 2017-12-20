@@ -1,10 +1,7 @@
-import {FETCH_ALL, SUCCESS} from "../actions";
+import {handleActions} from "redux-actions";
 
-export const entityReducer = (actions) => (state, action) => {
-    switch (action.type) {
-        case actions.OPERATIONS[FETCH_ALL][SUCCESS]:
-            return action.payload
-        default:
-            return state
+export const entityReducer = (entityActionCreators) => handleActions({
+    [entityActionCreators.fetchAll.success](state, action) {
+        return action.payload
     }
-}
+}, {entities: {data: {}}});
