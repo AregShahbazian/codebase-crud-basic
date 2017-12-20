@@ -1,5 +1,5 @@
 import * as actions from "../index";
 
-export const authorActionCreators = actions.entityActionCreators(["AUTHOR"])
+export const authorRoutines = actions.entityRoutines(["AUTHOR"])
 
 

@@ -27,6 +27,8 @@ export function* makeApiCall(entityOp, apiFn, action) {
         console.error(error)
         yield put(entityOp.failure(error))
     }
+    console.info("put : entity operation fulfill")
+    yield put(entityOp.fulfill())
 }
 
 

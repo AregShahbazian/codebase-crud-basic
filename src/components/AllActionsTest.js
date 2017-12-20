@@ -1,12 +1,12 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {actionCreators} from "../actions/domain";
+import {routines} from "../actions/domain";
 
 
 const mapDispatchToProps = ({
-    fetchAuthors: actionCreators.author.fetchAll.do,
-    fetchAuthorById: actionCreators.author.fetchById.do,
-    createAuthor: actionCreators.author.create.do
+    fetchAuthors: routines.AUTHOR.FETCH_ALL.trigger,
+    fetchAuthorById: routines.AUTHOR.FETCH_BY_ID.trigger,
+    createAuthor: routines.AUTHOR.CREATE.trigger
 })
 
 class AllActionsTest extends Component {

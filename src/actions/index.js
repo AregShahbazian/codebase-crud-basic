@@ -1,4 +1,4 @@
-import {createActions} from "redux-actions";
+import {createRoutine} from "redux-saga-routines";
 
 export const FETCH_ALL = 'FETCH_ALL'
 export const FETCH_BY_ID = 'FETCH_BY_ID'
@@ -11,31 +11,16 @@ export const FAILURE = 'FAILURE'
 
 
 /**
- * The CRUD action creators for each entity name
+ * The CRUD action creator routines for each entity name
  * */
-export const entityActionCreators = (entityNames) => {
-    return createActions(entityNames.reduce((acc, val) => {
-        acc[val] = {
-            FETCH_ALL: {
-                DO: undefined,
-                REQUEST: undefined,
-                SUCCESS: undefined,
-                FAILURE: undefined,
-            },
-            FETCH_BY_ID: {
-                DO: undefined,
-                REQUEST: undefined,
-                SUCCESS: undefined,
-                FAILURE: undefined,
-            },
-            CREATE: {
-                DO: undefined,
-                REQUEST: undefined,
-                SUCCESS: undefined,
-                FAILURE: undefined,
-            }
-        }
+export const entityRoutines = (entityNames) => {
+    return entityNames.reduce((acc, val) => {
+        acc[val] = [FETCH_ALL, FETCH_BY_ID, CREATE].reduce((acc2, val2) => {
+            acc2[val2] = createRoutine(`${val}/${val2}`)
+            return acc2
+        }, {})
         return acc
-    }, {}))
+    }, {})
+
 }
 

@@ -1,5 +1,5 @@
-import {authorActionCreators} from "./author";
+import {authorRoutines} from "./author";
 
-export const actionCreators = authorActionCreators
+export const routines = authorRoutines
 
 

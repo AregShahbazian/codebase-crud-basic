@@ -1,4 +1,4 @@
 import {entityReducer} from "../index";
-import {actionCreators} from "../../actions/domain";
+import {routines} from "../../actions/domain";
 
-export default entityReducer(actionCreators.author)
+export default entityReducer(routines.AUTHOR)
