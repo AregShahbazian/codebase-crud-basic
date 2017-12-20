@@ -1,13 +1,12 @@
 ***********
 STORIES
 
-implement redux-actions
-    refactor actions
-    actions unit tests
-    refactor reducers
-*    reducers unit tests
-    entity name configuration
+Implement redux-saga-routines
 
+
+Implement entity name configuration (see sagas/domain/author.js)
+
+Reducers unit tests
 
 Implement reducers for crud actions (request,success,failure)
 
