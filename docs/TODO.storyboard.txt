@@ -2,7 +2,7 @@
 STORIES
 
 Implement redux-saga-routines
-
+*    reducer unit tests
 
 Implement entity name configuration (see sagas/domain/author.js)
 
@@ -26,6 +26,7 @@ Separate generic and domain specific code
     Unit tests will test the codebase functions
 
 Edit-form hidden under row
+    validation (using redux-form / redux-saga-routines)
 
 Unit test api code
 
