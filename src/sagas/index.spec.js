@@ -1,32 +1,30 @@
 import * as sagas from "./index";
-import {createOperationTypes, entityActions} from "../actions";
+import {entityActionCreators} from "../actions";
 
 import {testSaga} from "redux-saga-test-plan";
 
 describe('saga', () => {
-
-    const OPERATIONS = createOperationTypes('ENTITY')
-    const actions = entityActions(OPERATIONS)
-
+    const actionCreators = entityActionCreators(["ENTITY"])
     const apiFn = jest.fn();
 
+    const PAYLOAD = "PAYLOAD";
     const RESPONSE = "response";
     const ERROR = "error";
 
     it('makeApiCall should put request action, then call api function with action payload, ' +
         'then put success or failure action', () => {
-        testSaga(sagas.makeApiCall, actions.fetchAll, apiFn, actions.fetchAll.do())
+        testSaga(sagas.makeApiCall, actionCreators.entity.fetchAll, apiFn, actionCreators.entity.fetchAll.do(PAYLOAD))
             .next()
-            .put(actions.fetchAll.request())
+            .put(actionCreators.entity.fetchAll.request())
             .next()
-            .call(apiFn, actions.fetchAll.do().payload)
+            .call(apiFn, PAYLOAD)
             .next({response: RESPONSE})
-            .put(actions.fetchAll.success(RESPONSE))
+            .put(actionCreators.entity.fetchAll.success(RESPONSE))
             .next()
             .isDone()
             .back(2)
             .next({error: ERROR})
-            .put(actions.fetchAll.failure(ERROR))
+            .put(actionCreators.entity.fetchAll.failure(ERROR))
             .next()
             .isDone()
     })

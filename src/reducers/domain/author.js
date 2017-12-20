@@ -1,4 +1,4 @@
-import {actions} from "../../actions/domain";
-import {entityReducer} from "../index"
+import {actionCreators} from "../../actions/domain";
+import {handleAction} from "redux-actions";
 
-export default entityReducer(actions.author)
+export default handleAction(actionCreators.author.fetchAll.success, (state, action) => (action.payload), {entities: {data: {}}});

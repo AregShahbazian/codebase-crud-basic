@@ -1,8 +1,10 @@
+import {createActions} from "redux-actions";
 import {
     CREATE,
     createOperationTypes,
     DO,
     entityActions,
+    entityActionCreators,
     FAILURE,
     FETCH_ALL,
     FETCH_BY_ID,
@@ -126,3 +128,26 @@ describe('entity actions', () => {
 
 
 })
+
+
+
+describe('entity action creators', () => {
+    const actionCreators = entityActionCreators(["ENTITY_1", "ENTITY_2"])
+
+    it('For each entity, fetchAll, fetchById and create should each have a do, request, success and failure action creator', () => {
+        expect(actionCreators.entity1.fetchAll.do()).toEqual({
+            type: 'ENTITY_1/FETCH_ALL/DO'
+        })
+        expect(actionCreators.entity1.fetchAll.request()).toEqual({
+            type: 'ENTITY_1/FETCH_ALL/REQUEST'
+        })
+        expect(actionCreators.entity1.fetchAll.success()).toEqual({
+            type: 'ENTITY_1/FETCH_ALL/SUCCESS'
+        })
+        expect(actionCreators.entity1.fetchAll.failure()).toEqual({
+            type: 'ENTITY_1/FETCH_ALL/FAILURE'
+        })
+    })
+})
+
+

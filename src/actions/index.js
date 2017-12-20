@@ -1,4 +1,4 @@
-import {createAction} from "redux-actions"
+import {createAction, createActions} from "redux-actions";
 
 export const FETCH_ALL = 'FETCH_ALL'
 export const FETCH_BY_ID = 'FETCH_BY_ID'
@@ -16,8 +16,7 @@ export const FAILURE = 'FAILURE'
  */
 export const createOperationTypes = (entityName) => {
     return [FETCH_ALL, FETCH_BY_ID, CREATE].reduce((acc_type, type) => {
-        acc_type[`${type}`] = [
-            DO, REQUEST, SUCCESS, FAILURE].reduce((acc, state) => {
+        acc_type[`${type}`] = [DO, REQUEST, SUCCESS, FAILURE].reduce((acc, state) => {
             acc[`${state}`] = `${entityName}_${type}_${state}`
             return acc;
         }, {})
@@ -53,5 +52,31 @@ export const entityActions = (ENTITY_OPERATIONS) => {
 
         }
     }
+}
+
+export const entityActionCreators = (entityNames) => {
+    return createActions(entityNames.reduce((acc, val) => {
+        acc[val] = {
+            FETCH_ALL: {
+                DO: undefined,
+                REQUEST: undefined,
+                SUCCESS: undefined,
+                FAILURE: undefined,
+            },
+            FETCH_BY_ID: {
+                DO: undefined,
+                REQUEST: undefined,
+                SUCCESS: undefined,
+                FAILURE: undefined,
+            },
+            CREATE: {
+                DO: undefined,
+                REQUEST: undefined,
+                SUCCESS: undefined,
+                FAILURE: undefined,
+            }
+        }
+        return acc
+    }, {}))
 }
 

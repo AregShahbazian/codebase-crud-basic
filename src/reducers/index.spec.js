@@ -1,10 +1,12 @@
-import {createOperationTypes, entityActions} from "../actions";
+import {createOperationTypes, entityActions,entityActionCreators} from "../actions";
 import {entityReducer} from "./index"
 
 const OPERATIONS = createOperationTypes('ENTITY')
 const actions = entityActions(OPERATIONS)
 
 describe('entity reducer', () => {
+    const actionCreators = entityActionCreators(["ENTITY"])
+
     const INITIAL_STATE = "INITIAL STATE"
     const initialState = entityReducer({OPERATIONS})(INITIAL_STATE, {});
 
