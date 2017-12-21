@@ -1,14 +1,34 @@
 ***********
 STORIES
 
-Implement redux-saga-routines
-*    reducer unit tests
 
-Implement entity name configuration (see sagas/domain/author.js)
+Implement reducers for crud actions
+    fetchAll:   GET    endpoint/
+        for getting all objects
+        replace state
+    fetchById:  GET    endpoint/${id}
+        for getting object by id (or uuid)
+    search:     GET    endpoint?field1=val&field2=val2&sort=-field1
+    create:     POST    endpoint/
+        for creating a new object.
+        add object in response to state
+    replace:    PUT     endpoint/${id}
+        for replacing entire object. It sends the entire object in the body
+        replace object in state with id
+    update:     PATCH   endpoint/${id}
+        for replacing specific fields of object. It sends only specific fields in the body
+        replace object in state with id
+    delete:     DELETE  endpoint/${id}
+        for deleting object.
+        delete object in state with id
 
-Reducers unit tests
+        more on PUT vs PATCH: http://www.baeldung.com/http-put-patch-difference-spring
 
-Implement reducers for crud actions (request,success,failure)
+add new entity to domain to implement relatons
+    how does normalizr handle nested entities
+    how do requests look like for nested entities
+
+
 
 implement caching for api-requests (see real-world examples)
 
@@ -28,9 +48,22 @@ Separate generic and domain specific code
 Edit-form hidden under row
     validation (using redux-form / redux-saga-routines)
 
+remove client side filtering
+    filtering happens server side with URL parameters
+
+implement filter requests
+
+implement sort requests
+
+implement pagination:
+    http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#pagination
+    https://developers.facebook.com/docs/graph-api/using-graph-api/#paging
+
 Unit test api code
 
+Secure login (https)
 
+Payments (eg paypal, ideal)
 
 ***********
 JUST IN CASE
@@ -147,3 +180,6 @@ inside each domain/ folder should be an index that's an interface to domain-spec
     apply for reducers
 
 reducer unit tests
+
+Implement redux-saga-routines
+

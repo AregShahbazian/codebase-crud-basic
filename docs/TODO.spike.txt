@@ -1,5 +1,4 @@
 
-
 Learn webpack,
     read overview
 	    https://webpack.js.org/concepts/
@@ -124,6 +123,17 @@ Learn axios
 Learn redux-actions
     https://redux-actions.js.org/docs/introduction/Tutorial.html
 
+Learn RESTful filtering
+    https://stackoverflow.com/questions/5020704/how-to-design-restful-search-filtering
+    http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#advanced-queries
+
+    Option 1: implement filtering as a POST resource: POST body contains filter parameters, and a new filter-"resource"
+    is created (not necessarily persisted).
+        + concise way of sending filtering parameters as data
+        - search can be cached and bookmarked
+
+    Option 2: implement filtering using URL/query parameters
+        + search can be cached and bookmarked
 
 
 
