@@ -10,24 +10,24 @@ import {call, put, takeLatest} from "redux-saga/effects";
  * @param action action that triggered the asynchronous entity operation
  */
 export function* makeApiCall(entityOp, apiFn, action) {
-    console.info("Making api call for action: %s",action.type);
+    console.log("Making api call for action: %s",action.type);
 
-    console.info("put : entity operation request")
+    console.log("put : entity operation request")
     yield put(entityOp.request())
 
-    console.info("call : api function")
+    console.log("call : api function")
     const {response, error} = yield call(apiFn, action.payload)
 
     if (response) {
-        console.info("put : entity operation success\n response: %s", JSON.stringify(response))
+        console.log("put : entity operation success\n response: %s", JSON.stringify(response))
         yield put(entityOp.success(response))
     }
     else {
-        console.info("put : entity operation failure")
+        console.log("put : entity operation failure")
         console.error(error)
         yield put(entityOp.failure(error))
     }
-    console.info("put : entity operation fulfill")
+    console.log("put : entity operation fulfill")
     yield put(entityOp.fulfill())
 }
 
