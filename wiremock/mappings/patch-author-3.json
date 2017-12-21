@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "PATCH",
-    "urlPath": "/author/3",
+    "url": "/author/3",
     "bodyPatterns": [
       {
         "matchesJsonPath": "$[?(@.name == 'Sir Author 3')]"

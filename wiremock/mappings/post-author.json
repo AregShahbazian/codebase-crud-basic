@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "POST",
-    "urlPath": "/author",
+    "url": "/author",
     "bodyPatterns": [
       {
         "matchesJsonPath": "$[?(@.name == 'Author 3' && @.dateOfBirth == '03-03-1993')]"

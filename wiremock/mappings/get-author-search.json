@@ -1,12 +1,7 @@
 {
   "request": {
-    "method": "PUT",
-    "url": "/author/3",
-    "bodyPatterns": [
-      {
-        "matchesJsonPath": "$[?(@.name == 'Sir Author 3' && @.dateOfBirth == '03-03-1993')]"
-      }
-    ]
+    "method": "GET",
+    "urlPattern": "/author\\?name=2"
   },
   "response": {
     "status": 200,
@@ -17,10 +12,9 @@
       "Access-Control-Allow-Headers": "Accept, Content-Type, Content-Encoding, Server, Transfer-Encoding, X-Requested-With, X-Authorization",
       "X-Content-Type-Options": "nosniff",
       "x-frame-options": "DENY",
-      "x-xss-protection": "1; mode=block",
-      "Location": "/author/3"
+      "x-xss-protection": "1; mode=block"
     },
-    "bodyFileName": "author_3_put.json",
+    "bodyFileName": "author_2.json",
     "transformers": [
       "response-template"
     ]

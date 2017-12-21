@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "GET",
-    "urlPath": "/author/1"
+    "url": "/author/1"
   },
   "response": {
     "status": 200,
