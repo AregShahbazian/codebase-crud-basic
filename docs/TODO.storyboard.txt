@@ -3,9 +3,6 @@ STORIES
 
 
 Implement reducers for crud actions
-
-* get id in the action payload/meta
-
     fetchAll:   GET    endpoint/
         for getting all objects
         replace state

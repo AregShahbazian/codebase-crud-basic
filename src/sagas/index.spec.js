@@ -17,7 +17,7 @@ describe('saga', () => {
             .next()
             .put(routines.ENTITY.FETCH_ALL.request())
             .next()
-            .call(apiFn, PAYLOAD)
+            .call(apiFn, PAYLOAD, undefined)
             .next({response: RESPONSE})
             .put(routines.ENTITY.FETCH_ALL.success(RESPONSE))
             .next()

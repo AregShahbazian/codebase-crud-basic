@@ -6,6 +6,7 @@ import {routines} from "../actions/domain";
 const mapDispatchToProps = ({
     fetchAuthors: routines.AUTHOR.FETCH_ALL.trigger,
     fetchAuthorById: routines.AUTHOR.FETCH_BY_ID.trigger,
+    searchAuthor: routines.AUTHOR.SEARCH.trigger,
     createAuthor: routines.AUTHOR.CREATE.trigger
 })
 
@@ -15,10 +16,13 @@ class AllActionsTest extends Component {
     }
 
     componentDidMount() {
-        const {fetchAuthors, fetchAuthorById, createAuthor} = this.props
+        const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor} = this.props
 
         // fetchAuthors();
-        fetchAuthorById({id: 3, foo:3});
+        // fetchAuthorById(undefined, {id: 1});
+        // searchAuthor({name: "2"});
+        createAuthor({name : "Author 3" ,dateOfBirth: "03-03-1993"});
+
 
         // createAuthor("Name", "dob", 0)
 

@@ -16,7 +16,11 @@ export const entityOps = [FETCH_ALL, FETCH_BY_ID, SEARCH, CREATE, REPLACE, UPDAT
 export const entityRoutines = (entityNames) => {
     return entityNames.reduce((acc, val) => {
         acc[val] = entityOps.reduce((acc2, val2) => {
-            acc2[val2] = createRoutine(`${val}/${val2}`)
+            acc2[val2] = createRoutine(
+                `${val}/${val2}`,
+                (payload, id)=> payload,
+                (payload, meta)=> (meta)
+            )
             return acc2
         }, {})
         return acc

@@ -16,7 +16,7 @@ export function* makeApiCall(entityOp, apiFn, action) {
     yield put(entityOp.request())
 
     console.log("call : api function")
-    const {response, error} = yield call(apiFn, action.payload)
+    const {response, error} = yield call(apiFn, action.payload, action.meta)
 
     if (response) {
         console.log("put : entity operation success\n response: %s", JSON.stringify(response))

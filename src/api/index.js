@@ -1,5 +1,6 @@
 import {normalize} from "normalizr";
 import axios from "axios";
+import $ from "jquery"
 
 export const GET = 'get'
 export const POST = 'post'
@@ -20,16 +21,27 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
  * @param schema
  * @param method
  * @param payload
+ * @param meta
  * @returns {Promise.<T>|*}
  */
-export const callApi = (endpoint = '', schema, method = GET, payload = {}) => {
-    let fullEndpoint = endpoint + (payload.id !== undefined ? `/${payload.id}` : "")
+export const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) => {
+    let idUriParameter = meta.id !== undefined ? `/${meta.id}` : ""
+    let queryParameters = "";
+
+    if (method === GET || method === DELETE) {
+        queryParameters = payload!=={} ? "?" + $.param(payload) : queryParameters
+        payload = undefined
+    } else {
+    }
+
+    let fullEndpoint = endpoint + idUriParameter + queryParameters
     console.log(`Calling api at ${API_ROOT + fullEndpoint} with method %s and payload %s`, method, JSON.stringify(payload))
+
 
     return axios({
         method: method,
         url: fullEndpoint,
-        data: method === GET || method === DELETE ? undefined : payload
+        data: payload
     }).then((response) => (
         {response: normalize(response.data, schema)}
     )).catch((error) => (
