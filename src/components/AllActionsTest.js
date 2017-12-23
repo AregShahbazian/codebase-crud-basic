@@ -18,7 +18,7 @@ class AllActionsTest extends Component {
     componentDidMount() {
         const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor} = this.props
 
-        // fetchAuthors();
+        fetchAuthors();
         // fetchAuthorById(undefined, {id: 1});
         // searchAuthor({name: "2"});
         createAuthor({name : "Author 3" ,dateOfBirth: "03-03-1993"});
