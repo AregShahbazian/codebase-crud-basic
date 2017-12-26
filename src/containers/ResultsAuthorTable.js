@@ -5,7 +5,7 @@ const getFilteredAuthors = (authors, filterFormValues) => {
     const {nameFilter = "", numberOfBooksFilter = 0} = filterFormValues
 
     return authors === undefined ? [] :
-        Object.values(authors.entities.data).filter(a =>
+        Object.values(authors.entities.authors).filter(a =>
             a.name.match(new RegExp(nameFilter, 'i'))
             && a.numberOfBooks >= numberOfBooksFilter
         )

@@ -24,6 +24,10 @@ Implement reducers for crud actions
 
         more on PUT vs PATCH: http://www.baeldung.com/http-put-patch-difference-spring
 
+unit test handleActions reducers
+
+unit test api for normalizr results
+
 add new entity to domain to implement relatons
     how does normalizr handle nested entities
     how do requests look like for nested entities

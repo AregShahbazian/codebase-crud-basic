@@ -3,8 +3,8 @@ import {callApi, DELETE, GET, PATCH, POST, PUT} from "../index";
 
 const authorEndpoint = 'author';
 
-const authorSchema = new schema.Entity('data')
-const authorSchemaArray = {data: new schema.Array(authorSchema)};
+const authorSchema = new schema.Entity('authors')
+const authorSchemaArray = new schema.Array(authorSchema);
 
 export const fetchAuthors = callApi.bind(null, authorEndpoint, authorSchemaArray, GET)
 export const fetchAuthorById = callApi.bind(null, authorEndpoint, authorSchema, GET)

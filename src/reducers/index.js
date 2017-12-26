@@ -1,6 +1,12 @@
 import merge from "lodash/merge";
 import {handleActions} from "redux-actions";
 
+function mergeActionIntoState(state, action) {
+    let mergedEntities = merge({}, state, action.payload)
+    let mergedResult = [...state.result, action.payload.result]
+    return {...mergedEntities, result: mergedResult}
+}
+
 export const entityReducer = (entityActionCreators) => handleActions({
     [entityActionCreators.FETCH_ALL.success](state, action) {
         return action.payload
@@ -12,19 +18,15 @@ export const entityReducer = (entityActionCreators) => handleActions({
         return action.payload
     },
     [entityActionCreators.CREATE.success](state, action) {
-        console.info(JSON.stringify(state))
-        console.info(JSON.stringify(action.payload))
-        console.info(JSON.stringify(merge({}, state, action.payload)))
-        console.info(JSON.stringify(merge({}, [{a:1,b:1},{a:2,b:2}], {a:2,b:3})))
-        return state
+        return mergeActionIntoState(state, action);
     },
     [entityActionCreators.REPLACE.success](state, action) {
-        return state
+        return mergeActionIntoState(state, action);
     },
     [entityActionCreators.UPDATE.success](state, action) {
-        return state
+        return mergeActionIntoState(state, action);
     },
     [entityActionCreators.DELETE.success](state, action) {
         return state
     },
-}, {entities: {data: {}}});
+}, {entities: {authors: {}}, result: []});
