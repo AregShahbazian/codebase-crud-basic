@@ -1,6 +1,9 @@
 ***********
 STORIES
 
+unit test api for normalizr results
+    unit test axios (moxios)
+
 
 Implement reducers for crud actions
     fetchAll:   GET    endpoint/
@@ -26,7 +29,6 @@ Implement reducers for crud actions
 
 unit test handleActions reducers
 
-unit test api for normalizr results
 
 add new entity to domain to implement relatons
     how does normalizr handle nested entities

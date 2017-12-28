@@ -1,6 +1,6 @@
 import {normalize} from "normalizr";
 import axios from "axios";
-import $ from "jquery"
+import $ from "jquery";
 
 export const GET = 'get'
 export const POST = 'post'
@@ -15,8 +15,63 @@ axios.defaults.headers.common['Accept'] = 'application/json';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 /**
+ * Construct a request object containing the full endpoint and the request body
+ * @param endpoint
+ * @param method
+ * @param payload
+ * @param id
+ * @returns {{fullEndpoint: string, requestBody: *}}
+ */
+export const createRequest = (endpoint, method, payload, id) => {
+    let idUriParameter = ""
+
+    if (method !== POST && id) {
+        idUriParameter = `/${id}`
+    }
+
+    let queryParameters = "";
+    let requestBody
+
+    if (method === GET || method === DELETE) {
+        queryParameters = !$.isEmptyObject(payload) ? "?" + $.param(payload) : queryParameters
+        requestBody = undefined
+    } else {
+        requestBody = payload
+    }
+
+    return {fullEndpoint: endpoint + idUriParameter + queryParameters, requestBody: requestBody}
+}
+
+/**
+ * Perform the actual request
+ * @param method
+ * @param request
+ * @param schema
+ */
+const makeRequest = (method, request, schema) =>
+    axios({
+        method: method,
+        url: request.fullEndpoint,
+        data: request.requestBody
+    }).then((response) => (
+        {response: normalizeData(schema, response.data)}
+    )).catch((error) => (
+        {error: error}
+    ))
+
+/**
+ * Normalize given data using given schema
+ * @param schema
+ * @param data
+ * @returns {{entities: any, result: any}}
+ */
+export const normalizeData = (schema, data) => {
+    return normalize(data, schema)
+}
+
+/**
  * Generic function for calling an api at given endpoint, with given method, using given payload as data (or adding the
- * id in th epayload to the endpoint). Returns the data normalized using the given schema
+ * id in the meta object to the endpoint). Returns the data normalized using the given schema
  * @param endpoint
  * @param schema
  * @param method
@@ -25,26 +80,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
  * @returns {Promise.<T>|*}
  */
 export const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) => {
-    let idUriParameter = meta.id !== undefined ? `/${meta.id}` : ""
-    let queryParameters = "";
-
-    if (method === GET || method === DELETE) {
-        queryParameters = payload!=={} ? "?" + $.param(payload) : queryParameters
-        payload = undefined
-    } else {
-    }
-
-    let fullEndpoint = endpoint + idUriParameter + queryParameters
-    console.log(`Calling api at ${API_ROOT + fullEndpoint} with method %s and payload %s`, method, JSON.stringify(payload))
-
-
-    return axios({
-        method: method,
-        url: fullEndpoint,
-        data: payload
-    }).then((response) => (
-        {response: normalize(response.data, schema)}
-    )).catch((error) => (
-        {error: error}
-    ))
+    let request = createRequest(endpoint, method, payload, meta.id)
+    console.log(`Calling api at ${API_ROOT + request.fullEndpoint} with method %s and payload %s`, method, JSON.stringify(request.requestBody))
+    return makeRequest(method, request, schema)
 }
