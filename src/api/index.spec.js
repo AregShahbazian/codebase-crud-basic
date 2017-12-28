@@ -4,96 +4,96 @@ import {createRequest, DELETE, GET, normalizeData, PATCH, POST, PUT} from "./ind
 describe('createRequest', () => {
 
     it("should create correct GET requests", () => {
-        expect(createRequest("entity", GET, {}, undefined)).toEqual({
-            fullEndpoint: "entity",
+        expect(createRequest("myEntity", GET, {}, undefined)).toEqual({
+            fullEndpoint: "myEntity",
             requestBody: undefined
         })
-        expect(createRequest("entity", GET, {foo: "Foo", bar: "Bar"}, undefined)).toEqual({
-            fullEndpoint: "entity?foo=Foo&bar=Bar",
+        expect(createRequest("myEntity", GET, {foo: "Foo", bar: "Bar"}, undefined)).toEqual({
+            fullEndpoint: "myEntity?foo=Foo&bar=Bar",
             requestBody: undefined
         })
-        expect(createRequest("entity", GET, {}, 1)).toEqual({
-            fullEndpoint: "entity/1",
+        expect(createRequest("myEntity", GET, {}, 1)).toEqual({
+            fullEndpoint: "myEntity/1",
             requestBody: undefined
         })
-        expect(createRequest("entity", GET, {foo: "Foo", bar: "Bar"}, 1)).toEqual({
-            fullEndpoint: "entity/1?foo=Foo&bar=Bar",
+        expect(createRequest("myEntity", GET, {foo: "Foo", bar: "Bar"}, 1)).toEqual({
+            fullEndpoint: "myEntity/1?foo=Foo&bar=Bar",
             requestBody: undefined
         })
     })
 
     it("should create correct POST requests", () => {
-        expect(createRequest("entity", POST, {}, undefined)).toEqual({
-            fullEndpoint: "entity",
+        expect(createRequest("myEntity", POST, {}, undefined)).toEqual({
+            fullEndpoint: "myEntity",
             requestBody: {}
         })
-        expect(createRequest("entity", POST, {foo: "Foo", bar: "Bar"}, undefined)).toEqual({
-            fullEndpoint: "entity",
+        expect(createRequest("myEntity", POST, {foo: "Foo", bar: "Bar"}, undefined)).toEqual({
+            fullEndpoint: "myEntity",
             requestBody: {foo: "Foo", bar: "Bar"}
         })
-        expect(createRequest("entity", POST, {}, 1)).toEqual({
-            fullEndpoint: "entity",
+        expect(createRequest("myEntity", POST, {}, 1)).toEqual({
+            fullEndpoint: "myEntity",
             requestBody: {}
         })
-        expect(createRequest("entity", POST, {foo: "Foo", bar: "Bar"}, 1)).toEqual({
-            fullEndpoint: "entity",
+        expect(createRequest("myEntity", POST, {foo: "Foo", bar: "Bar"}, 1)).toEqual({
+            fullEndpoint: "myEntity",
             requestBody: {foo: "Foo", bar: "Bar"}
         })
     })
 
     it("should create correct PUT requests", () => {
-        expect(createRequest("entity", PUT, {}, undefined)).toEqual({
-            fullEndpoint: "entity",
+        expect(createRequest("myEntity", PUT, {}, undefined)).toEqual({
+            fullEndpoint: "myEntity",
             requestBody: {}
         })
-        expect(createRequest("entity", PUT, {foo: "Foo", bar: "Bar"}, undefined)).toEqual({
-            fullEndpoint: "entity",
+        expect(createRequest("myEntity", PUT, {foo: "Foo", bar: "Bar"}, undefined)).toEqual({
+            fullEndpoint: "myEntity",
             requestBody: {foo: "Foo", bar: "Bar"}
         })
-        expect(createRequest("entity", PUT, {}, 1)).toEqual({
-            fullEndpoint: "entity/1",
+        expect(createRequest("myEntity", PUT, {}, 1)).toEqual({
+            fullEndpoint: "myEntity/1",
             requestBody: {}
         })
-        expect(createRequest("entity", PUT, {foo: "Foo", bar: "Bar"}, 1)).toEqual({
-            fullEndpoint: "entity/1",
+        expect(createRequest("myEntity", PUT, {foo: "Foo", bar: "Bar"}, 1)).toEqual({
+            fullEndpoint: "myEntity/1",
             requestBody: {foo: "Foo", bar: "Bar"}
         })
     })
 
     it("should create correct PATCH requests", () => {
-        expect(createRequest("entity", PATCH, {}, undefined)).toEqual({
-            fullEndpoint: "entity",
+        expect(createRequest("myEntity", PATCH, {}, undefined)).toEqual({
+            fullEndpoint: "myEntity",
             requestBody: {}
         })
-        expect(createRequest("entity", PATCH, {foo: "Foo", bar: "Bar"}, undefined)).toEqual({
-            fullEndpoint: "entity",
+        expect(createRequest("myEntity", PATCH, {foo: "Foo", bar: "Bar"}, undefined)).toEqual({
+            fullEndpoint: "myEntity",
             requestBody: {foo: "Foo", bar: "Bar"}
         })
-        expect(createRequest("entity", PATCH, {}, 1)).toEqual({
-            fullEndpoint: "entity/1",
+        expect(createRequest("myEntity", PATCH, {}, 1)).toEqual({
+            fullEndpoint: "myEntity/1",
             requestBody: {}
         })
-        expect(createRequest("entity", PATCH, {foo: "Foo", bar: "Bar"}, 1)).toEqual({
-            fullEndpoint: "entity/1",
+        expect(createRequest("myEntity", PATCH, {foo: "Foo", bar: "Bar"}, 1)).toEqual({
+            fullEndpoint: "myEntity/1",
             requestBody: {foo: "Foo", bar: "Bar"}
         })
     })
 
     it("should create correct DELETE requests", () => {
-        expect(createRequest("entity", DELETE, {}, undefined)).toEqual({
-            fullEndpoint: "entity",
+        expect(createRequest("myEntity", DELETE, {}, undefined)).toEqual({
+            fullEndpoint: "myEntity",
             requestBody: undefined
         })
-        expect(createRequest("entity", DELETE, {foo: "Foo", bar: "Bar"}, undefined)).toEqual({
-            fullEndpoint: "entity?foo=Foo&bar=Bar",
+        expect(createRequest("myEntity", DELETE, {foo: "Foo", bar: "Bar"}, undefined)).toEqual({
+            fullEndpoint: "myEntity?foo=Foo&bar=Bar",
             requestBody: undefined
         })
-        expect(createRequest("entity", DELETE, {}, 1)).toEqual({
-            fullEndpoint: "entity/1",
+        expect(createRequest("myEntity", DELETE, {}, 1)).toEqual({
+            fullEndpoint: "myEntity/1",
             requestBody: undefined
         })
-        expect(createRequest("entity", DELETE, {foo: "Foo", bar: "Bar"}, 1)).toEqual({
-            fullEndpoint: "entity/1?foo=Foo&bar=Bar",
+        expect(createRequest("myEntity", DELETE, {foo: "Foo", bar: "Bar"}, 1)).toEqual({
+            fullEndpoint: "myEntity/1?foo=Foo&bar=Bar",
             requestBody: undefined
         })
     })
@@ -101,7 +101,7 @@ describe('createRequest', () => {
 
 })
 
-describe('normalizeData should normalize data', () => {
+describe('normalizeData', () => {
     const data =
         {
             "id": 1,
@@ -126,7 +126,7 @@ describe('normalizeData should normalize data', () => {
     const authorSchema = new schema.Entity('myEntities')
     const authorSchemaArray = new schema.Array(authorSchema);
 
-    it("Single entity response should be normalized correctly", () => {
+    it("should normalize single entity response correctly", () => {
         expect(normalizeData(authorSchema, data)).toEqual({
             entities: {
                 myEntities: {
@@ -141,7 +141,7 @@ describe('normalizeData should normalize data', () => {
         })
     })
 
-    it("Multiple entity response should be normalized correctly", () => {
+    it("should normalize multiple entity response correctly", () => {
         expect(normalizeData(authorSchemaArray, dataArray)).toEqual({
             entities: {
                 myEntities: {

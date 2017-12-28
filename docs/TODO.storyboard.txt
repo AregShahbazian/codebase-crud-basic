@@ -1,8 +1,6 @@
 ***********
 STORIES
 
-unit test api for normalizr results
-    unit test axios (moxios)
 
 
 Implement reducers for crud actions
@@ -104,6 +102,8 @@ JUST IN CASE
 	redux-form
 	        https://github.com/erikras/redux-form
             https://www.youtube.com/watch?v=eDTi7lYR1VU&feature=youtu.be
+    redux-logic
+        https://medium.com/@jeffbski/where-do-i-put-my-business-logic-in-a-react-redux-application-9253ef91ce1
 
     Routing in combination with redux state. To replay and record routing actions
 	react-router-redux
@@ -189,3 +189,4 @@ reducer unit tests
 
 Implement redux-saga-routines
 
+unit test api for normalizr results

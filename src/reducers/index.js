@@ -1,9 +1,15 @@
-import merge from "lodash/merge";
+import {merge, union} from "lodash";
 import {handleActions} from "redux-actions";
 
-function mergeActionIntoState(state, action) {
-    let mergedEntities = merge({}, state, action.payload)
-    let mergedResult = [...state.result, action.payload.result]
+export const mergeEntityIntoState = (state, entity) => {
+    let mergedEntities = merge({}, state, entity)
+    let mergedResult = union(state.result, [entity.result])
+    return {...mergedEntities, result: mergedResult}
+}
+
+export const replaceEntityInState = (state, entity) => {
+    let mergedEntities = merge({}, state, entity)
+    let mergedResult = [...state.result, entity.result]
     return {...mergedEntities, result: mergedResult}
 }
 
@@ -18,13 +24,13 @@ export const entityReducer = (entityActionCreators) => handleActions({
         return action.payload
     },
     [entityActionCreators.CREATE.success](state, action) {
-        return mergeActionIntoState(state, action);
+        return mergeEntityIntoState(state, action.payload);
     },
     [entityActionCreators.REPLACE.success](state, action) {
-        return mergeActionIntoState(state, action);
+        return state
     },
     [entityActionCreators.UPDATE.success](state, action) {
-        return mergeActionIntoState(state, action);
+        return state
     },
     [entityActionCreators.DELETE.success](state, action) {
         return state
