@@ -1,8 +1,6 @@
 ***********
 STORIES
 
-
-
 Implement reducers for crud actions
     fetchAll:   GET    endpoint/
         for getting all objects

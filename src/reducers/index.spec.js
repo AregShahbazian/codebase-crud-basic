@@ -1,4 +1,4 @@
-import {mergeEntityIntoState} from "./index";
+import {deleteEntityFromState, mergeEntityIntoState} from "./index";
 
 const object1 = {id: 1, foo: "Foo1", bar: "Bar1"}
 const object2 = {id: 2, foo: "Foo2", bar: "Bar2"}
@@ -45,24 +45,48 @@ const myEntity3 = {
 
 describe('mergeEntityIntoState', () => {
     it("should add new entity to state", () => {
-        expect(mergeEntityIntoState(myEntityState12, myEntity3)).toEqual(
-            {
-                entities: {
-                    myEntities: {
-                        "1": object1,
-                        "2": object2,
-                        "3": object3
-                    }
-                },
-                result: [1, 2, 3]
-            }
-        )
+        expect(mergeEntityIntoState(myEntityState12, myEntity3)).toEqual({
+            entities: {
+                myEntities: {
+                    "1": object1,
+                    "2": object2,
+                    "3": object3
+                }
+            },
+            result: [1, 2, 3]
+        })
     })
 
-    it("should update existing entity in  state", () => {
-        expect(mergeEntityIntoState(myEntityState12, myEntity2Changed)).toEqual(
-            myEntityState12
-        )
+    it("should update existing entity in state", () => {
+        expect(mergeEntityIntoState(myEntityState12, myEntity2Changed)).toEqual({
+            entities: {
+                myEntities: {
+                    "1": object1,
+                    "2": object2Changed
+                }
+            },
+            result: [1, 2]
+        })
+    })
+
+})
+
+
+describe('deleteEntityFromState', () => {
+    it("should delete existing entity from state", () => {
+        expect(deleteEntityFromState(myEntityState12, myEntity2)).toEqual({
+            entities: {
+                myEntities: {
+                    "1": object1,
+                    "2": object2
+                }
+            },
+            result: [1]
+        })
+    })
+
+    it("should leave state untouched for deleting non-existing entity", () => {
+        expect(deleteEntityFromState(myEntityState12, myEntity3)).toEqual(myEntityState12)
     })
 
 })

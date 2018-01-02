@@ -4,7 +4,7 @@
     "url": "/author/3"
   },
   "response": {
-    "status": 204,
+    "status": 200,
     "headers": {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
@@ -14,6 +14,7 @@
       "x-frame-options": "DENY",
       "x-xss-protection": "1; mode=block"
     },
+    "bodyFileName": "author_3.json",
     "transformers": [
       "response-template"
     ]

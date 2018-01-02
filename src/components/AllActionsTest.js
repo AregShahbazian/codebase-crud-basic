@@ -7,7 +7,10 @@ const mapDispatchToProps = ({
     fetchAuthors: routines.AUTHOR.FETCH_ALL.trigger,
     fetchAuthorById: routines.AUTHOR.FETCH_BY_ID.trigger,
     searchAuthor: routines.AUTHOR.SEARCH.trigger,
-    createAuthor: routines.AUTHOR.CREATE.trigger
+    createAuthor: routines.AUTHOR.CREATE.trigger,
+    replaceAuthor: routines.AUTHOR.REPLACE.trigger,
+    updateAuthor: routines.AUTHOR.UPDATE.trigger,
+    deleteAuthor: routines.AUTHOR.DELETE.trigger
 })
 
 class AllActionsTest extends Component {
@@ -16,22 +19,16 @@ class AllActionsTest extends Component {
     }
 
     componentDidMount() {
-        const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor} = this.props
+        const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor, replaceAuthor, updateAuthor, deleteAuthor} = this.props
 
-        // fetchAuthors();
+        fetchAuthors();
         // fetchAuthorById(undefined, {id: 1});
         // searchAuthor({name: "2"});
-        createAuthor({name : "Author 3" ,dateOfBirth: "03-03-1993"});
+        createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"});
+        // replaceAuthor({name: "Sir Author 3", dateOfBirth: "03-03-1993"}, {id: 3});
+        // updateAuthor({name: "Sir Author 3"}, {id: 3});
+        // deleteAuthor(undefined, {id: 3});
 
-
-        // createAuthor("Name", "dob", 0)
-
-        // const {response, error} = api.foo()
-
-        // console.log("response");
-        // console.log(response);
-        // console.error("error");
-        // console.error(error)
     }
 }
 

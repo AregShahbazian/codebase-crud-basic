@@ -1,14 +1,17 @@
+import {concat, forEach} from "lodash";
 import {connect} from "react-redux";
 import AuthorTable from "../components/AuthorTable";
 
 const getFilteredAuthors = (authors, filterFormValues) => {
-    const {nameFilter = "", numberOfBooksFilter = 0} = filterFormValues
+    let {nameFilter = "", numberOfBooksFilter = 0} = filterFormValues
+    let cachedAuthors = []
 
-    return authors === undefined ? [] :
-        Object.values(authors.entities.authors).filter(a =>
-            a.name.match(new RegExp(nameFilter, 'i'))
-            && a.numberOfBooks >= numberOfBooksFilter
-        )
+    forEach(authors.result, (id) => (cachedAuthors = concat(cachedAuthors, authors.entities.authors[id])))
+
+    return Object.values(cachedAuthors).filter(a =>
+        a.name.match(new RegExp(nameFilter, 'i'))
+        && a.numberOfBooks >= numberOfBooksFilter
+    )
 }
 
 
