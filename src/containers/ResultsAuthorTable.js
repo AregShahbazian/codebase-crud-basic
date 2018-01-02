@@ -6,7 +6,7 @@ const getFilteredAuthors = (authors, filterFormValues) => {
     let {nameFilter = "", numberOfBooksFilter = 0} = filterFormValues
     let cachedAuthors = []
 
-    forEach(authors.result, (id) => (cachedAuthors = concat(cachedAuthors, authors.entities.authors[id])))
+    forEach(authors.result, (id) => (cachedAuthors = concat(cachedAuthors, authors.entities.author[id])))
 
     return Object.values(cachedAuthors).filter(a =>
         a.name.match(new RegExp(nameFilter, 'i'))

@@ -1,30 +1,17 @@
 ***********
 STORIES
 
-Implement reducers for crud actions
-    fetchAll:   GET    endpoint/
-        for getting all objects
-        replace state
-    fetchById:  GET    endpoint/${id}
-        for getting object by id (or uuid)
-    search:     GET    endpoint?field1=val&field2=val2&sort=-field1
-    create:     POST    endpoint/
-        for creating a new object.
-        add object in response to state
-    replace:    PUT     endpoint/${id}
-        for replacing entire object. It sends the entire object in the body
-        replace object in state with id
-    update:     PATCH   endpoint/${id}
-        for replacing specific fields of object. It sends only specific fields in the body
-        replace object in state with id
-    delete:     DELETE  endpoint/${id}
-        for deleting object.
-        delete object in state with id
-
-        more on PUT vs PATCH: http://www.baeldung.com/http-put-patch-difference-spring
-
-unit test handleActions reducers
-
+generalize entity configuration
+    entity name (to be used in schemas)                             authors
+        used in reducer domain to pass to reducer generic
+        used in api domain to create schema
+    entity schema                                                   {Schema}
+        used in api domain to create initial state
+        used in reducer domain to create initial state
+    entity endpoint                                                 author
+        used in api domain
+    entity routine name
+        used in action domain to create routines                    AUTHOR
 
 add new entity to domain to implement relatons
     how does normalizr handle nested entities
@@ -188,3 +175,26 @@ reducer unit tests
 Implement redux-saga-routines
 
 unit test api for normalizr results
+
+Implement reducers for crud actions
+    fetchAll:   GET    endpoint/
+        for getting all objects
+        replace state
+    fetchById:  GET    endpoint/${id}
+        for getting object by id (or uuid)
+    search:     GET    endpoint?field1=val&field2=val2&sort=-field1
+    create:     POST    endpoint/
+        for creating a new object.
+        add object in response to state
+    replace:    PUT     endpoint/${id}
+        for replacing entire object. It sends the entire object in the body
+        replace object in state with id
+    update:     PATCH   endpoint/${id}
+        for replacing specific fields of object. It sends only specific fields in the body
+        replace object in state with id
+    delete:     DELETE  endpoint/${id}
+        for deleting object.
+        delete object in state with id
+
+        more on PUT vs PATCH: http://www.baeldung.com/http-put-patch-difference-spring
+
