@@ -1,14 +1,14 @@
 {
   "request": {
     "method": "OPTIONS",
-    "url": "/author"
+    "urlPattern": ".*"
   },
   "response": {
     "status": 200,
     "headers": {
       "Content-Type": "application/json",
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "*",
+      "Access-Control-Allow-Methods": "OPTIONS, GET, POST, PUT, PATCH, DELETE",
       "Access-Control-Allow-Headers": "Accept, Content-Type, Content-Encoding, Server, Transfer-Encoding, X-Requested-With, X-Authorization",
       "X-Content-Type-Options": "nosniff",
       "x-frame-options": "DENY",

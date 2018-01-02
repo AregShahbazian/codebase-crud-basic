@@ -20,7 +20,7 @@
       "x-xss-protection": "1; mode=block",
       "Location": "/author/3"
     },
-    "bodyFileName": "author_3_put.json",
+    "bodyFileName": "author_3_updated.json",
     "transformers": [
       "response-template"
     ]
