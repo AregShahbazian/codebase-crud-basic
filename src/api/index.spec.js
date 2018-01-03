@@ -1,5 +1,7 @@
+import "../config";
 import {schema} from "normalizr";
 import {createRequest, DELETE, GET, normalizeData, PATCH, POST, PUT} from "./index";
+
 
 describe('createRequest', () => {
 
