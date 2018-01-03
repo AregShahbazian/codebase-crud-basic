@@ -1,11 +1,5 @@
-import {normalize,schema} from "normalizr";
+import config from "react-global-configuration";
 import {entityReducer} from "../index";
 import {routines} from "../../actions/domain";
 
-const initialState = {entities: {authors: {}}, result: []};
-
-const authorSchema = new schema.Entity('authors')
-
-const foo = normalize([],new schema.Array(schema))
-
-export default entityReducer(routines.AUTHOR, foo)
+export default entityReducer(routines.AUTHOR, config.get("entities").author.initialState)

@@ -48,6 +48,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-global-configuration": "^1.2.0",
     "react-redux": "^5.0.5",
     "react-widgets": "^4.1.1",
     "react-widgets-globalize": "^4.0.4",

@@ -21,10 +21,10 @@ class AllActionsTest extends Component {
     componentDidMount() {
         const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor, replaceAuthor, updateAuthor, deleteAuthor} = this.props
 
-        fetchAuthors();
+        // fetchAuthors();
         // fetchAuthorById(undefined, {id: 1});
         // searchAuthor({name: "2"});
-        // createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"});
+        createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"});
         // replaceAuthor({name: "Sir Author 3", dateOfBirth: "03-03-1993"}, {id: 3});
         // updateAuthor({name: "Sir Author 3"}, {id: 3});
         // deleteAuthor(undefined, {id: 3});

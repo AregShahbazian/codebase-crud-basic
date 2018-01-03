@@ -19,7 +19,6 @@ export const entityReducer = (entityActionCreators, initialState) => handleActio
 
     [entityActionCreators.FETCH_ALL.success]
         (state, action) {
-        console.info(JSON.stringify(initialState))
         return replaceStateWithEntities(action.payload)
     },
     [combineActions(

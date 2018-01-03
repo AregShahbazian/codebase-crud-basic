@@ -2,7 +2,7 @@
 STORIES
 
 generalize entity configuration
-    entity name (to be used in schemas)                             authors
+    entity name (to be used in schemas)                             author
         used in reducer domain to pass to reducer generic
         used in api domain to create schema
     entity schema                                                   {Schema}

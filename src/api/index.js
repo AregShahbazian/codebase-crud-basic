@@ -1,3 +1,4 @@
+import config from 'react-global-configuration'
 import {normalize} from "normalizr";
 import axios from "axios";
 import $ from "jquery";
@@ -8,7 +9,7 @@ export const PUT = 'put'
 export const PATCH = 'patch'
 export const DELETE = 'delete'
 
-const API_ROOT = 'http://localhost:9999/'
+const API_ROOT = config.get("apiRoot");
 
 axios.defaults.baseURL = API_ROOT;
 axios.defaults.headers.common['Accept'] = 'application/json';

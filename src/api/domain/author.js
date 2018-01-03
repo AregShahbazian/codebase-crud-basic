@@ -1,9 +1,10 @@
+import config from 'react-global-configuration'
 import {schema} from "normalizr";
 import {callApi, DELETE, GET, PATCH, POST, PUT} from "../index";
 
-const authorEndpoint = 'author';
+const authorEndpoint = config.get("entities").author.endpoint;
 
-const authorSchema = new schema.Entity('author')
+const authorSchema = config.get("entities").author.schema
 const authorSchemaArray = new schema.Array(authorSchema);
 
 export const fetchAuthors = callApi.bind(null, authorEndpoint, authorSchemaArray, GET)
