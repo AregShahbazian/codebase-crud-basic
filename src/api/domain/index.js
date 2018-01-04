@@ -1,3 +1,5 @@
-import * as authorApi from "./author";
+import * as bookstoreApi from "./bookstore";
 
-export const api = {author: authorApi}
+export const api = {author: bookstoreApi}
+
+

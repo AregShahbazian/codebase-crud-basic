@@ -1,18 +1,6 @@
 ***********
 STORIES
 
-generalize entity configuration
-    entity name (to be used in schemas)                             author
-        used in reducer domain to pass to reducer generic
-        used in api domain to create schema
-    entity schema                                                   {Schema}
-        used in api domain to create initial state
-        used in reducer domain to create initial state
-    entity endpoint                                                 author
-        used in api domain
-    entity routine name
-        used in action domain to create routines                    AUTHOR
-
 add new entity to domain to implement relatons
     how does normalizr handle nested entities
     how do requests look like for nested entities
@@ -197,4 +185,16 @@ Implement reducers for crud actions
         delete object in state with id
 
         more on PUT vs PATCH: http://www.baeldung.com/http-put-patch-difference-spring
+
+generalize entity configuration
+    entity name (to be used in schemas)                             author
+        used in reducer domain to pass to reducer generic
+        used in api domain to create schema
+    entity schema                                                   {Schema}
+        used in api domain to create initial state
+        used in reducer domain to create initial state
+    entity endpoint                                                 author
+        used in api domain
+    entity routine name
+        used in action domain to create routines                    AUTHOR
 

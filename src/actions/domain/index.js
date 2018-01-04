@@ -1,5 +1,5 @@
-import {authorRoutines} from "./author";
+import {bookstoreRoutines} from "./bookstore";
 
-export const routines = authorRoutines
+export const routines = bookstoreRoutines
 
 

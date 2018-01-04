@@ -1,5 +1,5 @@
 import "regenerator-runtime/runtime";
-import "./config";
+import "./config/index";
 import React from "react";
 import {render} from "react-dom";
 import {applyMiddleware, createStore} from "redux";

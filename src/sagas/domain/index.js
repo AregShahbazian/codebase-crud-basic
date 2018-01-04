@@ -7,7 +7,7 @@ import {
     watchReplaceAuthor,
     watchSearchAuthor,
     watchUpdateAuthor
-} from "./author";
+} from "./bookstore";
 
 
 /******************************* ROOT *************************************/

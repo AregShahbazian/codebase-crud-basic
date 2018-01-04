@@ -1,4 +1,4 @@
-import "../config";
+import "../config/index";
 import {schema} from "normalizr";
 import {createRequest, DELETE, GET, normalizeData, PATCH, POST, PUT} from "./index";
 
