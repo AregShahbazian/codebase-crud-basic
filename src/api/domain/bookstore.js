@@ -1,4 +1,3 @@
-import {mapValues} from "lodash"
 import config from 'react-global-configuration'
 import {schema} from "normalizr";
 import {callApi, DELETE, GET, PATCH, POST, PUT} from "../index";
@@ -53,9 +52,3 @@ export const api = {
     }
 }
 
-const foo = mapValues({foo:{entityName:1}}, (entity)=>{
-    return entity.entityName
-})
-
-
-console.info();

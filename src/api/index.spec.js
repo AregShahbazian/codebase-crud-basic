@@ -1,6 +1,6 @@
 import "../config/index";
-import {schema} from "normalizr";
-import {createRequest, DELETE, GET, normalizeData, PATCH, POST, PUT} from "./index";
+import {normalize, schema} from "normalizr";
+import {createApiFunctions, createRequest, DELETE, GET, normalizeData, PATCH, POST, PUT, callApi} from "./index";
 
 
 describe('createRequest', () => {
@@ -164,4 +164,48 @@ describe('normalizeData', () => {
     })
 
 })
+
+describe('createApiFunctions', () => {
+
+    const myEntity1 = "myEntity1";
+    const myEntity1Schema = new schema.Entity(myEntity1)
+    const myEntity1InitialState = normalize([], new schema.Array(myEntity1Schema))
+
+    const myEntity1Config = {
+        entityName: myEntity1,
+        endpoint: "myEntity1",
+        routineName: "MY_ENTITY1",
+        schema: myEntity1Schema,
+        initialState: myEntity1InitialState
+    }
+
+    const myEntity2 = "myEntity2";
+    const myEntity2Schema = new schema.Entity(myEntity2)
+    const myEntity2InitialState = normalize([], new schema.Array(myEntity2Schema))
+
+    const myEntity2Config = {
+        entityName: myEntity2,
+        endpoint: "myEntity2",
+        routineName: "MY_ENTITY2",
+        schema: myEntity2Schema,
+        initialState: myEntity2InitialState
+    }
+
+    const entityConfigs = {
+        myEntity1: myEntity1Config,
+        myEntity2: myEntity2Config
+    }
+
+    const a = ["fetchAll", " fetchById", " search", " create", " replace", " update", " delete"]
+    const apiFunctions = createApiFunctions(entityConfigs)
+
+    a.forEach((a)=>{
+        it("should create api functions for each entity using configuration object", () => {
+            expect(apiFunctions.myEntity1[a].name).toEqual("bound callApi")
+        })
+    })
+
+
+})
+
 

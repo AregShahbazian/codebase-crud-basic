@@ -1,7 +1,9 @@
-import config from 'react-global-configuration'
-import {normalize} from "normalizr";
+import config from "react-global-configuration";
+import {normalize, schema} from "normalizr";
 import axios from "axios";
 import $ from "jquery";
+import {mapValues} from "lodash";
+
 
 export const GET = 'get'
 export const POST = 'post'
@@ -85,3 +87,20 @@ export const callApi = (endpoint = '', schema, method = GET, payload = {}, meta 
     console.log(`Calling api at ${API_ROOT + request.fullEndpoint} with method %s and payload %s`, method, JSON.stringify(request.requestBody))
     return makeRequest(method, request, schema)
 }
+
+
+export const createApiFunctions = (entityConfigs) =>
+    mapValues(entityConfigs, (e) => {
+        return {
+            fetchAll: callApi.bind(null, e.endpoint, new schema.Array(e.schema), GET),
+            fetchById: callApi.bind(null, e.endpoint, e.schema, GET),
+            search: callApi.bind(null, e.endpoint, e.schema, GET),
+            create: callApi.bind(null, e.endpoint, e.schema, POST),
+            replace: callApi.bind(null, e.endpoint, e.schema, PUT),
+            update: callApi.bind(null, e.endpoint, e.schema, PATCH),
+            delete: callApi.bind(null, e.endpoint, e.schema, DELETE)
+        }
+    })
+
+
+
