@@ -82,7 +82,7 @@ export const normalizeData = (schema, data) => {
  * @param meta
  * @returns {Promise.<T>|*}
  */
-export const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) => {
+const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) => {
     let request = createRequest(endpoint, method, payload, meta.id)
     console.log(`Calling api at ${API_ROOT + request.fullEndpoint} with method %s and payload %s`, method, JSON.stringify(request.requestBody))
     return makeRequest(method, request, schema)
