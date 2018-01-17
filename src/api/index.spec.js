@@ -1,6 +1,6 @@
 import "../config/index";
 import {normalize, schema} from "normalizr";
-import {createApiFunctions, createRequest, DELETE, GET, normalizeData, PATCH, POST, PUT, callApi} from "./index";
+import {createApiFunctions, createRequest, DELETE, GET, normalizeData, PATCH, POST, PUT} from "./index";
 
 
 describe('createRequest', () => {
@@ -191,16 +191,13 @@ describe('createApiFunctions', () => {
         initialState: myEntity2InitialState
     }
 
-    const entityConfigs = {
-        myEntity1: myEntity1Config,
-        myEntity2: myEntity2Config
-    }
+    const entityConfigs = [myEntity1Config, myEntity2Config]
 
     const a = ["fetchAll", "fetchById", "search", "create", "replace", "update", "delete"]
     const apiFunctions = createApiFunctions(entityConfigs)
 
-    a.forEach((a)=>{
-        it("should create api functions for each entity using configuration object", () => {
+    a.forEach((a) => {
+        it(`should create api function for ${a}, for each entity using configuration object`, () => {
             expect(apiFunctions.myEntity1[a].name).toEqual("bound callApi")
         })
     })

@@ -1,4 +1,9 @@
+import config from "react-global-configuration";
 import {all, fork} from "redux-saga/effects";
+import {createWatcherSagas} from "../index";
+import {api} from "../../api/domain";
+import {routines} from "../../actions/domain";
+
 import {
     watchCreateAuthor,
     watchDeleteAuthor,
@@ -10,7 +15,10 @@ import {
 } from "./bookstore";
 
 
-/******************************* ROOT *************************************/
+const watcherSagas = createWatcherSagas(config.get("entities"), routines, api)
+// const forks = watcherSagas.map(w => fork(w))
+
+console.info(watcherSagas)
 
 export default function* root() {
     yield all([

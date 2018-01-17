@@ -1,6 +1,10 @@
 ***********
 STORIES
 
+get rid of redundant exports
+
+refactor unit tests: 1 describe per tested function
+
 add new entity to domain to implement relatons
     how does normalizr handle nested entities
     how do requests look like for nested entities

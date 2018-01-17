@@ -2,7 +2,6 @@ import config from "react-global-configuration";
 import {normalize, schema} from "normalizr";
 import axios from "axios";
 import $ from "jquery";
-import {mapValues} from "lodash";
 
 
 export const GET = 'get'
@@ -89,18 +88,20 @@ const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) =
 }
 
 
-export const createApiFunctions = (entityConfigs) =>
-    mapValues(entityConfigs, (e) => {
-        return {
-            fetchAll: callApi.bind(null, e.endpoint, new schema.Array(e.schema), GET),
-            fetchById: callApi.bind(null, e.endpoint, e.schema, GET),
-            search: callApi.bind(null, e.endpoint, e.schema, GET),
-            create: callApi.bind(null, e.endpoint, e.schema, POST),
-            replace: callApi.bind(null, e.endpoint, e.schema, PUT),
-            update: callApi.bind(null, e.endpoint, e.schema, PATCH),
-            delete: callApi.bind(null, e.endpoint, e.schema, DELETE)
+export const createApiFunctions = (entityConfigs) => {
+    return entityConfigs.reduce((acc, val) => {
+        acc[val.entityName] = {
+            fetchAll: callApi.bind(null, val.endpoint, new schema.Array(val.schema), GET),
+            fetchById: callApi.bind(null, val.endpoint, val.schema, GET),
+            search: callApi.bind(null, val.endpoint, val.schema, GET),
+            create: callApi.bind(null, val.endpoint, val.schema, POST),
+            replace: callApi.bind(null, val.endpoint, val.schema, PUT),
+            update: callApi.bind(null, val.endpoint, val.schema, PATCH),
+            delete: callApi.bind(null, val.endpoint, val.schema, DELETE)
         }
-    })
+        return acc
+    }, {})
+}
 
 
 

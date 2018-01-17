@@ -1,5 +1,4 @@
-import {bookstoreRoutines} from "./bookstore";
+import config from "react-global-configuration";
+import {createEntityRoutines} from "../index";
 
-export const routines = bookstoreRoutines
-
-
+export const routines = createEntityRoutines(config.get("entities"))

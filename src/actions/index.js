@@ -18,8 +18,8 @@ export const entityRoutines = (entityNames) => {
         acc[val] = entityOps.reduce((acc2, val2) => {
             acc2[val2] = createRoutine(
                 `${val}/${val2}`,
-                (payload, id)=> payload,
-                (payload, meta)=> (meta)
+                (payload, id) => payload,
+                (payload, meta) => (meta)
             )
             return acc2
         }, {})
@@ -27,4 +27,10 @@ export const entityRoutines = (entityNames) => {
     }, {})
 
 }
+
+export const createEntityRoutines = (entityConfigs) => {
+    return entityRoutines(entityConfigs.map(e => e.routineName))
+}
+
+
 

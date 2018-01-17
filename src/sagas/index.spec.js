@@ -1,9 +1,13 @@
-import * as sagas from "./index";
+import "../config/index";
+import {makeApiCall, watchAction, createWatcherSagas} from "./index";
+import {createEntityRoutines} from "../actions"
 import {entityRoutines} from "../actions";
+import {createApiFunctions} from "../api"
+import {normalize, schema} from "normalizr";
 
 import {testSaga} from "redux-saga-test-plan";
 
-describe('saga', () => {
+describe('saga makeApiCall', () => {
     const routines = entityRoutines(["MY_ENTITY"])
     const apiFn = jest.fn();
 
@@ -11,9 +15,9 @@ describe('saga', () => {
     const RESPONSE = "response";
     const ERROR = "error";
 
-    it('makeApiCall should put request action, then call api function with action payload, ' +
+    it('should put request action, then call api function with action payload, ' +
         'then put success or failure action', () => {
-        testSaga(sagas.makeApiCall, routines.MY_ENTITY.FETCH_ALL, apiFn, routines.MY_ENTITY.FETCH_ALL.trigger(PAYLOAD))
+        testSaga(makeApiCall, routines.MY_ENTITY.FETCH_ALL, apiFn, routines.MY_ENTITY.FETCH_ALL.trigger(PAYLOAD))
             .next()
             .put(routines.MY_ENTITY.FETCH_ALL.request())
             .next()
@@ -33,15 +37,62 @@ describe('saga', () => {
             .isDone()
     })
 
+
+})
+
+describe('saga watchAction', () => {
     const MY_ENTITY_ACTION = 'MY_ENTITY_ACTION'
 
-    it('watchAction should watch given action and start given saga', () => {
-        testSaga(sagas.watchAction, MY_ENTITY_ACTION, sagas.makeApiCall)
+    it('should watch given action and start given saga', () => {
+        testSaga(watchAction, MY_ENTITY_ACTION, makeApiCall)
             .next()
-            .takeLatestEffect(MY_ENTITY_ACTION, sagas.makeApiCall)
+            .takeLatestEffect(MY_ENTITY_ACTION, makeApiCall)
             .next()
             .isDone()
     })
+})
+
+
+describe('createWatcherSagas', () => {
+
+    const myEntity1 = "myEntity1";
+    const myEntity1Schema = new schema.Entity(myEntity1)
+    const myEntity1InitialState = normalize([], new schema.Array(myEntity1Schema))
+
+    const myEntity1Config = {
+        entityName: myEntity1,
+        endpoint: "myEntity1",
+        routineName: "MY_ENTITY1",
+        schema: myEntity1Schema,
+        initialState: myEntity1InitialState
+    }
+
+    const myEntity2 = "myEntity2";
+    const myEntity2Schema = new schema.Entity(myEntity2)
+    const myEntity2InitialState = normalize([], new schema.Array(myEntity2Schema))
+
+    const myEntity2Config = {
+        entityName: myEntity2,
+        endpoint: "myEntity2",
+        routineName: "MY_ENTITY2",
+        schema: myEntity2Schema,
+        initialState: myEntity2InitialState
+    }
+
+    const entityConfigs = [myEntity1Config, myEntity2Config]
+
+    const a = ["fetchAll", "fetchById", "search", "create", "replace", "update", "delete"]
+    const myEntityRoutines = createEntityRoutines(entityConfigs)
+    const apiFunctions = createApiFunctions(entityConfigs)
+    const watcherSagas = createWatcherSagas(entityConfigs, myEntityRoutines, apiFunctions)
+
+    a.forEach((a) => {
+        it(`should create watcher for ${a}.TRIGGER, for each entity using configuration object`, () => {
+            expect(watcherSagas.myEntity1[a].name).toEqual("bound watchAction")
+        })
+    })
+
 
 })
+
 
