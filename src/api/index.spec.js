@@ -196,7 +196,7 @@ describe('createApiFunctions', () => {
         myEntity2: myEntity2Config
     }
 
-    const a = ["fetchAll", " fetchById", " search", " create", " replace", " update", " delete"]
+    const a = ["fetchAll", "fetchById", "search", "create", "replace", "update", "delete"]
     const apiFunctions = createApiFunctions(entityConfigs)
 
     a.forEach((a)=>{

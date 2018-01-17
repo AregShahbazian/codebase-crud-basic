@@ -1,5 +1,4 @@
-import * as bookstoreApi from "./bookstore";
+import config from "react-global-configuration";
+import {createApiFunctions} from "../index";
 
-export const api = {author: bookstoreApi}
-
-
+export const api = createApiFunctions(config.get("entities"))
