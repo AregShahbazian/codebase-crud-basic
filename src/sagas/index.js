@@ -1,4 +1,5 @@
-import {call, put, takeLatest} from "redux-saga/effects";
+import {map} from "lodash";
+import {call, fork, put, takeLatest} from "redux-saga/effects";
 
 
 /******************************* SUBROUTINES *************************************/
@@ -72,4 +73,13 @@ export const createWatcherSagas = (entityConfigs, routines, apiFunctions) => {
 }
 
 
+export const createWatcherSagaForks = (watcherSagas) => {
+    let forks = [];
+    _.map(watcherSagas, entityWatchers => {
+        _.map(entityWatchers, watcher => {
+            forks.push(fork(watcher))
+        })
+    })
+    return forks
+}
 

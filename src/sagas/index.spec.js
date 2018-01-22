@@ -1,6 +1,7 @@
 import "../config/index";
-import {makeApiCall, watchAction, createWatcherSagas} from "./index";
+import {createWatcherSagaForks, makeApiCall, watchAction, createWatcherSagas} from "./index";
 import {createEntityRoutines} from "../actions"
+import {fork} from "redux-saga/effects";
 import {entityRoutines} from "../actions";
 import {createApiFunctions} from "../api"
 import {normalize, schema} from "normalizr";
@@ -54,7 +55,6 @@ describe('saga watchAction', () => {
 
 
 describe('createWatcherSagas', () => {
-
     const myEntity1 = "myEntity1";
     const myEntity1Schema = new schema.Entity(myEntity1)
     const myEntity1InitialState = normalize([], new schema.Array(myEntity1Schema))
@@ -91,7 +91,28 @@ describe('createWatcherSagas', () => {
             expect(watcherSagas.myEntity1[a].name).toEqual("bound watchAction")
         })
     })
+})
 
+
+describe('createWatcherSagaForks', () => {
+
+    const WATCHER_FOO_1 = jest.fn();
+    const WATCHER_BAR_1 = jest.fn();
+    const WATCHER_FOO_2 = jest.fn();
+    const WATCHER_BAR_2 = jest.fn();
+
+    const mockWatcherSagas = {
+        myEntity1: {foo: WATCHER_FOO_1, bar: WATCHER_BAR_1},
+        myEntity2: {foo: WATCHER_FOO_2, bar: WATCHER_BAR_2}
+    }
+
+    const watcherSagaForks = createWatcherSagaForks(mockWatcherSagas)
+
+    it("should create a fork for each leaf in the provided object", () => {
+        expect(watcherSagaForks).toEqual(
+            [fork(WATCHER_FOO_1), fork(WATCHER_BAR_1), fork(WATCHER_FOO_2), fork(WATCHER_BAR_2)]
+        )
+    })
 
 })
 

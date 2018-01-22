@@ -1,6 +1,6 @@
 import config from "react-global-configuration";
 import {all, fork} from "redux-saga/effects";
-import {createWatcherSagas} from "../index";
+import {createWatcherSagas,createWatcherSagaForks} from "../index";
 import {api} from "../../api/domain";
 import {routines} from "../../actions/domain";
 
@@ -16,9 +16,8 @@ import {
 
 
 const watcherSagas = createWatcherSagas(config.get("entities"), routines, api)
-// const forks = watcherSagas.map(w => fork(w))
-
-console.info(watcherSagas)
+const watcherSagaForks = createWatcherSagaForks(watcherSagas)
+console.info(watcherSagaForks)
 
 export default function* root() {
     yield all([
