@@ -88,8 +88,8 @@ const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) =
 }
 
 
-export const createApiFunctions = (entityConfigs) => {
-    return entityConfigs.reduce((acc, val) => {
+export const createDomainApiFunctions = (domainConfigs) => {
+    return domainConfigs.reduce((acc, val) => {
         acc[val.entityName] = {
             fetchAll: callApi.bind(null, val.endpoint, new schema.Array(val.schema), GET),
             fetchById: callApi.bind(null, val.endpoint, val.schema, GET),

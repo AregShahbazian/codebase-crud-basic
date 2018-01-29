@@ -1,6 +1,6 @@
 import config from "react-global-configuration";
-import {rootSaga} from "../index";
+import {createRootSaga} from "../index";
 import routines from "../../actions/domain";
 import api from "../../api/domain";
 
-export default rootSaga.bind(null, config.get("entities"), routines, api)
+export default createRootSaga.bind(null, config.get("entities"), routines, api)

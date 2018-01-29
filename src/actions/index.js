@@ -28,8 +28,8 @@ export const entityRoutines = (entityNames) => {
 
 }
 
-export const createEntityRoutines = (entityConfigs) => {
-    return entityRoutines(entityConfigs.map(e => e.routineName))
+export const createDomainRoutines = (domainConfigs) => {
+    return entityRoutines(domainConfigs.map(e => e.routineName))
 }
 
 

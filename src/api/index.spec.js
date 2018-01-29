@@ -1,6 +1,6 @@
 import "../config/index";
 import {normalize, schema} from "normalizr";
-import {createApiFunctions, createRequest, DELETE, GET, normalizeData, PATCH, POST, PUT} from "./index";
+import {createDomainApiFunctions, createRequest, DELETE, GET, normalizeData, PATCH, POST, PUT} from "./index";
 
 
 describe('createRequest', () => {
@@ -165,7 +165,7 @@ describe('normalizeData', () => {
 
 })
 
-describe('createApiFunctions', () => {
+describe('createDomainApiFunctions', () => {
 
     const myEntity1 = "myEntity1";
     const myEntity1Schema = new schema.Entity(myEntity1)
@@ -191,10 +191,10 @@ describe('createApiFunctions', () => {
         initialState: myEntity2InitialState
     }
 
-    const entityConfigs = [myEntity1Config, myEntity2Config]
+    const domainConfigs = [myEntity1Config, myEntity2Config]
 
     const a = ["fetchAll", "fetchById", "search", "create", "replace", "update", "delete"]
-    const apiFunctions = createApiFunctions(entityConfigs)
+    const apiFunctions = createDomainApiFunctions(domainConfigs)
 
     a.forEach((a) => {
         it(`should create api function for ${a}, for each entity using configuration object`, () => {

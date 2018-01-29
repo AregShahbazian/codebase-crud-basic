@@ -43,8 +43,8 @@ export function* watchAction(action, doSaga) {
 }
 
 
-export const createWatcherSagas = (entityConfigs, routines, apiFunctions) => {
-    return entityConfigs.reduce((acc, val) => {
+export const createWatcherSagas = (domainConfigs, routines, apiFunctions) => {
+    return domainConfigs.reduce((acc, val) => {
         acc[val.entityName] = {
             fetchAll: watchAction.bind(null, routines[val.routineName].FETCH_ALL.TRIGGER,
                 makeApiCall.bind(null, routines[val.routineName].FETCH_ALL, apiFunctions[val.entityName].fetchAll)),
@@ -84,8 +84,8 @@ export const createWatcherSagaForks = (watcherSagas) => {
 }
 
 
-export function* rootSaga(entityConfigs, routines, apiFunctions) {
-    let watcherSagas = createWatcherSagas(entityConfigs, routines, apiFunctions)
+export function* createRootSaga(domainConfigs, routines, apiFunctions) {
+    let watcherSagas = createWatcherSagas(domainConfigs, routines, apiFunctions)
     let watcherSagaForks = createWatcherSagaForks(watcherSagas)
 
     yield all(watcherSagaForks)

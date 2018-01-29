@@ -1,3 +1,6 @@
+import {combineReducers} from "redux";
+import undoable, {distinctState} from "redux-undo";
+import {reducer as formReducer} from "redux-form";
 import {merge, remove, union} from "lodash";
 import {combineActions, handleActions} from "redux-actions";
 
@@ -36,3 +39,23 @@ export const entityReducer = (entityRoutines, initialState) => handleActions({
         return deleteEntityFromState(state, action.payload);
     },
 }, initialState);
+
+
+export const createUndoableReducers = (domainConfigs, domainRoutines) => {
+    return domainConfigs.reduce((acc, val) => {
+        acc[val.entityName] =
+            undoable(
+                entityReducer(domainRoutines[val.routineName], val.initialState),
+                {filter: distinctState()})
+        return acc
+    }, {})
+}
+
+export const createDomainReducers = (domainConfigs, domainRoutines) => {
+    let undoableReducers = createUndoableReducers(domainConfigs, domainRoutines);
+
+    return combineReducers({
+        ...undoableReducers,
+        form: formReducer
+    })
+}

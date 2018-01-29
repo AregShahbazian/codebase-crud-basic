@@ -1,14 +1,6 @@
-import {combineReducers} from "redux";
-import authorReducer from "./author";
-import {reducer as formReducer} from "redux-form";
-import undoable, {distinctState} from "redux-undo";
+import config from "react-global-configuration";
+import {createDomainReducers} from "../index";
+import routines from "../../actions/domain";
 
-const author = undoable(authorReducer, {
-    filter: distinctState()
-})
 
-export default combineReducers({
-    author,
-    form: formReducer
-})
-
+export default createDomainReducers(config.get("entities"), routines)

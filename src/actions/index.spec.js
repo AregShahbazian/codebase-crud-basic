@@ -1,4 +1,4 @@
-import {createEntityRoutines, entityOps, entityRoutines} from "./index";
+import {createDomainRoutines, entityOps, entityRoutines} from "./index";
 
 describe('myEntity action creators', () => {
     const routines = entityRoutines(["MY_ENTITY"])
@@ -42,7 +42,7 @@ describe('myEntity action creators', () => {
 })
 
 
-describe('createEntityRoutines', () => {
+describe('createDomainRoutines', () => {
 
     const myEntity1 = "myEntity1";
     const myEntity1Config = {
@@ -54,10 +54,10 @@ describe('createEntityRoutines', () => {
         routineName: "MY_ENTITY2",
     }
 
-    const entityConfigs = [myEntity1Config, myEntity2Config]
+    const domainConfigs = [myEntity1Config, myEntity2Config]
 
     const a = ["fetchAll", "fetchById", "search", "create", "replace", "update", "delete"]
-    const myEntityRoutines = createEntityRoutines(entityConfigs)
+    const myEntityRoutines = createDomainRoutines(domainConfigs)
 
     a.forEach((a) => {
         it(`should create routine for ${a}, for each entity using configuration object`, () => {
