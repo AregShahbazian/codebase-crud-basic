@@ -1,6 +1,8 @@
 ***********
 STORIES
 
+generalize saga code
+
 get rid of redundant exports
 
 refactor unit tests: 1 describe per tested function

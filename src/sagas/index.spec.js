@@ -1,12 +1,11 @@
 import "../config/index";
-import {createWatcherSagaForks, makeApiCall, watchAction, createWatcherSagas} from "./index";
-import {createEntityRoutines} from "../actions"
+import {createWatcherSagaForks, createWatcherSagas, makeApiCall, watchAction, rootSaga} from "./index";
+import {createEntityRoutines, entityRoutines} from "../actions";
 import {fork} from "redux-saga/effects";
-import {entityRoutines} from "../actions";
-import {createApiFunctions} from "../api"
+import {createApiFunctions} from "../api";
 import {normalize, schema} from "normalizr";
-
 import {testSaga} from "redux-saga-test-plan";
+
 
 describe('saga makeApiCall', () => {
     const routines = entityRoutines(["MY_ENTITY"])
@@ -79,12 +78,12 @@ describe('createWatcherSagas', () => {
         initialState: myEntity2InitialState
     }
 
-    const entityConfigs = [myEntity1Config, myEntity2Config]
+    const mockEntityConfigs = [myEntity1Config, myEntity2Config]
 
     const a = ["fetchAll", "fetchById", "search", "create", "replace", "update", "delete"]
-    const myEntityRoutines = createEntityRoutines(entityConfigs)
-    const apiFunctions = createApiFunctions(entityConfigs)
-    const watcherSagas = createWatcherSagas(entityConfigs, myEntityRoutines, apiFunctions)
+    const myEntityRoutines = createEntityRoutines(mockEntityConfigs)
+    const apiFunctions = createApiFunctions(mockEntityConfigs)
+    const watcherSagas = createWatcherSagas(mockEntityConfigs, myEntityRoutines, apiFunctions)
 
     a.forEach((a) => {
         it(`should create watcher for ${a}.TRIGGER, for each entity using configuration object`, () => {
@@ -115,5 +114,6 @@ describe('createWatcherSagaForks', () => {
     })
 
 })
+
 
 
