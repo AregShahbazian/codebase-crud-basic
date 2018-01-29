@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {connect} from "react-redux";
-import {routines} from "../actions/domain";
+import routines from "../actions/domain";
 import {Field, reduxForm} from "redux-form";
 
 const mapStateToProps = (state) => ({

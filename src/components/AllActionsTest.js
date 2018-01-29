@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import {routines} from "../actions/domain";
+import routines from "../actions/domain";
 
 
 const mapDispatchToProps = ({

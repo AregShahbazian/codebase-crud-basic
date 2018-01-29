@@ -12,25 +12,26 @@ export const deleteEntityFromState = (state, entity) => {
     return state
 }
 
-function replaceStateWithEntities(entities) {
+export function replaceStateWithEntities(entities) {
     return entities;
 }
-export const entityReducer = (entityActionCreators, initialState) => handleActions({
 
-    [entityActionCreators.FETCH_ALL.success]
+export const entityReducer = (entityRoutines, initialState) => handleActions({
+
+    [entityRoutines.FETCH_ALL.success]
         (state, action) {
         return replaceStateWithEntities(action.payload)
     },
     [combineActions(
-        entityActionCreators.FETCH_BY_ID.success,
-        entityActionCreators.SEARCH.success,
-        entityActionCreators.CREATE.success,
-        entityActionCreators.REPLACE.success,
-        entityActionCreators.UPDATE.success)]
+        entityRoutines.FETCH_BY_ID.success,
+        entityRoutines.SEARCH.success,
+        entityRoutines.CREATE.success,
+        entityRoutines.REPLACE.success,
+        entityRoutines.UPDATE.success)]
         (state, action) {
         return mergeEntityIntoState(state, action.payload);
     },
-    [entityActionCreators.DELETE.success]
+    [entityRoutines.DELETE.success]
         (state, action) {
         return deleteEntityFromState(state, action.payload);
     },
