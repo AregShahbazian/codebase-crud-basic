@@ -1,5 +1,5 @@
 import "../config/index";
-import {createWatcherSagaForks, createWatcherSagas, makeApiCall, watchAction, rootSaga} from "./index";
+import {createWatcherSagaForks, createWatcherSagas, makeApiCall, watchAction} from "./index";
 import {createEntityRoutines, entityRoutines} from "../actions";
 import {fork} from "redux-saga/effects";
 import {createApiFunctions} from "../api";

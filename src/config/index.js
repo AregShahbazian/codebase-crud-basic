@@ -1,5 +1,5 @@
-import {schema, normalize} from "normalizr";
-import config from 'react-global-configuration'
+import {normalize, schema} from "normalizr";
+import config from "react-global-configuration";
 
 const author = "author";
 const authorSchema = new schema.Entity(author)
