@@ -52,17 +52,18 @@
     - id : int
     - name : string
     - dateOfBirth : date
-    - numberOfBooks : int
-    
+    - publisher : object 
+    - books : list
+
 - Book
     - id : int
     - title : string
-    - authors : list
-    - publisher : object 
+    - author : object
     
 - Publisher
     - id : int
     - name : string 
+    - authors : list 
 
 
 #### Terminology

@@ -1,13 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const AuthorEntity = ({name, numberOfBooks, dateOfBirth}) => (
+const AuthorEntity = ({name, dateOfBirth}) => (
     <tr>
         <td>
             {name}
-        </td>
-        <td>
-            {numberOfBooks}
         </td>
         <td>
             {dateOfBirth}
@@ -18,7 +15,6 @@ const AuthorEntity = ({name, numberOfBooks, dateOfBirth}) => (
 AuthorEntity.propTypes = {
     name: PropTypes.string.isRequired,
     dateOfBirth: PropTypes.string.isRequired,
-    numberOfBooks: PropTypes.number.isRequired
 }
 
 export default AuthorEntity

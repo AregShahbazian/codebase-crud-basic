@@ -3,14 +3,13 @@ import {connect} from "react-redux";
 import AuthorTable from "../components/AuthorTable";
 
 const getFilteredAuthors = (authors, filterFormValues) => {
-    let {nameFilter = "", numberOfBooksFilter = 0} = filterFormValues
+    let {nameFilter = ""} = filterFormValues
     let cachedAuthors = []
 
     forEach(authors.result, (id) => (cachedAuthors = concat(cachedAuthors, authors.entities.author[id])))
 
     return Object.values(cachedAuthors).filter(a =>
         a.name.match(new RegExp(nameFilter, 'i'))
-        && a.numberOfBooks >= numberOfBooksFilter
     )
 }
 

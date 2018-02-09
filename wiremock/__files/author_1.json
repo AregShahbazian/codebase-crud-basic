@@ -1,6 +1,5 @@
 {
   "id": 1,
   "name": "Author 1",
-  "dateOfBirth": "01-01-1991",
-  "numberOfBooks": 11
+  "dateOfBirth": "01-01-1991"
 }
