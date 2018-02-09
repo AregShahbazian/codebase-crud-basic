@@ -40,17 +40,12 @@ export const entityReducer = (entityRoutines, initialState) => handleActions({
     },
 }, initialState);
 
-
-export const createUndoableReducers = (domainConfigs, domainRoutines) => {
-    return domainConfigs.reduce((acc, val) => {
+export const createDomainReducers = (domainConfigs, domainRoutines) => {
+    let undoableReducers = domainConfigs.reduce((acc, val) => {
         acc[val.entityName] =
-                entityReducer(domainRoutines[val.routineName], val.initialState)
+            entityReducer(domainRoutines[val.routineName], val.initialState)
         return acc
     }, {})
-}
-
-export const createDomainReducers = (domainConfigs, domainRoutines) => {
-    let undoableReducers = createUndoableReducers(domainConfigs, domainRoutines);
 
     return combineReducers({
         ...undoableReducers,
