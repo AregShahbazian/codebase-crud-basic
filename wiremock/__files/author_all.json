@@ -2,11 +2,58 @@
   {
     "id": 1,
     "name": "Author 1",
-    "dateOfBirth": "01-01-1991"
+    "dateOfBirth": "01-01-1991",
+    "publisher": {
+      "id": 1,
+      "name": "myPublisher1"
+    },
+    "books": [
+      {
+        "id": 11,
+        "name": "book1OfAuthor1"
+      },
+      {
+        "id": 12,
+        "name": "book2OfAuthor1"
+      }
+    ]
   },
   {
     "id": 2,
     "name": "Author 2",
-    "dateOfBirth": "02-02-1992"
+    "dateOfBirth": "02-02-1992",
+    "publisher": {
+      "id": 2,
+      "name": "myPublisher2"
+    },
+    "books": [
+      {
+        "id": 21,
+        "name": "book1OfAuthor2"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Author 3",
+    "dateOfBirth": "03-03-1993",
+    "publisher": {
+      "id": 1,
+      "name": "myPublisher1"
+    },
+    "books": [
+      {
+        "id": 31,
+        "name": "book1OfAuthor3"
+      },
+      {
+        "id": 31,
+        "name": "book2OfAuthor3"
+      },
+      {
+        "id": 33,
+        "name": "book3OfAuthor3"
+      }
+    ]
   }
 ]

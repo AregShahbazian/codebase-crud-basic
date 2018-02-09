@@ -1,5 +1,19 @@
 {
   "id": 1,
   "name": "Author 1",
-  "dateOfBirth": "01-01-1991"
+  "dateOfBirth": "01-01-1991",
+  "publisher": {
+    "id": 1,
+    "name": "myPublisher1"
+  },
+  "books": [
+    {
+      "id": 11,
+      "name": "book1OfAuthor1"
+    },
+    {
+      "id": 12,
+      "name": "book2OfAuthor1"
+    }
+  ]
 }
