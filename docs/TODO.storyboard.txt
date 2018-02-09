@@ -32,6 +32,8 @@ add new entity to domain to implement relations
 
 implement caching for api-requests (see real-world examples)
 
+Separate generic and domain specific code for components+containers
+
 Separate generic and domain specific code
     src/
         codebase/

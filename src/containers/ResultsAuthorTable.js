@@ -13,9 +13,16 @@ const getFilteredAuthors = (authors, filterFormValues) => {
     )
 }
 
+export const getAuthorsWithNumberOfBooks = (authors) => {
+
+
+
+    return authors
+
+}
 
 const mapStateToProps = (state) => ({
-    authors: getFilteredAuthors(state.author, state.form.filterForm.values === undefined ? {} : state.form.filterForm.values)
+    authors: getFilteredAuthors(getAuthorsWithNumberOfBooks(state.author), state.form.filterForm.values === undefined ? {} : state.form.filterForm.values)
 })
 
 

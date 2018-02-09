@@ -7,6 +7,7 @@ let AuthorFilter = () => {
         <div>
             <form>
                 <Field name="nameFilter" component="input" type="text" placeholder="Name"/>
+                <Field name="numberOfBooksFilter" component="input" type="number" placeholder="Number of books"/>
             </form>
         </div>
     )
