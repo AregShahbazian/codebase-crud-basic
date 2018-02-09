@@ -125,11 +125,11 @@ describe('normalizeData', () => {
             }
         ]
 
-    const authorSchema = new schema.Entity('myEntities')
-    const authorSchemaArray = new schema.Array(authorSchema);
+    const myEntitySchema = new schema.Entity('myEntities')
+    const myEntitySchemaArray = new schema.Array(myEntitySchema);
 
     it("should normalize single entity response correctly", () => {
-        expect(normalizeData(authorSchema, data)).toEqual({
+        expect(normalizeData(myEntitySchema, data)).toEqual({
             entities: {
                 myEntities: {
                     "1": {
@@ -144,7 +144,7 @@ describe('normalizeData', () => {
     })
 
     it("should normalize multiple entity response correctly", () => {
-        expect(normalizeData(authorSchemaArray, dataArray)).toEqual({
+        expect(normalizeData(myEntitySchemaArray, dataArray)).toEqual({
             entities: {
                 myEntities: {
                     "1": {
