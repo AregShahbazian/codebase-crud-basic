@@ -7,10 +7,10 @@ add new entity to domain to implement relations
         each book can have one author
         author oneToMany book
 
-    entity genre:
-        each author can have multiple genres
-        each genre can have authors
-        genre manyToOne genre
+    entity publisher:
+        each author can have one publisher
+        each publisher can multiple authors
+        author manyToOne publisher
 
     how does normalizr handle nested entities?
     how do requests look like for nested entities?

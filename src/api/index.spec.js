@@ -104,62 +104,100 @@ describe('createRequest', () => {
 })
 
 describe('normalizeData', () => {
-    const data =
-        {
-            "id": 1,
-            "field1": "Value 1",
-            "field2": "Value 2"
-        }
 
-    const dataArray =
-        [
+    const authorData = {
+        name: "myAuthor",
+        publisher: {
+            id: 11,
+            name: "myPublisher"
+        },
+        bookList: [
             {
-                "id": 1,
-                "field1": "Value 1",
-                "field2": "Value 2"
+                id: 111,
+                name: "myBook1"
             },
             {
-                "id": 2,
-                "field1": "Value 1",
-                "field2": "Value 2"
+                id: 222,
+                name: "myBook1"
             }
         ]
+    }
 
-    const myEntitySchema = new schema.Entity('myEntities')
-    const myEntitySchemaArray = new schema.Array(myEntitySchema);
+    const publisherSchema = new schema.Entity('publisher')
+    const bookSchema = new schema.Entity('book')
+    const authorSchema = new schema.Entity('author', {
+        publisher: publisherSchema,
+        bookList: [bookSchema]
+    })
+
 
     it("should normalize single entity response correctly", () => {
-        expect(normalizeData(myEntitySchema, data)).toEqual({
+        expect(normalizeData(authorSchema, {id: 1, ...authorData})).toEqual({
             entities: {
-                myEntities: {
-                    "1": {
-                        "id": 1,
-                        field1: "Value 1",
-                        field2: "Value 2",
+                author: {
+                    1: {
+                        id: 1,
+                        bookList: [111, 222],
+                        name: "myAuthor",
+                        publisher: 11
+                    }
+                },
+                publisher: {
+                    11: {
+                        id: 11,
+                        name: "myPublisher"
+                    }
+                },
+                book: {
+                    111: {
+                        id: 111,
+                        name: "myBook1"
+                    },
+                    222: {
+                        id: 222,
+                        name: "myBook1"
                     }
                 }
-            },
-            result: 1
+            }, result: 1
         })
     })
 
+    const authorSchemaArray = new schema.Array(authorSchema)
+
     it("should normalize multiple entity response correctly", () => {
-        expect(normalizeData(myEntitySchemaArray, dataArray)).toEqual({
+        expect(normalizeData(authorSchemaArray, [{id: 1, ...authorData}, {id: 2, ...authorData}])).toEqual({
             entities: {
-                myEntities: {
-                    "1": {
-                        "id": 1,
-                        field1: "Value 1",
-                        field2: "Value 2",
+                author: {
+                    1: {
+                        id: 1,
+                        bookList: [111, 222],
+                        name: "myAuthor",
+                        publisher: 11
                     },
-                    "2": {
-                        "id": 2,
-                        field1: "Value 1",
-                        field2: "Value 2",
+                    2: {
+                        id: 2,
+                        bookList: [111, 222],
+                        name: "myAuthor",
+                        publisher: 11
+                    }
+                },
+                publisher: {
+                    11: {
+                        id: 11,
+                        name: "myPublisher"
+                    }
+                },
+                book: {
+                    111: {
+                        id: 111,
+                        name: "myBook1"
+                    },
+                    222: {
+                        id: 222,
+                        name: "myBook1"
                     }
                 }
-            },
-            result: [1, 2]
+            }, result: [1, 2]
         })
     })
 
