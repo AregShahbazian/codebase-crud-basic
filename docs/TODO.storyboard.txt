@@ -13,7 +13,20 @@ add new entity to domain to implement relations
         author manyToOne publisher
 
     how does normalizr handle nested entities?
+        simple schema specification
+        see: unit-tests
+
     how do requests look like for nested entities?
+        For a response to an entity1 request, the entity1-state is updated, and all nested data is in the entity1 state
+        If entity1 contains an entity2, then the entity2 data will be stored inside the "entities" of the entity1-state
+        If a response to an entity2 request is received, the entity2-state will be populated
+
+        This is GOOD!:
+            because:
+                if entity2 is queried indirectly through entity1, then sometimes it's desirable to store only
+                partial entity2-data. This partialization is entity1-specific, and elongs in the entity1 state
+
+                if entity2 is queried directly, the entire entity2 object will be stored, it it's own entity2-state
 
 
 
