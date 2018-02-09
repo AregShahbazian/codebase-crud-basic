@@ -44,9 +44,7 @@ export const entityReducer = (entityRoutines, initialState) => handleActions({
 export const createUndoableReducers = (domainConfigs, domainRoutines) => {
     return domainConfigs.reduce((acc, val) => {
         acc[val.entityName] =
-            undoable(
-                entityReducer(domainRoutines[val.routineName], val.initialState),
-                {filter: distinctState()})
+                entityReducer(domainRoutines[val.routineName], val.initialState)
         return acc
     }, {})
 }
