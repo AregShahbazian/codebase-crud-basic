@@ -47,6 +47,8 @@ Separate generic and domain specific code
     React-components will use the domain-specific exports
     Unit tests will test the codebase functions
 
+book/publisher page
+
 Edit-form hidden under row
     validation (using redux-form / redux-saga-routines)
 

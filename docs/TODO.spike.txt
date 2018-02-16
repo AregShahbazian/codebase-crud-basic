@@ -1,4 +1,7 @@
 
+Learn Caching
+	react / redux / redux-saga level?
+
 Learn webpack,
     read overview
 	    https://webpack.js.org/concepts/
@@ -10,8 +13,6 @@ Learn CSS3
 
 Learn SASS
 
-Learn Caching
-	react / redux / redux-saga level?
 
 
 ***********
