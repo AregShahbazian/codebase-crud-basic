@@ -1,13 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const AuthorEntity = ({name, numberOfBooks, dateOfBirth}) => (
+const AuthorEntity = ({name, dateOfBirth}) => (
     <tr>
         <td>
             {name}
-        </td>
-        <td>
-            {numberOfBooks}
         </td>
         <td>
             {dateOfBirth}

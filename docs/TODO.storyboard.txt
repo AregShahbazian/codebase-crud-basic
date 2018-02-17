@@ -1,8 +1,6 @@
 ***********
 STORIES
 
-add numberOfBooks dynamically to author
-
 add new entity to domain to implement relations
     entity book:
         each author can have multiple books
