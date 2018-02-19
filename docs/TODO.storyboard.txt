@@ -1,37 +1,6 @@
 ***********
 STORIES
 
-add new entity to domain to implement relations
-    entity book:
-        each author can have multiple books
-        each book can have one author
-        author oneToMany book
-
-    entity publisher:
-        each author can have one publisher
-        each publisher can multiple authors
-        author manyToOne publisher
-
-    how does normalizr handle nested entities?
-        simple schema specification
-        see: unit-tests
-
-    how do requests look like for nested entities?
-        For a response to an entity1 request, the entity1-state is updated, and all nested data is in the entity1 state
-        If entity1 contains an entity2, then the entity2 data will be stored inside the "entities" of the entity1-state
-        If a response to an entity2 request is received, the entity2-state will be populated
-
-        This is GOOD!:
-            because:
-                if entity2 is queried indirectly through entity1, then sometimes it's desirable to store only
-                partial entity2-data. This partialization is entity1-specific, and elongs in the entity1 state
-
-                if entity2 is queried directly, the entire entity2 object will be stored, it it's own entity2-state
-
-
-
-implement caching for api-requests (see real-world examples)
-
 Separate generic and domain specific code for components+containers
 
 Separate generic and domain specific code
@@ -68,6 +37,14 @@ Unit test api code
 Secure login (https)
 
 Payments (eg paypal, ideal)
+
+implement caching for api-requests (see real-world examples)
+    check if entity is already present in state, and only dor HTTP request if not present.
+    when page is reloaded this won't work ... state is cleared when page is reloaded
+
+    redux-saga real-world example uses selectors from reducer/ folder and the select-effect from redux-saga to get
+    entity from cache
+
 
 ***********
 JUST IN CASE
@@ -225,3 +202,30 @@ generalize entity configuration
     entity routine name
         used in action domain to create routines                    AUTHOR
 
+
+add new entity to domain to implement relations
+    entity book:
+        each author can have multiple books
+        each book can have one author
+        author oneToMany book
+
+    entity publisher:
+        each author can have one publisher
+        each publisher can multiple authors
+        author manyToOne publisher
+
+    how does normalizr handle nested entities?
+        simple schema specification
+        see: unit-tests
+
+    how do requests look like for nested entities?
+        For a response to an entity1 request, the entity1-state is updated, and all nested data is in the entity1 state
+        If entity1 contains an entity2, then the entity2 data will be stored inside the "entities" of the entity1-state
+        If a response to an entity2 request is received, the entity2-state will be populated
+
+        This is GOOD!:
+            because:
+                if entity2 is queried indirectly through entity1, then sometimes it's desirable to store only
+                partial entity2-data. This partialization is entity1-specific, and belongs in the entity1 state
+
+                if entity2 is queried directly, the entire entity2 object will be stored, it it's own entity2-state

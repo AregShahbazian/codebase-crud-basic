@@ -24,7 +24,7 @@ class AllActionsTest extends Component {
 
         fetchAuthors();
         // fetchBooks()
-        // fetchAuthorById(undefined, {id: 1});
+        // fetchAuthorById(undefined, {id: 3});
         // searchAuthor({name: "2"});
         // createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"});
         // replaceAuthor({name: "Sir Author 3", dateOfBirth: "03-03-1993"}, {id: 3});

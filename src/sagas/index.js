@@ -1,7 +1,6 @@
 import {map} from "lodash";
 import {all, call, fork, put, takeLatest} from "redux-saga/effects";
 
-
 /******************************* SUBROUTINES *************************************/
 
 /**
