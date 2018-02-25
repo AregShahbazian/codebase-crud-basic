@@ -1,5 +1,4 @@
 import {combineReducers} from "redux";
-import undoable, {distinctState} from "redux-undo";
 import {reducer as formReducer} from "redux-form";
 import {merge, remove, union} from "lodash";
 import {combineActions, handleActions} from "redux-actions";
@@ -11,8 +10,9 @@ export const mergeEntityIntoState = (state, entity) => {
 }
 
 export const deleteEntityFromState = (state, entity) => {
-    remove(state.result, (n) => (n === entity.result))
-    return state
+    let newState = Object.assign({},state)
+    remove(newState.result, (n) => (n === entity.result))
+    return newState
 }
 
 export function replaceStateWithEntities(entities) {

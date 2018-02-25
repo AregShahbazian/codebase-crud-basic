@@ -5,3 +5,9 @@ var o3 = { c: 3 };
 var obj = Object.assign(o1, o2, o3);
 console.log(obj); // { a: 1, b: 2, c: 3 }
 console.log(o1);  // { a: 1, b: 2, c: 3 }, target object itself is changed.
+
+
+console.log(o2)
+o2.b = 22
+console.log(o2)
+console.log(obj); // { a: 1, b: 2, c: 3 }

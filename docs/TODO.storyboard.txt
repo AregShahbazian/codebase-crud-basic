@@ -1,6 +1,17 @@
 ***********
 STORIES
 
+fix delete sucess
+    P: DELETE_SUCCESS motates the state, but the components are not re-rendered
+    E: see https://stackoverflow.com/questions/39513753/my-redux-state-has-changed-why-doesnt-react-trigger-a-re-render
+        never mutate the state. Instead of
+                deleting the id from the result-list of the state and returning the mutatedstate
+        do: create new object and copy all data (except id-to-delete) to new state-object
+
+remove client side filtering
+    filtering happens server side with URL parameters
+
+
 Separate generic and domain specific code for components+containers
 
 Separate generic and domain specific code
@@ -21,8 +32,6 @@ book/publisher page
 Edit-form hidden under row
     validation (using redux-form / redux-saga-routines)
 
-remove client side filtering
-    filtering happens server side with URL parameters
 
 implement filter requests
 
