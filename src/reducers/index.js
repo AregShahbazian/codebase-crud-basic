@@ -10,7 +10,7 @@ export const mergeEntityIntoState = (state, entity) => {
 }
 
 export const deleteEntityFromState = (state, entity) => {
-    let newState = Object.assign({},state)
+    let newState = Object.assign({}, state)
     remove(newState.result, (n) => (n === entity.result))
     return newState
 }
