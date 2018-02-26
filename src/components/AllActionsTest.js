@@ -55,39 +55,3 @@ AllActionsTest = connect(
 )(AllActionsTest)
 
 export default AllActionsTest
-
-
-const a = {
-    "entities": {
-        "publisher": {"1": {"id": 1, "name": "myPublisher1"}, "2": {"id": 2, "name": "myPublisher2"}},
-        "book": {
-            "11": {"id": 11, "name": "book1OfAuthor1"},
-            "12": {"id": 12, "name": "book2OfAuthor1"},
-            "21": {"id": 21, "name": "book1OfAuthor2"},
-            "31": {"id": 31, "name": "book2OfAuthor3"},
-            "33": {"id": 33, "name": "book3OfAuthor3"}
-        },
-        "author": {
-            "1": {"id": 1, "name": "Author 1", "dateOfBirth": "01-01-1991", "publisher": 1, "books": [11, 12]},
-            "2": {"id": 2, "name": "Author 2", "dateOfBirth": "02-02-1992", "publisher": 2, "books": [21]},
-            "3": {"id": 3, "name": "Sir Author 3", "dateOfBirth": "03-03-1993", "publisher": 1, "books": [31, 31, 33]}
-        }
-    }, "result": [1, 2]
-}
-
-const b = {
-    "entities": {
-        "publisher": {"1": {"id": 1, "name": "myPublisher1"}, "2": {"id": 2, "name": "myPublisher2"}},
-        "book": {
-            "11": {"id": 11, "name": "book1OfAuthor1"},
-            "12": {"id": 12, "name": "book2OfAuthor1"},
-            "21": {"id": 21, "name": "book1OfAuthor2"},
-            "31": {"id": 31, "name": "book2OfAuthor3"},
-            "33": {"id": 33, "name": "book3OfAuthor3"}
-        },
-        "author": {
-            "1": {"id": 1, "name": "Author 1", "dateOfBirth": "01-01-1991", "publisher": 1, "books": [11, 12]},
-            "2": {"id": 2, "name": "Author 2", "dateOfBirth": "02-02-1992", "publisher": 2, "books": [21]}
-        }
-    }, "result": [1, 2]
-}

@@ -1,6 +1,14 @@
 ***********
 STORIES
 
+functional edit button + edit form
+    edit button fills edit form with row data
+
+functional create button + create form
+    create button clears create form
+
+book/publisher page
+
 Separate generic and domain specific code for components+containers
 
 Separate generic and domain specific code
@@ -16,7 +24,6 @@ Separate generic and domain specific code
     React-components will use the domain-specific exports
     Unit tests will test the codebase functions
 
-book/publisher page
 
 Edit-form hidden under row
     validation (using redux-form / redux-saga-routines)
@@ -29,8 +36,6 @@ implement sort requests
 implement pagination:
     http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#pagination
     https://developers.facebook.com/docs/graph-api/using-graph-api/#paging
-
-Unit test api code
 
 Secure login (https)
 
