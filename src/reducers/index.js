@@ -1,26 +1,36 @@
 import {combineReducers} from "redux";
 import {reducer as formReducer} from "redux-form";
-import {merge, remove, union} from "lodash";
+import update from "immutability-helper"
+import {merge, union} from "lodash";
 import {combineActions, handleActions} from "redux-actions";
 
+// NOTE: lodash merge performs recursively, and could slow down performance
 export const mergeEntityIntoState = (state, entity) => {
-    let mergedEntities = merge({}, state, entity)
-    let mergedResult = union(state.result, [entity.result])
-    return {...mergedEntities, result: mergedResult}
+    let entities = merge({}, state.entities, entity.entities)
+    let result = union(state.result, [entity.result])
+
+    return {entities, result}
 }
 
 export const deleteEntityFromState = (state, entity) => {
-    let newState = Object.assign({}, state)
-    remove(newState.result, (n) => (n === entity.result))
-    return newState
+    if (state.result.indexOf(entity.result) > -1) {
+        return update(state, {result: {$splice: [[state.result.indexOf(entity.result), 1]]}})
+    }
+    return state
 }
 
 export function replaceStateWithEntities(entities) {
     return entities;
 }
 
-export const entityReducer = (entityRoutines, initialState) => handleActions({
+export const editEntity = (state, payload) => {
 
+    /* Store payload.id in state, to be used in the editor form*/
+    return state
+
+}
+
+export const entityReducers = (entityRoutines, initialState) => handleActions({
     [entityRoutines.FETCH_ALL.success]
         (state, action) {
         return replaceStateWithEntities(action.payload)
@@ -38,17 +48,21 @@ export const entityReducer = (entityRoutines, initialState) => handleActions({
         (state, action) {
         return deleteEntityFromState(state, action.payload);
     },
+    [entityRoutines.FORM.edit]
+        (state, action) {
+        return editEntity(state, action.payload);
+    },
 }, initialState);
 
 export const createDomainReducers = (domainConfigs, domainRoutines) => {
-    let undoableReducers = domainConfigs.reduce((acc, val) => {
+    let reducers = domainConfigs.reduce((acc, val) => {
         acc[val.entityName] =
-            entityReducer(domainRoutines[val.routineName], val.initialState)
+            entityReducers(domainRoutines[val.routineName], val.initialState)
         return acc
     }, {})
 
     return combineReducers({
-        ...undoableReducers,
+        ...reducers,
         form: formReducer
     })
 }

@@ -11,6 +11,7 @@ const mapDispatchToProps = ({
     replaceAuthor: routines.AUTHOR.REPLACE.trigger,
     updateAuthor: routines.AUTHOR.UPDATE.trigger,
     deleteAuthor: routines.AUTHOR.DELETE.trigger,
+    editAuthor: routines.AUTHOR.FORM.edit,
     fetchBooks: routines.BOOK.FETCH_ALL.trigger,
 })
 
@@ -20,7 +21,7 @@ class AllActionsTest extends Component {
     }
 
     componentDidMount() {
-        const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor, replaceAuthor, updateAuthor, deleteAuthor, fetchBooks} = this.props
+        const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor, replaceAuthor, updateAuthor, deleteAuthor, editAuthor, fetchBooks} = this.props
 
         const t = 500;
 
@@ -38,9 +39,12 @@ class AllActionsTest extends Component {
             setTimeout(() => {
                 createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"})
                 setTimeout(() => {
-                        updateAuthor({name: "Sir Author 3"}, {id: 3})
+                        editAuthor({id: 3})
                         setTimeout(() => {
-                            deleteAuthor(undefined, {id: 3})
+                            updateAuthor({name: "Sir Author 3"}, {id: 3})
+                            setTimeout(() => {
+                                deleteAuthor(undefined, {id: 3})
+                            }, t)
                         }, t)
                     }, t
                 );
