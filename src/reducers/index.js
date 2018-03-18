@@ -9,7 +9,7 @@ export const mergeEntityIntoState = (state, entity) => {
     let entities = merge({}, state.entities, entity.entities)
     let result = union(state.result, [entity.result])
 
-    return {entities, result}
+    return {...state, entities, result}
 }
 
 export const deleteEntityFromState = (state, entity) => {
@@ -19,21 +19,18 @@ export const deleteEntityFromState = (state, entity) => {
     return state
 }
 
-export function replaceStateWithEntities(entities) {
-    return entities;
+export function replaceStateWithEntities(state, entity) {
+    return {...state, entities: entity.entities, result: entity.result}
 }
 
 export const editEntity = (state, payload) => {
-
-    /* Store payload.id in state, to be used in the editor form*/
-    return state
-
+    return update(state, {workspace: {editing: {$set: payload.id}}})
 }
 
 export const entityReducers = (entityRoutines, initialState) => handleActions({
     [entityRoutines.FETCH_ALL.success]
         (state, action) {
-        return replaceStateWithEntities(action.payload)
+        return replaceStateWithEntities(state, action.payload)
     },
     [combineActions(
         entityRoutines.FETCH_BY_ID.success,

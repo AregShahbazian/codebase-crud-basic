@@ -39,15 +39,19 @@ class AllActionsTest extends Component {
             setTimeout(() => {
                 createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"})
                 setTimeout(() => {
-                        editAuthor({id: 3})
+                    console.info("Edit author 3")
+                    editAuthor({id: 3})
+                    setTimeout(() => {
+                        console.info("Editing finished")
+                        editAuthor({id: null})
                         setTimeout(() => {
                             updateAuthor({name: "Sir Author 3"}, {id: 3})
                             setTimeout(() => {
                                 deleteAuthor(undefined, {id: 3})
                             }, t)
                         }, t)
-                    }, t
-                );
+                    }, t)
+                }, t)
             }, t)
         }, t)
     }

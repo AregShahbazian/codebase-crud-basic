@@ -3,18 +3,18 @@ import config from "react-global-configuration";
 
 const publisher = "publisher";
 const publisherSchema = new schema.Entity(publisher)
-const publisherInitialState = normalize([], new schema.Array(publisherSchema))
+const publisherInitialState = {...normalize([], new schema.Array(publisherSchema)), workspace: {editing: null}}
 
 const book = "book";
 const bookSchema = new schema.Entity(book)
-const bookInitialState = normalize([], new schema.Array(bookSchema))
+const bookInitialState = {...normalize([], new schema.Array(bookSchema)), workspace: {editing: null}}
 
 const author = "author";
 const authorSchema = new schema.Entity('author', {
     publisher: publisherSchema,
     books: [bookSchema]
 })
-const authorInitialState = normalize([], new schema.Array(authorSchema))
+const authorInitialState = {...normalize([], new schema.Array(authorSchema)), workspace: {editing: null}}
 
 config.set({
     entities: [

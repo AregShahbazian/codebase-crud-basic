@@ -1,33 +1,4 @@
 
-React Component lifecycle
-    https://www.youtube.com/watch?v=Oioo0IdoEls
-    componentWillMount
-        right before initial render
-    componentDidMount
-        right after initial render
-    componentWillReceiveProps
-        whenever component receives new props, because the state changed
-    shouldComponentUpdate
-        after receiving new props, before rendering
-        can be implemented to do some check to prevent (or force) re-rendering
-    componentWillUpdate
-        after receiving new props, before rendering
-    componentDidUpdate
-        after component is updated and sent to DOM
-    componentWillUnmount
-        right before removing component from DOM
-
-
-Updating state immutably
-    Object.assign does a shallow copy for all non-top-level (nested) properties. If a nested property has to be updated
-    in a reducer, a deep clone of that property is necessary. The rest of the state can be shallow copied to keep
-    performance
-        https://redux.js.org/faq/performance#performance-clone-state
-
-    Recipes for correct immutable update
-        https://redux.js.org/recipes/structuring-reducers/immutable-update-patterns
-
-
 
 Learn Caching
 	react / redux / redux-saga level?
@@ -42,6 +13,19 @@ Learn HTML5
 Learn CSS3
 
 Learn SASS
+
+
+Learn redux-orm
+    context
+    https://redux.js.org/recipes/structuring-reducers/updating-normalized-data
+
+    youtube
+
+    example peer project
+    http://blog.isquaredsoftware.com/2016/10/practical-redux-part-0-introduction/
+
+    gthub
+    https://github.com/tommikaikkonen/redux-orm
 
 
 
@@ -173,6 +157,35 @@ React's Functional Stateless Components:
     Use only when a component doesn't need the state or lifecycle methods
 
 
+React Component lifecycle
+    https://www.youtube.com/watch?v=Oioo0IdoEls
+    componentWillMount
+        right before initial render
+    componentDidMount
+        right after initial render
+    componentWillReceiveProps
+        whenever component receives new props, because the state changed
+    shouldComponentUpdate
+        after receiving new props, before rendering
+        can be implemented to do some check to prevent (or force) re-rendering
+    componentWillUpdate
+        after receiving new props, before rendering
+    componentDidUpdate
+        after component is updated and sent to DOM
+    componentWillUnmount
+        right before removing component from DOM
+
+
+
+
+Updating state immutably
+    Object.assign does a shallow copy for all non-top-level (nested) properties. If a nested property has to be updated
+    in a reducer, a deep clone of that property is necessary. The rest of the state can be shallow copied to keep
+    performance
+        https://redux.js.org/faq/performance#performance-clone-state
+
+    Recipes for correct immutable update
+        https://redux.js.org/recipes/structuring-reducers/immutable-update-patterns
 
 
 

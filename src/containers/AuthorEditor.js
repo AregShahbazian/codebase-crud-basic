@@ -6,7 +6,8 @@ import {Field, reduxForm, change} from "redux-form";
 
 const mapStateToProps = (state) => ({
     editorForm: state.form.editorForm,
-    author1: state.author
+    authors: state.author.entities.author,
+    editingAuthorId: state.author.workspace.editing
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -18,7 +19,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 class AuthorEditor extends Component {
     render() {
-        const {onAddClick,editorForm} = this.props
+        const {onAddClick, editorForm} = this.props
 
         return (
             <div>
@@ -30,9 +31,6 @@ class AuthorEditor extends Component {
                     <Field name="name" component="input" type="text" placeholder="name"/>
                     <Field name="dateOfBirth" component="input" type="text" placeholder="dateOfBirth"/>
 
-                    <div>{JSON.stringify(editorForm?editorForm.values:"")}</div>
-
-
                     <button type="submit">
                         Save
                     </button>
@@ -41,16 +39,23 @@ class AuthorEditor extends Component {
         )
     }
 
-    componentDidUpdate() {
-        const {changeFieldValue, author1} = this.props
-        changeFieldValue("name", JSON.stringify(author1.result))
+    componentDidUpdate(prevProps) {
+        let {changeFieldValue, authors, editingAuthorId} = this.props
+
+        if (editingAuthorId !== prevProps.editingAuthorId) {
+            changeFieldValue("name", editingAuthorId !== null ? authors[editingAuthorId].name : "")
+            changeFieldValue("dateOfBirth", editingAuthorId !== null ? authors[editingAuthorId].dateOfBirth : "")
+        }
     }
 
 }
 
 AuthorEditor.propTypes = {
     editorForm: PropTypes.object,
-    onAddClick: PropTypes.func.isRequired
+    authors: PropTypes.object,
+    editingAuthorId: PropTypes.number,
+    onAddClick: PropTypes.func.isRequired,
+    changeFieldValue: PropTypes.func.isRequired
 }
 
 AuthorEditor = reduxForm({

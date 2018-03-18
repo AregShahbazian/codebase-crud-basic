@@ -2,9 +2,10 @@
 STORIES
 
 functional edit button + action + edit form
-    edit button fills edit form with row data
+    *edit button fills edit form with row data
         setting Field value:
             https://github.com/erikras/redux-form/issues/369
+    apply button clears edit form
 
 
 functional create button + create form
@@ -109,6 +110,12 @@ JUST IN CASE
 
     Immutable updates and data structures for redux:
         https://github.com/markerikson/redux-ecosystem-links/blob/master/immutable-data.md#immutable-update-utilities
+
+    Peer projects:
+        http://www.thegreatcodeadventure.com/react-redux-tutorial-part-vi-the-edit-feature/
+        http://blog.isquaredsoftware.com/2017/01/practical-redux-part-7-forms-editing-reducers/
+            redux orm
+
 
 ***********
 HISTORY

@@ -1,4 +1,4 @@
-import {deleteEntityFromState, mergeEntityIntoState} from "./index";
+import {deleteEntityFromState, mergeEntityIntoState, replaceStateWithEntities} from "./index";
 
 const object1 = {id: 1, foo: "Foo1", bar: "Bar1"}
 const object2 = {id: 2, foo: "Foo2", bar: "Bar2"}
@@ -94,6 +94,36 @@ describe('deleteEntityFromState', () => {
 
     it("should leave state untouched for deleting non-existing entity", () => {
         expect(notDeleted).toEqual(myEntityState12)
+    })
+
+})
+
+
+describe('replaceStateWithEntities', () => {
+    const replaced = replaceStateWithEntities(myEntityState12, {
+        entities: {
+            myEntities: {
+                "1": object1,
+                "2": object2
+            }
+        },
+        result: [1, 2]
+    })
+
+
+    it("should replace entities and result in state and do it immutably", () => {
+        expect(replaced).toEqual({
+            entities: {
+                myEntities: {
+                    "1": object1,
+                    "2": object2
+                }
+            },
+            result: [1, 2]
+        })
+
+        expect(replaced.entities).not.toBe(myEntityState12.entities)
+        expect(replaced.result).not.toBe(myEntityState12.result)
     })
 
 })
