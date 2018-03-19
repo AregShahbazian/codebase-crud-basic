@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {concat, forEach} from "lodash";
 import {connect} from "react-redux";
-import AuthorEntity from "../components/AuthorEntity";
+import AuthorRow from "../components/AuthorEntity";
 
 const getAuthorsFromState = (authors) => {
     let cachedAuthors = []
@@ -23,7 +23,7 @@ let AuthorTable = ({authors}) => (
     <table>
         <tbody>
         {authors.map(author =>
-            <AuthorEntity
+            <AuthorRow
                 key={author.id}
                 {...author}
             />

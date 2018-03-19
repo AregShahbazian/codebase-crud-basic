@@ -1,7 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
+import routines from "../actions/domain";
+import {bindActionCreators} from 'redux'
 
-const AuthorEntity = ({name, dateOfBirth}) => (
+const mapDispatchToProps = (dispatch) => ({
+    onEditClick: bindActionCreators(routines.AUTHOR.FORM.edit, dispatch)
+})
+
+let AuthorRow = ({onEditClick, id, name, dateOfBirth}) => (
     <tr>
         <td>
             {name}
@@ -9,13 +16,23 @@ const AuthorEntity = ({name, dateOfBirth}) => (
         <td>
             {dateOfBirth}
         </td>
+        <td>
+            <button onClick={() => onEditClick({id: id})}>
+                Edit
+            </button>
+        </td>
     </tr>
 )
 
-AuthorEntity.propTypes = {
+AuthorRow.propTypes = {
     name: PropTypes.string.isRequired,
     dateOfBirth: PropTypes.string.isRequired,
 }
 
-export default AuthorEntity
+AuthorRow = connect(
+    null,
+    mapDispatchToProps
+)(AuthorRow)
+
+export default AuthorRow
 
