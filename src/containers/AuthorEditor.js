@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import routines from "../actions/domain";
 import {Field, reduxForm, change} from "redux-form";
+import {bindActionCreators} from 'redux'
 
 const mapStateToProps = (state) => ({
     editorForm: state.form.editorForm,
@@ -11,7 +12,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onAddClick: (values) => dispatch(routines.AUTHOR.CREATE.trigger(values)),
+    onAddClick: bindActionCreators(routines.AUTHOR.CREATE.trigger, dispatch),
     changeFieldValue: (field, value) => {
         dispatch(change('editorForm', field, value))
     }
