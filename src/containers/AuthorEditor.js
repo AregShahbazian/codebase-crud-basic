@@ -11,7 +11,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onAddClick: routines.AUTHOR.CREATE.trigger,
+    onAddClick: (values) => dispatch(routines.AUTHOR.CREATE.trigger(values)),
     changeFieldValue: (field, value) => {
         dispatch(change('editorForm', field, value))
     }
