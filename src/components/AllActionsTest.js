@@ -37,7 +37,7 @@ class AllActionsTest extends Component {
 
         setTimeout(() => {
             fetchAuthors()
-            setTimeout(() => {
+            /*setTimeout(() => {
                 prepareForm(undefined)
                 setTimeout(() => {
                     createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"})
@@ -54,7 +54,7 @@ class AllActionsTest extends Component {
                         }, t)
                     }, t)
                 }, t)
-            }, t)
+            }, t)*/
         }, t)
 
     }

@@ -1,12 +1,12 @@
 import React from "react";
 import AuthorTable from "../containers/AuthorTable";
-import AuthorEditor from "../containers/AuthorEditor";
+import AuthorEditorContainer from "../containers/AuthorEditorContainer";
 import AllActionsTest from "../components/AllActionsTest";
 
 const App = () => (
     <div>
         <AuthorTable/>
-        <AuthorEditor/>
+        <AuthorEditorContainer/>
         <AllActionsTest/>
     </div>
 )
