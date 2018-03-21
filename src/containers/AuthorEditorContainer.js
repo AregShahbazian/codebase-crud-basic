@@ -1,7 +1,6 @@
-import React, {Component} from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import {connect} from "react-redux";
-import {Field, reduxForm} from "redux-form";
+import {reduxForm} from "redux-form";
 import {bindActionCreators} from 'redux';
 import routines from "../actions/domain";
 import AuthorEditor from "../components/AuthorEditor"
@@ -15,25 +14,20 @@ const mapDispatchToProps = (dispatch) => ({
     updateAuthor: bindActionCreators(routines.AUTHOR.UPDATE.trigger, dispatch)
 })
 
-class AuthorEditorContainer extends Component {
-
-    onSubmit = (e) =>{
+class AuthorEditorContainer extends React.Component {
+    onSubmit = (e) => {
         let {authorForm, createAuthor, updateAuthor} = this.props
-        console.info(authorForm)
-
         e.preventDefault()
         /* By default the authorForm.values is undefined, so createAuthor will be called*/
-        if (!authorForm.values.id) {
-            createAuthor(authorForm.values)
-        } else {
+        if (authorForm.values && authorForm.values.id) {
             updateAuthor(authorForm.values, {id: authorForm.values.id})
+        } else {
+            createAuthor(authorForm.values)
         }
-
     }
 
     render() {
-        let {authorForm, createAuthor, updateAuthor} = this.props
-        return <AuthorEditor authorForm={authorForm} createAuthor={createAuthor} updateAuthor={updateAuthor} onSubmit={this.onSubmit}/>
+        return <AuthorEditor onSubmit={this.onSubmit}/>
     }
 }
 

@@ -37,12 +37,11 @@ class AllActionsTest extends Component {
 
         setTimeout(() => {
             fetchAuthors()
-            /*setTimeout(() => {
+            setTimeout(() => {
                 prepareForm(undefined)
                 setTimeout(() => {
                     createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"})
                     setTimeout(() => {
-                        console.info("Edit author 3")
                         prepareForm({id: 3, name: "Author 3", dateOfBirth: "03-03-1993"})
                         setTimeout(() => {
                             setTimeout(() => {
@@ -54,7 +53,7 @@ class AllActionsTest extends Component {
                         }, t)
                     }, t)
                 }, t)
-            }, t)*/
+            }, t)
         }, t)
 
     }

@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Field} from "redux-form";
 
-let AuthorEditor = ({createAuthor, updateAuthor, authorForm, onSubmit}) => (
+let AuthorEditor = ({onSubmit}) => (
     <div>
         <form onSubmit={onSubmit}>
 
@@ -17,9 +17,7 @@ let AuthorEditor = ({createAuthor, updateAuthor, authorForm, onSubmit}) => (
 )
 
 AuthorEditor.propTypes = {
-    authorForm: PropTypes.object,
-    createAuthor: PropTypes.func.isRequired,
-    updateAuthor: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired
 }
 
 export default AuthorEditor
