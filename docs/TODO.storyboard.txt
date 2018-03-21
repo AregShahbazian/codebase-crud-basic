@@ -1,21 +1,19 @@
 ***********
 STORIES
 
-functional edit button + action + edit form
-    *edit button fills edit form with row data
-        setting Field value:
-            https://github.com/erikras/redux-form/issues/369
-    apply button clears edit form
-
-
-functional create button + create form
-    create button clears create form
+SPIKE redux-form
 
 separate components and containers
     all presentational code is in components
     all state-code is in containers
     see code in: https://github.com/erikras/redux-form/issues/369
         (rockallite)
+
+SPIKE jest+Enzyme
+
+write component unit tests
+
+functional delete button
 
 book/publisher page
 
@@ -270,3 +268,20 @@ fix reducer bugs caused by non-immutable state updating
     use $splice helper
     write unit tests for immutable update
     on ALL reducers
+
+functional edit button + action + edit form
+    *edit button fills edit form with row data
+        setting Field value:
+            https://github.com/erikras/redux-form/issues/369
+    apply button clears edit form
+
+
+EntityForm
+    Create New or Edit buttons dispatch form.PREPARE action
+        Create New sets
+            editMode: false
+        Edit sets
+            editMode: true
+            id: entity-id
+    Save button dispatches CREATE or UPDATE, depending on mode
+    CREATE/UPDATE FULFILL clears workspace state

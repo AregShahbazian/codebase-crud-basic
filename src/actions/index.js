@@ -30,12 +30,12 @@ export const entityRoutines = (entityNames) => {
 
             acc2.FORM = {}
 
-            let formEditName = `${val}/FORM/EDIT`;
-            acc2.FORM.edit = createAction(
+            let formEditName = `${val}/FORM/PREPARE`;
+            acc2.FORM.prepare = createAction(
                 formEditName,
-                (payload) => (payload ? {id: payload.id} : undefined)
+                (payload) => (payload)
             )
-            acc2.FORM.EDIT = formEditName
+            acc2.FORM.PREPARE = formEditName
 
             return acc2
         }, {})

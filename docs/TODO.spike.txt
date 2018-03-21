@@ -1,3 +1,11 @@
+Learn redux-form
+    read especially https://redux-form.com/6.0.0-alpha.4/docs/faq/howtoclear.md/
+        how to clear fields
+
+
+Learn jest+Enzym for component testing
+    https://hackernoon.com/react-unit-test-example-tutorial-jest-enzyme-jsdom-mocha-chai-state-props-component-7ec850a98566
+    https://hackernoon.com/testing-react-components-with-jest-and-enzyme-41d592c174f
 
 
 Learn Caching

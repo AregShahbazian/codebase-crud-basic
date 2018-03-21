@@ -11,7 +11,7 @@ const mapDispatchToProps = ({
     replaceAuthor: routines.AUTHOR.REPLACE.trigger,
     updateAuthor: routines.AUTHOR.UPDATE.trigger,
     deleteAuthor: routines.AUTHOR.DELETE.trigger,
-    editAuthor: routines.AUTHOR.FORM.edit,
+    prepareForm: routines.AUTHOR.FORM.prepare,
     fetchBooks: routines.BOOK.FETCH_ALL.trigger,
 })
 
@@ -21,7 +21,7 @@ class AllActionsTest extends Component {
     }
 
     componentDidMount() {
-        const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor, replaceAuthor, updateAuthor, deleteAuthor, editAuthor, fetchBooks} = this.props
+        const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor, replaceAuthor, updateAuthor, deleteAuthor, prepareForm, fetchBooks} = this.props
 
         const t = 500;
 
@@ -37,17 +37,18 @@ class AllActionsTest extends Component {
         setTimeout(() => {
             fetchAuthors()
             setTimeout(() => {
-                createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"})
+                prepareForm({id: undefined, editMode: false})
                 setTimeout(() => {
-                    console.info("Edit author 3")
-                    editAuthor({id: 3})
+                    createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"})
                     setTimeout(() => {
-                        console.info("Editing finished")
-                        editAuthor({id: null})
+                        console.info("Edit author 3")
+                        prepareForm({id: 3, editMode: true})
                         setTimeout(() => {
-                            updateAuthor({name: "Sir Author 3"}, {id: 3})
                             setTimeout(() => {
-                                deleteAuthor(undefined, {id: 3})
+                                updateAuthor({name: "Sir Author 3"}, {id: 3})
+                                setTimeout(() => {
+                                    deleteAuthor(undefined, {id: 3})
+                                }, t)
                             }, t)
                         }, t)
                     }, t)

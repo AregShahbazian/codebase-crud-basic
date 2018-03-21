@@ -8,11 +8,12 @@ import {bindActionCreators} from 'redux'
 const mapStateToProps = (state) => ({
     editorForm: state.form.editorForm,
     authors: state.author.entities.author,
-    editingAuthorId: state.author.workspace.editing
+    workspace: state.author.workspace
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onAddClick: bindActionCreators(routines.AUTHOR.CREATE.trigger, dispatch),
+    createAuthor: bindActionCreators(routines.AUTHOR.CREATE.trigger, dispatch),
+    updateAuthor: bindActionCreators(routines.AUTHOR.UPDATE.trigger, dispatch),
     changeFieldValue: (field, value) => {
         dispatch(change('editorForm', field, value))
     }
@@ -20,13 +21,17 @@ const mapDispatchToProps = (dispatch) => ({
 
 class AuthorEditor extends Component {
     render() {
-        const {onAddClick, editorForm} = this.props
+        const {createAuthor, updateAuthor, workspace, editorForm} = this.props
 
         return (
             <div>
                 <form onSubmit={e => {
                     e.preventDefault()
-                    onAddClick(editorForm.values)
+                    if (!workspace.editMode) {
+                        createAuthor(editorForm.values)
+                    } else {
+                        updateAuthor(editorForm.values, {id: workspace.id})
+                    }
                 }}>
 
                     <Field name="name" component="input" type="text" placeholder="name"/>
@@ -41,11 +46,17 @@ class AuthorEditor extends Component {
     }
 
     componentDidUpdate(prevProps) {
-        let {changeFieldValue, authors, editingAuthorId} = this.props
+        let {changeFieldValue, authors, workspace} = this.props
 
-        if (editingAuthorId !== prevProps.editingAuthorId) {
-            changeFieldValue("name", editingAuthorId !== null ? authors[editingAuthorId].name : "")
-            changeFieldValue("dateOfBirth", editingAuthorId !== null ? authors[editingAuthorId].dateOfBirth : "")
+        if (workspace !== prevProps.workspace) {
+            if (workspace.editMode && workspace.id) {
+                changeFieldValue("name", authors[workspace.id].name)
+                changeFieldValue("dateOfBirth", authors[workspace.id].dateOfBirth)
+            } else {
+                changeFieldValue("name", "")
+                changeFieldValue("dateOfBirth", "")
+            }
+
         }
     }
 
@@ -54,8 +65,9 @@ class AuthorEditor extends Component {
 AuthorEditor.propTypes = {
     editorForm: PropTypes.object,
     authors: PropTypes.object,
-    editingAuthorId: PropTypes.number,
-    onAddClick: PropTypes.func.isRequired,
+    workspace: PropTypes.object,
+    createAuthor: PropTypes.func.isRequired,
+    updateAuthor: PropTypes.func.isRequired,
     changeFieldValue: PropTypes.func.isRequired
 }
 

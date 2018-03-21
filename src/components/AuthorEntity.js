@@ -5,10 +5,10 @@ import routines from "../actions/domain";
 import {bindActionCreators} from 'redux'
 
 const mapDispatchToProps = (dispatch) => ({
-    onEditClick: bindActionCreators(routines.AUTHOR.FORM.edit, dispatch)
+    prepareForm: bindActionCreators(routines.AUTHOR.FORM.prepare, dispatch)
 })
 
-let AuthorRow = ({onEditClick, id, name, dateOfBirth}) => (
+let AuthorRow = ({id, name, dateOfBirth, prepareForm}) => (
     <tr>
         <td>
             {name}
@@ -17,7 +17,7 @@ let AuthorRow = ({onEditClick, id, name, dateOfBirth}) => (
             {dateOfBirth}
         </td>
         <td>
-            <button onClick={() => onEditClick({id: id})}>
+            <button onClick={() => prepareForm({id: id, editMode: true})}>
                 Edit
             </button>
         </td>
@@ -25,8 +25,10 @@ let AuthorRow = ({onEditClick, id, name, dateOfBirth}) => (
 )
 
 AuthorRow.propTypes = {
+    id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
     dateOfBirth: PropTypes.string.isRequired,
+    prepareForm: PropTypes.func.isRequired
 }
 
 AuthorRow = connect(

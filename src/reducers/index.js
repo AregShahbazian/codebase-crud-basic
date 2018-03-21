@@ -23,11 +23,16 @@ export function replaceStateWithEntities(state, entity) {
     return {...state, entities: entity.entities, result: entity.result}
 }
 
+export function clearWorkspace(state, action) {
+    return update(state, {workspace: {$set: {}}})
+}
+
 export const editEntity = (state, payload) => {
-    return update(state, {workspace: {editing: {$set: payload.id}}})
+    return update(state, {workspace: {$set: payload}})
 }
 
 export const entityReducers = (entityRoutines, initialState) => handleActions({
+    /**/
     [entityRoutines.FETCH_ALL.success]
         (state, action) {
         return replaceStateWithEntities(state, action.payload)
@@ -45,7 +50,15 @@ export const entityReducers = (entityRoutines, initialState) => handleActions({
         (state, action) {
         return deleteEntityFromState(state, action.payload);
     },
-    [entityRoutines.FORM.edit]
+    /**/
+    [combineActions(
+        entityRoutines.CREATE.fulfill,
+        entityRoutines.UPDATE.fulfill)]
+        (state, action) {
+        return clearWorkspace(state, action);
+    },
+    /**/
+    [entityRoutines.FORM.prepare]
         (state, action) {
         return editEntity(state, action.payload);
     },
