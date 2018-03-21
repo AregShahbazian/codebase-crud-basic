@@ -1,5 +1,6 @@
 import {combineReducers} from "redux";
 import {reducer as formReducer} from "redux-form";
+import {createSelector} from 'reselect'
 import update from "immutability-helper"
 import {merge, union} from "lodash";
 import {combineActions, handleActions} from "redux-actions";
@@ -19,19 +20,11 @@ export const deleteEntityFromState = (state, payload) => {
     return state
 }
 
-export function replaceStateWithEntities(state, payload) {
+export const replaceStateWithEntities = (state, payload) => {
     return {...state, entities: payload.entities, result: payload.result}
 }
 
-export const prepareEntityForm = (state, payload) => {
-    return update(state, {workspace: {$set: payload}})
-}
-
-export function clearWorkspace(state, payload) {
-    return update(state, {workspace: {$set: {}}})
-}
-
-export const entityReducers = (entityRoutines, initialState) => handleActions({
+export const entityCrudReducers = (entityRoutines, initialState) => handleActions({
     /**/
     [entityRoutines.FETCH_ALL.success]
         (state, action) {
@@ -64,15 +57,48 @@ export const entityReducers = (entityRoutines, initialState) => handleActions({
     },
 }, initialState);
 
+
+export const prepareEntityForm = (state, payload) => {
+    return update(state, {workspace: {$set: payload}})
+}
+
+export const clearWorkspace = (state, payload) => {
+    return update(state, {workspace: {$set: {}}})
+}
+
+const fooFilter = (state) => state
+
+export const entityFormReducers = (entityRoutines) => {
+    return (state, action) => {
+        switch (action.type) {
+            case entityRoutines.CREATE.FULFILL:
+                return undefined
+            case entityRoutines.UPDATE.FULFILL:
+                return undefined
+            default:
+                return state;
+        }
+    }
+}
+
 export const createDomainReducers = (domainConfigs, domainRoutines) => {
-    let reducers = domainConfigs.reduce((acc, val) => {
+    let entityReducers = domainConfigs.reduce((acc, val) => {
         acc[val.entityName] =
-            entityReducers(domainRoutines[val.routineName], val.initialState)
+            entityCrudReducers(domainRoutines[val.routineName], val.initialState)
         return acc
     }, {})
 
+    let formPluginReducers = domainConfigs.reduce((acc, val) => {
+        acc[val.entityName] =
+            entityFormReducers(domainRoutines[val.routineName])
+        return acc
+    }, {})
+
+
+    console.info(formPluginReducers)
+
     return combineReducers({
-        ...reducers,
-        form: formReducer
+        ...entityReducers,
+        form: formReducer.plugin(formPluginReducers)
     })
 }

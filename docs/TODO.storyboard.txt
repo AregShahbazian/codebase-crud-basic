@@ -1,10 +1,12 @@
 ***********
 STORIES
 
-unit tests prepareEntityForm
+Handle form-population and -clearing with redux-form reducer plugin
+    P: form-population needs entities-data in form-reducer
+    S: read
+        https://redux.js.org/faq/reducers
+        https://redux.js.org/recipes/structuring-reducers/beyond-combinereducers
 
-
-unit tests clearWorkspace
 
 SPIKE redux-form
 
@@ -290,3 +292,9 @@ EntityForm
             id: entity-id
     Save button dispatches CREATE or UPDATE, depending on mode
     CREATE/UPDATE FULFILL clears workspace state
+
+unit tests prepareEntityForm
+
+unit tests clearWorkspace
+
+

@@ -12,6 +12,7 @@ const mapDispatchToProps = ({
     updateAuthor: routines.AUTHOR.UPDATE.trigger,
     deleteAuthor: routines.AUTHOR.DELETE.trigger,
     prepareForm: routines.AUTHOR.FORM.prepare,
+    prepareForm1: routines.FORM.prepare1,
     fetchBooks: routines.BOOK.FETCH_ALL.trigger,
 })
 
@@ -21,7 +22,7 @@ class AllActionsTest extends Component {
     }
 
     componentDidMount() {
-        const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor, replaceAuthor, updateAuthor, deleteAuthor, prepareForm, fetchBooks} = this.props
+        const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor, replaceAuthor, updateAuthor, deleteAuthor, prepareForm, prepareForm1,fetchBooks} = this.props
 
         const t = 500;
 
@@ -34,9 +35,12 @@ class AllActionsTest extends Component {
         // setTimeout(() => updateAuthor({name: "Sir Author 3"}, {id: 3}), t);
         // setTimeout(() => deleteAuthor(undefined, {id: 3}), t);
 
+
         setTimeout(() => {
             fetchAuthors()
             setTimeout(() => {
+                // prepareForm1({id: 2, editMode: true})
+
                 prepareForm({id: undefined, editMode: false})
                 setTimeout(() => {
                     createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"})
@@ -55,6 +59,7 @@ class AllActionsTest extends Component {
                 }, t)
             }, t)
         }, t)
+
     }
 }
 
