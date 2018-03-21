@@ -51,8 +51,8 @@ export const prepareEntityForm = (state, payload) => {
 
 export const entityFormReducers = (entityRoutines) => handleActions({
     [combineActions(
-        entityRoutines.CREATE.FULFILL,
-        entityRoutines.UPDATE.FULFILL)]
+        entityRoutines.CREATE.SUCCESS,
+        entityRoutines.UPDATE.SUCCESS)]
         (state, action) {
         return {};
     },
