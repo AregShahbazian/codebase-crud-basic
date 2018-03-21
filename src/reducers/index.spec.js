@@ -1,10 +1,4 @@
-import {
-    prepareEntityForm,
-    clearWorkspace,
-    deleteEntityFromState,
-    mergeEntityIntoState,
-    replaceStateWithEntities
-} from "./index";
+import {deleteEntityFromState, mergeEntityIntoState, prepareEntityForm, replaceStateWithEntities} from "./index";
 
 const object1 = {id: 1, foo: "Foo1", bar: "Bar1"}
 const object2 = {id: 2, foo: "Foo2", bar: "Bar2"}
@@ -136,42 +130,19 @@ describe('replaceStateWithEntities', () => {
 
 
 describe('prepareEntityForm ', () => {
-    let workspace = {id: undefined, editMode: undefined}
+    let values = undefined
 
-    let workspaceState = {
-        ...myEntityState12,
-        workspace
+    let valuesState = {
+        values
     }
 
-    let ID = 1
-    let EDIT_MODE = true
+    let prepared = prepareEntityForm(valuesState, object1)
 
-    let prepared = prepareEntityForm(workspaceState, {id: ID, editMode: EDIT_MODE})
-
-    it("should replace workspace state immutably", () => {
-        expect(prepared.workspace).toEqual({id: ID, editMode: EDIT_MODE})
-        expect(prepared.workspace).not.toBe(workspace)
+    it("should replace values state immutably", () => {
+        expect(prepared.values).toEqual(object1)
+        expect(prepared.values).not.toBe(values)
     })
 })
-
-
-describe('clearWorkspace ', () => {
-    let workspace = {id: undefined, editMode: undefined}
-
-    let workspaceState = {
-        ...myEntityState12,
-        workspace
-    }
-
-    let cleared = clearWorkspace(workspaceState, undefined)
-
-    it("should clear workspace state immutably", () => {
-        expect(cleared.workspace).toEqual({})
-        expect(cleared.workspace).not.toBe(workspace)
-    })
-})
-
-
 
 
 

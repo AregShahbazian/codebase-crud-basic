@@ -41,8 +41,8 @@ describe('myEntity action creators', () => {
 
     // console.log(routines)
 
-    expect(routines.MY_ENTITY.FORM.edit({id: 123})).toEqual({
-        type: "MY_ENTITY/FORM/EDIT",
+    expect(routines.MY_ENTITY.FORM.prepare({id: 123})).toEqual({
+        type: "MY_ENTITY/FORM/PREPARE",
         payload: {id: 123}
     })
 })

@@ -17,7 +17,7 @@ let AuthorRow = ({id, name, dateOfBirth, prepareForm}) => (
             {dateOfBirth}
         </td>
         <td>
-            <button onClick={() => prepareForm({id: id, editMode: true})}>
+            <button onClick={() => prepareForm({id, name, dateOfBirth})}>
                 Edit
             </button>
         </td>

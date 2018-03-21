@@ -1,6 +1,5 @@
 import {combineReducers} from "redux";
 import {reducer as formReducer} from "redux-form";
-import {createSelector} from 'reselect'
 import update from "immutability-helper"
 import {merge, union} from "lodash";
 import {combineActions, handleActions} from "redux-actions";
@@ -42,44 +41,26 @@ export const entityCrudReducers = (entityRoutines, initialState) => handleAction
     [entityRoutines.DELETE.success]
         (state, action) {
         return deleteEntityFromState(state, action.payload);
-    },
-    /**/
-    [combineActions(
-        entityRoutines.CREATE.fulfill,
-        entityRoutines.UPDATE.fulfill)]
-        (state, action) {
-        return clearWorkspace(state, action.payload);
-    },
-    /**/
-    [entityRoutines.FORM.prepare]
-        (state, action) {
-        return prepareEntityForm(state, action.payload);
-    },
+    }
 }, initialState);
 
 
 export const prepareEntityForm = (state, payload) => {
-    return update(state, {workspace: {$set: payload}})
+    return update(state, {values: {$set: payload}})
 }
 
-export const clearWorkspace = (state, payload) => {
-    return update(state, {workspace: {$set: {}}})
-}
-
-const fooFilter = (state) => state
-
-export const entityFormReducers = (entityRoutines) => {
-    return (state, action) => {
-        switch (action.type) {
-            case entityRoutines.CREATE.FULFILL:
-                return undefined
-            case entityRoutines.UPDATE.FULFILL:
-                return undefined
-            default:
-                return state;
-        }
+export const entityFormReducers = (entityRoutines) => handleActions({
+    [combineActions(
+        entityRoutines.CREATE.FULFILL,
+        entityRoutines.UPDATE.FULFILL)]
+        (state, action) {
+        return {};
+    },
+    [entityRoutines.FORM.prepare]
+        (state, action) {
+        return prepareEntityForm(state, action.payload);
     }
-}
+}, {})
 
 export const createDomainReducers = (domainConfigs, domainRoutines) => {
     let entityReducers = domainConfigs.reduce((acc, val) => {
@@ -93,9 +74,6 @@ export const createDomainReducers = (domainConfigs, domainRoutines) => {
             entityFormReducers(domainRoutines[val.routineName])
         return acc
     }, {})
-
-
-    console.info(formPluginReducers)
 
     return combineReducers({
         ...entityReducers,

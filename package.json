@@ -58,8 +58,7 @@
     "redux-form": "^7.2.0",
     "redux-saga": "^0.15.6",
     "redux-saga-routines": "^2.2.2",
-    "redux-undo": "^0.6.1",
-    "reselect": "^3.0.1"
+    "redux-undo": "^0.6.1"
   },
   "babel": {
     "presets": [

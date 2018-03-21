@@ -1,13 +1,6 @@
 ***********
 STORIES
 
-Handle form-population and -clearing with redux-form reducer plugin
-    P: form-population needs entities-data in form-reducer
-    S: read
-        https://redux.js.org/faq/reducers
-        https://redux.js.org/recipes/structuring-reducers/beyond-combinereducers
-
-
 SPIKE redux-form
 
 separate components and containers
@@ -296,5 +289,9 @@ EntityForm
 unit tests prepareEntityForm
 
 unit tests clearWorkspace
+
+Handle form-population and -clearing with redux-form reducer plugin
+    find alternative for workspace-id for update/create choice
+    remove workspace from state
 
 
