@@ -5,30 +5,30 @@ import {merge, union} from "lodash";
 import {combineActions, handleActions} from "redux-actions";
 
 // NOTE: lodash merge performs recursively, and could slow down performance
-export const mergeEntityIntoState = (state, entity) => {
-    let entities = merge({}, state.entities, entity.entities)
-    let result = union(state.result, [entity.result])
+export const mergeEntityIntoState = (state, payload) => {
+    let entities = merge({}, state.entities, payload.entities)
+    let result = union(state.result, [payload.result])
 
     return {...state, entities, result}
 }
 
-export const deleteEntityFromState = (state, entity) => {
-    if (state.result.indexOf(entity.result) > -1) {
-        return update(state, {result: {$splice: [[state.result.indexOf(entity.result), 1]]}})
+export const deleteEntityFromState = (state, payload) => {
+    if (state.result.indexOf(payload.result) > -1) {
+        return update(state, {result: {$splice: [[state.result.indexOf(payload.result), 1]]}})
     }
     return state
 }
 
-export function replaceStateWithEntities(state, entity) {
-    return {...state, entities: entity.entities, result: entity.result}
+export function replaceStateWithEntities(state, payload) {
+    return {...state, entities: payload.entities, result: payload.result}
 }
 
-export function clearWorkspace(state, action) {
-    return update(state, {workspace: {$set: {}}})
-}
-
-export const editEntity = (state, payload) => {
+export const prepareEntityForm = (state, payload) => {
     return update(state, {workspace: {$set: payload}})
+}
+
+export function clearWorkspace(state, payload) {
+    return update(state, {workspace: {$set: {}}})
 }
 
 export const entityReducers = (entityRoutines, initialState) => handleActions({
@@ -55,12 +55,12 @@ export const entityReducers = (entityRoutines, initialState) => handleActions({
         entityRoutines.CREATE.fulfill,
         entityRoutines.UPDATE.fulfill)]
         (state, action) {
-        return clearWorkspace(state, action);
+        return clearWorkspace(state, action.payload);
     },
     /**/
     [entityRoutines.FORM.prepare]
         (state, action) {
-        return editEntity(state, action.payload);
+        return prepareEntityForm(state, action.payload);
     },
 }, initialState);
 
