@@ -5,7 +5,6 @@ import {Field} from "redux-form";
 let AuthorEditor = ({onSubmit}) => (
     <div>
         <form onSubmit={onSubmit}>
-
             <Field name="name" component="input" type="text" placeholder="name"/>
             <Field name="dateOfBirth" component="input" type="text" placeholder="dateOfBirth"/>
 

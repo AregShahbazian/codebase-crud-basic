@@ -21,8 +21,12 @@ const mapStateToProps = (state) => ({
 
 
 class AuthorTableContainer extends React.Component {
+    onNewClick = () => {
+        this.props.prepareForm(undefined)
+    }
+
     render() {
-        return <AuthorTable authors={this.props.authors} prepareForm={this.props.prepareForm}/>
+        return <AuthorTable authors={this.props.authors} onNewClick={this.onNewClick}/>
     }
 }
 

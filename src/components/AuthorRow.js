@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-let AuthorRow = ({author, prepareForm}) => (
+let AuthorRow = ({author, onEditClick}) => (
     <tr>
         <td>
             {author.name}
@@ -10,7 +10,7 @@ let AuthorRow = ({author, prepareForm}) => (
             {author.dateOfBirth}
         </td>
         <td>
-            <button onClick={() => prepareForm(author)}>
+            <button onClick={onEditClick}>
                 Edit
             </button>
         </td>
@@ -19,7 +19,7 @@ let AuthorRow = ({author, prepareForm}) => (
 
 AuthorRow.propTypes = {
     author: PropTypes.object.isRequired,
-    prepareForm: PropTypes.func.isRequired
+    onEditClick: PropTypes.func.isRequired
 }
 
 export default AuthorRow

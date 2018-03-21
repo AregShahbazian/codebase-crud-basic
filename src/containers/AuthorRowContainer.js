@@ -9,8 +9,12 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 class AuthorRowContainer extends React.Component {
+    onEditClick = () => {
+        this.props.prepareForm(this.props.author)
+    }
+
     render() {
-        return <AuthorRow author={this.props.author} prepareForm={this.props.prepareForm}/>
+        return <AuthorRow author={this.props.author} onEditClick={this.onEditClick}/>
     }
 }
 

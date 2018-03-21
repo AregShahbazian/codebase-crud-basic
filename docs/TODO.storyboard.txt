@@ -1,14 +1,6 @@
 ***********
 STORIES
 
-separate components and containers
-    all presentational code is in components
-    all state-code is in containers
-    see code in: https://github.com/erikras/redux-form/issues/369
-        (rockallite)
-
-    try the redux-form inapt values property
-
 SPIKE jest+Enzyme
 
 write component unit tests
@@ -296,4 +288,7 @@ Handle form-population and -clearing with redux-form reducer plugin
     find alternative for workspace-id for update/create choice
     remove workspace from state
 
+
+separate components and containers
+    notes: see SPIKE
 
