@@ -32,20 +32,10 @@ class AllActionsTest extends Component {
         return (null)
     }
 
-
-    scenario1() {
-        const {fetchAuthors} = this.props
-
-        asyncCall([
-            () => fetchAuthors()
-        ], 0)
-    }
-
     scenario2() {
         const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor, replaceAuthor, updateAuthor, deleteAuthor, prepareForm, prepareForm1, fetchBooks} = this.props
 
         asyncCall([
-            () => fetchAuthors(),
             () => prepareForm(undefined),
             () => createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"}),
             () => prepareForm({id: 3, name: "Author 3", dateOfBirth: "03-03-1993"}),
@@ -55,8 +45,7 @@ class AllActionsTest extends Component {
     }
 
     componentDidMount() {
-        // this.scenario1();
-        // this.scenario2()
+        this.scenario2()
 
     }
 }
