@@ -1,11 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
-import {bindActionCreators} from 'redux'
 import routines from "../actions/domain";
 import AuthorRow from "../components/AuthorRow"
 
-const mapDispatchToProps = (dispatch) => ({
-    prepareForm: bindActionCreators(routines.AUTHOR.FORM.prepare, dispatch)
+const mapDispatchToProps = ({
+    prepareForm: routines.AUTHOR.FORM.prepare
 })
 
 class AuthorRowContainer extends React.Component {

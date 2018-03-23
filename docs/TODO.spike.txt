@@ -1,29 +1,4 @@
 
-Investigate JavaScript TypeChecking
-    TypeScript
-        Made by Microsoft .. .bleh
-
-    Flow
-        typechecking for Javascript
-        setup+getting started:
-            https://github.com/facebook/flow
-
-        !docs+Guide
-            https://flow.org/en/docs/getting-started/
-
-        .flowconfig
-            Library definitions     https://flow.org/en/docs/config/libs/
-                defines type information for a 3rd party library
-                    https://flow.org/en/docs/libdefs/
-            *    The "flow-typed" tool helps find and install existing libdefs of the dependencies
-                    https://github.com/flowtype/flow-typed
-
-            Lints       https://flow.org/en/docs/config/lints/
-
-
-        with React
-            https://medium.com/flow-type/even-better-support-for-react-in-flow-25b0a3485627
-
 Investigate End-ToEnd testing
     Learn jest+Enzym for component testing
         https://hackernoon.com/react-unit-test-example-tutorial-jest-enzyme-jsdom-mocha-chai-state-props-component-7ec850a98566
@@ -34,6 +9,16 @@ Investigate End-ToEnd testing
 
     Learn TestCafe
         http://devexpress.github.io/testcafe/documentation/getting-started/
+
+        needs browsers installed locally
+        can also run headless
+        can also run on remote device
+            http://devexpress.github.io/testcafe/documentation/using-testcafe/command-line-interface.html#remote-browsers
+            http://devexpress.github.io/testcafe/documentation/using-testcafe/common-concepts/browsers/browser-support.html#browsers-on-remote-devices
+        can run tests in multiple browsers
+        can set test speed with --speed cli option
+        can set breakpoints with t.debug()
+        can access console messages
 
 Learn Caching
 	react / redux / redux-saga level?
@@ -48,6 +33,10 @@ Learn HTML5
 Learn CSS3
 
 Learn SASS
+
+Learn lints
+
+Learn Flow
 
 
 Learn redux-orm
@@ -239,3 +228,28 @@ Learn Component/Container pattern
     all state-code is in containers
     see code in: https://github.com/erikras/redux-form/issues/369
         (rockallite)
+
+
+Investigate JavaScript TypeChecking
+    TypeScript
+        Made by Microsoft .. .bleh
+
+    Flow
+        typechecking for Javascript
+        setup+getting started:
+            https://github.com/facebook/flow
+
+        !docs+Guide
+            https://flow.org/en/docs/getting-started/
+
+        .flowconfig
+            Library definitions     https://flow.org/en/docs/config/libs/
+                defines type information for a 3rd party library
+                    https://flow.org/en/docs/libdefs/
+            *    The "flow-typed" tool helps find and install existing libdefs of the dependencies
+                    https://github.com/flowtype/flow-typed
+
+            Lints       https://flow.org/en/docs/config/lints/
+
+        with React
+            https://medium.com/flow-type/even-better-support-for-react-in-flow-25b0a3485627

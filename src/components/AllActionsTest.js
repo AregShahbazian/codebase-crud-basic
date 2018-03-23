@@ -2,7 +2,6 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import routines from "../actions/domain";
 
-
 const mapDispatchToProps = ({
     fetchAuthors: routines.AUTHOR.FETCH_ALL.trigger,
     fetchAuthorById: routines.AUTHOR.FETCH_BY_ID.trigger,
@@ -15,46 +14,49 @@ const mapDispatchToProps = ({
     fetchBooks: routines.BOOK.FETCH_ALL.trigger,
 })
 
+
+async function asyncCall(calls, timeout) {
+    for (let call of calls) {
+        let result = await new Promise(resolve => {
+            setTimeout(() => {
+                let callResult = call()
+                resolve(callResult)
+            }, timeout)
+        })
+        console.log(result);
+    }
+}
+
 class AllActionsTest extends Component {
     render() {
         return (null)
     }
 
-    componentDidMount() {
+
+    scenario1() {
+        const {fetchAuthors} = this.props
+
+        asyncCall([
+            () => fetchAuthors()
+        ], 0)
+    }
+
+    scenario2() {
         const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor, replaceAuthor, updateAuthor, deleteAuthor, prepareForm, prepareForm1, fetchBooks} = this.props
 
-        const t = 500;
+        asyncCall([
+            () => fetchAuthors(),
+            () => prepareForm(undefined),
+            () => createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"}),
+            () => prepareForm({id: 3, name: "Author 3", dateOfBirth: "03-03-1993"}),
+            () => updateAuthor({name: "Sir Author 3"}, {id: 3}),
+            () => deleteAuthor(undefined, {id: 3})
+        ], 500)
+    }
 
-        // setTimeout(() => fetchAuthors(), t);
-        // setTimeout(() => fetchBooks(), t);
-        // setTimeout(() => fetchAuthorById(undefined, {id: 3}), t);
-        // setTimeout(() => searchAuthor({name: "2"}), t);
-        // setTimeout(() => createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"}), t);
-        // setTimeout(() => replaceAuthor({name: "Sir Author 3", dateOfBirth: "03-03-1993"}, {id: 3}), t);
-        // setTimeout(() => updateAuthor({name: "Sir Author 3"}, {id: 3}), t);
-        // setTimeout(() => deleteAuthor(undefined, {id: 3}), t);
-
-
-        setTimeout(() => {
-            fetchAuthors()
-            setTimeout(() => {
-                prepareForm(undefined)
-                setTimeout(() => {
-                    createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"})
-                    setTimeout(() => {
-                        prepareForm({id: 3, name: "Author 3", dateOfBirth: "03-03-1993"})
-                        setTimeout(() => {
-                            setTimeout(() => {
-                                updateAuthor({name: "Sir Author 3"}, {id: 3})
-                                setTimeout(() => {
-                                    deleteAuthor(undefined, {id: 3})
-                                }, t)
-                            }, t)
-                        }, t)
-                    }, t)
-                }, t)
-            }, t)
-        }, t)
+    componentDidMount() {
+        // this.scenario1();
+        // this.scenario2()
 
     }
 }

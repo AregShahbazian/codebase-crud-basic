@@ -1,7 +1,6 @@
 import React from "react";
 import {concat, forEach} from "lodash";
 import {connect} from "react-redux";
-import {bindActionCreators} from 'redux'
 import routines from "../actions/domain";
 import AuthorTable from "../components/AuthorTable"
 
@@ -11,8 +10,8 @@ const getAuthorsFromState = (authors) => {
     return cachedAuthors
 }
 
-const mapDispatchToProps = (dispatch) => ({
-    prepareForm: bindActionCreators(routines.AUTHOR.FORM.prepare, dispatch)
+const mapDispatchToProps = ({
+    prepareForm: routines.AUTHOR.FORM.prepare
 })
 
 const mapStateToProps = (state) => ({

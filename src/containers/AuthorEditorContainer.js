@@ -1,7 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
 import {reduxForm} from "redux-form";
-import {bindActionCreators} from 'redux';
 import routines from "../actions/domain";
 import AuthorEditor from "../components/AuthorEditor"
 
@@ -9,9 +8,9 @@ const mapStateToProps = (state) => ({
     authorForm: state.form.author
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    createAuthor: bindActionCreators(routines.AUTHOR.CREATE.trigger, dispatch),
-    updateAuthor: bindActionCreators(routines.AUTHOR.UPDATE.trigger, dispatch)
+const mapDispatchToProps = ({
+    createAuthor: routines.AUTHOR.CREATE.trigger,
+    updateAuthor: routines.AUTHOR.UPDATE.trigger
 })
 
 class AuthorEditorContainer extends React.Component {

@@ -6,7 +6,7 @@ import {applyMiddleware, createStore} from "redux";
 import {Provider} from "react-redux";
 import createSagaMiddleware from "redux-saga";
 
-import App from "./components/App";
+import AuthorAppContainer from "./containers/AuthorAppContainer";
 import reducer from "./reducers/domain";
 import rootSaga from "./sagas/domain";
 
@@ -30,7 +30,7 @@ sagaMiddleware.run(rootSaga)
 
 render(
     <Provider store={store}>
-        <App/>
+        <AuthorAppContainer/>
     </Provider>,
     document.getElementById('root')
 )
