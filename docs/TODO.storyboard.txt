@@ -7,6 +7,8 @@ write component unit tests
 
 functional delete button
 
+use selectors
+
 book/publisher page
 
 Separate generic and domain specific code for components+containers
