@@ -45,8 +45,7 @@ class AllActionsTest extends Component {
     }
 
     componentDidMount() {
-        this.scenario2()
-
+        // this.scenario2()
     }
 }
 

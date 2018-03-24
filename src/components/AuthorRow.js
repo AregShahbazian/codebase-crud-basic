@@ -2,15 +2,15 @@ import React from "react";
 import PropTypes from "prop-types";
 
 let AuthorRow = ({author, onEditClick}) => (
-    <tr>
-        <td>
+    <tr id={"author-row-" + author.id}>
+        <td className="author-name">
             {author.name}
         </td>
-        <td>
+        <td className="author-dateOfBirth">
             {author.dateOfBirth}
         </td>
         <td>
-            <button onClick={onEditClick}>
+            <button className="edit-button" onClick={onEditClick}>
                 Edit
             </button>
         </td>

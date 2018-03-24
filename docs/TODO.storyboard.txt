@@ -1,10 +1,6 @@
 ***********
 STORIES
 
-SPIKE jest+Enzyme
-
-write component unit tests
-
 functional delete button
 
 use selectors
@@ -294,3 +290,4 @@ Handle form-population and -clearing with redux-form reducer plugin
 separate components and containers
     notes: see SPIKE
 
+write e2e tests with TestCafe

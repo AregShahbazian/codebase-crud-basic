@@ -4,10 +4,10 @@ import AuthorRowContainer from "../containers/AuthorRowContainer";
 
 let AuthorTable = ({authors, onNewClick}) => (
     <div>
-        <button onClick={onNewClick}>
+        <button id="create-button" onClick={onNewClick}>
             Create New
         </button>
-        <table>
+        <table id="author-table">
             <tbody>
             {authors.map(author =>
                 <AuthorRowContainer

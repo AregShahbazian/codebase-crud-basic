@@ -4,11 +4,11 @@ import {Field} from "redux-form";
 
 let AuthorEditor = ({onSubmit}) => (
     <div>
-        <form onSubmit={onSubmit}>
+        <form id="author-form" onSubmit={onSubmit}>
             <Field name="name" component="input" type="text" placeholder="name"/>
             <Field name="dateOfBirth" component="input" type="text" placeholder="dateOfBirth"/>
 
-            <button type="submit">
+            <button id="save-button" type="submit">
                 Save
             </button>
         </form>
