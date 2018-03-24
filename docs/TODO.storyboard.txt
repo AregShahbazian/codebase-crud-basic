@@ -1,8 +1,6 @@
 ***********
 STORIES
 
-use selectors
-
 book/publisher page
 
 Separate generic and domain specific code for components+containers
@@ -45,6 +43,8 @@ implement caching for api-requests (see real-world examples)
 
     redux-saga real-world example uses selectors from reducer/ folder and the select-effect from redux-saga to get
     entity from cache
+
+use selectors
 
 
 ***********
