@@ -5,7 +5,7 @@ book/publisher page
 
 Separate generic and domain specific code for components+containers
 
-Separate generic and domain specific code
+Separate generic and domain specific code files
     src/
         codebase/
             actions/
