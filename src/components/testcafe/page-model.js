@@ -6,9 +6,8 @@ class AuthorRow {
         this.tdName = this.tr.find("td.author-name")
         this.tdDateOfBirth = this.tr.find("td.author-dateOfBirth")
         this.editButton = this.tr.find("button.edit-button")
+        this.deleteButton = this.tr.find("button.delete-button")
     }
-
-
 }
 
 class AuthorForm {

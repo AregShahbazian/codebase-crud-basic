@@ -79,10 +79,10 @@ test("Test adding new row, editing it and deleting it", async t => {
         // assert row 3 edited
         .expect(authorRow3.tdName.innerText).eql(AUTHOR_NAME_3_EDIT)
         .expect(authorRow3.tdDateOfBirth.innerText).eql(AUTHOR_DOB_3)
-// click delete row 3 button
-// assert 2 author rows are left
-// assert author 1 and 2 data
-
+        // click delete row 3 button
+        .click(authorRow3.deleteButton)
+        // assert author 3 doesn't exist
+        .expect(authorRow3.tr.exists).notOk()
 
 });
 

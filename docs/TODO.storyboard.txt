@@ -1,8 +1,6 @@
 ***********
 STORIES
 
-functional delete button
-
 use selectors
 
 book/publisher page
@@ -291,3 +289,6 @@ separate components and containers
     notes: see SPIKE
 
 write e2e tests with TestCafe
+
+functional delete button
+
