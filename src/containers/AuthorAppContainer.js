@@ -12,7 +12,8 @@ const getEntitiesFromState = (entityState, entityName) => {
 }
 
 const mapStateToProps = (state) => ({
-    authors: getEntitiesFromState(state.author, "author")
+    authors: getEntitiesFromState(state.author, "author"),
+    entityForm: state.form.author
 })
 
 const mapDispatchToProps = ({
@@ -21,7 +22,7 @@ const mapDispatchToProps = ({
 
 class AppContainer extends React.Component {
     render() {
-        return <AuthorApp authors={this.props.authors}/>
+        return <AuthorApp authors={this.props.authors} entityForm={this.props.entityForm}/>
     }
 
     componentDidMount() {
