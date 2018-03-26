@@ -40,5 +40,5 @@ config.set({
             initialState: authorInitialState
         }
     ],
-    apiRoot: "http://localhost:9999/"
+    apiRoot: "http://192.168.254.100:9999/"
 })

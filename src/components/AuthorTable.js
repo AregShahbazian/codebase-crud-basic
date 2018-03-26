@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import AuthorRowContainer from "../containers/AuthorRowContainer";
 
-let AuthorTable = ({authors, onNewClick}) => (
+let AuthorTable = ({authors, handleNewClick}) => (
     <div>
-        <button id="create-button" onClick={onNewClick}>
+        <button id="create-button" onClick={handleNewClick}>
             Create New
         </button>
         <table id="author-table">
@@ -26,7 +26,7 @@ AuthorTable.propTypes = {
     authors: PropTypes.arrayOf(
         PropTypes.object.isRequired
     ).isRequired,
-    onNewClick: PropTypes.func.isRequired
+    handleNewClick: PropTypes.func.isRequired
 }
 
 

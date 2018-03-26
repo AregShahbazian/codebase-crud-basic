@@ -1,29 +1,14 @@
 ***********
 STORIES
 
+Entity-form validation (using redux-form / redux-saga-routines)
+    SPIKE redux-form validation
+    redux-saga-routines validation handling combo with redux-fom
+        https://github.com/afitiskin/redux-saga-routines
+
 book/publisher page
 
-Separate generic and domain specific code for components+containers
-
-Separate generic and domain specific code files
-    src/
-        codebase/
-            actions/
-            components/
-            ...
-        author/
-            actions/
-            components/
-            ...
-    React-components will use the domain-specific exports
-    Unit tests will test the codebase functions
-
-
-Entity-form validation (using redux-form / redux-saga-routines)
-
 Entity-form hidden under row
-
-
 
 implement filter requests
 

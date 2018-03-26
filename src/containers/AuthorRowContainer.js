@@ -9,16 +9,17 @@ const mapDispatchToProps = ({
 })
 
 class AuthorRowContainer extends React.Component {
-    onEditClick = () => {
+    handleEditClick = () => {
+        console.info("edit clicked")
         this.props.prepareForm(this.props.author)
     }
 
-    onDeleteClick = () => {
+    handleDeleteClick = () => {
         this.props.deleteAuthor(undefined, {id: this.props.author.id})
     }
 
     render() {
-        return <AuthorRow author={this.props.author} onEditClick={this.onEditClick} onDeleteClick={this.onDeleteClick}/>
+        return <AuthorRow author={this.props.author} handleEditClick={this.handleEditClick} handleDeleteClick={this.handleDeleteClick}/>
     }
 }
 

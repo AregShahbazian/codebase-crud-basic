@@ -1,4 +1,7 @@
 
+redux-form validation
+
+
 Learn Caching
 	react / redux / redux-saga level?
 

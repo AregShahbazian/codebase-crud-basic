@@ -1,0 +1,23 @@
+{
+  "id": 2,
+  "name": "Sir Author 2",
+  "dateOfBirth": "02-02-1992",
+  "publisher": {
+    "id": 1,
+    "name": "myPublisher1"
+  },
+  "books": [
+    {
+      "id": 21,
+      "name": "book1OfAuthor2"
+    },
+    {
+      "id": 21,
+      "name": "book2OfAuthor2"
+    },
+    {
+      "id": 23,
+      "name": "book3OfAuthor2"
+    }
+  ]
+}

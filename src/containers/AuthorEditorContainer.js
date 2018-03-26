@@ -13,8 +13,21 @@ const mapDispatchToProps = ({
     updateAuthor: routines.AUTHOR.UPDATE.trigger
 })
 
+const validate = values => {
+    const errors = {}
+
+    if(!values.name){
+        errors.name = "Name is required"
+    }
+    if(!values.dateOfBirth){
+        errors.dateOfBirth = "Date of birth is required"
+    }
+
+    return errors
+}
+
 class AuthorEditorContainer extends React.Component {
-    onSubmit = (e) => {
+    handleSubmit = (e) => {
         let {authorForm, createAuthor, updateAuthor} = this.props
         e.preventDefault()
         /* By default the authorForm.values is undefined, so createAuthor will be called*/
@@ -26,13 +39,14 @@ class AuthorEditorContainer extends React.Component {
     }
 
     render() {
-        return <AuthorEditor onSubmit={this.onSubmit}/>
+        return <AuthorEditor {...this.props} handleSubmit={this.handleSubmit}/>
     }
 }
 
 AuthorEditorContainer = reduxForm({
     form: 'author',
-    fields: ["id", "name", "dateOfBirth"]
+    fields: ["id", "name", "dateOfBirth"],
+    validate
 })(AuthorEditorContainer)
 
 AuthorEditorContainer = connect(

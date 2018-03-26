@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-let AuthorRow = ({author, onEditClick, onDeleteClick}) => (
+let AuthorRow = ({author, handleEditClick, handleDeleteClick}) => (
     <tr id={"author-row-" + author.id}>
         <td className="author-name">
             {author.name}
@@ -10,12 +10,12 @@ let AuthorRow = ({author, onEditClick, onDeleteClick}) => (
             {author.dateOfBirth}
         </td>
         <td>
-            <button className="edit-button" onClick={onEditClick}>
+            <button className="edit-button" onClick={handleEditClick}>
                 Edit
             </button>
         </td>
         <td>
-            <button className="delete-button" onClick={onDeleteClick }>
+            <button className="delete-button" onClick={handleDeleteClick }>
                 Delete
             </button>
         </td>
@@ -24,8 +24,8 @@ let AuthorRow = ({author, onEditClick, onDeleteClick}) => (
 
 AuthorRow.propTypes = {
     author: PropTypes.object.isRequired,
-    onEditClick: PropTypes.func.isRequired,
-    onDeleteClick: PropTypes.func.isRequired
+    handleEditClick: PropTypes.func.isRequired,
+    handleDeleteClick: PropTypes.func.isRequired
 }
 
 export default AuthorRow

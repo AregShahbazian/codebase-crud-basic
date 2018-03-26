@@ -1,10 +1,10 @@
 {
   "request": {
     "method": "PUT",
-    "url": "/author/3",
+    "url": "/author/2",
     "bodyPatterns": [
       {
-        "matchesJsonPath": "$[?(@.name == 'Sir Author 3' && @.dateOfBirth == '03-03-1993')]"
+        "matchesJsonPath": "$[?(@.name == 'Sir Author 2' && @.dateOfBirth == '02-02-1992')]"
       }
     ]
   },
@@ -18,9 +18,9 @@
       "X-Content-Type-Options": "nosniff",
       "x-frame-options": "DENY",
       "x-xss-protection": "1; mode=block",
-      "Location": "/author/3"
+      "Location": "/author/2"
     },
-    "bodyFileName": "author_3_updated.json",
+    "bodyFileName": "author_2_updated.json",
     "transformers": [
       "response-template"
     ]

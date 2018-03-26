@@ -1,7 +1,7 @@
 {
   "request": {
     "method": "DELETE",
-    "url": "/author/3"
+    "url": "/author/2"
   },
   "response": {
     "status": 200,
@@ -14,7 +14,7 @@
       "x-frame-options": "DENY",
       "x-xss-protection": "1; mode=block"
     },
-    "bodyFileName": "author_3.json",
+    "bodyFileName": "author_2.json",
     "transformers": [
       "response-template"
     ]

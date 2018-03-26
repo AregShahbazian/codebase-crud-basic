@@ -15,6 +15,8 @@ class AuthorForm {
         this.form = Selector("#author-form")
         this.nameInput = this.form.find("input[name=name")
         this.dateOfBirthInput = this.form.find("input[name=dateOfBirth")
+        this.nameError = this.form.find("span#name-error")
+        this.dateOfBirthError = this.form.find("span#dateOfBirth-error")
         this.saveButton = this.form.find("button#save-button")
     }
 }
