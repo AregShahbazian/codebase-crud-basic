@@ -16,29 +16,36 @@ const authorSchema = new schema.Entity('author', {
 })
 const authorInitialState = {...normalize([], new schema.Array(authorSchema))}
 
+const entityConfigs = {}
+
+entityConfigs[publisher] = {
+    endpoint: "publisher",
+    routineName: "PUBLISHER",
+    schema:
+    publisherSchema,
+    initialState:
+    publisherInitialState
+}
+
+entityConfigs[book] = {
+    endpoint: "book",
+    routineName: "BOOK",
+    schema:
+    bookSchema,
+    initialState:
+    bookInitialState
+}
+
+entityConfigs[author] = {
+    endpoint: "author",
+    routineName: "AUTHOR",
+    schema:
+    authorSchema,
+    initialState:
+    authorInitialState
+}
+
 config.set({
-    entities: [
-        {
-            entityName: publisher,
-            endpoint: "publisher",
-            routineName: "PUBLISHER",
-            schema: publisherSchema,
-            initialState: publisherInitialState
-        },
-        {
-            entityName: book,
-            endpoint: "book",
-            routineName: "BOOK",
-            schema: bookSchema,
-            initialState: bookInitialState
-        },
-        {
-            entityName: author,
-            endpoint: "author",
-            routineName: "AUTHOR",
-            schema: authorSchema,
-            initialState: authorInitialState
-        }
-    ],
+    entities: entityConfigs,
     apiRoot: "http://localhost:9999/"
 })

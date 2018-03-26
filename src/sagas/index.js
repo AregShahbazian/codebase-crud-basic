@@ -1,4 +1,4 @@
-import {map} from "lodash";
+import {map, reduce} from "lodash";
 import {all, call, fork, put, takeLatest} from "redux-saga/effects";
 
 /******************************* SUBROUTINES *************************************/
@@ -43,28 +43,28 @@ export function* watchAction(action, doSaga) {
 
 
 export const createWatcherSagas = (domainConfigs, routines, apiFunctions) => {
-    return domainConfigs.reduce((acc, val) => {
-        acc[val.entityName] = {
+    return reduce(domainConfigs,(acc, val, key) => {
+        acc[key] = {
             fetchAll: watchAction.bind(null, routines[val.routineName].FETCH_ALL.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].FETCH_ALL, apiFunctions[val.entityName].fetchAll)),
+                makeApiCall.bind(null, routines[val.routineName].FETCH_ALL, apiFunctions[key].fetchAll)),
 
             fetchById: watchAction.bind(null, routines[val.routineName].FETCH_BY_ID.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].FETCH_BY_ID, apiFunctions[val.entityName].fetchById)),
+                makeApiCall.bind(null, routines[val.routineName].FETCH_BY_ID, apiFunctions[key].fetchById)),
 
             search: watchAction.bind(null, routines[val.routineName].SEARCH.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].SEARCH, apiFunctions[val.entityName].search)),
+                makeApiCall.bind(null, routines[val.routineName].SEARCH, apiFunctions[key].search)),
 
             create: watchAction.bind(null, routines[val.routineName].CREATE.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].CREATE, apiFunctions[val.entityName].create)),
+                makeApiCall.bind(null, routines[val.routineName].CREATE, apiFunctions[key].create)),
 
             replace: watchAction.bind(null, routines[val.routineName].REPLACE.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].REPLACE, apiFunctions[val.entityName].replace)),
+                makeApiCall.bind(null, routines[val.routineName].REPLACE, apiFunctions[key].replace)),
 
             update: watchAction.bind(null, routines[val.routineName].UPDATE.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].UPDATE, apiFunctions[val.entityName].update)),
+                makeApiCall.bind(null, routines[val.routineName].UPDATE, apiFunctions[key].update)),
 
             delete: watchAction.bind(null, routines[val.routineName].DELETE.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].DELETE, apiFunctions[val.entityName].delete))
+                makeApiCall.bind(null, routines[val.routineName].DELETE, apiFunctions[key].delete))
         }
         return acc
     }, {})

@@ -1,6 +1,7 @@
 import config from "react-global-configuration";
 import {normalize, schema} from "normalizr";
 import axios from "axios";
+import { reduce} from "lodash";
 import $ from "jquery";
 
 
@@ -89,8 +90,8 @@ const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) =
 
 
 export const createDomainApiFunctions = (domainConfigs) => {
-    return domainConfigs.reduce((acc, val) => {
-        acc[val.entityName] = {
+    return reduce(domainConfigs,(acc, val, key) => {
+        acc[key] = {
             fetchAll: callApi.bind(null, val.endpoint, new schema.Array(val.schema), GET),
             fetchById: callApi.bind(null, val.endpoint, val.schema, GET),
             search: callApi.bind(null, val.endpoint, val.schema, GET),

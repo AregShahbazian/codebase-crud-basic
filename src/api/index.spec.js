@@ -210,7 +210,6 @@ describe('createDomainApiFunctions', () => {
     const myEntity1InitialState = normalize([], new schema.Array(myEntity1Schema))
 
     const myEntity1Config = {
-        entityName: myEntity1,
         endpoint: "myEntity1",
         routineName: "MY_ENTITY1",
         schema: myEntity1Schema,
@@ -222,14 +221,13 @@ describe('createDomainApiFunctions', () => {
     const myEntity2InitialState = normalize([], new schema.Array(myEntity2Schema))
 
     const myEntity2Config = {
-        entityName: myEntity2,
         endpoint: "myEntity2",
         routineName: "MY_ENTITY2",
         schema: myEntity2Schema,
         initialState: myEntity2InitialState
     }
 
-    const domainConfigs = [myEntity1Config, myEntity2Config]
+    const domainConfigs = {myEntity1: myEntity1Config, myEntity2: myEntity2Config}
 
     const a = ["fetchAll", "fetchById", "search", "create", "replace", "update", "delete"]
     const apiFunctions = createDomainApiFunctions(domainConfigs)

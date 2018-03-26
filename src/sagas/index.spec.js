@@ -6,7 +6,6 @@ import {createDomainApiFunctions} from "../api";
 import {normalize, schema} from "normalizr";
 import {testSaga} from "redux-saga-test-plan";
 
-
 describe('saga makeApiCall', () => {
     const routines = entityRoutines(["MY_ENTITY"])
     const apiFn = jest.fn();
@@ -59,7 +58,6 @@ describe('createWatcherSagas', () => {
     const myEntity1InitialState = normalize([], new schema.Array(myEntity1Schema))
 
     const myEntity1Config = {
-        entityName: myEntity1,
         endpoint: "myEntity1",
         routineName: "MY_ENTITY1",
         schema: myEntity1Schema,
@@ -71,14 +69,13 @@ describe('createWatcherSagas', () => {
     const myEntity2InitialState = normalize([], new schema.Array(myEntity2Schema))
 
     const myEntity2Config = {
-        entityName: myEntity2,
         endpoint: "myEntity2",
         routineName: "MY_ENTITY2",
         schema: myEntity2Schema,
         initialState: myEntity2InitialState
     }
 
-    const mockDomainConfigs = [myEntity1Config, myEntity2Config]
+    const mockDomainConfigs = {myEntity1: myEntity1Config, myEntity2: myEntity2Config}
 
     const a = ["fetchAll", "fetchById", "search", "create", "replace", "update", "delete"]
     const myEntityRoutines = createDomainRoutines(mockDomainConfigs)
@@ -114,6 +111,4 @@ describe('createWatcherSagaForks', () => {
     })
 
 })
-
-
 

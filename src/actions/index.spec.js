@@ -39,8 +39,6 @@ describe('myEntity action creators', () => {
         })
     ))
 
-    // console.log(routines)
-
     expect(routines.MY_ENTITY.FORM.prepare({id: 123})).toEqual({
         type: "MY_ENTITY/FORM/PREPARE",
         payload: {id: 123}
@@ -50,17 +48,15 @@ describe('myEntity action creators', () => {
 
 describe('createDomainRoutines', () => {
 
-    const myEntity1 = "myEntity1";
     const myEntity1Config = {
         routineName: "MY_ENTITY1",
     }
 
-    const myEntity2 = "myEntity2";
     const myEntity2Config = {
         routineName: "MY_ENTITY2",
     }
 
-    const domainConfigs = [myEntity1Config, myEntity2Config]
+    const domainConfigs = {myEntity1: myEntity1Config, myEntity2: myEntity2Config}
 
     const a = ["fetchAll", "fetchById", "search", "create", "replace", "update", "delete"]
     const myEntityRoutines = createDomainRoutines(domainConfigs)

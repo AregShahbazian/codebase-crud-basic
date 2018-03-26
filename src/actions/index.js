@@ -15,8 +15,8 @@ export const entityOps = [FETCH_ALL, FETCH_BY_ID, SEARCH, CREATE, REPLACE, UPDAT
 /**
  * The CRUD action creator routines for each entity name
  * */
-export const entityRoutines = (entityNames) => {
-    return entityNames.reduce((acc, val) => {
+export const entityRoutines = (routineNames) => {
+    return routineNames.reduce((acc, val) => {
         acc[val] = entityOps.reduce((acc2, val2) => {
             /* Create CRUD routines for each entity*/
 
@@ -46,7 +46,7 @@ export const entityRoutines = (entityNames) => {
 }
 
 export const createDomainRoutines = (domainConfigs) => {
-    return entityRoutines(domainConfigs.map(e => e.routineName))
+    return entityRoutines(Object.values(domainConfigs).map(e => e.routineName))
 }
 
 
