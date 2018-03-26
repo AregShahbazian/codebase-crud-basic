@@ -16,10 +16,10 @@ const mapDispatchToProps = ({
 const validate = values => {
     const errors = {}
 
-    if(!values.name){
+    if (!values.name) {
         errors.name = "Name is required"
     }
-    if(!values.dateOfBirth){
+    if (!values.dateOfBirth) {
         errors.dateOfBirth = "Date of birth is required"
     }
 
@@ -27,9 +27,8 @@ const validate = values => {
 }
 
 class AuthorEditorContainer extends React.Component {
-    handleSubmit = (e) => {
+    submit = () => {
         let {authorForm, createAuthor, updateAuthor} = this.props
-        e.preventDefault()
         /* By default the authorForm.values is undefined, so createAuthor will be called*/
         if (authorForm.values && authorForm.values.id) {
             updateAuthor(authorForm.values, {id: authorForm.values.id})
@@ -39,7 +38,7 @@ class AuthorEditorContainer extends React.Component {
     }
 
     render() {
-        return <AuthorEditor {...this.props} handleSubmit={this.handleSubmit}/>
+        return <AuthorEditor {...this.props} submit={this.submit}/>
     }
 }
 

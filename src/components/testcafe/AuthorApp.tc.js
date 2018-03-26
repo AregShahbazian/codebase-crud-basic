@@ -102,7 +102,7 @@ test("Test form validation", async t => {
         .expect(page.authorForm.dateOfBirthError.exists).notOk()
         // assert save button disabled
         .expect(page.authorForm.saveButton.hasAttribute('disabled')).ok()
-        // type empty string in name and dateOfBirth inputs
+        // click on name and dateOfBirth inputs without typing
         .click(page.authorForm.nameInput)
         .click(page.authorForm.dateOfBirthInput)
         // click on form body
@@ -118,15 +118,13 @@ test("Test form validation", async t => {
         .expect(page.authorForm.nameError.exists).notOk()
         // assert validation error for empty dateOfBirth
         .expect(page.authorForm.dateOfBirthError.innerText).eql(AUTHOR_DOB_ERROR)
-        // assert save button disabled
-        .expect(page.authorForm.saveButton.hasAttribute('disabled')).ok()
+        // assert save button enabled
+        .expect(page.authorForm.saveButton.hasAttribute('disabled')).notOk()
         // type value in dateOfBirth input
         .typeText(page.authorForm.dateOfBirthInput, AUTHOR_DOB_3)
         // assert no validation errors
         .expect(page.authorForm.nameError.exists).notOk()
         .expect(page.authorForm.dateOfBirthError.exists).notOk()
-        // assert save button enabled
-        .expect(page.authorForm.saveButton.hasAttribute('disabled')).notOk()
 });
 
 

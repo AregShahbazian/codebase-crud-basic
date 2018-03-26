@@ -10,7 +10,6 @@ const mapDispatchToProps = ({
 
 class AuthorRowContainer extends React.Component {
     handleEditClick = () => {
-        console.info("edit clicked")
         this.props.prepareForm(this.props.author)
     }
 

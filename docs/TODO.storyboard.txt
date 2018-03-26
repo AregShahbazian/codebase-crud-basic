@@ -1,10 +1,8 @@
 ***********
 STORIES
 
-Entity-form validation (using redux-form / redux-saga-routines)
-    SPIKE redux-form validation
-    redux-saga-routines validation handling combo with redux-fom
-        https://github.com/afitiskin/redux-saga-routines
+extract domain-specific code from generic code-base code
+    container: generic. args: component, [validate function]
 
 book/publisher page
 
@@ -277,3 +275,12 @@ write e2e tests with TestCafe
 
 functional delete button
 
+
+Entity-form validation (using redux-form / redux-saga-routines)
+    SPIKE redux-form validation
+    implement form validation with redux-form
+        implement sync validation
+        stop submitting if there's errors
+    redux-saga-routines validation handling combo with redux-fom
+        https://github.com/afitiskin/redux-saga-routines
+        ! not necessary fo now

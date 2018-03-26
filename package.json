@@ -10,9 +10,9 @@
     "test": "jest",
     "test:watch": "npm test -- --watch",
     "testcafe:firefox": "testcafe firefox src/components/testcafe/AuthorApp.tc.js --speed 0.9",
-    "testcafe:firefox:headless": "testcafe firefox:headless src/components/testcafe/AuthorApp.tc.js",
+    "testcafe:firefox:headless": "testcafe -c 2 firefox:headless src/components/testcafe/AuthorApp.tc.js",
     "testcafe:chrome": "testcafe chrome src/components/testcafe/AuthorApp.tc.js --speed 0.9",
-    "testcafe:chrome:headless": "testcafe chrome:headless src/components/testcafe/AuthorApp.tc.js",
+    "testcafe:chrome:headless": "testcafe -c 2 chrome:headless src/components/testcafe/AuthorApp.tc.js",
     "testcafe:full": "testcafe -c 2 firefox:headless,chrome:headless,opera src/components/testcafe/AuthorApp.tc.js",
     "wiremock": "./wiremock/wiremock.sh wiremock/",
     "webpack": "webpack"
