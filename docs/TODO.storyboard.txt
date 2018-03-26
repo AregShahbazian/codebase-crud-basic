@@ -4,6 +4,7 @@ STORIES
 extract domain-specific code from generic code-base code
     container: generic. args: component, [validate function]
 
+
 book/publisher page
 
 Entity-form hidden under row
