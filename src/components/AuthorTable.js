@@ -1,7 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import AuthorRowContainer from "../containers/AuthorRowContainer";
+import config from "react-global-configuration";
+import entityRowContainerGenerator from "../containers/entityRowContainerGenerator";
 import AuthorRow from "./AuthorRow";
+
+const AuthorRowContainer = entityRowContainerGenerator(config.get("entities").author.routineName)
 
 let AuthorTable = ({authors, handleNewClick}) => (
     <div>

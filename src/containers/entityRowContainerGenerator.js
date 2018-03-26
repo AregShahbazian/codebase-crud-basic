@@ -3,18 +3,18 @@ import {connect} from "react-redux";
 import routines from "../actions/domain";
 import PropTypes from "prop-types";
 
-const mapDispatchToProps = {
-    prepareForm: routines.AUTHOR.FORM.prepare,
-    deleteAuthor: routines.AUTHOR.DELETE.trigger
-}
+const mapDispatchToPropsGenerator = (routineName) => ({
+    prepareForm: routines[routineName].FORM.prepare,
+    deleteEntity: routines[routineName].DELETE.trigger
+})
 
-class AuthorRowContainer extends React.Component {
+class EntityRowContainer extends React.Component {
     handleEditClick = () => {
         this.props.prepareForm(this.props.entity)
     }
 
     handleDeleteClick = () => {
-        this.props.deleteAuthor(undefined, {id: this.props.entity.id})
+        this.props.deleteEntity(undefined, {id: this.props.entity.id})
     }
 
     render() {
@@ -27,15 +27,15 @@ class AuthorRowContainer extends React.Component {
     }
 }
 
-AuthorRowContainer.propTypes = {
+EntityRowContainer.propTypes = {
     entity: PropTypes.object.isRequired,
     entityRowGenerator: PropTypes.func.isRequired
 }
 
-AuthorRowContainer = connect(
-    null,
-    mapDispatchToProps
-)(AuthorRowContainer)
-
-export default AuthorRowContainer
+export default (routineName) => {
+    return connect(
+        null,
+        mapDispatchToPropsGenerator(routineName)
+    )(EntityRowContainer)
+}
 
