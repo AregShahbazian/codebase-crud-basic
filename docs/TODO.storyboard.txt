@@ -1,11 +1,21 @@
 ***********
 STORIES
 
+state handling only in App component
+    all mapStateToProps functions replaced by one mapStateToProps in the App component
+
+
 extract domain-specific code from generic code-base code
     container: generic. args: component, [validate function]
     using component-generator functions in the props
         inspired by: http://blog.matthewcheok.com/building-generic-components-in-react/
 
+refactor getEntitiesFromState
+
+split edit form and create form. This is not necessary now, but is necessary if page requires create form AND edit form at the same time
+    split reducers
+    split container
+    duplicate component
 
 book/publisher page
 
