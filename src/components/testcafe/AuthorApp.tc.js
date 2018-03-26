@@ -95,36 +95,41 @@ test("Test deleting a row", async t => {
         .expect(authorRow2.tr.exists).notOk()
 });
 
-test("Test form validation", async t => {
+test("Test form validation for adding new row", async t => {
     await t
     // assert no validation errors
         .expect(page.authorForm.nameError.exists).notOk()
         .expect(page.authorForm.dateOfBirthError.exists).notOk()
         // assert save button disabled
         .expect(page.authorForm.saveButton.hasAttribute('disabled')).ok()
-        // click on name and dateOfBirth inputs without typing
+        // click on name input without typing
         .click(page.authorForm.nameInput)
-        .click(page.authorForm.dateOfBirthInput)
         // click on form body
         .click(page.authorForm.form)
-        // assert validation errors for empty name and dateOfBirth
+        // assert validation error for empty name
         .expect(page.authorForm.nameError.innerText).eql(AUTHOR_NAME_ERROR)
-        .expect(page.authorForm.dateOfBirthError.innerText).eql(AUTHOR_DOB_ERROR)
         // assert save button disabled
         .expect(page.authorForm.saveButton.hasAttribute('disabled')).ok()
         // type value in name input
         .typeText(page.authorForm.nameInput, AUTHOR_NAME_3)
         // assert no validation error for name
         .expect(page.authorForm.nameError.exists).notOk()
-        // assert validation error for empty dateOfBirth
-        .expect(page.authorForm.dateOfBirthError.innerText).eql(AUTHOR_DOB_ERROR)
         // assert save button enabled
         .expect(page.authorForm.saveButton.hasAttribute('disabled')).notOk()
+        // click on save button
+        .click(page.authorForm.saveButton)
+        // assert validation error for empty dateOfBirth
+        .expect(page.authorForm.dateOfBirthError.innerText).eql(AUTHOR_DOB_ERROR)
+        // assert no new row created
+        .expect(authorRow3.tr.exists).notOk()
         // type value in dateOfBirth input
         .typeText(page.authorForm.dateOfBirthInput, AUTHOR_DOB_3)
-        // assert no validation errors
-        .expect(page.authorForm.nameError.exists).notOk()
+        // assert no validation error for dateOfBirth
         .expect(page.authorForm.dateOfBirthError.exists).notOk()
+        // click on save button
+        .click(page.authorForm.saveButton)
+        // assert no new row created
+        .expect(authorRow3.tr.exists).ok()
 });
 
 
