@@ -1,10 +1,9 @@
 import React from "react";
 import {connect} from "react-redux";
-import routines from "../actions/domain";
 import PropTypes from "prop-types";
 
-const mapDispatchToPropsGenerator = (routineName) => ({
-    prepareForm: routines[routineName].FORM.prepare,
+const mapDispatchToPropsGenerator = (entityRoutines) => ({
+    prepareForm: entityRoutines.FORM.prepare,
 })
 
 class EntityTableContainer extends React.Component {
@@ -21,10 +20,10 @@ EntityTableContainer.propTypes = {
     entityTableGenerator: PropTypes.func.isRequired
 }
 
-export default (routineName) => {
+export default (entityRoutines) => {
     return connect(
         null,
-        mapDispatchToPropsGenerator(routineName)
+        mapDispatchToPropsGenerator(entityRoutines)
     )(EntityTableContainer)
 }
 

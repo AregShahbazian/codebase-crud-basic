@@ -1,11 +1,10 @@
 import React from "react";
 import {connect} from "react-redux";
-import routines from "../actions/domain";
 import PropTypes from "prop-types";
 
-const mapDispatchToPropsGenerator = (routineName) => ({
-    prepareForm: routines[routineName].FORM.prepare,
-    deleteEntity: routines[routineName].DELETE.trigger
+const mapDispatchToPropsGenerator = (entityRoutines) => ({
+    prepareForm: entityRoutines.FORM.prepare,
+    deleteEntity: entityRoutines.DELETE.trigger
 })
 
 class EntityRowContainer extends React.Component {
@@ -32,10 +31,10 @@ EntityRowContainer.propTypes = {
     entityRowGenerator: PropTypes.func.isRequired
 }
 
-export default (routineName) => {
+export default (entityRoutines) => {
     return connect(
         null,
-        mapDispatchToPropsGenerator(routineName)
+        mapDispatchToPropsGenerator(entityRoutines)
     )(EntityRowContainer)
 }
 

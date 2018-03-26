@@ -1,12 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import config from "react-global-configuration";
+import routines from "../actions/domain";
 import entityTableContainerGenerator from "../containers/entityTableContainerGenerator";
 import AuthorEditorContainer from "../containers/AuthorEditorContainer";
 import AllActionsTest from "../components/AllActionsTest";
 import AuthorTable from "./AuthorTable";
 
-const AuthorTableContainer = entityTableContainerGenerator(config.get("entities").author.routineName)
+const AuthorTableContainer = entityTableContainerGenerator(routines[config.get("entities").author.routineName])
 
 let AuthorApp = ({authors}) => (
     <div>
