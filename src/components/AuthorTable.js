@@ -17,7 +17,9 @@ let AuthorTable = ({authors, handleNewClick}) => (
                 <AuthorRowContainer
                     key={author.id}
                     entity={author}
-                    entityRowGenerator={(entityRowProps) => <AuthorRow {...entityRowProps}/>}
+                    entityRowGenerator={
+                        (entityRowProps) =>
+                            <AuthorRow {...entityRowProps}/>}
                 />
             )}
             </tbody>
