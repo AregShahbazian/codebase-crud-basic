@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import AuthorRowContainer from "../containers/AuthorRowContainer";
+import AuthorRow from "./AuthorRow";
 
 let AuthorTable = ({authors, handleNewClick}) => (
     <div>
@@ -12,7 +13,8 @@ let AuthorTable = ({authors, handleNewClick}) => (
             {authors.map(author =>
                 <AuthorRowContainer
                     key={author.id}
-                    author={author}
+                    entity={author}
+                    entityRowGenerator={(entityRowProps) => <AuthorRow {...entityRowProps}/>}
                 />
             )}
             </tbody>

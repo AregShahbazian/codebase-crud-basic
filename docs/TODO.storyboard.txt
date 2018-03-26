@@ -3,6 +3,8 @@ STORIES
 
 extract domain-specific code from generic code-base code
     container: generic. args: component, [validate function]
+    using component-generator functions in the props
+        inspired by: http://blog.matthewcheok.com/building-generic-components-in-react/
 
 
 book/publisher page

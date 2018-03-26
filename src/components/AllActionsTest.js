@@ -38,10 +38,10 @@ class AllActionsTest extends Component {
         asyncCall([
             () => prepareForm(undefined),
             () => createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"}),
-            () => prepareForm({id: 3, name: "Author 3", dateOfBirth: "03-03-1993"}),
-            () => updateAuthor({name: "Sir Author 3"}, {id: 3}),
-            () => deleteAuthor(undefined, {id: 3})
-        ], 500)
+            () => prepareForm({id: 2, name: "Author 2", dateOfBirth: "02-02-1992"}),
+            () => updateAuthor({name: "Sir Author 2"}, {id: 2}),
+            () => deleteAuthor(undefined, {id: 2})
+        ], 300)
     }
 
     componentDidMount() {
