@@ -7,27 +7,13 @@ import entityEditorContainerGenerator from "../containers/entityEditorContainerG
 import AllActionsTest from "../components/AllActionsTest";
 import AuthorTable from "./AuthorTable";
 import AuthorEditor from "./AuthorEditor";
+import {author as authorValidate} from "./validation"
 
-const authorRoutineName = config.get("entities").author.routineName
-const authorEntityName = "author"
+const AUTHOR_ROUTINE_NAME = config.get("entities").author.routineName
+const AUTHOR_ENTITY_NAME = "author"
 
-// TODO: refactor, move inside component
-const AuthorTableContainer = entityTableContainerGenerator(routines[authorRoutineName])
-
-const authorValidate = values => {
-    const errors = {}
-
-    if (!values.name) {
-        errors.name = "Name is required"
-    }
-    if (!values.dateOfBirth) {
-        errors.dateOfBirth = "Date of birth is required"
-    }
-
-    return errors
-}
-
-const AuthorEditorContainer = entityEditorContainerGenerator(routines[authorRoutineName], authorEntityName, authorValidate)
+const AuthorTableContainer = entityTableContainerGenerator(routines[AUTHOR_ROUTINE_NAME])
+const AuthorEditorContainer = entityEditorContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME, authorValidate)
 
 let AuthorApp = ({authors, entityForm}) => (
     <div>

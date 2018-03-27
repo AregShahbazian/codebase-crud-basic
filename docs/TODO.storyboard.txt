@@ -1,8 +1,6 @@
 ***********
 STORIES
 
-relocate validate function
-
 generalize AuthorAppContainer
 
 split edit form and create form. This is not necessary now, but is necessary if page requires create form AND edit form at the same time
