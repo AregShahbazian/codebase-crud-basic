@@ -36,7 +36,7 @@ export const createRequest = (endpoint, method, payload, id) => {
     let requestBody
 
     if (method === GET || method === DELETE) {
-        queryParameters = !$.isEmptyObject(payload) ? "?" + $.param(payload) : queryParameters
+        queryParameters += !$.isEmptyObject(payload) ? "?" + $.param(payload) : ""
         requestBody = undefined
     } else {
         requestBody = payload
@@ -88,7 +88,12 @@ const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) =
     return makeRequest(method, request, schema)
 }
 
-
+/**
+ * For each entityConfig object in domainConfigs an object with api-functions is created,
+ * containing api-functions for all routines
+ * @param domainConfigs
+ * @returns {{}|any|any}
+ */
 export const createDomainApiFunctions = (domainConfigs) => {
     return reduce(domainConfigs,(acc, val, key) => {
         acc[key] = {

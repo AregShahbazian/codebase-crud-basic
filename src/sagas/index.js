@@ -41,37 +41,48 @@ export function* watchAction(action, doSaga) {
     yield takeLatest(action, doSaga)
 }
 
-
+/**
+ * For each entityConfig object in domainConfigs an object with watchers is created,
+ * containing watchers for all routines
+ * @param domainConfigs config objects for all entities
+ * @param routines routines object
+ * @param apiFunctions api functions for each routine for each entity
+ * @returns {{}|any|any}
+ */
 export const createWatcherSagas = (domainConfigs, routines, apiFunctions) => {
-    return reduce(domainConfigs,(acc, val, key) => {
-        acc[key] = {
-            fetchAll: watchAction.bind(null, routines[val.routineName].FETCH_ALL.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].FETCH_ALL, apiFunctions[key].fetchAll)),
+    return reduce(domainConfigs, (watchers, entityConfig, entityName) => {
+        watchers[entityName] = {
+            fetchAll: watchAction.bind(null, routines[entityConfig.routineName].FETCH_ALL.TRIGGER,
+                makeApiCall.bind(null, routines[entityConfig.routineName].FETCH_ALL, apiFunctions[entityName].fetchAll)),
 
-            fetchById: watchAction.bind(null, routines[val.routineName].FETCH_BY_ID.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].FETCH_BY_ID, apiFunctions[key].fetchById)),
+            fetchById: watchAction.bind(null, routines[entityConfig.routineName].FETCH_BY_ID.TRIGGER,
+                makeApiCall.bind(null, routines[entityConfig.routineName].FETCH_BY_ID, apiFunctions[entityName].fetchById)),
 
-            search: watchAction.bind(null, routines[val.routineName].SEARCH.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].SEARCH, apiFunctions[key].search)),
+            search: watchAction.bind(null, routines[entityConfig.routineName].SEARCH.TRIGGER,
+                makeApiCall.bind(null, routines[entityConfig.routineName].SEARCH, apiFunctions[entityName].search)),
 
-            create: watchAction.bind(null, routines[val.routineName].CREATE.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].CREATE, apiFunctions[key].create)),
+            create: watchAction.bind(null, routines[entityConfig.routineName].CREATE.TRIGGER,
+                makeApiCall.bind(null, routines[entityConfig.routineName].CREATE, apiFunctions[entityName].create)),
 
-            replace: watchAction.bind(null, routines[val.routineName].REPLACE.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].REPLACE, apiFunctions[key].replace)),
+            replace: watchAction.bind(null, routines[entityConfig.routineName].REPLACE.TRIGGER,
+                makeApiCall.bind(null, routines[entityConfig.routineName].REPLACE, apiFunctions[entityName].replace)),
 
-            update: watchAction.bind(null, routines[val.routineName].UPDATE.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].UPDATE, apiFunctions[key].update)),
+            update: watchAction.bind(null, routines[entityConfig.routineName].UPDATE.TRIGGER,
+                makeApiCall.bind(null, routines[entityConfig.routineName].UPDATE, apiFunctions[entityName].update)),
 
-            delete: watchAction.bind(null, routines[val.routineName].DELETE.TRIGGER,
-                makeApiCall.bind(null, routines[val.routineName].DELETE, apiFunctions[key].delete))
+            delete: watchAction.bind(null, routines[entityConfig.routineName].DELETE.TRIGGER,
+                makeApiCall.bind(null, routines[entityConfig.routineName].DELETE, apiFunctions[entityName].delete))
         }
-        return acc
+        return watchers
     }, {})
 
 }
 
-
+/**
+ * Create a list of fork-effects for each leaf node (watcher) of the watcherSagas object.
+ * @param watcherSagas for E entities, each having watchers for R routines
+ * @returns {Array} of N x R forks
+ */
 export const createWatcherSagaForks = (watcherSagas) => {
     let forks = [];
     map(watcherSagas, entityWatchers => {
@@ -82,7 +93,12 @@ export const createWatcherSagaForks = (watcherSagas) => {
     return forks
 }
 
-
+/**
+ * Create root saga for all forked watcher sagas
+ * @param domainConfigs
+ * @param routines
+ * @param apiFunctions
+ */
 export function* createRootSaga(domainConfigs, routines, apiFunctions) {
     let watcherSagas = createWatcherSagas(domainConfigs, routines, apiFunctions)
     let watcherSagaForks = createWatcherSagaForks(watcherSagas)

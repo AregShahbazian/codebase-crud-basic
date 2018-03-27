@@ -13,8 +13,9 @@ const FORM = 'FORM'
 export const entityOps = [FETCH_ALL, FETCH_BY_ID, SEARCH, CREATE, REPLACE, UPDATE, DELETE];
 
 /**
- * The CRUD action creator routines for each entity name
- * */
+ * Creates CRUD action creator routines for each routine name
+ * @param routineNames
+ */
 export const entityRoutines = (routineNames) => {
     return routineNames.reduce((acc, val) => {
         acc[val] = entityOps.reduce((acc2, val2) => {
@@ -52,6 +53,10 @@ export const entityRoutines = (routineNames) => {
 
 }
 
+/**
+ * Creates routines-objects for the list of routine-names
+ * @param domainConfigs
+ */
 export const createDomainRoutines = (domainConfigs) => {
     return entityRoutines(Object.values(domainConfigs).map(e => e.routineName))
 }

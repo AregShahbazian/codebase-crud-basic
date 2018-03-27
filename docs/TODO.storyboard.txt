@@ -1,17 +1,22 @@
 ***********
 STORIES
 
-book/publisher page
-
-Entity-form hidden under row
-
-implement filter requests
+implement server side filtering
+    filter form
+    routine: search
+    rename search -> filter
+    filter form submitted with HTTP GET
+    filter params in url
+    apply filter button
 
 implement sort requests
+    SPIKE server side sorting
 
 implement pagination:
     http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#pagination
     https://developers.facebook.com/docs/graph-api/using-graph-api/#paging
+
+book/publisher page
 
 Secure login (https)
 

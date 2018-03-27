@@ -5,6 +5,12 @@ import {merge, union, reduce} from "lodash";
 import {combineActions, handleActions} from "redux-actions";
 
 // NOTE: lodash merge performs recursively, and could slow down performance
+/**
+ * Performs immutable merge of a single normalized entity with the state
+ * @param state
+ * @param payload
+ * @returns {*}
+ */
 export const mergeEntityIntoState = (state, payload) => {
     let entities = merge({}, state.entities, payload.entities)
     let result = union(state.result, [payload.result])
@@ -12,17 +18,35 @@ export const mergeEntityIntoState = (state, payload) => {
     return {...state, entities, result}
 }
 
+/**
+ * Performs immutable delete, removing the the id in the payload from the result array in the state
+ * @param state
+ * @param payload
+ * @returns {*}
+ */
 export const deleteEntityFromState = (state, payload) => {
-    if (state.result.indexOf(payload.result) > -1) {
-        return update(state, {result: {$splice: [[state.result.indexOf(payload.result), 1]]}})
+    let idx = state.result.indexOf(payload.result)
+    if (idx > -1) {
+        return update(state, {result: {$splice: [[idx, 1]]}})
     }
     return state
 }
 
+/**
+ * Immutably replaces the entities- and result-keys in the state with those in the payload
+ * @param state
+ * @param payload
+ * @returns {{entities, result}}
+ */
 export const replaceStateWithEntities = (state, payload) => {
-    return {...state, entities: payload.entities, result: payload.result}
+    return {entities: payload.entities, result: payload.result}
 }
 
+/**
+ * Reducers for entity-state
+ * @param entityRoutines
+ * @param initialState
+ */
 export const entityCrudReducers = (entityRoutines, initialState) => handleActions({
     /**/
     [entityRoutines.FETCH_ALL.success]
@@ -44,11 +68,20 @@ export const entityCrudReducers = (entityRoutines, initialState) => handleAction
     }
 }, initialState);
 
-
+/**
+ * Immutably replaces the values-key in the state with the payload
+ * @param state
+ * @param payload
+ * @returns {*}
+ */
 export const prepareEntityForm = (state, payload) => {
     return update(state, {values: {$set: payload}})
 }
 
+/**
+ * Reducers for create form state
+ * @param entityRoutines
+ */
 export const entityCreateFormReducers = (entityRoutines) => handleActions({
     [combineActions(
         entityRoutines.CREATE.SUCCESS)]
@@ -61,6 +94,10 @@ export const entityCreateFormReducers = (entityRoutines) => handleActions({
     }
 }, {})
 
+/**
+ * Reducers for update form state
+ * @param entityRoutines
+ */
 export const entityUpdateFormReducers = (entityRoutines) => handleActions({
     [combineActions(
         entityRoutines.UPDATE.SUCCESS)]
@@ -73,6 +110,12 @@ export const entityUpdateFormReducers = (entityRoutines) => handleActions({
     }
 }, {})
 
+/**
+ * Creates crud-reducers, create-form reducers, and update-form reducers, for each entity in domainConfigs.
+ * @param domainConfigs
+ * @param domainRoutines
+ * @returns {Reducer<any>}
+ */
 export const createDomainReducers = (domainConfigs, domainRoutines) => {
     let entityReducers = reduce(domainConfigs, (acc, val, key) => {
         acc[key] =
