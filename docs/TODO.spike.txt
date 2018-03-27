@@ -1,9 +1,6 @@
 
-redux-form validation
 
-
-Learn Caching
-	react / redux / redux-saga level?
+Research server side sorting
 
 Learn webpack,
     read overview
@@ -256,3 +253,5 @@ Investigate End-ToEnd testing
         can set test speed with --speed cli option
         can set breakpoints with t.debug()
         can access console messages
+
+redux-form validation

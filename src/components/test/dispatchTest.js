@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {connect} from "react-redux";
-import routines from "../actions/domain";
+import routines from "../../actions/domain";
 
 const mapDispatchToProps = ({
     fetchAuthors: routines.AUTHOR.FETCH_ALL.trigger,
@@ -28,7 +28,7 @@ async function asyncCall(calls, timeout) {
     }
 }
 
-class AllActionsTest extends Component {
+class DispatchTest extends Component {
     render() {
         return (null)
     }
@@ -57,13 +57,13 @@ class AllActionsTest extends Component {
     }
 
     componentDidMount() {
-        // this.scenario2()
+        this.scenario2()
     }
 }
 
-AllActionsTest = connect(
+DispatchTest = connect(
     null,
     mapDispatchToProps
-)(AllActionsTest)
+)(DispatchTest)
 
-export default AllActionsTest
+export default DispatchTest

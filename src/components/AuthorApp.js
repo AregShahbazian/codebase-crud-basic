@@ -9,7 +9,7 @@ import entityUpdateFormContainerGenerator from "../containers/entityUpdateFormCo
 import AuthorTable from "./AuthorTable";
 import AuthorCreateForm from "./AuthorCreateForm";
 import AuthorUpdateForm from "./AuthorUpdateForm";
-import AllActionsTest from "../components/AllActionsTest";
+import DispatchTest from "./test/dispatchTest";
 import {authorCreate as authorCreateValidation, authorUpdate as authorUpdateValidation} from "./form/validation"
 
 const AUTHOR_ENTITY_NAME = "author"
@@ -40,7 +40,7 @@ let AuthorApp = ({entities, entityCreateForm, entityUpdateForm}) => (
                 (entityUpdateProps) =>
                     // props needed only by the component
                     <AuthorUpdateForm {...entityUpdateProps} />}/>
-        <AllActionsTest/>
+        <DispatchTest/>
     </div>
 )
 
