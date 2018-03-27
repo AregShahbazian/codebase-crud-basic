@@ -1,7 +1,9 @@
 {
   "request": {
     "method": "GET",
-    "urlPattern": "/author\\?name=2"
+    "urlPattern": "/author\\?name=2&dateOfBirth=1992"
+    // TODO: why not working?
+    // ^\/author\?((name=2&dateOfBirth=)|(name=&dateOfBirth=1992)|(name=2&dateOfBirth=1992))$
   },
   "response": {
     "status": 200,
@@ -14,7 +16,7 @@
       "x-frame-options": "DENY",
       "x-xss-protection": "1; mode=block"
     },
-    "bodyFileName": "author_2.json",
+    "bodyFileName": "author_list_2.json",
     "transformers": [
       "response-template"
     ]

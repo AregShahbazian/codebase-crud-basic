@@ -14,7 +14,7 @@
       "x-frame-options": "DENY",
       "x-xss-protection": "1; mode=block"
     },
-    "bodyFileName": "author_all.json",
+    "bodyFileName": "author_list_all.json",
     "transformers": [
       "response-template"
     ]

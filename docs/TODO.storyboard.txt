@@ -2,12 +2,14 @@
 STORIES
 
 implement server side filtering
-    filter form
-    routine: search
-    rename search -> filter
+    create stub for filtering just author 2
+    rename routine search -> filter
+    create filter form component
+        "Apply Filter" button
+    create filter form container
+            routine: filter
     filter form submitted with HTTP GET
     filter params in url
-    apply filter button
 
 implement sort requests
     SPIKE server side sorting
