@@ -1,8 +1,6 @@
 ***********
 STORIES
 
-generalize AuthorAppContainer
-
 split edit form and create form. This is not necessary now, but is necessary if page requires create form AND edit form at the same time
     split reducers
     split container
@@ -299,4 +297,6 @@ extract domain-specific code from generic code-base code
 
 refactor: move ContainerGenerator-call to inside component
     NO! component is pure, so inly a render method. And everything inside the render method will be executed on every update...
+
+generalize AuthorAppContainer
 

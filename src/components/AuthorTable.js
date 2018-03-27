@@ -5,16 +5,17 @@ import routines from "../actions/domain";
 import entityRowContainerGenerator from "../containers/entityRowContainerGenerator";
 import AuthorRow from "./AuthorRow";
 
-const AuthorRowContainer = entityRowContainerGenerator(routines[config.get("entities").author.routineName])
+const AUTHOR_ROUTINE_NAME = config.get("entities").author.routineName
+const AuthorRowContainer = entityRowContainerGenerator(routines[AUTHOR_ROUTINE_NAME])
 
-let AuthorTable = ({authors, handleNewClick}) => (
+let AuthorTable = ({entities, handleNewClick}) => (
     <div>
         <button id="create-button" onClick={handleNewClick}>
             Create New
         </button>
         <table id="author-table">
             <tbody>
-            {authors.map(author =>
+            {entities.map(author =>
                 <AuthorRowContainer
                     key={author.id}
                     entity={author}
@@ -31,7 +32,7 @@ let AuthorTable = ({authors, handleNewClick}) => (
 
 
 AuthorTable.propTypes = {
-    authors: PropTypes.arrayOf(
+    entities: PropTypes.arrayOf(
         PropTypes.object.isRequired
     ).isRequired,
     handleNewClick: PropTypes.func.isRequired

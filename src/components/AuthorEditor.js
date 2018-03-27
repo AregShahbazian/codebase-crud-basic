@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Field} from "redux-form";
-import {renderInput} from "./formComponents"
+import {renderInput} from "./form/formComponents"
 
 let AuthorEditor = ({handleSubmit, submit, pristine, submitting}) => (
     <div>
