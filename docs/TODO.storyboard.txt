@@ -1,10 +1,6 @@
 ***********
 STORIES
 
-refactor: move ContainerGenerator-call to inside component
-
-refactor getEntitiesFromState
-
 relocate validate function
 
 generalize AuthorAppContainer
@@ -235,7 +231,7 @@ add new entity to domain to implement relations
 
                 if entity2 is queried directly, the entire entity2 object will be stored, it it's own entity2-state
 
-fix delete sucess
+fix delete success
     P: DELETE_SUCCESS mutates the state, but the components are not re-rendered
     E: see https://stackoverflow.com/questions/39513753/my-redux-state-has-changed-why-doesnt-react-trigger-a-re-render
         never mutate the state. Instead of
@@ -302,4 +298,7 @@ extract domain-specific code from generic code-base code
     container: generic. args: component, [validate function]
     using component-generator functions in the props
         inspired by: http://blog.matthewcheok.com/building-generic-components-in-react/
+
+refactor: move ContainerGenerator-call to inside component
+    NO! component is pure, so inly a render method. And everything inside the render method will be executed on every update...
 

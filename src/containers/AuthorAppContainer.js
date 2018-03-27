@@ -4,10 +4,11 @@ import {concat, forEach} from "lodash";
 import routines from "../actions/domain";
 import AuthorApp from "../components/AuthorApp";
 
-// TODO: refactor
 const getEntitiesFromState = (entityState, entityName) => {
     let cachedEntities = []
-    forEach(entityState.result, (id) => (cachedEntities = concat(cachedEntities, entityState.entities[entityName][id])))
+    forEach(entityState.result, (id) => {
+        cachedEntities = concat(cachedEntities, entityState.entities[entityName][id])
+    })
     return cachedEntities
 }
 
