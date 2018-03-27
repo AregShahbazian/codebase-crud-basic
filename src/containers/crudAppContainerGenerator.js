@@ -13,7 +13,8 @@ const getEntitiesFromState = (entityState, entityName) => {
 
 const mapStateToPropsGenerator = (entityName) => (state) => ({
     entities: getEntitiesFromState(state[entityName], entityName),
-    entityForm: state.form[entityName]
+    entityCreateForm: state.form[`${entityName}-create`],
+    entityUpdateForm: state.form[`${entityName}-update`]
 })
 
 const mapDispatchToPropsGenerator = (entityRoutines) => ({
@@ -22,7 +23,11 @@ const mapDispatchToPropsGenerator = (entityRoutines) => ({
 
 class CrudAppContainer extends React.Component {
     render() {
-        return this.props.crudAppGenerator({entities: this.props.entities, entityForm: this.props.entityForm})
+        return this.props.crudAppGenerator({
+            entities: this.props.entities,
+            entityCreateForm: this.props.entityCreateForm,
+            entityUpdateForm: this.props.entityUpdateForm
+        })
     }
 
     componentDidMount() {

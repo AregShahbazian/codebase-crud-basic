@@ -49,14 +49,25 @@ export const prepareEntityForm = (state, payload) => {
     return update(state, {values: {$set: payload}})
 }
 
-export const entityFormReducers = (entityRoutines) => handleActions({
+export const entityCreateFormReducers = (entityRoutines) => handleActions({
     [combineActions(
-        entityRoutines.CREATE.SUCCESS,
+        entityRoutines.CREATE.SUCCESS)]
+        (state, action) {
+        return {};
+    },
+    [entityRoutines.FORM.prepareCreate]
+        (state, action) {
+        return prepareEntityForm(state, {});
+    }
+}, {})
+
+export const entityUpdateFormReducers = (entityRoutines) => handleActions({
+    [combineActions(
         entityRoutines.UPDATE.SUCCESS)]
         (state, action) {
         return {};
     },
-    [entityRoutines.FORM.prepare]
+    [entityRoutines.FORM.prepareUpdate]
         (state, action) {
         return prepareEntityForm(state, action.payload);
     }
@@ -70,8 +81,8 @@ export const createDomainReducers = (domainConfigs, domainRoutines) => {
     }, {})
 
     let formPluginReducers = reduce(domainConfigs, (acc, val, key) => {
-        acc[key] =
-            entityFormReducers(domainRoutines[val.routineName])
+        acc[`${key}-create`] = entityCreateFormReducers(domainRoutines[val.routineName])
+        acc[`${key}-update`] = entityUpdateFormReducers(domainRoutines[val.routineName])
         return acc
     }, {})
 

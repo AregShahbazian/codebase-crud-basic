@@ -3,24 +3,24 @@ import PropTypes from "prop-types";
 import {Field} from "redux-form";
 import {renderInput} from "./form/formComponents"
 
-let AuthorEditor = ({handleSubmit, submit, pristine, submitting}) => (
+let AuthorUpdateForm = ({handleSubmit, submit, pristine, submitting}) => (
     <div>
-        <form id="author-form" onSubmit={handleSubmit(submit)}>
+        <form id="author-update-form" onSubmit={handleSubmit(submit)}>
             <Field name="name" component={renderInput} type="text" placeholder="name"/>
             <Field name="dateOfBirth" component={renderInput} type="text" placeholder="date of birth"/>
 
-            <button id="save-button" type="submit" disabled={pristine || submitting}>
+            <button id="author-update-save-button" type="submit" disabled={pristine || submitting}>
                 Save
             </button>
         </form>
     </div>
 )
 
-AuthorEditor.propTypes = {
+AuthorUpdateForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     submit: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired
 }
 
-export default AuthorEditor
+export default AuthorUpdateForm

@@ -3,13 +3,13 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
 const mapDispatchToPropsGenerator = (entityRoutines) => ({
-    prepareForm: entityRoutines.FORM.prepare,
+    prepareUpdateForm: entityRoutines.FORM.prepareUpdate,
     deleteEntity: entityRoutines.DELETE.trigger
 })
 
 class EntityRowContainer extends React.Component {
-    handleEditClick = () => {
-        this.props.prepareForm(this.props.entity)
+    handleUpdateClick = () => {
+        this.props.prepareUpdateForm(this.props.entity)
     }
 
     handleDeleteClick = () => {
@@ -19,7 +19,7 @@ class EntityRowContainer extends React.Component {
     render() {
         return this.props.entityRowGenerator({
                 entity: this.props.entity,
-                handleEditClick: this.handleEditClick,
+                handleUpdateClick: this.handleUpdateClick,
                 handleDeleteClick: this.handleDeleteClick
             }
         )

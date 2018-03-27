@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-let AuthorRow = ({entity, handleEditClick, handleDeleteClick}) => (
+let AuthorRow = ({entity, handleUpdateClick, handleDeleteClick}) => (
     <tr id={"author-row-" + entity.id}>
         <td className="author-name">
             {entity.name}
@@ -10,7 +10,7 @@ let AuthorRow = ({entity, handleEditClick, handleDeleteClick}) => (
             {entity.dateOfBirth}
         </td>
         <td>
-            <button className="edit-button" onClick={handleEditClick}>
+            <button className="update-button" onClick={handleUpdateClick}>
                 Edit
             </button>
         </td>
@@ -24,7 +24,7 @@ let AuthorRow = ({entity, handleEditClick, handleDeleteClick}) => (
 
 AuthorRow.propTypes = {
     entity: PropTypes.object.isRequired,
-    handleEditClick: PropTypes.func.isRequired,
+    handleUpdateClick: PropTypes.func.isRequired,
     handleDeleteClick: PropTypes.func.isRequired
 }
 

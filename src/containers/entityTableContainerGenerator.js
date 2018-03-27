@@ -3,12 +3,12 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 
 const mapDispatchToPropsGenerator = (entityRoutines) => ({
-    prepareForm: entityRoutines.FORM.prepare,
+    prepareCreateForm: entityRoutines.FORM.prepareCreate,
 })
 
 class EntityTableContainer extends React.Component {
     handleNewClick = () => {
-        this.props.prepareForm(undefined)
+        this.props.prepareCreateForm()
     }
 
     render() {

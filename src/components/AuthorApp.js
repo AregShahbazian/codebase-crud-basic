@@ -1,36 +1,45 @@
 import React from "react";
 import PropTypes from "prop-types";
 import config from "react-global-configuration";
+
 import routines from "../actions/domain";
 import entityTableContainerGenerator from "../containers/entityTableContainerGenerator";
-import entityEditorContainerGenerator from "../containers/entityEditorContainerGenerator";
+import entityCreateFormContainerGenerator from "../containers/entityCreateFormContainerGenerator";
+import entityUpdateFormContainerGenerator from "../containers/entityUpdateFormContainerGenerator";
 import AuthorTable from "./AuthorTable";
-import AuthorEditor from "./AuthorEditor";
+import AuthorCreateForm from "./AuthorCreateForm";
+import AuthorUpdateForm from "./AuthorUpdateForm";
 import AllActionsTest from "../components/AllActionsTest";
-import {author as authorValidate} from "./form/validation"
+import {authorCreate as authorCreateValidation, authorUpdate as authorUpdateValidation} from "./form/validation"
 
 const AUTHOR_ENTITY_NAME = "author"
 const AUTHOR_ROUTINE_NAME = config.get("entities")[AUTHOR_ENTITY_NAME].routineName
 
 const AuthorTableContainer = entityTableContainerGenerator(routines[AUTHOR_ROUTINE_NAME])
-const AuthorEditorContainer = entityEditorContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME, authorValidate)
+const AuthorCreateFormContainer = entityCreateFormContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME, authorCreateValidation)
+const AuthorUpdateFormContainer = entityUpdateFormContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME, authorUpdateValidation)
 
-let AuthorApp = ({entities, entityForm}) => (
+let AuthorApp = ({entities, entityCreateForm, entityUpdateForm}) => (
     <div>
         <AuthorTableContainer
             entityTableGenerator={
                 (entityTableProps) =>
                     // props needed only by the component
-                    <AuthorTable {...entityTableProps} entities={entities}/>}
-        />
-        <AuthorEditorContainer
+                    <AuthorTable {...entityTableProps} entities={entities}/>}/>
+        <AuthorCreateFormContainer
             // props needed by the container
-            entityForm={entityForm}
-            entityEditorGenerator={
-                (entityEditorProps) =>
+            entityCreateForm={entityCreateForm}
+            entityCreateFormGenerator={
+                (entityCreateFormProps) =>
                     // props needed only by the component
-                    <AuthorEditor {...entityEditorProps} />}
-        />
+                    <AuthorCreateForm {...entityCreateFormProps} />}/>
+        <AuthorUpdateFormContainer
+            // props needed by the container
+            entityUpdateForm={entityUpdateForm}
+            entityUpdateFormGenerator={
+                (entityUpdateProps) =>
+                    // props needed only by the component
+                    <AuthorUpdateForm {...entityUpdateProps} />}/>
         <AllActionsTest/>
     </div>
 )
@@ -39,7 +48,8 @@ AuthorApp.propTypes = {
     entities: PropTypes.arrayOf(
         PropTypes.object.isRequired
     ).isRequired,
-    entityForm: PropTypes.object.isRequired
+    entityCreateForm: PropTypes.object.isRequired,
+    entityUpdateForm: PropTypes.object.isRequired
 }
 
 export default AuthorApp

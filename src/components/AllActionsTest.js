@@ -10,7 +10,8 @@ const mapDispatchToProps = ({
     replaceAuthor: routines.AUTHOR.REPLACE.trigger,
     updateAuthor: routines.AUTHOR.UPDATE.trigger,
     deleteAuthor: routines.AUTHOR.DELETE.trigger,
-    prepareForm: routines.AUTHOR.FORM.prepare,
+    prepareCreateForm: routines.AUTHOR.FORM.prepareCreate,
+    prepareUpdateForm: routines.AUTHOR.FORM.prepareUpdate,
     fetchBooks: routines.BOOK.FETCH_ALL.trigger,
 })
 
@@ -33,12 +34,23 @@ class AllActionsTest extends Component {
     }
 
     scenario2() {
-        const {fetchAuthors, fetchAuthorById, searchAuthor, createAuthor, replaceAuthor, updateAuthor, deleteAuthor, prepareForm, prepareForm1, fetchBooks} = this.props
+        const {
+            fetchAuthors,
+            fetchAuthorById,
+            searchAuthor,
+            createAuthor,
+            replaceAuthor,
+            updateAuthor,
+            deleteAuthor,
+            prepareCreateForm,
+            prepareUpdateForm,
+            fetchBooks
+        } = this.props
 
         asyncCall([
-            () => prepareForm(undefined),
+            () => prepareCreateForm(),
             () => createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"}),
-            () => prepareForm({id: 2, name: "Author 2", dateOfBirth: "02-02-1992"}),
+            () => prepareUpdateForm({id: 2, name: "Author 2", dateOfBirth: "02-02-1992"}),
             () => updateAuthor({name: "Sir Author 2"}, {id: 2}),
             () => deleteAuthor(undefined, {id: 2})
         ], 300)

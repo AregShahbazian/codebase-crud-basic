@@ -30,12 +30,19 @@ export const entityRoutines = (routineNames) => {
 
             acc2.FORM = {}
 
-            let formEditName = `${val}/FORM/PREPARE`;
-            acc2.FORM.prepare = createAction(
-                formEditName,
+            let formPrepareCreateName = `${val}/FORM/PREPARE_CREATE`;
+            acc2.FORM.prepareCreate = createAction(
+                formPrepareCreateName,
                 (payload) => (payload)
             )
-            acc2.FORM.PREPARE = formEditName
+            acc2.FORM.PREPARE_CREATE = formPrepareCreateName
+
+            let formPrepareUpdateName = `${val}/FORM/PREPARE_UPDATE`;
+            acc2.FORM.prepareUpdate = createAction(
+                formPrepareUpdateName,
+                (payload) => (payload)
+            )
+            acc2.FORM.PREPARE_UPDATE = formPrepareUpdateName
 
             return acc2
         }, {})

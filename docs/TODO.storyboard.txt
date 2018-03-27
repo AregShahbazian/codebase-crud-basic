@@ -1,11 +1,6 @@
 ***********
 STORIES
 
-split edit form and create form. This is not necessary now, but is necessary if page requires create form AND edit form at the same time
-    split reducers
-    split container
-    duplicate component
-
 book/publisher page
 
 Entity-form hidden under row
@@ -299,4 +294,9 @@ refactor: move ContainerGenerator-call to inside component
     NO! component is pure, so inly a render method. And everything inside the render method will be executed on every update...
 
 generalize AuthorAppContainer
+
+split edit form and create form. This is not necessary now, but is necessary if page requires create form AND edit form at the same time
+    //split reducers
+    split container
+    duplicate component
 
