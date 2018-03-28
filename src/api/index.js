@@ -84,7 +84,7 @@ export const normalizeData = (schema, data) => {
  */
 const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) => {
     let request = createRequest(endpoint, method, payload, meta.id)
-    console.log(`Calling api at ${API_ROOT + request.fullEndpoint} with method %s and payload %s`, method, JSON.stringify(request.requestBody))
+    console.log(`Calling api at ${API_ROOT + request.fullEndpoint} with method ${method} and payload ${JSON.stringify(request.requestBody)}`)
     return makeRequest(method, request, schema)
 }
 
@@ -99,7 +99,7 @@ export const createDomainApiFunctions = (domainConfigs) => {
         acc[key] = {
             fetchAll: callApi.bind(null, val.endpoint, new schema.Array(val.schema), GET),
             fetchById: callApi.bind(null, val.endpoint, val.schema, GET),
-            search: callApi.bind(null, val.endpoint, val.schema, GET),
+            filter: callApi.bind(null, val.endpoint, new schema.Array(val.schema), GET),
             create: callApi.bind(null, val.endpoint, val.schema, POST),
             replace: callApi.bind(null, val.endpoint, val.schema, PUT),
             update: callApi.bind(null, val.endpoint, val.schema, PATCH),

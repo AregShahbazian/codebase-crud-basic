@@ -10,6 +10,17 @@ class AuthorRow {
     }
 }
 
+class AuthorFilterForm {
+    constructor() {
+        this.form = Selector("#author-filter-form")
+        this.nameInput = this.form.find("input[name=name")
+        this.dateOfBirthInput = this.form.find("input[name=dateOfBirth")
+        this.nameError = this.form.find("span#name-error")
+        this.dateOfBirthError = this.form.find("span#dateOfBirth-error")
+        this.saveButton = this.form.find("button#author-filter-apply-button")
+    }
+}
+
 class AuthorCreateForm {
     constructor() {
         this.form = Selector("#author-create-form")
@@ -35,8 +46,9 @@ class AuthorUpdateForm {
 export default class Page {
     constructor() {
         this.authorTable = Selector("#author-table");
-        this.authorUpdateForm = new AuthorUpdateForm()
+        this.authorFilterForm = new AuthorFilterForm()
         this.authorCreateForm = new AuthorCreateForm()
+        this.authorUpdateForm = new AuthorUpdateForm()
         this.allAuthorRows = this.authorTable.find("tr")
         this.createButton = Selector("#create-button")
     }

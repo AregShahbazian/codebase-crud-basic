@@ -77,7 +77,7 @@ describe('createWatcherSagas', () => {
 
     const mockDomainConfigs = {myEntity1: myEntity1Config, myEntity2: myEntity2Config}
 
-    const a = ["fetchAll", "fetchById", "search", "create", "replace", "update", "delete"]
+    const a = ["fetchAll", "fetchById", "filter", "create", "replace", "update", "delete"]
     const myEntityRoutines = createDomainRoutines(mockDomainConfigs)
     const apiFunctions = createDomainApiFunctions(mockDomainConfigs)
     const watcherSagas = createWatcherSagas(mockDomainConfigs, myEntityRoutines, apiFunctions)

@@ -1,16 +1,6 @@
 ***********
 STORIES
 
-implement server side filtering
-    create stub for filtering just author 2
-    rename routine search -> filter
-    create filter form component
-        "Apply Filter" button
-    create filter form container
-            routine: filter
-    filter form submitted with HTTP GET
-    filter params in url
-
 implement sort requests
     SPIKE server side sorting
 
@@ -306,4 +296,15 @@ split edit form and create form. This is not necessary now, but is necessary if 
     //split reducers
     split container
     duplicate component
+
+implement server side filtering
+    create stub for filtering just author 2
+    rename routine search -> filter
+    create filter form component
+        "Apply Filter" button
+    create filter form container
+            routine: filter
+    filter form submitted with HTTP GET
+    filter params in url
+    e2e tests
 

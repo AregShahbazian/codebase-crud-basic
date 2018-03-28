@@ -6,12 +6,15 @@ import {renderInput} from "./form/formComponents"
 let AuthorCreateForm = ({handleSubmit, submit, pristine, submitting}) => (
     <div>
         <form id="author-create-form" onSubmit={handleSubmit(submit)}>
-            <Field name="name" component={renderInput} type="text" placeholder="name"/>
-            <Field name="dateOfBirth" component={renderInput} type="text" placeholder="date of birth"/>
+            <fieldset>
+                <legend>Create Author</legend>
+                <Field name="name" component={renderInput} type="text" placeholder="name"/>
+                <Field name="dateOfBirth" component={renderInput} type="text" placeholder="date of birth"/>
 
-            <button id="author-create-save-button" type="submit" disabled={pristine || submitting}>
-                Save
-            </button>
+                <button id="author-create-save-button" type="submit" disabled={pristine || submitting}>
+                    Save
+                </button>
+            </fieldset>
         </form>
     </div>
 )

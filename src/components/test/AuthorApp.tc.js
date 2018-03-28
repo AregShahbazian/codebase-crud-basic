@@ -1,5 +1,5 @@
 import Page from "./page-model"
-import {consoleCheck, maximize} from "./console-check"
+import {consoleCheck, maximize} from "./hooks"
 
 fixture `Author CRUD page`
     .page `localhost:8080`
@@ -28,6 +28,11 @@ const AUTHOR_DOB_3 = "03-03-1993"
 
 const AUTHOR_NAME_ERROR = "Name is required"
 const AUTHOR_DOB_ERROR = "Date of birth is required"
+
+const AUTHOR_CORRECT_FILTER_NAME = "2"
+const AUTHOR_CORRECT_FILTER_DOB = "1992"
+const AUTHOR_WRONG_FILTER_NAME = "foo"
+const AUTHOR_WRONG_FILTER_DOB = "bar"
 
 const authorRow1 = page.authorRowById(AUTHOR_ID_1)
 const authorRow2 = page.authorRowById(AUTHOR_ID_2)
@@ -163,6 +168,38 @@ test("Test form validation for editing row", async t => {
         .click(page.authorUpdateForm.saveButton)
         // assert row 2 updated name
         .expect(authorRow2.tdName.innerText).eql(AUTHOR_NAME_2_EDIT)
+});
+
+test("Test filtering", async t => {
+    await t
+    // click apply button
+        .click(page.authorFilterForm.saveButton)
+        // assert 2 author rows are rendered
+        .expect(page.allAuthorRows.count).eql(2)
+        // assert author 1 and 2 data in table rows
+        .expect(authorRow1.tdName.innerText).eql(AUTHOR_NAME_1)
+        .expect(authorRow1.tdDateOfBirth.innerText).eql(AUTHOR_DOB_1)
+        .expect(authorRow2.tdName.innerText).eql(AUTHOR_NAME_2)
+        .expect(authorRow2.tdDateOfBirth.innerText).eql(AUTHOR_DOB_2)
+        // type "2" in name filter
+        .typeText(page.authorFilterForm.nameInput, AUTHOR_CORRECT_FILTER_NAME)
+        // type "1992" in dob filter
+        .typeText(page.authorFilterForm.dateOfBirthInput, AUTHOR_CORRECT_FILTER_DOB)
+        // click apply button
+        .click(page.authorFilterForm.saveButton)
+        // assert 1 author row is rendered
+        .expect(page.allAuthorRows.count).eql(1)
+        // assert 2 data in table row
+        .expect(authorRow2.tdName.innerText).eql(AUTHOR_NAME_2)
+        .expect(authorRow2.tdDateOfBirth.innerText).eql(AUTHOR_DOB_2)
+        // type "foo" in name filter
+        .typeText(page.authorFilterForm.nameInput, AUTHOR_WRONG_FILTER_NAME, {replace: true})
+        // type "bar" in dob filter
+        .typeText(page.authorFilterForm.dateOfBirthInput, AUTHOR_WRONG_FILTER_DOB, {replace: true})
+        // click apply button
+        .click(page.authorFilterForm.saveButton)
+        // assert NO author rows are rendered
+        .expect(page.allAuthorRows.count).eql(0)
 });
 
 

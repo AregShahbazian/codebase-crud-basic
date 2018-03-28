@@ -58,8 +58,8 @@ export const createWatcherSagas = (domainConfigs, routines, apiFunctions) => {
             fetchById: watchAction.bind(null, routines[entityConfig.routineName].FETCH_BY_ID.TRIGGER,
                 makeApiCall.bind(null, routines[entityConfig.routineName].FETCH_BY_ID, apiFunctions[entityName].fetchById)),
 
-            search: watchAction.bind(null, routines[entityConfig.routineName].SEARCH.TRIGGER,
-                makeApiCall.bind(null, routines[entityConfig.routineName].SEARCH, apiFunctions[entityName].search)),
+            filter: watchAction.bind(null, routines[entityConfig.routineName].FILTER.TRIGGER,
+                makeApiCall.bind(null, routines[entityConfig.routineName].FILTER, apiFunctions[entityName].filter)),
 
             create: watchAction.bind(null, routines[entityConfig.routineName].CREATE.TRIGGER,
                 makeApiCall.bind(null, routines[entityConfig.routineName].CREATE, apiFunctions[entityName].create)),

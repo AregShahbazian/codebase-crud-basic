@@ -49,13 +49,14 @@ export const replaceStateWithEntities = (state, payload) => {
  */
 export const entityCrudReducers = (entityRoutines, initialState) => handleActions({
     /**/
-    [entityRoutines.FETCH_ALL.success]
+    [combineActions(
+        entityRoutines.FETCH_ALL.success,
+        entityRoutines.FILTER.success)]
         (state, action) {
         return replaceStateWithEntities(state, action.payload)
     },
     [combineActions(
         entityRoutines.FETCH_BY_ID.success,
-        entityRoutines.SEARCH.success,
         entityRoutines.CREATE.success,
         entityRoutines.REPLACE.success,
         entityRoutines.UPDATE.success)]
@@ -77,6 +78,14 @@ export const entityCrudReducers = (entityRoutines, initialState) => handleAction
 export const prepareEntityForm = (state, payload) => {
     return update(state, {values: {$set: payload}})
 }
+
+/**
+ * Reducers for create form state
+ * @param entityRoutines
+ */
+export const entityFilterFormReducers = (entityRoutines) => handleActions({
+}, {})
+
 
 /**
  * Reducers for create form state
@@ -124,6 +133,7 @@ export const createDomainReducers = (domainConfigs, domainRoutines) => {
     }, {})
 
     let formPluginReducers = reduce(domainConfigs, (acc, val, key) => {
+        acc[`${key}-filter`] = entityFilterFormReducers(domainRoutines[val.routineName])
         acc[`${key}-create`] = entityCreateFormReducers(domainRoutines[val.routineName])
         acc[`${key}-update`] = entityUpdateFormReducers(domainRoutines[val.routineName])
         return acc

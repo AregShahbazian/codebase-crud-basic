@@ -3,27 +3,26 @@ import PropTypes from "prop-types";
 import {Field} from "redux-form";
 import {renderInput} from "./form/formComponents"
 
-let AuthorUpdateForm = ({handleSubmit, submit, pristine, submitting}) => (
+let AuthorFilterForm = ({handleSubmit, submit}) => (
     <div>
-        <form id="author-update-form" onSubmit={handleSubmit(submit)}>
+        <form id="author-filter-form" onSubmit={handleSubmit(submit)}>
             <fieldset>
-                <legend>Edit Author</legend>
+                <legend>Filters</legend>
                 <Field name="name" component={renderInput} type="text" placeholder="name"/>
                 <Field name="dateOfBirth" component={renderInput} type="text" placeholder="date of birth"/>
 
-                <button id="author-update-save-button" type="submit" disabled={pristine || submitting}>
-                    Save
+                <button id="author-filter-apply-button" type="submit">
+                    Apply Filter
                 </button>
             </fieldset>
         </form>
     </div>
 )
 
-AuthorUpdateForm.propTypes = {
+AuthorFilterForm.propTypes = {
     handleSubmit: PropTypes.func.isRequired,
-    submit: PropTypes.func.isRequired,
-    pristine: PropTypes.bool.isRequired,
-    submitting: PropTypes.bool.isRequired
+    submit: PropTypes.func.isRequired
 }
 
-export default AuthorUpdateForm
+export default AuthorFilterForm
+

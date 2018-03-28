@@ -11,11 +11,14 @@ const getEntitiesFromState = (entityState, entityName) => {
     return cachedEntities
 }
 
-const mapStateToPropsGenerator = (entityName) => (state) => ({
-    entities: getEntitiesFromState(state[entityName], entityName),
-    entityCreateForm: state.form[`${entityName}-create`],
-    entityUpdateForm: state.form[`${entityName}-update`]
-})
+const mapStateToPropsGenerator = (entityName) => (state) => {
+    return {
+        entities: getEntitiesFromState(state[entityName], entityName),
+        entityFilterForm: state.form[`${entityName}-filter`],
+        entityCreateForm: state.form[`${entityName}-create`],
+        entityUpdateForm: state.form[`${entityName}-update`]
+    }
+}
 
 const mapDispatchToPropsGenerator = (entityRoutines) => ({
     fetchEntities: entityRoutines.FETCH_ALL.trigger
@@ -25,6 +28,7 @@ class CrudAppContainer extends React.Component {
     render() {
         return this.props.crudAppGenerator({
             entities: this.props.entities,
+            entityFilterForm: this.props.entityFilterForm,
             entityCreateForm: this.props.entityCreateForm,
             entityUpdateForm: this.props.entityUpdateForm
         })
