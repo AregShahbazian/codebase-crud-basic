@@ -21,7 +21,7 @@ const mapStateToPropsGenerator = (entityName) => (state) => {
 }
 
 const mapDispatchToPropsGenerator = (entityRoutines) => ({
-    fetchEntities: entityRoutines.FETCH_ALL.trigger
+    filterEntities: entityRoutines.FILTER.trigger
 })
 
 class CrudAppContainer extends React.Component {
@@ -35,7 +35,7 @@ class CrudAppContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchEntities()
+        this.props.filterEntities(this.props.entityFilterForm.values)
     }
 }
 

@@ -1,6 +1,10 @@
 
+Research server side sorting, filtering and pagination
+    https://www.softfluent.com/documentation/BOM_SP_DYN_Server.html
+    "Server side sorting should be preferred in almost all cases to client side sorting"
 
-Research server side sorting
+    https://specs.openstack.org/openstack/api-wg/guidelines/pagination_filter_sort.html
+
 
 Learn webpack,
     read overview

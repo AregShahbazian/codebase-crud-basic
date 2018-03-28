@@ -229,7 +229,7 @@ describe('createDomainApiFunctions', () => {
 
     const domainConfigs = {myEntity1: myEntity1Config, myEntity2: myEntity2Config}
 
-    const a = ["fetchAll", "fetchById", "filter", "create", "replace", "update", "delete"]
+    const a = ["fetchById", "filter", "create", "replace", "update", "delete"]
     const apiFunctions = createDomainApiFunctions(domainConfigs)
 
     a.forEach((a) => {

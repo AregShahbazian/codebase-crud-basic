@@ -4,13 +4,13 @@ import PropTypes from "prop-types";
 import {reduxForm} from "redux-form";
 
 const mapDispatchToPropsGenerator = (entityRoutines) => ({
-    filterEntity: entityRoutines.FILTER.trigger
+    filterEntities: entityRoutines.FILTER.trigger
 })
 
 class EntityFilterFormContainer extends React.Component {
     submit = () => {
-        let {entityFilterForm, filterEntity} = this.props
-        filterEntity(entityFilterForm.values)
+        let {entityFilterForm, filterEntities} = this.props
+        filterEntities(entityFilterForm.values)
     }
 
     render() {

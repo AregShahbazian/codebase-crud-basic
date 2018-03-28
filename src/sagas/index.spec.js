@@ -16,22 +16,22 @@ describe('saga makeApiCall', () => {
 
     it('should put request action, then call api function with action payload, ' +
         'then put success or failure action', () => {
-        testSaga(makeApiCall, routines.MY_ENTITY.FETCH_ALL, apiFn, routines.MY_ENTITY.FETCH_ALL.trigger(PAYLOAD))
+        testSaga(makeApiCall, routines.MY_ENTITY.FILTER, apiFn, routines.MY_ENTITY.FILTER.trigger(PAYLOAD))
             .next()
-            .put(routines.MY_ENTITY.FETCH_ALL.request())
+            .put(routines.MY_ENTITY.FILTER.request())
             .next()
             .call(apiFn, PAYLOAD, undefined)
             .next({response: RESPONSE})
-            .put(routines.MY_ENTITY.FETCH_ALL.success(RESPONSE))
+            .put(routines.MY_ENTITY.FILTER.success(RESPONSE))
             .next()
-            .put(routines.MY_ENTITY.FETCH_ALL.fulfill())
+            .put(routines.MY_ENTITY.FILTER.fulfill())
             .next()
             .isDone()
             .back(3)
             .next({error: ERROR})
-            .put(routines.MY_ENTITY.FETCH_ALL.failure(ERROR))
+            .put(routines.MY_ENTITY.FILTER.failure(ERROR))
             .next()
-            .put(routines.MY_ENTITY.FETCH_ALL.fulfill())
+            .put(routines.MY_ENTITY.FILTER.fulfill())
             .next()
             .isDone()
     })
@@ -77,7 +77,7 @@ describe('createWatcherSagas', () => {
 
     const mockDomainConfigs = {myEntity1: myEntity1Config, myEntity2: myEntity2Config}
 
-    const a = ["fetchAll", "fetchById", "filter", "create", "replace", "update", "delete"]
+    const a = ["fetchById", "filter", "create", "replace", "update", "delete"]
     const myEntityRoutines = createDomainRoutines(mockDomainConfigs)
     const apiFunctions = createDomainApiFunctions(mockDomainConfigs)
     const watcherSagas = createWatcherSagas(mockDomainConfigs, myEntityRoutines, apiFunctions)

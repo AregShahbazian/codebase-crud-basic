@@ -1,7 +1,6 @@
 import {createRoutine} from "redux-saga-routines";
 import {createAction} from "redux-actions"
 
-const FETCH_ALL = 'FETCH_ALL'
 const FETCH_BY_ID = 'FETCH_BY_ID'
 const FILTER = 'FILTER'
 const CREATE = 'CREATE'
@@ -10,7 +9,7 @@ const UPDATE = 'UPDATE'
 const DELETE = 'DELETE'
 const FORM = 'FORM'
 
-export const entityOps = [FETCH_ALL, FETCH_BY_ID, FILTER, CREATE, REPLACE, UPDATE, DELETE];
+export const entityOps = [FETCH_BY_ID, FILTER, CREATE, REPLACE, UPDATE, DELETE];
 
 /**
  * Creates CRUD action creator routines for each routine name

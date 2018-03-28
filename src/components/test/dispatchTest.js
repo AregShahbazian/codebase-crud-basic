@@ -3,16 +3,15 @@ import {connect} from "react-redux";
 import routines from "../../actions/domain";
 
 const mapDispatchToProps = ({
-    fetchAuthors: routines.AUTHOR.FETCH_ALL.trigger,
     fetchAuthorById: routines.AUTHOR.FETCH_BY_ID.trigger,
-    filterAuthor: routines.AUTHOR.FILTER.trigger,
+    filterAuthors: routines.AUTHOR.FILTER.trigger,
     createAuthor: routines.AUTHOR.CREATE.trigger,
     replaceAuthor: routines.AUTHOR.REPLACE.trigger,
     updateAuthor: routines.AUTHOR.UPDATE.trigger,
     deleteAuthor: routines.AUTHOR.DELETE.trigger,
     prepareCreateForm: routines.AUTHOR.FORM.prepareCreate,
     prepareUpdateForm: routines.AUTHOR.FORM.prepareUpdate,
-    fetchBooks: routines.BOOK.FETCH_ALL.trigger,
+    filterBooks: routines.BOOK.FILTER.trigger,
 })
 
 
@@ -35,7 +34,6 @@ class DispatchTest extends Component {
 
     scenario2() {
         const {
-            fetchAuthors,
             fetchAuthorById,
             filterAuthor,
             createAuthor,
@@ -44,7 +42,7 @@ class DispatchTest extends Component {
             deleteAuthor,
             prepareCreateForm,
             prepareUpdateForm,
-            fetchBooks
+            filterBooks
         } = this.props
 
         asyncCall([

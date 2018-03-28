@@ -50,7 +50,6 @@ export const replaceStateWithEntities = (state, payload) => {
 export const entityCrudReducers = (entityRoutines, initialState) => handleActions({
     /**/
     [combineActions(
-        entityRoutines.FETCH_ALL.success,
         entityRoutines.FILTER.success)]
         (state, action) {
         return replaceStateWithEntities(state, action.payload)

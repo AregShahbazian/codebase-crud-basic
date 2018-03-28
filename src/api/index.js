@@ -97,7 +97,6 @@ const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) =
 export const createDomainApiFunctions = (domainConfigs) => {
     return reduce(domainConfigs,(acc, val, key) => {
         acc[key] = {
-            fetchAll: callApi.bind(null, val.endpoint, new schema.Array(val.schema), GET),
             fetchById: callApi.bind(null, val.endpoint, val.schema, GET),
             filter: callApi.bind(null, val.endpoint, new schema.Array(val.schema), GET),
             create: callApi.bind(null, val.endpoint, val.schema, POST),
