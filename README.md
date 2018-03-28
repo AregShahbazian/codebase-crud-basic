@@ -26,8 +26,6 @@
 - Webpack
     - $ npm build
 
-## Functional design
-
 #### The user logs in as admin. Depending or his role, the possible pages are shown in menu
 
 ### Pages
@@ -40,8 +38,6 @@
     - CRUD page for users
 - (Monitoring pages)
     - (audits, performance, graphs, etc.)
-
-## Technical design
 
 #### JSON Domain
 
