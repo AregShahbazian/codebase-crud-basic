@@ -12,6 +12,9 @@
 - Webpack Dev Server
     - $ npm start
 
+- Wiremock stub server
+    - $ npm run wiremock
+    
 - Jest unit tests
     - $ npm run test:watch
     
