@@ -1,9 +1,19 @@
 import React from "react";
 import {connect} from "react-redux";
+import {concat, forEach} from "lodash";
 import PropTypes from "prop-types";
+
+const getEntitiesFromState = (entityState, entityName) => {
+    let cachedEntities = []
+    forEach(entityState.result, (id) => {
+        cachedEntities = concat(cachedEntities, entityState.entities[entityName][id])
+    })
+    return cachedEntities
+}
 
 const mapStateToPropsGenerator = (entityName) => (state) => {
     return {
+        entities: getEntitiesFromState(state[entityName], entityName),
         entityTableLoading: state[entityName].loading,
         entityTablePages: state[entityName].pages
     }
@@ -35,9 +45,10 @@ class EntityTableContainer extends React.Component {
     }
 
     render() {
-        let {entityTablePages, entityTableLoading} = this.props;
+        let {entities, entityTablePages, entityTableLoading} = this.props;
 
         return this.props.entityTableGenerator({
+            entities: entities,
             handleNewClick: this.handleNewClick,
             handleUpdateClick: this.handleUpdateClick,
             handleDeleteClick: this.handleDeleteClick,

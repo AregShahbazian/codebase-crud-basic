@@ -3,6 +3,12 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {reduxForm} from "redux-form";
 
+const mapStateToPropsGenerator = (entityName) => (state) => {
+    return {
+        entityUpdateForm: state.form[`${entityName}-update`]
+    }
+}
+
 const mapDispatchToPropsGenerator = (entityRoutines) => ({
     updateEntity: entityRoutines.UPDATE.trigger
 })
@@ -19,13 +25,12 @@ class EntityUpdateFormContainer extends React.Component {
 }
 
 EntityUpdateFormContainer.propTypes = {
-    entityUpdateForm: PropTypes.object.isRequired,
     entityUpdateFormGenerator: PropTypes.func.isRequired
 }
 
 export default (entityRoutines, entityName, validate) => {
     return connect(
-        null,
+        mapStateToPropsGenerator(entityName),
         mapDispatchToPropsGenerator(entityRoutines)
     )(reduxForm({
         form: `${entityName}-update`,

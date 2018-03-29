@@ -1,9 +1,6 @@
 ***********
 STORIES
 
-state handling only as high as necessary
-    only if parent needs state for 2 or moe children
-
 handle single entity actions like delete and update
     what does the page do? fetch all rows again to fill page?
 
@@ -344,4 +341,7 @@ use 3rd party table for sorting/pagination
     finish plugging in react-table
         pages and loading: in the store-state
         pageSize, page and sorted: stay in table local state
+
+state handling only as high as necessary
+    only if parent needs state for 2 or moe children
 

@@ -22,7 +22,7 @@ const AuthorFilterFormContainer = entityFilterFormContainerGenerator(routines[AU
 const AuthorCreateFormContainer = entityCreateFormContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME, authorCreateValidation)
 const AuthorUpdateFormContainer = entityUpdateFormContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME, authorUpdateValidation)
 
-let AuthorApp = ({entities, entityFilterForm, entityCreateForm, entityUpdateForm}) => (
+let AuthorApp = ({entities, entityFilterForm}) => (
     <div>
         <AuthorFilterFormContainer
             // props needed by the container
@@ -32,21 +32,18 @@ let AuthorApp = ({entities, entityFilterForm, entityCreateForm, entityUpdateForm
                     // props needed only by the component
                     <AuthorFilterForm {...entityFilterProps} />}/>
         <AuthorTableContainer
+            // props needed by the container
             entityFilterForm={entityFilterForm}
             entityTableGenerator={
                 (entityTableProps) =>
                     // props needed only by the component
-                    <AuthorTable {...entityTableProps} entities={entities}/>}/>
+                    <AuthorTable {...entityTableProps}/>}/>
         <AuthorCreateFormContainer
-            // props needed by the container
-            entityCreateForm={entityCreateForm}
             entityCreateFormGenerator={
                 (entityCreateFormProps) =>
                     // props needed only by the component
                     <AuthorCreateForm {...entityCreateFormProps} />}/>
         <AuthorUpdateFormContainer
-            // props needed by the container
-            entityUpdateForm={entityUpdateForm}
             entityUpdateFormGenerator={
                 (entityUpdateProps) =>
                     // props needed only by the component
@@ -56,12 +53,7 @@ let AuthorApp = ({entities, entityFilterForm, entityCreateForm, entityUpdateForm
 )
 
 AuthorApp.propTypes = {
-    entities: PropTypes.arrayOf(
-        PropTypes.object.isRequired
-    ).isRequired,
-    entityFilterForm: PropTypes.object.isRequired,
-    entityCreateForm: PropTypes.object.isRequired,
-    entityUpdateForm: PropTypes.object.isRequired
+    entityFilterForm: PropTypes.object.isRequired
 }
 
 export default AuthorApp
