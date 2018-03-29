@@ -46,17 +46,17 @@ class DispatchTest extends Component {
         } = this.props
 
         asyncCall([
-            // () => prepareCreateForm(),
-            // () => createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"}),
-            // () => prepareUpdateForm({id: 2, name: "Author 2", dateOfBirth: "02-02-1992"}),
-            // () => updateAuthor({name: "Sir Author 2"}, {id: 2}),
-            // () => deleteAuthor(undefined, {id: 2}),
-            () => filterAuthor({name: "2", dateOfBirth: "1992"})
+            () => prepareCreateForm(),
+            () => createAuthor({name: "Author 3", dateOfBirth: "03-03-1993"}),
+            () => prepareUpdateForm({id: 2, name: "Author 2", dateOfBirth: "02-02-1992"}),
+            () => updateAuthor({name: "Sir Author 2"}, {id: 2}),
+            () => deleteAuthor(undefined, {id: 2}),
+            // () => filterAuthor({name: "2", dateOfBirth: "1992"})
         ], 500)
     }
 
     componentDidMount() {
-        // this.scenario2()
+        this.scenario2()
     }
 }
 

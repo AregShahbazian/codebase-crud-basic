@@ -6,6 +6,15 @@ JSON API
     full specifications
         http://jsonapi.org/format/
 
+    NOTES:
+        difference between relationships.*.links.self and relationships.*.links.related:
+            https://stackoverflow.com/questions/32522212/jsonapi-difference-between-self-and-related-in-a-links-resource/33038105#33038105
+            self is for the relationship (like koppeltabel)
+            related is for the related resources (like foreign tabel)
+        creating relationship
+            https://github.com/json-api/json-api/issues/1158
+
+
 Research server side sorting, filtering and pagination
     https://www.softfluent.com/documentation/BOM_SP_DYN_Server.html
         "Server side sorting should be preferred in almost all cases to client side sorting"

@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "total-pages": 2
+  },
+  "data": [
+    {
+      "type": "person",
+      "id": "a6",
+      "attributes": {
+        "name": "Article Author 6",
+        "dateOfBirth": "06-06-1906"
+      }
+    },
+    {
+      "type": "person",
+      "id": "a7",
+      "attributes": {
+        "name": "Article Author 7",
+        "dateOfBirth": "07-07-1907"
+      }
+    },
+    {
+      "type": "person",
+      "id": "a8",
+      "attributes": {
+        "name": "Article Author 8",
+        "dateOfBirth": "08-08-1908"
+      }
+    },
+    {
+      "type": "person",
+      "id": "a9",
+      "attributes": {
+        "name": "Article Author 9",
+        "dateOfBirth": "09-09-1909"
+      }
+    }
+  ],
+  "links": {
+    "self": "http://localhost:9999/person?page[number]=2&page[size]=5",
+    "first": "http://localhost:9999/person?page[number]=1&page[size]=5",
+    "prev": "http://localhost:9999/person?page[number]=1&page[size]=5",
+    "next": null,
+    "last": "http://localhost:9999//person?page[number]=2&page[size]=5"
+  }
+}

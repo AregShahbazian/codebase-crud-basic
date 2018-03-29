@@ -4,9 +4,31 @@ STORIES
 implement pagination in stub
     SPIKE JSON API
     create JSONAPI stubs with pagination data
+    __files
+        pagination:
+            default name asc sort
+            name desc sort
+            dob asc name desc sort
+            dob filter
+            name filter
+        crud:
+            a14
+            a13 updated
+            a13
+    mappings
+        TODO
+
     use normalizr alternative
         https://github.com/paularmstrong/normalizr/blob/master/docs/jsonapi.md
             specifically json-api-normalizer
+    NOTE: JSONAPI redux implementations
+        http://jsonapi.org/implementations/
+            search: "redux"
+
+
+
+
+
 
 handle single entity actions like create, delete and update.
 P1: After creating, the page has +1 row, and it might even not
