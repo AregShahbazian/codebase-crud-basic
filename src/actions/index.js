@@ -23,7 +23,7 @@ export const entityRoutines = (routineNames) => {
             acc2[val2] = createRoutine(
                 `${val}/${val2}`,
                 (payload) => payload,
-                (payload, meta) => (meta ? {id: meta.id} : undefined)
+                (payload, meta) => meta
             )
 
             /* Create form actions for each entity*/

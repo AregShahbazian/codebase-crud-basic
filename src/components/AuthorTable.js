@@ -1,42 +1,59 @@
 import React from "react";
 import PropTypes from "prop-types";
-import config from "react-global-configuration";
-import routines from "../actions/domain";
-import entityRowContainerGenerator from "../containers/entityRowContainerGenerator";
-import AuthorRow from "./AuthorRow";
+import ReactTable from "react-table";
+import "react-table/react-table.css";
 
-const AUTHOR_ROUTINE_NAME = config.get("entities").author.routineName
-const AuthorRowContainer = entityRowContainerGenerator(routines[AUTHOR_ROUTINE_NAME])
-
-let AuthorTable = ({entities, handleNewClick}) => (
+let AuthorTable = ({entities, handleNewClick, handleUpdateClick, handleDeleteClick, pages, loading, refreshTableData}) => (
     <div>
         <button id="create-button" onClick={handleNewClick}>
             Create New
         </button>
-        <table id="author-table">
-            <tbody>
-            {entities.map(author =>
-                <AuthorRowContainer
-                    key={author.id}
-                    entity={author}
-                    entityRowGenerator={
-                        (entityRowProps) =>
-                            <AuthorRow {...entityRowProps}/>}
-                />
-            )}
-            </tbody>
-        </table>
 
+        <ReactTable
+            columns={[
+                {
+                    Header: "First Name",
+                    accessor: "name"
+                },
+                {
+                    Header: "Age",
+                    accessor: "dateOfBirth"
+                },
+                {
+                    id: 'edit',
+                    accessor: '[row identifier to be passed to button]',
+                    Cell: ({original}) => (
+                        <div>
+                            <button className="update-button" onClick={() => handleUpdateClick(original)}>
+                                Edit
+                            </button>
+                            <button className="delete-button" onClick={() => handleDeleteClick(original)}>
+                                Delete
+                            </button>
+                        </div>)
+                }
+            ]}
+            manual
+            data={entities}
+            pages={pages}
+            loading={loading}
+            onFetchData={refreshTableData}
+            defaultPageSize={10}
+            className="-striped -highlight"
+        />
     </div>
 )
-
 
 AuthorTable.propTypes = {
     entities: PropTypes.arrayOf(
         PropTypes.object.isRequired
     ).isRequired,
-    handleNewClick: PropTypes.func.isRequired
+    handleNewClick: PropTypes.func.isRequired,
+    handleUpdateClick: PropTypes.func.isRequired,
+    handleDeleteClick: PropTypes.func.isRequired,
+    pages: PropTypes.number.isRequired,
+    loading: PropTypes.bool.isRequired,
+    refreshTableData: PropTypes.func.isRequired
 }
-
 
 export default AuthorTable

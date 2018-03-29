@@ -1,20 +1,25 @@
 import {normalize, schema} from "normalizr";
 import config from "react-global-configuration";
 
+const tableInitialState = {
+    pages: 1,
+    loading: true
+}
+
 const publisher = "publisher";
 const publisherSchema = new schema.Entity(publisher)
-const publisherInitialState = {...normalize([], new schema.Array(publisherSchema))}
+const publisherInitialState = {...normalize([], new schema.Array(publisherSchema)), ...tableInitialState}
 
 const book = "book";
 const bookSchema = new schema.Entity(book)
-const bookInitialState = {...normalize([], new schema.Array(bookSchema))}
+const bookInitialState = {...normalize([], new schema.Array(bookSchema)), ...tableInitialState}
 
 const author = "author";
 const authorSchema = new schema.Entity('author', {
     publisher: publisherSchema,
     books: [bookSchema]
 })
-const authorInitialState = {...normalize([], new schema.Array(authorSchema))}
+const authorInitialState = {...normalize([], new schema.Array(authorSchema)), ...tableInitialState}
 
 const entityConfigs = {}
 

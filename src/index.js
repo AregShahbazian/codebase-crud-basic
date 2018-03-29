@@ -5,9 +5,6 @@ import {render} from "react-dom";
 import {applyMiddleware, createStore} from "redux";
 import {Provider} from "react-redux";
 import createSagaMiddleware from "redux-saga";
-
-import config from "react-global-configuration";
-import routines from "./actions/domain";
 import crudAppContainerGenerator from "./containers/crudAppContainerGenerator";
 import reducer from "./reducers/domain";
 import rootSaga from "./sagas/domain";
@@ -30,10 +27,8 @@ const store = createStore(
 sagaMiddleware.run(rootSaga)
 
 
-
 const AUTHOR_ENTITY_NAME = "author"
-const AUTHOR_ROUTINE_NAME = config.get("entities")[AUTHOR_ENTITY_NAME].routineName
-const AuthorAppContainer = crudAppContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME)
+const AuthorAppContainer = crudAppContainerGenerator(AUTHOR_ENTITY_NAME)
 
 render(
     <Provider store={store}>

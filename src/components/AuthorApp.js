@@ -17,7 +17,7 @@ import {authorCreate as authorCreateValidation, authorUpdate as authorUpdateVali
 const AUTHOR_ENTITY_NAME = "author"
 const AUTHOR_ROUTINE_NAME = config.get("entities")[AUTHOR_ENTITY_NAME].routineName
 
-const AuthorTableContainer = entityTableContainerGenerator(routines[AUTHOR_ROUTINE_NAME])
+const AuthorTableContainer = entityTableContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME)
 const AuthorFilterFormContainer = entityFilterFormContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME)
 const AuthorCreateFormContainer = entityCreateFormContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME, authorCreateValidation)
 const AuthorUpdateFormContainer = entityUpdateFormContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME, authorUpdateValidation)
@@ -32,6 +32,7 @@ let AuthorApp = ({entities, entityFilterForm, entityCreateForm, entityUpdateForm
                     // props needed only by the component
                     <AuthorFilterForm {...entityFilterProps} />}/>
         <AuthorTableContainer
+            entityFilterForm={entityFilterForm}
             entityTableGenerator={
                 (entityTableProps) =>
                     // props needed only by the component

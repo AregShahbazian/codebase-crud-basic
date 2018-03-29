@@ -39,7 +39,11 @@ export const deleteEntityFromState = (state, payload) => {
  * @returns {{entities, result}}
  */
 export const replaceStateWithEntities = (state, payload) => {
-    return {entities: payload.entities, result: payload.result}
+    return {...state, entities: payload.entities, result: payload.result}
+}
+
+export const updateTableState = (state, loading) => {
+    return {...state, loading: loading}
 }
 
 /**
@@ -47,12 +51,18 @@ export const replaceStateWithEntities = (state, payload) => {
  * @param entityRoutines
  * @param initialState
  */
-export const entityCrudReducers = (entityRoutines, initialState) => handleActions({
-    /**/
+export const createEntityDataReducers = (entityRoutines, initialState) => handleActions({
+    /* REQUEST */
+    [combineActions(
+        entityRoutines.FILTER.request)]
+        (state, action) {
+        return updateTableState(state, true)
+    },
+    /* SUCCESS */
     [combineActions(
         entityRoutines.FILTER.success)]
         (state, action) {
-        return replaceStateWithEntities(state, action.payload)
+        return updateTableState(replaceStateWithEntities(state, action.payload), false)
     },
     [combineActions(
         entityRoutines.FETCH_BY_ID.success,
@@ -82,15 +92,14 @@ export const prepareEntityForm = (state, payload) => {
  * Reducers for create form state
  * @param entityRoutines
  */
-export const entityFilterFormReducers = (entityRoutines) => handleActions({
-}, {})
+export const createEntityFilterFormReducers = (entityRoutines) => handleActions({}, {})
 
 
 /**
  * Reducers for create form state
  * @param entityRoutines
  */
-export const entityCreateFormReducers = (entityRoutines) => handleActions({
+export const createEntityCreateFormReducers = (entityRoutines) => handleActions({
     [combineActions(
         entityRoutines.CREATE.SUCCESS)]
         (state, action) {
@@ -106,7 +115,7 @@ export const entityCreateFormReducers = (entityRoutines) => handleActions({
  * Reducers for update form state
  * @param entityRoutines
  */
-export const entityUpdateFormReducers = (entityRoutines) => handleActions({
+export const createEntityUpdateFormReducers = (entityRoutines) => handleActions({
     [combineActions(
         entityRoutines.UPDATE.SUCCESS)]
         (state, action) {
@@ -125,21 +134,21 @@ export const entityUpdateFormReducers = (entityRoutines) => handleActions({
  * @returns {Reducer<any>}
  */
 export const createDomainReducers = (domainConfigs, domainRoutines) => {
-    let entityReducers = reduce(domainConfigs, (acc, val, key) => {
-        acc[key] =
-            entityCrudReducers(domainRoutines[val.routineName], val.initialState)
-        return acc
+    let entityDataReducers = reduce(domainConfigs, (reducers, entityConfig, entityName) => {
+        reducers[entityName] =
+            createEntityDataReducers(domainRoutines[entityConfig.routineName], entityConfig.initialState)
+        return reducers
     }, {})
 
-    let formPluginReducers = reduce(domainConfigs, (acc, val, key) => {
-        acc[`${key}-filter`] = entityFilterFormReducers(domainRoutines[val.routineName])
-        acc[`${key}-create`] = entityCreateFormReducers(domainRoutines[val.routineName])
-        acc[`${key}-update`] = entityUpdateFormReducers(domainRoutines[val.routineName])
-        return acc
+    let formPluginReducers = reduce(domainConfigs, (reducers, entityConfig, entityName) => {
+        reducers[`${entityName}-filter`] = createEntityFilterFormReducers(domainRoutines[entityConfig.routineName])
+        reducers[`${entityName}-create`] = createEntityCreateFormReducers(domainRoutines[entityConfig.routineName])
+        reducers[`${entityName}-update`] = createEntityUpdateFormReducers(domainRoutines[entityConfig.routineName])
+        return reducers
     }, {})
 
     return combineReducers({
-        ...entityReducers,
+        ...entityDataReducers,
         form: formReducer.plugin(formPluginReducers)
     })
 }

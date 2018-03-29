@@ -1,8 +1,22 @@
 ***********
 STORIES
 
+state handling only as high as necessary
+    only if parent needs state for 2 or moe children
+
+handle single entity actions like delete and update
+    what does the page do? fetch all rows again to fill page?
+
+implement number of pages in stub+reducer
+
+documentation on generic code
+
+e2e testing
+
 implement sort requests
     SPIKE server side sorting
+    Sorting states per field: asc, desc, none
+    Create table headers with field-name and
 
 implement pagination:
     http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#pagination
@@ -322,3 +336,12 @@ implement server side filtering
         fetch_all and filter both necessary??
             NO, only filter
     delete traces of fetch_all
+
+use 3rd party table for sorting/pagination
+    rc-table:   https://www.npmjs.com/package/rc-table
+ -> react table: https://www.npmjs.com/package/react-table?activeTab=readme#fully-controlled-component
+        can handle server side filtering, custom texts, custom cells and more ..
+    finish plugging in react-table
+        pages and loading: in the store-state
+        pageSize, page and sorted: stay in table local state
+

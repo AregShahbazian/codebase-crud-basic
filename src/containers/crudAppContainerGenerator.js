@@ -20,10 +20,6 @@ const mapStateToPropsGenerator = (entityName) => (state) => {
     }
 }
 
-const mapDispatchToPropsGenerator = (entityRoutines) => ({
-    filterEntities: entityRoutines.FILTER.trigger
-})
-
 class CrudAppContainer extends React.Component {
     render() {
         return this.props.crudAppGenerator({
@@ -33,20 +29,16 @@ class CrudAppContainer extends React.Component {
             entityUpdateForm: this.props.entityUpdateForm
         })
     }
-
-    componentDidMount() {
-        this.props.filterEntities(this.props.entityFilterForm.values)
-    }
 }
 
 CrudAppContainer.propTypes = {
     crudAppGenerator: PropTypes.func.isRequired
 }
 
-export default (entityRoutines, entityName) => {
+export default (entityName) => {
     return connect(
         mapStateToPropsGenerator(entityName),
-        mapDispatchToPropsGenerator(entityRoutines)
+        null
     )(CrudAppContainer)
 }
 
