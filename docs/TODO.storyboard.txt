@@ -1,10 +1,30 @@
 ***********
 STORIES
 
-handle single entity actions like delete and update
-    what does the page do? fetch all rows again to fill page?
+implement pagination in stub
+    SPIKE JSON API
+    create JSONAPI stubs with pagination data
+    use normalizr alternative
+        https://github.com/paularmstrong/normalizr/blob/master/docs/jsonapi.md
+            specifically json-api-normalizer
 
-implement number of pages in stub+reducer
+handle single entity actions like create, delete and update.
+P1: After creating, the page has +1 row, and it might even not
+belong in that page due to sorting
+P2: if single-entity operations by User 1 only perform partial table refreshing, and User 2 changes some data at the
+same time, then the partial table refresh will miss out the changes made by User 2 but will suggest correct refreshing!
+    https://ux.stackexchange.com/questions/37014/what-should-happen-when-i-add-a-row-to-a-paginated-sorted-list
+        create row highlights the newly created row to indicate that there's something different about it (not sorted)
+        - doesnt solve pagination issue
+
+    what does the page do? fetch all rows again to fill page?
+        if YES: need to save tableLocalState (pageSize, page, sorted) in store too, so it's persisted after re-fetch
+        if YES:
+            new rows can be lost due to sorting/pagination
+            edited rows can be lost due to sorting/pagination
+            (S-postponed: after full re-fetch, put new/edited row on top and highlight it?)
+
+
 
 documentation on generic code
 

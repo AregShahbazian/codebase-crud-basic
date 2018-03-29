@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import ReactTable from "react-table";
 import "react-table/react-table.css";
 
-let AuthorTable = ({entities, handleNewClick, handleUpdateClick, handleDeleteClick, pages, loading, refreshTableData}) => (
+let AuthorTable = ({entities, handleNewClick, handleUpdateClick, handleDeleteClick, pages, pageSize, loading, refreshTableData}) => (
     <div>
         <button id="create-button" onClick={handleNewClick}>
             Create New
@@ -22,6 +22,7 @@ let AuthorTable = ({entities, handleNewClick, handleUpdateClick, handleDeleteCli
                 {
                     id: 'edit',
                     accessor: '[row identifier to be passed to button]',
+                    sortable: false,
                     Cell: ({original}) => (
                         <div>
                             <button className="update-button" onClick={() => handleUpdateClick(original)}>
@@ -36,9 +37,10 @@ let AuthorTable = ({entities, handleNewClick, handleUpdateClick, handleDeleteCli
             manual
             data={entities}
             pages={pages}
+            defaultPageSize={10}
+            pageSize={pageSize}
             loading={loading}
             onFetchData={refreshTableData}
-            defaultPageSize={10}
             className="-striped -highlight"
         />
     </div>

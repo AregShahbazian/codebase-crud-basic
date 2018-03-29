@@ -1,11 +1,18 @@
 
+JSON API
+    JSONAPI vs GraphQL
+        https://nordicapis.com/the-benefits-of-using-json-api/
+    http://jsonapi.org/
+    full specifications
+        http://jsonapi.org/format/
+
 Research server side sorting, filtering and pagination
     https://www.softfluent.com/documentation/BOM_SP_DYN_Server.html
-    "Server side sorting should be preferred in almost all cases to client side sorting"
+        "Server side sorting should be preferred in almost all cases to client side sorting"
 
     Sorting, Filtering and Pagination
-    https://specs.openstack.org/openstack/api-wg/guidelines/pagination_filter_sort.html
-    https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/
+        https://specs.openstack.org/openstack/api-wg/guidelines/pagination_filter_sort.html
+        https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/
 
 
 Learn webpack,
