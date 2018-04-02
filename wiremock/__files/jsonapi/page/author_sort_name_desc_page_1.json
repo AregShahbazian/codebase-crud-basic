@@ -47,7 +47,6 @@
   "links": {
     "self": "http://localhost:9999/person?page[number]=1&page[size]=5&sort=-name",
     "first": "http://localhost:9999/person?page[number]=1&page[size]=5&sort=-name",
-    "prev": null,
     "next": "http://localhost:9999/person?page[number]=2&page[size]=5&sort=-name",
     "last": "http://localhost:9999//person?page[number]=3&page[size]=5&sort=-name"
   }

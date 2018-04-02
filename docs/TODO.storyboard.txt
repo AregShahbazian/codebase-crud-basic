@@ -387,3 +387,5 @@ use 3rd party table for sorting/pagination
 state handling only as high as necessary
     only if parent needs state for 2 or moe children
 
+P: ReferenceError: regeneratorRuntime is not defined[Learn More]
+S: add import "regenerator-runtime/runtime" to index
