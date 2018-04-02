@@ -1,11 +1,11 @@
-import {createDomainRoutines, entityOps, entityRoutines} from "./index";
+    import {createDomainRoutines, crudOps, entityRoutines} from "./index";
 
 describe('myEntity action creators', () => {
     const routines = entityRoutines(["MY_ENTITY"])
     const PAYLOAD = "PAYLOAD";
     const META = {id: 123};
 
-    entityOps.forEach((op) => (
+    crudOps.forEach((op) => (
         it(`For myEntity, ${op} should have a trigger, request, success and failure action creator`, () => {
             expect(routines.MY_ENTITY[op].trigger(PAYLOAD, META)).toEqual({
                 type: `MY_ENTITY/${op}/TRIGGER`,

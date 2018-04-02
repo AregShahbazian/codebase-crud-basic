@@ -9,19 +9,19 @@ const UPDATE = 'UPDATE'
 const DELETE = 'DELETE'
 const FORM = 'FORM'
 
-export const entityOps = [FETCH_BY_ID, FILTER, CREATE, REPLACE, UPDATE, DELETE];
+export const crudOps = [FETCH_BY_ID, FILTER, CREATE, REPLACE, UPDATE, DELETE];
 
 /**
  * Creates CRUD action creator routines for each routine name
  * @param routineNames
  */
 export const entityRoutines = (routineNames) => {
-    return routineNames.reduce((acc, val) => {
-        acc[val] = entityOps.reduce((acc2, val2) => {
+    return routineNames.reduce((acc, routineName) => {
+        acc[routineName] = crudOps.reduce((acc2, crudOp) => {
             /* Create CRUD routines for each entity*/
 
-            acc2[val2] = createRoutine(
-                `${val}/${val2}`,
+            acc2[crudOp] = createRoutine(
+                `${routineName}/${crudOp}`,
                 (payload) => payload,
                 (payload, meta) => meta
             )
@@ -30,14 +30,14 @@ export const entityRoutines = (routineNames) => {
 
             acc2.FORM = {}
 
-            let formPrepareCreateName = `${val}/FORM/PREPARE_CREATE`;
+            let formPrepareCreateName = `${routineName}/FORM/PREPARE_CREATE`;
             acc2.FORM.prepareCreate = createAction(
                 formPrepareCreateName,
                 (payload) => (payload)
             )
             acc2.FORM.PREPARE_CREATE = formPrepareCreateName
 
-            let formPrepareUpdateName = `${val}/FORM/PREPARE_UPDATE`;
+            let formPrepareUpdateName = `${routineName}/FORM/PREPARE_UPDATE`;
             acc2.FORM.prepareUpdate = createAction(
                 formPrepareUpdateName,
                 (payload) => (payload)
