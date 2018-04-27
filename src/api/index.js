@@ -95,16 +95,16 @@ const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) =
  * @returns {{}|any|any}
  */
 export const createDomainApiFunctions = (domainConfigs) => {
-    return reduce(domainConfigs,(acc, val, key) => {
-        acc[key] = {
-            fetchById: callApi.bind(null, val.endpoint, val.schema, GET),
-            filter: callApi.bind(null, val.endpoint, new schema.Array(val.schema), GET),
-            create: callApi.bind(null, val.endpoint, val.schema, POST),
-            replace: callApi.bind(null, val.endpoint, val.schema, PUT),
-            update: callApi.bind(null, val.endpoint, val.schema, PATCH),
-            delete: callApi.bind(null, val.endpoint, val.schema, DELETE)
+    return reduce(domainConfigs,(apiFunctions, entityConfig, entityName) => {
+        apiFunctions[entityName] = {
+            fetchById: callApi.bind(null, entityConfig.endpoint, entityConfig.schema, GET),
+            filter: callApi.bind(null, entityConfig.endpoint, new schema.Array(entityConfig.schema), GET),
+            create: callApi.bind(null, entityConfig.endpoint, entityConfig.schema, POST),
+            replace: callApi.bind(null, entityConfig.endpoint, entityConfig.schema, PUT),
+            update: callApi.bind(null, entityConfig.endpoint, entityConfig.schema, PATCH),
+            delete: callApi.bind(null, entityConfig.endpoint, entityConfig.schema, DELETE)
         }
-        return acc
+        return apiFunctions
     }, {})
 }
 

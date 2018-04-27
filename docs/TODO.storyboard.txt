@@ -1,6 +1,22 @@
 ***********
 STORIES
 
+Instead of JSON-api, extrat pagination insfo from response data BEFORE normalizing
+    (reason to use JSON api was because normalizr can't handle meta-data, like pagination)
+
+Use Create-react-app
+
+
+Use react-first-router for routing
+
+
+
+implement recursive deletion in reducers, using schemas. This to make sure after deletion the related child-entities are
+pruned
+    https://github.com/reactjs/redux/issues/386
+    *OR, see user-roles project
+        use smart delete
+
 implement pagination in stub
     SPIKE JSON API
     create JSONAPI stubs with pagination data
@@ -82,6 +98,9 @@ JUST IN CASE
 
 
     http://redux.js.org/
+
+    React production-ready boilerplate
+        https://github.com/react-boilerplate/react-boilerplate/tree/dev
 
     Videos basic
         https://courses.wesbos.com/account/access/5986e63f730b2a3a098bb488/view/03a1ca9b74
