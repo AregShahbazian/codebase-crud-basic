@@ -100,22 +100,18 @@ const applyRelation = (data, field, rel, val) => {
 }
 
 const filterData = (data, filters) => {
-    let dataClone = cloneDeep(data)
+    let filteredData = cloneDeep(data)
 
     mapKeys(filters, (filter, field) => {
         if (typeof filter === 'object') {
-            // console.log(filter)
             mapKeys(filter, (val, rel) => {
-                dataClone = applyRelation(dataClone, field, rel, val)
+                filteredData = applyRelation(filteredData, field, rel, val)
             })
         } else {
-            // console.log(filter)
-            dataClone = query(field).search(filter).on(dataClone)
+            filteredData = query(field).search(filter).on(filteredData)
         }
-    })
-
-    return dataClone;
-
+    });
+    return filteredData;
 };
 
 const constructFullEndpoint = (filters, currentPage, pageSize, sortingComboString, endpoint) => {
