@@ -1,38 +1,15 @@
 ***********
 STORIES
 
-Instead of JSON-api, extrat pagination insfo from response data BEFORE normalizing
-    (reason to use JSON api was because normalizr can't handle meta-data, like pagination)
-
-Use Create-react-app
 
 
-Use react-first-router for routing
-
-
-
-implement recursive deletion in reducers, using schemas. This to make sure after deletion the related child-entities are
-pruned
-    https://github.com/reactjs/redux/issues/386
-    *OR, see user-roles project
-        use smart delete
 
 implement pagination in stub
     SPIKE JSON API
     create JSONAPI stubs with pagination data
-    __files
-        pagination:
-            default name asc sort
-            name desc sort
-            dob asc name desc sort
-            dob filter
-            name filter
-        crud:
-            a14
-            a13 updated
-            a13
-    mappings
-        TODO
+    axios mock instead of wiremock
+        use https://github.com/SeyZ/jsonapi-serializer
+        - page out of bounds? -> 404
 
     use normalizr alternative
         https://github.com/paularmstrong/normalizr/blob/master/docs/jsonapi.md
@@ -40,6 +17,26 @@ implement pagination in stub
     NOTE: JSONAPI redux implementations
         http://jsonapi.org/implementations/
             search: "redux"
+
+
+
+Instead of JSON-api, extrat pagination info from response data BEFORE normalizing
+    (reason to use JSON api was because normalizr can't handle meta-data, like pagination)
+**OR create generic "page" entity for normalizing pagination info
+
+
+Use Create-react-app
+    enable MHR with rewired
+
+Use react-first-router for routing
+    (Or saga-friendly alternative?)
+
+
+implement recursive deletion in reducers, using schemas. This to make sure after deletion the related child-entities are
+pruned
+    https://github.com/reactjs/redux/issues/386
+    *OR, see user-roles project
+        use smart delete
 
 
 

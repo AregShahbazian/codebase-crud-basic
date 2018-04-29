@@ -37,7 +37,8 @@ let AuthorTable = ({entities, handleNewClick, handleUpdateClick, handleDeleteCli
             manual
             data={entities}
             pages={pages}
-            defaultPageSize={10}
+            pageSizeOptions={[5, 10]}
+            defaultPageSize={5}
             pageSize={pageSize}
             loading={loading}
             onFetchData={refreshTableData}
