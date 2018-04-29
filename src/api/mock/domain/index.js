@@ -32,7 +32,6 @@ const authorFilterCollection = [
     }
 ];
 const authorSerializerParams = {
-    id: "id",
     attributes: authorAttributes
 };
 mockPossiblePages(
@@ -54,13 +53,7 @@ const publisherFilterCollection = [
     {title: "9"}
 ];
 const publisherSerializerParams = {
-    id: "id",
-    attributes: publisherAttributes,
-    author: {
-        ref: "id",
-        included: true,
-        attributes: authorAttributes
-    }
+    attributes: publisherAttributes
 };
 mockPossiblePages(
     publishers,
@@ -73,7 +66,7 @@ mockPossiblePages(
 );
 
 
-const bookAttributes = ["title"];
+const bookAttributes = ["title", "author", "publisher"];
 const bookSortingCombos = createAllOrderedSortingCombos(bookAttributes);
 const bookFilterCollection = [
     {},
@@ -85,12 +78,12 @@ const bookSerializerParams = {
     attributes: bookAttributes,
     author: {
         ref: "id",
-        included: true,
+        included: false,
         attributes: authorAttributes
     },
     publisher: {
         ref: "id",
-        included: true,
+        included: false,
         attributes: publisherAttributes
     }
 };

@@ -101,7 +101,6 @@ const applyRelation = (data, field, rel, val) => {
 
 const filterData = (data, filters) => {
     let filteredData = cloneDeep(data)
-
     mapKeys(filters, (filter, field) => {
         if (typeof filter === 'object') {
             mapKeys(filter, (val, rel) => {
@@ -123,7 +122,7 @@ const constructFullEndpoint = (filters, currentPage, pageSize, sortingComboStrin
 };
 
 const getById = (data, id) => {
-    return data.filter(o => o.id === id)
+    return data.filter(o => o.id === id)[0]
 }
 
 export {makeSortingComboString, permute, createAllOrderedSortingCombos, filterData, constructFullEndpoint,getById}

@@ -9,8 +9,8 @@ const mock = new MockAdapter(axios, {delayResponse: 500});
 const pageSizes = [5, 10];
 
 export default (data, sortingCombos, filterCollection, serializeParams, entityName, apiRoot, endpoint) => {
+    /* GET pages, filtered, sorted */
     pageSizes.forEach(pageSize => {
-
         filterCollection.forEach(filters => {
             let currentFilterData = filterData(data, filters);
             let totalPages = Math.ceil(currentFilterData.length / pageSize);
@@ -40,18 +40,41 @@ export default (data, sortingCombos, filterCollection, serializeParams, entityNa
                         ...serializeParams,
                         pluralizeType: false,
                         meta: {totalPages},
-                        topLevelLinks
+                        topLevelLinks,
+                        dataLinks: {
+                            self: function (data, o) {
+                                return `${apiRoot}/${endpoint}/${o.id}`;
+                            }
+                        },
                     });
 
                     let currentPageData = paginate(currentSortData, currentPage, pageSize).data;
                     let jsonApiData = serializer.serialize(currentPageData);
 
                     // console.log(`Mocking endpoint:\t${selfFullEndpoint}`)
-                    // console.log(`response: ${JSON.stringify(jsonApiData, null, 2)}`)
+                    // console.log(`response = ${JSON.stringify(jsonApiData, null, 2)}`)
 
                     mock.onGet(selfFullEndpoint).reply(200, jsonApiData);
                 }
             });
         });
+    })
+
+    /* GET by id*/
+    data.forEach(o => {
+        let fullEndpoint = `/${endpoint}/${o.id}`;
+
+        let jsonApiData = new Serializer(entityName, {
+            ...serializeParams,
+            pluralizeType: false,
+            topLevelLinks: {
+                self: `${apiRoot}${fullEndpoint}`
+            }
+        }).serialize(o);
+
+        // console.log(`Mocking endpoint:\t${fullEndpoint}`)
+        // console.log(`response = ${JSON.stringify(jsonApiData, null, 2)}`)
+
+        mock.onGet(`/${endpoint}/${o.id}`).reply(200, jsonApiData);
     })
 };

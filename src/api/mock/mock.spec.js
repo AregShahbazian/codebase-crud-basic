@@ -1,7 +1,7 @@
 import "./domain/index"
 
 describe('deleteEntityFromState', () => {
-    it("should leave state untouched for deleting non-existing entity", () => {
+    it('should convert ID to string', function () {
 
-    })
+    });
 })
