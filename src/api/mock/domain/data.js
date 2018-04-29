@@ -47,22 +47,22 @@ const authors = {
     "a10": {
         "id": "a10",
         "name": "Anonymous Author",
-        "age": "80"
+        "age": "70"
     },
     "a11": {
         "id": "a11",
         "name": "Anonymous Author",
-        "age": "70"
+        "age": "60"
     },
     "a12": {
         "id": "a12",
         "name": "Anonymous Author",
-        "age": "60"
+        "age": "50"
     },
     "a13": {
         "id": "a13",
         "name": "Anonymous Author",
-        "age": "50"
+        "age": "40"
     }
 }
 

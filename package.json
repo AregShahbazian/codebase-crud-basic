@@ -46,6 +46,7 @@
     "webpack-dev-server": "^2.11.2"
   },
   "dependencies": {
+    "array-query": "^0.1.2",
     "axios": "^0.17.1",
     "axios-mock-adapter": "^1.15.0",
     "bootstrap": "^3.3.7",
@@ -59,6 +60,7 @@
     "paginate-array": "^2.0.0",
     "powerset": "0.0.1",
     "prop-types": "^15.6.1",
+    "qs": "^6.5.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-global-configuration": "^1.2.1",

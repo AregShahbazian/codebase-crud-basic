@@ -1,15 +1,20 @@
 ***********
 STORIES
 
-
-
-
 implement pagination in stub
     SPIKE JSON API
     create JSONAPI stubs with pagination data
     axios mock instead of wiremock
         use https://github.com/SeyZ/jsonapi-serializer
         - page out of bounds? -> 404
+        - sorting
+        - filters
+            URL design with: https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/
+            [] notation can be parsed with qs library
+                https://www.npmjs.com/package/qs
+                [gt|gte|eq|ly|lte]
+
+        - jsonapi other fields (links, ..)
 
     use normalizr alternative
         https://github.com/paularmstrong/normalizr/blob/master/docs/jsonapi.md
@@ -18,6 +23,11 @@ implement pagination in stub
         http://jsonapi.org/implementations/
             search: "redux"
 
+
+Instead of domain folders:
+    e.g.
+    index.js -> action.js
+    domain/index.js -> index.js
 
 
 Instead of JSON-api, extrat pagination info from response data BEFORE normalizing
@@ -365,17 +375,6 @@ split edit form and create form. This is not necessary now, but is necessary if 
     //split reducers
     split container
     duplicate component
-
-implement server side filtering
-    create stub for filtering just author 2
-    rename routine search -> filter
-    create filter form component
-        "Apply Filter" button
-    create filter form container
-            routine: filter
-    filter form submitted with HTTP GET
-    filter params in url
-    e2e tests
 
 implement server side filtering
     create stub for filtering just author 2
