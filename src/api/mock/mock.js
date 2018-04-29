@@ -46,8 +46,8 @@ export default (data, sortingCombos, filterCollection, serializeParams, entityNa
                     let currentPageData = paginate(currentSortData, currentPage, pageSize).data;
                     let jsonApiData = serializer.serialize(currentPageData);
 
-                    console.log(`Mocking endpoint:\t${selfFullEndpoint}`)
-                    console.log(`response: ${JSON.stringify(jsonApiData, null, 2)}`)
+                    // console.log(`Mocking endpoint:\t${selfFullEndpoint}`)
+                    // console.log(`response: ${JSON.stringify(jsonApiData, null, 2)}`)
 
                     mock.onGet(selfFullEndpoint).reply(200, jsonApiData);
                 }

@@ -50,8 +50,8 @@ const publisherAttributes = ["name"];
 const publisherSortingCombos = createAllOrderedSortingCombos(publisherAttributes);
 const publisherFilterCollection = [
     {},
-    {title: "Author 1"},
-    {title: "Author 9"}
+    {title: "1"},
+    {title: "9"}
 ];
 const publisherSerializerParams = {
     id: "id",
