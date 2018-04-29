@@ -12,9 +12,10 @@ implement pagination in stub
             URL design with: https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/
             [] notation can be parsed with qs library
                 https://www.npmjs.com/package/qs
-                [gt|gte|eq|ly|lte]
-
-        - jsonapi other fields (links, ..)
+                [gt|gte|is|ly|lte]
+        - jsonapi other fields
+            top level links
+            data links
 
     use normalizr alternative
         https://github.com/paularmstrong/normalizr/blob/master/docs/jsonapi.md
@@ -23,6 +24,10 @@ implement pagination in stub
         http://jsonapi.org/implementations/
             search: "redux"
 
+correct terminology in mock
+    endpoint,url,uri,queries ..?
+
+copy generic method names from /user-form
 
 Instead of domain folders:
     e.g.

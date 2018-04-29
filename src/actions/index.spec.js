@@ -1,4 +1,4 @@
-    import {createDomainRoutines, crudOps, entityRoutines} from "./index";
+import {createDomainRoutines, crudOps, entityRoutines} from "./index";
 
 describe('myEntity action creators', () => {
     const routines = entityRoutines(["MY_ENTITY"])

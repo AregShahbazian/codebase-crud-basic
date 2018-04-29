@@ -1,17 +1,9 @@
-import {Serializer} from "jsonapi-serializer"
+import config from "../../../config/index";
 import mockPossiblePages from "../mock";
 import {authors} from "./data";
-import {createAllOrderedSortingCombos} from "../utils";
 
 const authorList = Object.values(authors);
 const authorAttributes = ["name", "age"];
-const authorSerializer = new Serializer("author", {
-    id: "id",
-    attributes: authorAttributes,
-    pluralizeType: false
-});
-
-const authorSortingCombos = createAllOrderedSortingCombos(authorAttributes);
 
 const authorFilterCollection = [
     {},
@@ -40,4 +32,4 @@ const authorFilterCollection = [
     }
 ];
 
-mockPossiblePages(authorList, authorSortingCombos, authorSerializer, authorFilterCollection, "author");
+mockPossiblePages(authorList, authorAttributes, authorFilterCollection, "author", config.apiRoot, "author");

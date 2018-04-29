@@ -1,3 +1,5 @@
+import {stringify} from "qs"
+import $ from "jquery";
 import {cloneDeep, mapKeys} from "lodash";
 import powerset from "powerset"
 import query from "array-query"
@@ -117,4 +119,12 @@ const filterData = (data, filters) => {
 
 };
 
-export {makeSortingComboString, permute, createAllOrderedSortingCombos, filterData}
+const constructFullEndpoint = (filters, currentPage, pageSize, sortingComboString, endpoint) => {
+    let filterQuery = !$.isEmptyObject(filters) ? `${stringify(filters, {encode: false})}` : "";
+    let pageQuery = `_page[number]=${currentPage}&_page[size]=${pageSize}`;
+    let sortingQuery = sortingComboString ? `_sort=${sortingComboString}` : "";
+    let queryString = [filterQuery, pageQuery, sortingQuery].filter(s => s.length).join("&");
+    return `/${endpoint}?${queryString}`;
+};
+
+export {makeSortingComboString, permute, createAllOrderedSortingCombos, filterData, constructFullEndpoint}

@@ -1,5 +1,4 @@
 import {normalize, schema} from "normalizr";
-import config from "react-global-configuration";
 
 const tableInitialState = {
     pages: 1,
@@ -21,9 +20,9 @@ const authorSchema = new schema.Entity('author', {
 })
 const authorInitialState = {...normalize([], new schema.Array(authorSchema)), ...tableInitialState}
 
-const entityConfigs = {}
+const entities = {}
 
-entityConfigs[publisher] = {
+entities[publisher] = {
     endpoint: "publisher",
     routineName: "PUBLISHER",
     schema:
@@ -32,7 +31,7 @@ entityConfigs[publisher] = {
     publisherInitialState
 }
 
-entityConfigs[book] = {
+entities[book] = {
     endpoint: "book",
     routineName: "BOOK",
     schema:
@@ -41,7 +40,7 @@ entityConfigs[book] = {
     bookInitialState
 }
 
-entityConfigs[author] = {
+entities[author] = {
     endpoint: "author",
     routineName: "AUTHOR",
     schema:
@@ -50,7 +49,8 @@ entityConfigs[author] = {
     authorInitialState
 }
 
-config.set({
-    entities: entityConfigs,
-    apiRoot: "http://localhost:9999/"
-})
+export default {
+    entities,
+    apiRoot: "http://localhost:9999"
+}
+

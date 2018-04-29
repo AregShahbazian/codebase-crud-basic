@@ -1,4 +1,4 @@
-import config from "react-global-configuration";
+import config from "../../config/index";
 import {createDomainApiFunctions} from "../index";
 
-export default createDomainApiFunctions(config.get("entities"))
+export default createDomainApiFunctions(config.entities)

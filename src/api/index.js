@@ -1,7 +1,7 @@
-import config from "react-global-configuration";
+import config from "../config/index";
 import {normalize, schema} from "normalizr";
 import axios from "axios";
-import { reduce} from "lodash";
+import {reduce} from "lodash";
 import $ from "jquery";
 // import "./mock/mock"
 
@@ -11,7 +11,7 @@ export const PUT = 'put'
 export const PATCH = 'patch'
 export const DELETE = 'delete'
 
-const API_ROOT = config.get("apiRoot");
+const API_ROOT = config.apiRoot;
 
 axios.defaults.baseURL = API_ROOT;
 axios.defaults.headers.common['Accept'] = 'application/json';
@@ -84,7 +84,7 @@ export const normalizeData = (schema, data) => {
  */
 const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) => {
     let request = createRequest(endpoint, method, payload, meta.id)
-    console.log(`Calling api at ${API_ROOT + request.fullEndpoint} with method ${method} and payload ${JSON.stringify(request.requestBody)}`)
+    console.log(`Calling api at ${API_ROOT}/${request.fullEndpoint} with method ${method} and payload ${JSON.stringify(request.requestBody)}`)
     return makeRequest(method, request, schema)
 }
 
@@ -95,7 +95,7 @@ const callApi = (endpoint = '', schema, method = GET, payload = {}, meta = {}) =
  * @returns {{}|any|any}
  */
 export const createDomainApiFunctions = (domainConfigs) => {
-    return reduce(domainConfigs,(apiFunctions, entityConfig, entityName) => {
+    return reduce(domainConfigs, (apiFunctions, entityConfig, entityName) => {
         apiFunctions[entityName] = {
             fetchById: callApi.bind(null, entityConfig.endpoint, entityConfig.schema, GET),
             filter: callApi.bind(null, entityConfig.endpoint, new schema.Array(entityConfig.schema), GET),

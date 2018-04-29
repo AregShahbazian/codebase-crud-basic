@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import config from "react-global-configuration";
+import config from "../config/index";
 
 import routines from "../actions/domain";
 import entityTableContainerGenerator from "../containers/entityTableContainerGenerator";
@@ -15,7 +15,7 @@ import DispatchTest from "./test/dispatchTest";
 import {authorCreate as authorCreateValidation, authorUpdate as authorUpdateValidation} from "./form/validation"
 
 const AUTHOR_ENTITY_NAME = "author"
-const AUTHOR_ROUTINE_NAME = config.get("entities")[AUTHOR_ENTITY_NAME].routineName
+const AUTHOR_ROUTINE_NAME = config.entities[AUTHOR_ENTITY_NAME].routineName
 
 const AuthorTableContainer = entityTableContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME)
 const AuthorFilterFormContainer = entityFilterFormContainerGenerator(routines[AUTHOR_ROUTINE_NAME], AUTHOR_ENTITY_NAME)
