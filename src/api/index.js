@@ -2,7 +2,7 @@ import config from "../config/index";
 import {normalize, schema} from "normalizr";
 import axios from "axios";
 import {reduce} from "lodash";
-import $ from "jquery";
+import qs from "qs"
 // import "./mock/mock"
 
 export const GET = 'get'
@@ -36,7 +36,7 @@ export const createRequest = (endpoint, method, payload, id) => {
     let requestBody
 
     if (method === GET || method === DELETE) {
-        queryParameters += !$.isEmptyObject(payload) ? "?" + $.param(payload) : ""
+        queryParameters += Object.keys(payload).length ? "?" + qs.stringify(payload) : "";
         requestBody = undefined
     } else {
         requestBody = payload

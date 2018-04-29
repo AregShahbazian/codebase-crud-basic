@@ -1,10 +1,10 @@
-import config from "../../../config/index";
+import config, {author, book, publisher} from "../../../config/index";
 import mockPossiblePages from "../mock";
-import {authors} from "./data";
+import {authors, books, publishers} from "./data";
+import {createAllOrderedSortingCombos} from "../utils";
 
-const authorList = Object.values(authors);
 const authorAttributes = ["name", "age"];
-
+const authorSortingCombos = createAllOrderedSortingCombos(authorAttributes);
 const authorFilterCollection = [
     {},
     {name: "Twin"},
@@ -31,5 +31,76 @@ const authorFilterCollection = [
         }
     }
 ];
+const authorSerializerParams = {
+    id: "id",
+    attributes: authorAttributes
+};
+mockPossiblePages(
+    authors,
+    authorSortingCombos,
+    authorFilterCollection,
+    authorSerializerParams,
+    author,
+    config.apiRoot,
+    config.entities.author.endpoint
+);
 
-mockPossiblePages(authorList, authorAttributes, authorFilterCollection, "author", config.apiRoot, "author");
+
+const publisherAttributes = ["name"];
+const publisherSortingCombos = createAllOrderedSortingCombos(publisherAttributes);
+const publisherFilterCollection = [
+    {},
+    {title: "Author 1"},
+    {title: "Author 9"}
+];
+const publisherSerializerParams = {
+    id: "id",
+    attributes: publisherAttributes,
+    author: {
+        ref: "id",
+        included: true,
+        attributes: authorAttributes
+    }
+};
+mockPossiblePages(
+    publishers,
+    publisherSortingCombos,
+    publisherFilterCollection,
+    publisherSerializerParams,
+    publisher,
+    config.apiRoot,
+    config.entities.publisher.endpoint
+);
+
+
+const bookAttributes = ["title"];
+const bookSortingCombos = createAllOrderedSortingCombos(bookAttributes);
+const bookFilterCollection = [
+    {},
+    {title: "Author 1"},
+    {title: "Author 9"}
+];
+const bookSerializerParams = {
+    id: "id",
+    attributes: bookAttributes,
+    author: {
+        ref: "id",
+        included: true,
+        attributes: authorAttributes
+    },
+    publisher: {
+        ref: "id",
+        included: true,
+        attributes: publisherAttributes
+    }
+};
+mockPossiblePages(
+    books,
+    bookSortingCombos,
+    bookFilterCollection,
+    bookSerializerParams,
+    book,
+    config.apiRoot,
+    config.entities.book.endpoint
+);
+

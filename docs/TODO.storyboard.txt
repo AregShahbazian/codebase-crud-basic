@@ -13,9 +13,11 @@ implement pagination in stub
             [] notation can be parsed with qs library
                 https://www.npmjs.com/package/qs
                 [gt|gte|is|ly|lte]
+        - post, patch, delete mocks
         - jsonapi other fields
             top level links
             data links
+        - no included data yet, only if necessary later
 
     use normalizr alternative
         https://github.com/paularmstrong/normalizr/blob/master/docs/jsonapi.md
@@ -28,6 +30,9 @@ correct terminology in mock
     endpoint,url,uri,queries ..?
 
 copy generic method names from /user-form
+    and rest of corrected code
+
+remove put
 
 Instead of domain folders:
     e.g.

@@ -3,14 +3,12 @@ import MockAdapter from "axios-mock-adapter"
 import {Serializer} from "jsonapi-serializer"
 import paginate from "paginate-array"
 import {orderBy} from "lodash";
-import {constructFullEndpoint, createAllOrderedSortingCombos, filterData, makeSortingComboString} from "./utils";
+import {constructFullEndpoint, filterData, makeSortingComboString} from "./utils";
 
 const mock = new MockAdapter(axios, {delayResponse: 500});
 const pageSizes = [5, 10];
 
-export default (data, attributes, filterCollection, entityName, apiRoot, endpoint) => {
-    const sortingCombos = createAllOrderedSortingCombos(attributes);
-
+export default (data, sortingCombos, filterCollection, serializeParams, entityName, apiRoot, endpoint) => {
     pageSizes.forEach(pageSize => {
 
         filterCollection.forEach(filters => {
@@ -34,13 +32,12 @@ export default (data, attributes, filterCollection, entityName, apiRoot, endpoin
                         self: `${apiRoot}${selfFullEndpoint}`,
                         first: `${apiRoot}${firstFullEndpoint}`,
                         last: `${apiRoot}${lastFullEndpoint}`,
-                        prev: prevFullEndpoint?`${apiRoot}${prevFullEndpoint}`:undefined,
-                        next: nextFullEndpoint?`${apiRoot}${nextFullEndpoint}`:undefined,
+                        prev: prevFullEndpoint ? `${apiRoot}${prevFullEndpoint}` : undefined,
+                        next: nextFullEndpoint ? `${apiRoot}${nextFullEndpoint}` : undefined,
                     };
 
                     let serializer = new Serializer(entityName, {
-                        id: "id",
-                        attributes: attributes,
+                        ...serializeParams,
                         pluralizeType: false,
                         meta: {totalPages},
                         topLevelLinks

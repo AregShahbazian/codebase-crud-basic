@@ -49,6 +49,8 @@ entities[author] = {
     authorInitialState
 }
 
+export {author, book, publisher}
+
 export default {
     entities,
     apiRoot: "http://localhost:9999"
