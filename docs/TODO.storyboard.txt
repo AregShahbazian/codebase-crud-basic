@@ -1,27 +1,12 @@
 ***********
 STORIES
 
-implement pagination in stub
-    SPIKE JSON API
-    create JSONAPI stubs with pagination data
-    axios mock instead of wiremock
-        use https://github.com/SeyZ/jsonapi-serializer
-        - page out of bounds? -> 404
-        - sorting
-        - filters
-            URL design with: https://www.moesif.com/blog/technical/api-design/REST-API-Design-Filtering-Sorting-and-Pagination/
-            [] notation can be parsed with qs library
-                https://www.npmjs.com/package/qs
-                [gt|gte|is|ly|lte]
-        - get id, post, patch, delete mocks
-        - jsonapi other fields
-            top level links
-            data links
-        - no included data yet, only if necessary later
+implement pagination with JSONAPI
 
-    use normalizr alternative
+*    use normalizr alternative
         https://github.com/paularmstrong/normalizr/blob/master/docs/jsonapi.md
             specifically json-api-normalizer
+
     NOTE: JSONAPI redux implementations
         http://jsonapi.org/implementations/
             search: "redux"
@@ -40,11 +25,6 @@ Instead of domain folders:
     domain/index.js -> index.js
 
 
-Instead of JSON-api, extrat pagination info from response data BEFORE normalizing
-    (reason to use JSON api was because normalizr can't handle meta-data, like pagination)
-**OR create generic "page" entity for normalizing pagination info
-
-
 Use Create-react-app
     enable MHR with rewired
 
@@ -60,7 +40,6 @@ pruned
 
 JSONAPI relationship endpoints
     relationship links
-
 
 
 
@@ -171,6 +150,11 @@ JUST IN CASE
         http://www.thegreatcodeadventure.com/react-redux-tutorial-part-vi-the-edit-feature/
         http://blog.isquaredsoftware.com/2017/01/practical-redux-part-7-forms-editing-reducers/
             redux orm
+
+    Instead of JSON-api, extrat pagination info from response data BEFORE normalizing
+        (reason to use JSON api was because normalizr can't handle meta-data, like pagination)
+    **OR create generic "page" entity for normalizing pagination info
+
 
 
 ***********

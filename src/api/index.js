@@ -3,7 +3,6 @@ import {normalize, schema} from "normalizr";
 import axios from "axios";
 import {reduce} from "lodash";
 import qs from "qs"
-// import "./mock/mock"
 
 export const GET = 'get'
 export const POST = 'post'
